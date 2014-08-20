@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ASP.NET: Этапы жизненного цикла страницы - Aleksandr Filatov</title>
+  <meta name="author" content="Aleksandr Filatov">
+
+  
+  <meta name="description" content="Наверно редкое собеседование по&nbsp;ASP.NET&nbsp;не обходится без вопроса о жизненном цикле&nbsp;страницы в ASP.NET Web Forms (далее для краткости& &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://greybax.github.io/blog/2014/04/23/aspnet">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Aleksandr Filatov" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Aleksandr Filatov</a></h1>
+  
+    <h2>Мысли и идеи программиста</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">ASP.NET: Этапы жизненного цикла страницы</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-23T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='post'>
+<div dir="ltr" style="text-align: left;" trbidi="on"><div class="separator" style="clear: both; text-align: center;"></div><br /><div style="text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif;">Наверно редкое собеседование по&nbsp;ASP.NET&nbsp;не обходится без вопроса о жизненном цикле&nbsp;страницы в ASP.NET Web Forms (далее для краткости&nbsp;ASP.NET). Попытаемся разобраться в этом вопросе. Разделил тему на две. В текущей статье разберем </span><b style="font-family: Arial, Helvetica, sans-serif;">этапы&nbsp;жизненного цикла страницы в ASP.NET</b><span style="font-family: Arial, Helvetica, sans-serif;">.</span></div><br /><h2 style="text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif; font-size: small;">Общий план</span></h2><div style="border: 0px; margin-bottom: 0.714285em; padding: 0px; text-align: justify;"><h3 style="line-height: 19.9999942779541px;"><span style="font-family: Arial, Helvetica, sans-serif; font-size: small;"><b>Жизненный цикл страницы ASP.NET</b></span></h3><ol style="line-height: 19.9999942779541px;"><li style="text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif; text-align: left;">получение и обработка web-сервером IIS запроса к странице</span></li><li style="text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif; text-align: left;">дальнейшей передачи запроса среде выполнения ASP.NET.</span></li><li style="text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif; text-align: left;">среда выполнения:</span></li><ol><li style="text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif; text-align: left;">загружает класс вызываемой страницы</span></li><li style="text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif; text-align: left;">устанавливает свойства класса страницы</span></li><li style="text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif; text-align: left;">выстраивает дерево элементов</span></li><li style="text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif; text-align: left;">заполняет свойства Request и Response</span></li><li style="text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif; text-align: left;">вызывает метод IHttpHandler.ProcessRequest</span></li></ol></ol><div style="line-height: 19.9999942779541px;"><span style="font-family: Arial, Helvetica, sans-serif;"></span><br /><a name='more'></a><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></div><div style="line-height: 19.9999942779541px;"><span style="font-family: Arial, Helvetica, sans-serif;">Далее среда выполнения проверяет каким образом была вызвана эта страницы и если страница вызвана путем передачи данных с другой страницы, то среда выполнения устанавливает свойство PreviousPage.</span></div><h2 style="line-height: 19.9999942779541px;"><span style="font-family: Arial, Helvetica, sans-serif; font-size: small;">Этапы</span></h2><div style="line-height: 19.9999942779541px;"><span style="font-family: Arial, Helvetica, sans-serif;">Выделяется 8 основных этапов.&nbsp;</span><span style="text-align: left;"><span style="font-family: Arial, Helvetica, sans-serif;">Наглядно это демонстрирует&nbsp;</span></span><span style="font-family: Arial, Helvetica, sans-serif; line-height: normal; text-align: left;">следующая схема</span></div></div><table border="0" cellpadding="5" cellspacing="2" style="line-height: 1.428571em; text-align: justify;"><tbody style="line-height: 1.428571em;"><tr style="line-height: 1.428571em;"><th colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;">Этап</span></th><th colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;">Описание</span></th></tr><tr style="line-height: 1.428571em;"><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;"><i>Запрос станицы</i></span></td><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;">Запрос страницы осуществляется до начала жизненного цикла страницы. Пользователь осуществляет запрос, среда выполнения ASP.NET устанавливает, необходимо ли осуществить компиляцию страницы и начать жизненный цикл, либо можно выдать в качестве ответа страницу из кеша, не выполняя страницы.</span></td></tr><tr style="line-height: 1.428571em;"><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;"><i>Начало обработки</i></span></td><td colspan="1" rowspan="1" style="padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;"><span style="line-height: 1.428571em;">На этом этапе происходит установка свойство Response и Request и свойства UICulture. Также, на этом этапе устанавливается, была ли эта страница запрошена в результате postback и соответствующим образом устанавливается&nbsp;</span>свойство<span style="line-height: 1.428571em;">&nbsp;IsPostBack.</span></span></td></tr><tr style="line-height: 1.428571em;"><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;"><i>Инициализация страницы</i></span></td><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;">Ко времени инициализации страницы все дочерние пользовательские элементы управления уже созданы и имеют установленный свойства UniqueID. В это время к странице применяются темы оформления. Если страница вызвана в результате&nbsp;</span><span style="font-family: Arial, Helvetica, sans-serif;">postback</span><span style="font-family: Arial, Helvetica, sans-serif;">, то данные,&nbsp;отправленные на сервер, еще не загружены в свойства элементов управления, на этом этапе.</span></td></tr><tr style="line-height: 1.428571em;"><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;"><i>Загрузка</i></span></td><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;">Если страница вызвана в результате&nbsp;</span><span style="font-family: Arial, Helvetica, sans-serif;">postback</span><span style="font-family: Arial, Helvetica, sans-serif;">, то на этом этапе&nbsp;устанавливаются свойства элементов управления, на основании информации о состоянии (ViewState и ControlState).</span></td></tr><tr style="line-height: 1.428571em;"><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;"><i>Валидация</i></span></td><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;">Вызывается метод Validate() для всех, находящихся на странице валидаторов.</span></td></tr><tr style="line-height: 1.428571em;"><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;"><i>Обработка постбэка</i></span></td><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;">Вызываются обработчики событий если&nbsp;</span><span style="font-family: Arial, Helvetica, sans-serif;">postback&nbsp;</span><span style="font-family: Arial, Helvetica, sans-serif;">произошел.</span></td></tr><tr style="line-height: 1.428571em;"><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;"><i>Рендеринг</i></span></td><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;">Сохраняется информация о состоянии, затем класс страницы вызывает соответствующие методы дочерних элементов управления для генерации HTML представления и передачи его в Response.OutputStream.</span></td></tr><tr style="line-height: 1.428571em;"><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;"><i>Выгрузка</i></span></td><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;">Выгрузка происходит после того, как создано HTML представление для всей страницы.</span></td></tr></tbody></table></div></div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Aleksandr Filatov</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-23T00:00:00+00:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/asp-dot-net/'>asp.net</a>, <a class='category' href='/blog/categories/programming/'>programming</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://greybax.github.io/blog/2014/04/23/aspnet/" data-via="greybax" data-counturl="http://greybax.github.io/blog/2014/04/23/aspnet/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/03/30/stylecop/" title="Previous Post: StyleCop - или как соблюдать code style?">&laquo; StyleCop - или как соблюдать code style?</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/05/12/aspnet/" title="Next Post: ASP.NET: События жизненного цикла страницы">ASP.NET: События жизненного цикла страницы &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:greybax.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/07/07/devconf14/">Как я побывал на DevConf'14</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/27/google-chrome/">Пишем расширение для браузера Google Chrome</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/13/javascript/">Основы языка Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/12/aspnet/">ASP.NET: События жизненного цикла страницы</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/23/aspnet/">ASP.NET: Этапы жизненного цикла страницы</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/greybax">@greybax</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'greybax',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Aleksandr Filatov -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>
