@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Пишем расширение для браузера Google Chrome - Aleksandr Filatov</title>
+  <meta name="author" content="Aleksandr Filatov">
+
+  
+  <meta name="description" content="В интернете много сайтов на которых реализована возможность листать страницу вверх без помощи мыши или полосы прокрутки. Но в то же время еще есть &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://greybax.github.io/blog/2014/06/27/google-chrome">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Aleksandr Filatov" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Aleksandr Filatov</a></h1>
+  
+    <h2>Мысли и идеи программиста</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:greybax.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Пишем расширение для браузера Google Chrome</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-27'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='post'>
+В интернете много сайтов на которых реализована возможность листать страницу вверх без помощи мыши или полосы прокрутки. Но в то же время еще есть сайты где такой реализации нет. "Почему бы не попробовать написать скрипт который бы добавлял такую кнопку на все сайты?" - подумал я и принялся за реализацию. Такие скрипты называются пользовательскими и имеют расширение *.user.js. Почитать к примеру можно на <a href="http://habrahabr.ru/post/129343/">хабре</a>. К сожалению без "подводных камней" не обходится. Существуют некоторые различия в реализации userjs под разные браузеры. Я остановлюсь на описании реализации нашего userJS как расширения для браузера Google Chrome.<br /><a name='more'></a><br /><h2>manifest.json</h2>Обязательным для расширения Google Chrome является файл <b>manifest.json</b> в котором описываются параметры, пути к внешним файлам (*.js, *.css и др.), поддержка версии и т.п. для расширения. Подробнее о файле можно почитать <a href="https://developer.chrome.com/extensions/manifest">тут</a>. В нашем случае файл manifest.json выглядит следующим образом:<br /><pre style="background: rgba(238,238,238,0.92); color: black;">{<br />    <span style="color: #009933;">"manifest_version"</span>: <span style="color: #0066ff;">2</span>,<br />    <span style="color: #009933;">"content_scripts"</span>: [ {<br />        <span style="color: #009933;">"exclude_globs"</span>:    [  ],<br />        <span style="color: #009933;">"include_globs"</span>:    [ <span style="color: #009933;">"*"</span> ],<br />        <span style="color: #009933;">"js"</span>:               [ <span style="color: #009933;">"jquery.js"</span>, <span style="color: #009933;">"backTopUserJS.user.js"</span> ],<br />        <span style="color: #009933;">"css"</span>:              [ <span style="color: #009933;">"css/style.css"</span> ],<br />        <span style="color: #009933;">"matches"</span>:          [   <span style="color: #009933;">"http://*/*"</span>,<br />                                <span style="color: #009933;">"https://*/*"</span><br />                            ],<br />        <span style="color: #009933;">"run_at"</span>: <span style="color: #009933;">"document_end"</span><br />    } ],<br />    <span style="color: #009933;">"converted_from_user_script"</span>: <span style="color: #9700cc;">true</span>,<br />    <span style="color: #009933;">"description"</span>:  <span style="color: #009933;">"Back top userscript extension for google chrome"</span>,<br />    <span style="color: #009933;">"name"</span>:         <span style="color: #009933;">"backTopUserJS"</span>,<br />    <span style="color: #009933;">"version"</span>:      <span style="color: #009933;">"1"</span><br />}<br /></pre><br />Для удобства мы используем js библиотеку JQuery которую положили рядом с файлом manifest.json и основным файлом скрипта (в нашем случае это <b>backTopUserJS.user.js</b>). Его содержимое следующее: <br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="color: #0066ff; font-style: italic;">// ==UserScript==</span><br /><span style="color: #0066ff; font-style: italic;">// @name backTopUserJS</span><br /><span style="color: #0066ff; font-style: italic;">// @author Aleksandr Filatov</span><br /><span style="color: #0066ff; font-style: italic;">// @license MIT</span><br /><span style="color: #0066ff; font-style: italic;">// @version 1.0</span><br /><span style="color: #0066ff; font-style: italic;">// ==/UserScript==</span><br /><br /><span style="font-weight: 700;">function</span> <span style="color: #ff8000;">main</span>() {<br />    <span style="font-weight: 700;">var</span> disp <span style="color: blue;">=</span> <span style="color: blue;">$</span>(<span style="color: #3333ff; font-weight: 700;">window</span>).scrollTop() <span style="color: blue;">&gt;</span> <span style="color: #0066ff;">400</span> ? <span style="color: #009933;">'block'</span> : <span style="color: #009933;">'none'</span>;<br />    <span style="font-weight: 700;">var</span> <span style="color: blue;">$</span>upButton <span style="color: blue;">=</span> <span style="color: blue;">$</span>(<span style="color: #009933;">'&lt;div class="up-button" title="Наверх" style="display:'</span> <span style="color: blue;">+</span> disp <span style="color: blue;">+</span> <span style="color: #009933;">'"&gt;Наверх&lt;/div&gt;'</span>);<br /><br />    <span style="color: blue;">$</span>(<span style="color: #3333ff; font-weight: 700;">document</span>).<span style="color: #3333ff; font-weight: 700;">find</span>(<span style="color: #009933;">'body'</span>).append(<span style="color: blue;">$</span>upButton);<br />    <span style="color: blue;">$</span>upButton.<span style="color: #3333ff; font-weight: 700;">click</span>(<span style="font-weight: 700;">function</span> () {<br />        <span style="color: blue;">$</span>(<span style="color: #009933;">'html, body'</span>).animate({ scrollTop: <span style="color: #0066ff;">0</span> }, <span style="color: #009933;">'slow'</span>);<br />    });<br /><br />    <span style="color: blue;">$</span>(<span style="color: #3333ff; font-weight: 700;">window</span>).<span style="color: #3333ff; font-weight: 700;">scroll</span>(<span style="font-weight: 700;">function</span> () {<br />        <span style="color: blue;">if</span> (<span style="color: blue;">$</span>(<span style="color: #3333ff; font-weight: 700;">window</span>).scrollTop() <span style="color: blue;">&gt;</span> <span style="color: #0066ff;">400</span>) <span style="color: blue;">$</span>upButton.fadeIn(<span style="color: #009933;">'slow'</span>);<br />        <span style="color: blue;">else</span> <span style="color: blue;">$</span>upButton.fadeOut(<span style="color: #009933;">'slow'</span>);<br />    });<br />};<br /><br /><span style="font-weight: 700;">var</span> script <span style="color: blue;">=</span> <span style="color: #3333ff; font-weight: 700;">document</span>.<span style="color: #3333ff; font-weight: 700;">createElement</span>(<span style="color: #009933;">'script'</span>);<br />script.<span style="color: #3333ff; font-weight: 700;">appendChild</span>(<span style="color: #3333ff; font-weight: 700;">document</span>.<span style="color: #3333ff; font-weight: 700;">createTextNode</span>(<span style="color: #009933;">'('</span><span style="color: blue;">+</span> main <span style="color: blue;">+</span><span style="color: #009933;">')();'</span>));<br />(<span style="color: #3333ff; font-weight: 700;">document</span>.<span style="color: #6782d3;">body</span> <span style="color: blue;">||</span> <span style="color: #3333ff; font-weight: 700;">document</span>.head <span style="color: blue;">||</span> <span style="color: #3333ff; font-weight: 700;">document</span>.<span style="color: #6782d3;">documentElement</span>).<span style="color: #3333ff; font-weight: 700;">appendChild</span>(script);<br /></pre><br />Думаю скрипт достаточно понятен, чтобы его подробно рассматривать. Пояснить стоит лишь последние 3 строчки. На самом деле это мелкий хак, который вставляет наш скрипт в код страницы сайта. Если кто-то из вас найдет способ лучше можете написать к комментах свои фиксы :)<br /><h2>Установка расширения в браузере</h2><div>В Google Chrome можно устанавливать пользовательские скрипты, аналогично другим браузерам, но поскольку Google печется о нашей с вами безопасности, то их приходится оборачивать в расширения для браузера. Разберем установку по шагам.</div><h3>Шаг 1.</h3><div>Создаем папку для нашего расширения например так C:\MyChromeExtensionUserJS</div><h3>Шаг 2.</h3><div>Для каждого расширения создаем свою директорию например в нашем случае назовем ее так C:\MyChromeExtensionUserJS\backTopUserJS\. Добавляем файлы расширения в эту директорию.</div><h3>Шаг 3.</h3><div>Заходим "О браузере Google Chrome" -&gt; вкладка "Расширения" или в адресной строке пишем chrome://extensions/</div><h3>Шаг 4.</h3><div>Ставим галочку "Режим разработчика"</div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-bax0UMkP6dU/U60tEjgXiLI/AAAAAAAABCQ/MRKVYzCoHjc/s1600/qwerty.png" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img border="0" src="http://1.bp.blogspot.com/-bax0UMkP6dU/U60tEjgXiLI/AAAAAAAABCQ/MRKVYzCoHjc/s1600/qwerty.png" height="84" width="640" /></a></div><br /><br /><br /><br /><br /><br /><br /><h3>Шаг 5.</h3><div>Нажимаем кнопку "Загрузить распакованное расширение" и выбираем директорию нашего расширения. Нажимаем "OK".</div><h3>Шаг 6.</h3><div>Расширение установлено и готово к работе. Чтобы обновить расширения после того как вы внесли в него изменения достаточно просто нажать кнопку "Обновить расширение" или в режиме разработчика сочетание клавиш Ctrl+R.</div><div><h2>Итог</h2></div><div>Посмотреть исходники скрипта можно на <a href="https://github.com/greybax/backTopUserJS">github</a>. Скрипт не претендует на звание идеального, а служит лишь примером и толчком к написанию собственных пользовательских скриптов для Google Chrome.</div></div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Aleksandr Filatov</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-06-27'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/browser/'>browser</a>, <a class='category' href='/blog/categories/chromium/'>chromium</a>, <a class='category' href='/blog/categories/front-end/'>front-end</a>, <a class='category' href='/blog/categories/javascript/'>javascript</a>, <a class='category' href='/blog/categories/userjs/'>userjs</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://greybax.github.io/blog/2014/06/27/google-chrome/" data-via="greybax" data-counturl="http://greybax.github.io/blog/2014/06/27/google-chrome/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/06/13/javascript/" title="Previous Post: Основы языка Javascript">&laquo; Основы языка Javascript</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/07/07/devconf14/" title="Next Post: Как я побывал на DevConf'14">Как я побывал на DevConf'14 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/07/07/devconf14/">Как я побывал на DevConf'14</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/27/google-chrome/">Пишем расширение для браузера Google Chrome</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/13/javascript/">Основы языка Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/12/aspnet/">ASP.NET: События жизненного цикла страницы</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/23/aspnet/">ASP.NET: Этапы жизненного цикла страницы</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/greybax">@greybax</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'greybax',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Aleksandr Filatov -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
