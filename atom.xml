@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[My Octopress Blog]]></title>
+  <link href="http://greybax.github.io/atom.xml" rel="self"/>
+  <link href="http://greybax.github.io/"/>
+  <updated>2014-08-20T19:24:26+00:00</updated>
+  <id>http://greybax.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[First Post]]></title>
+    <link href="http://greybax.github.io/blog/2014/08/20/first-post/"/>
+    <updated>2014-08-20T19:23:46+00:00</updated>
+    <id>http://greybax.github.io/blog/2014/08/20/first-post</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+</feed>
