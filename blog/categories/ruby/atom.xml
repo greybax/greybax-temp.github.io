@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2014-08-27T20:39:27+00:00</updated>
+  <updated>2014-08-27T20:41:16+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -58,10 +58,11 @@
 
 <h3>Подготовка</h3>
 
-<p>Регистрируемся на сайте <a href="https://www.nitrous.io.">https://www.nitrous.io.</a> Выбираем в качестве окружения box c <code>Ruby</code>. Далее выполняем все по шагам как описано <a href="http://octopress.org/docs/setup/">тут</a> и <a href="http://octopress.org/docs/configuring/">конфигурируем</a>.
-Для миграции постов на Octopress нужно:
-    * Экспотировать их в файл в своем аккаунте в Blogger
-    * Заюзать <a href="https://gist.github.com/1765496">скрипт</a></p>
+<p>Регистрируемся на сайте <a href="https://www.nitrous.io.">https://www.nitrous.io.</a> Выбираем в качестве окружения box c <code>Ruby</code>. Далее выполняем все по шагам как описано <a href="http://octopress.org/docs/setup/">тут</a> и <a href="http://octopress.org/docs/configuring/">конфигурируем</a>.</p>
+
+<p>Для миграции постов на Octopress нужно:
+* Экспотировать их в файл в своем аккаунте в Blogger
+* Заюзать <a href="https://gist.github.com/1765496">скрипт</a></p>
 
 <p>После этого вы получите кучу сообщений которые уже являются частью вашего сайта. Проверьте все ли корректно.
 Скрипт так же импортирует комментарии, но в неудобном для просмотра виде. (Tip, вы можете отключить комментарии перед экспортом постов из Blogger).
