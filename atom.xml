@@ -4,7 +4,7 @@
   <title><![CDATA[Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2014-08-27T13:34:14+00:00</updated>
+  <updated>2014-08-27T13:41:02+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -18,7 +18,7 @@
     <link href="http://alfilatov.com/blog/2014/08/27/kak-i-zachiem-ia-pierieshiel-s-blogger-na-octopress/"/>
     <updated>2014-08-27T08:28:59+00:00</updated>
     <id>http://alfilatov.com/blog/2014/08/27/kak-i-zachiem-ia-pierieshiel-s-blogger-na-octopress</id>
-    <content type="html"><![CDATA[<p>Я использовал Blogger c 2012 года. Для меня эта система показалась достаточно не удобной, чтобы продолжать ее использовать в дальнейшем. Неудобство заключалось в написании постов где нужно вставлять участки кода или добавять картинки. HTML редактор генерит кучу лишнего кода. В итоге я решил подыскать себе новый блог-движок.</p>
+    <content type="html"><![CDATA[<p>Я использовал Blogger c 2012 года. Для меня эта система показалась достаточно неудобной, чтобы продолжать ее использовать в дальнейшем. Неудобство заключалось в написании постов где нужно вставлять участки кода или добавять картинки. HTML редактор генерит кучу лишнего кода. В итоге я решил подыскать себе новый блог-движок.</p>
 
 <h2>Что я хотел получить</h2>
 
