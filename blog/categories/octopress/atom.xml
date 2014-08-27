@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2014-08-27T20:41:16+00:00</updated>
+  <updated>2014-08-27T20:49:10+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -60,9 +60,13 @@
 
 <p>Регистрируемся на сайте <a href="https://www.nitrous.io.">https://www.nitrous.io.</a> Выбираем в качестве окружения box c <code>Ruby</code>. Далее выполняем все по шагам как описано <a href="http://octopress.org/docs/setup/">тут</a> и <a href="http://octopress.org/docs/configuring/">конфигурируем</a>.</p>
 
-<p>Для миграции постов на Octopress нужно:
-* Экспотировать их в файл в своем аккаунте в Blogger
-* Заюзать <a href="https://gist.github.com/1765496">скрипт</a></p>
+<p>Для миграции постов на Octopress нужно:</p>
+
+<ul>
+<li>Экспотировать их в файл в своем аккаунте в Blogger</li>
+<li>Заюзать <a href="https://gist.github.com/1765496">скрипт</a></li>
+</ul>
+
 
 <p>После этого вы получите кучу сообщений которые уже являются частью вашего сайта. Проверьте все ли корректно.
 Скрипт так же импортирует комментарии, но в неудобном для просмотра виде. (Tip, вы можете отключить комментарии перед экспортом постов из Blogger).
@@ -72,7 +76,7 @@
 
 <p>На этом этапе мы получили блог на Octopress куда мы мигрировали свои посты из Blogger. Для развертывания я использовал  Github Pages, но процесс развертывания <a href="http://octopress.org/docs/deploying/heroku">на Heroku</a> или <a href="http://octopress.org/docs/deploying/rsync/">через RSync на свой хостинг</a> отличаются незначительно.</p>
 
-<p>Процесс развертывания подробно описан на сайте Octopress (тут)[<a href="http://octopress.org/docs/deploying/github/">http://octopress.org/docs/deploying/github/</a>].</p>
+<p>Процесс развертывания подробно описан на сайте Octopress <a href="http://octopress.org/docs/deploying/github/">тут</a>.</p>
 
 <h3>Итог</h3>
 
