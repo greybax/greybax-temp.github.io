@@ -3,6 +3,12 @@
   
   
   <url>
+    <loc>http://alfilatov.com/blog/2014/09/04/profilirovaniie-v-js/</loc>
+    <lastmod>2014-09-04T13:20:43+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://alfilatov.com/blog/2014/08/27/kak-i-zachiem-ia-pierieshiel-s-blogger-na-octopress/</loc>
     <lastmod>2014-08-27T08:28:59+00:00</lastmod>
     <priority>0.8</priority>
@@ -65,21 +71,21 @@
   
   <url>
     <loc>http://alfilatov.com/blog/archives/</loc>
-    <lastmod>2014-08-29T13:44:46+00:00</lastmod>
+    <lastmod>2014-09-04T13:31:16+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://alfilatov.com/</loc>
-    <lastmod>2014-08-29T13:44:46+00:00</lastmod>
+    <lastmod>2014-09-04T13:31:16+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
     <loc>http://alfilatov.com/about/</loc>
-    <lastmod>2014-08-29T13:44:46+00:00</lastmod>
+    <lastmod>2014-09-04T13:31:16+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
