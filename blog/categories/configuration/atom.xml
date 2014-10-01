@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Configuration | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/configuration/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2014-10-01T19:45:33+00:00</updated>
+  <updated>2014-10-01T19:47:23+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -48,10 +48,11 @@
 <li>Выбираем раздел &lsquo;Вручную&rsquo; в секции HTTP прокси</li>
 <li>В поле Сервер, вводим IP адрес машины где запущен <code>Fiddler</code></li>
 <li>Порт - 8888</li>
-<li>Аутентификацию отключаем
-<img src="/images/screenshots/iPhone_proxy_settings.png" alt="iPhone proxy settings" /></li>
+<li>Аутентификацию отключаем</li>
 </ol>
 
+
+<p><img src="/images/screenshots/iPhone_proxy_settings.png" alt="iPhone proxy settings" /></p>
 
 <p>Теперь после перехода на любой сайт со своего iPhone можно мониторить все request/response в <code>Fiddler</code></p>
 ]]></content>
