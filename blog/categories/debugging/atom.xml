@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Debugging | Aleksandr Filatov]]></title>
+  <link href="http://alfilatov.com/blog/categories/debugging/atom.xml" rel="self"/>
+  <link href="http://alfilatov.com/"/>
+  <updated>2014-10-01T19:33:03+00:00</updated>
+  <id>http://alfilatov.com/</id>
+  <author>
+    <name><![CDATA[Aleksandr Filatov]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Используем Fiddler в качестве прокси]]></title>
+    <link href="http://alfilatov.com/blog/2014/10/01/ispol'zuiem-fiddler-v-kachiestvie-proksi/"/>
+    <updated>2014-10-01T10:05:46+00:00</updated>
+    <id>http://alfilatov.com/blog/2014/10/01/ispol&#8217;zuiem-fiddler-v-kachiestvie-proksi</id>
+    <content type="html"><![CDATA[<p><a href="Fiddler">http://www.telerik.com/fiddler</a> - мощный инструмент для веб дебагинга, просмотра веб трафика, манипуляций с сессией и т.п. Кроме того в <code>Fiddler</code> есть еще одна мощная возможность - это то, что он может служить как самостоятельный proxy сервер на машине где он запущен.</p>
+
+<p>Мне эта фича пригодилась когда пришлось подключаться с моего iPhone девайса через <code>VPN</code> к серверу который находится на другом конце планеты. Аналогично, вместо iPhone мог быть любой девайс, планшет или десктоп.</p>
+
+<p>Постараюсь описать процесс настройки максимально детально. Версия установленного <code>Fiddler</code> у меня - <code>Fiddler Web Debugger (v4.4.8.0)</code>. <code>Built: Wednesday, April 23, 2014</code></p>
+
+<h2>Конфигурация Fiddler</h2>
+
+<ol>
+<li>Переходим Tools > Fiddler Options > Connections.</li>
+<li><p>Ставим галку Allow remote computers to connect.
+<img src="/images/screenshots/allow_remote_to_connect.png" alt="Check &quot;Allow remote computers to connect&quot;" /></p></li>
+<li><p>Перезапускаем <code>Fiddler</code></p></li>
+<li><p>Следует проверить что в <code>firewall</code> разрешены входящие соединения для Fiddler
+<img src="/images/screenshots/fiddler_income_connections.png" alt="Income conections for fiddler process" /></p></li>
+<li><p>В правом верхнем углу <code>Fiddler</code> находим <code>Online Indicator</code> и смотрим в нем по какому ip орудует наш <code>Fiddler</code>. Нам нужен локальный адрес машины. Этот ip адрес мы будем указывать в настройках интернет соединения  нашего девайса на вкладке <code>Proxy</code>.
+<img src="/images/screenshots/indicator_ip_address.png" alt="Online Indicator" /></p></li>
+</ol>
+
+
+<p>После выполнения этих пунктов наш <code>Fiddler</code> готов принимать входящие соединения с внешних устройств. Соответственно может использоваться как прокси, обрабатывая через себя все запросы, которые приходят с нашего внешнего устройства.</p>
+
+<h2>Конфигурация iPhone</h2>
+
+<ol>
+<li>Переходим &lsquo;Настройки&rsquo; > &lsquo;Wi-Fi&rsquo;</li>
+<li>Переходим в настройки Wi-Fi соединения</li>
+<li>Выбираем раздел &lsquo;Вручную&rsquo; в секции HTTP прокси</li>
+<li>В поле Сервер, вводим IP адрес машины где запущен <code>Fiddler</code></li>
+<li>Порт - 8888</li>
+<li>Аутентификацию отключаем
+<img src="/images/screenshots/iPhone_proxy_settings.png" alt="iPhone proxy settings" /></li>
+</ol>
+
+
+<p>Теперь после перехода на любой сайт со своего iPhone можно мониторить все request/response в <code>Fiddler</code></p>
+]]></content>
+  </entry>
+  
+</feed>
