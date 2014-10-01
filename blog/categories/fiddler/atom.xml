@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Fiddler | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/fiddler/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2014-10-01T19:47:23+00:00</updated>
+  <updated>2014-10-01T19:53:23+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -18,9 +18,9 @@
     <link href="http://alfilatov.com/blog/2014/10/01/ispol'zuiem-fiddler-v-kachiestvie-proksi/"/>
     <updated>2014-10-01T10:05:46+00:00</updated>
     <id>http://alfilatov.com/blog/2014/10/01/ispol&#8217;zuiem-fiddler-v-kachiestvie-proksi</id>
-    <content type="html"><![CDATA[<p><a href="http://www.telerik.com/fiddler">Fiddler</a> - мощный инструмент для веб дебагинга, просмотра веб трафика, манипуляций с сессией и т.п. Кроме того в <code>Fiddler</code> есть еще одна мощная возможность - это то, что он может служить как самостоятельный proxy сервер на машине где он запущен.</p>
+    <content type="html"><![CDATA[<p><a href="http://www.telerik.com/fiddler">Fiddler</a> - мощный инструмент для веб дебагинга, мониторинга веб трафика, манипуляций с сессией и т.п. Кроме того в <code>Fiddler</code> есть еще одна мощная фича - это возможность его использования как самостоятельный proxy сервер на машине где он запущен.</p>
 
-<p>Мне эта фича пригодилась когда пришлось подключаться с моего iPhone девайса через <code>VPN</code> к серверу который находится на другом конце планеты. Аналогично, вместо iPhone мог быть любой девайс, планшет или десктоп.</p>
+<p>Мне эта фича пригодилась когда пришлось подключаться с моего iPhone девайса через <code>VPN</code> к серверу, который находится на другом конце планеты. Аналогично, вместо iPhone мог быть любой девайс, планшет или десктоп.</p>
 
 <p>Постараюсь описать процесс настройки максимально детально. Версия установленного <code>Fiddler</code> у меня - <code>Fiddler Web Debugger (v4.4.8.0)</code>. <code>Built: Wednesday, April 23, 2014</code></p>
 
