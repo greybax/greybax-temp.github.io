@@ -4,7 +4,7 @@
   <title><![CDATA[Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2014-10-07T10:55:32+00:00</updated>
+  <updated>2014-10-14T13:13:08+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -12,6 +12,572 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Пишем игру на HTML5/JS]]></title>
+    <link href="http://alfilatov.com/blog/2014/10/13/pishiem-ighru-na-html5-slash-js/"/>
+    <updated>2014-10-13T08:34:07+00:00</updated>
+    <id>http://alfilatov.com/blog/2014/10/13/pishiem-ighru-na-html5-slash-js</id>
+    <content type="html"><![CDATA[<p>На выходных нашлось немного свободного времени и я решил попрактиковаться в <code>gamedev</code> разработке. Давно собирался написать какую-нибудь игрушку, но все руки не доходили. Бегло пробежался по сети в поисках как это делают настоящие гуру. Мне понравилась вот эта <a href="http://jlongster.com/Making-Sprite-based-Games-with-Canvas">статья</a>. За основу своей будущей игры я взял <a href="https://github.com/jlongster/canvas-game-bootstrap">фреймворк автора статьи</a>.</p>
+
+<p><img src="http://alfilatov.com/images/screenshots/towers_game2d.png" alt="Towers game 2D" /></p>
+
+<h2>Начало</h2>
+
+<p>Фреймворк который я стал использовать включает в себя 4 <code>js</code> файла</p>
+
+<ul>
+<li><code>sprite.js</code> - библиотечка работы со спрайтами</li>
+<li><code>resources.js</code> - подгрузка ресурсов</li>
+<li><code>input.js</code> - библиотека ввода с клавиатуры</li>
+<li><code>app.js</code> - основной файл игры</li>
+</ul>
+
+
+<p>Далее буду рассказывать только о файле <code>app.js</code>. Разберем его содержимое.</p>
+
+<p>Для плавности анимации будем использовать <code>requestAnimationFrame</code> подробно о нем ознакомиться можно <a href="https://hacks.mozilla.org/2011/08/animating-with-javascript-from-setinterval-to-requestanimationframe/">здесь</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">requestAnimFrame</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nx">requestAnimationFrame</span>    <span class="o">||</span>
+</span><span class='line'>        <span class="nb">window</span><span class="p">.</span><span class="nx">webkitRequestAnimationFrame</span> <span class="o">||</span>
+</span><span class='line'>        <span class="nb">window</span><span class="p">.</span><span class="nx">mozRequestAnimationFrame</span>    <span class="o">||</span>
+</span><span class='line'>        <span class="nb">window</span><span class="p">.</span><span class="nx">oRequestAnimationFrame</span>      <span class="o">||</span>
+</span><span class='line'>        <span class="nb">window</span><span class="p">.</span><span class="nx">msRequestAnimationFrame</span>     <span class="o">||</span>
+</span><span class='line'>        <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">){</span>
+</span><span class='line'>            <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">60</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'><span class="p">})();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Разделим разработку нашей игры на несколько этапов:</p>
+
+<ol>
+<li>Создание и инициализация холста (canvas) на странице</li>
+<li>Добавление основной функции-цикла игры</li>
+<li>Инициализация и рендер объектов и ресурсов игры</li>
+<li>Обработка событий ввода пользователя</li>
+<li>Математика и расчет столкновений объектов в игре</li>
+<li>Окончание и перезагрузка игры</li>
+</ol>
+
+
+<h2>Этап 1. Создание и инициализация холста</h2>
+
+<p>Первым делом что мы должны сделать, это создать <code>canvas</code> элемент и добавить его к тегу <code>body</code> основной страницы игры.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;canvas&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span>
+</span><span class='line'><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="mi">520</span><span class="p">;</span>
+</span><span class='line'><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">canvas</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Создаем объект <code>canvas</code></li>
+<li>Указываем, что мы создаем 2D игру (далее будем использовать везде в коде объект <code>ctx</code>)</li>
+<li>Задаем размеры холста</li>
+<li>Добавляем холст к тегу <code>body</code> на странице</li>
+</ul>
+
+
+<h2>Этап 2. Добавление основной функции-цикла</h2>
+
+<p>Основной цикл необходим для обновления и рендера игры.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">lastTime</span><span class="p">;</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">now</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">dt</span> <span class="o">=</span> <span class="p">(</span><span class="nx">now</span> <span class="o">-</span> <span class="nx">lastTime</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">update</span><span class="p">(</span><span class="nx">dt</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">render</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">lastTime</span> <span class="o">=</span> <span class="nx">now</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">requestAnimFrame</span><span class="p">(</span><span class="nx">main</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Здесь вызываем функцию requestAnimFrame (к сожалению она <a href="http://caniuse.com/#feat=requestanimationframe">поддерживается</a> не во всех браузерах), которая генерирует 60 фреймов/секунду (как это было описано выше).</p>
+
+<h2>Этап 3. Инициализация и рендер объектов и ресурсов игры</h2>
+
+<p>Используем <code>resource.js</code> для загрузки ресурсов в игру. Хорошим правилом является добавить все изображения  в  1 спрайт, но т.к я рисовал не сам, а брал готовые картинки, поэтому я решил с этим на заморачиваться, тем более, что в данном случае это не столь критично. Так это выглядит <a href="https://github.com/greybax/towers_game2d/blob/gh-pages/js/app.js#L57">в коде</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">resources</span><span class="p">.</span><span class="nx">load</span><span class="p">([</span>
+</span><span class='line'>  <span class="s1">&#39;img/tower.png&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s1">&#39;img/sprites.png&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s1">&#39;img/spider.png&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s1">&#39;img/hero.png&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s1">&#39;img/bullet.png&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s1">&#39;img/terrain.png&#39;</span>
+</span><span class='line'><span class="p">]);</span>
+</span><span class='line'><span class="nx">resources</span><span class="p">.</span><span class="nx">onReady</span><span class="p">(</span><span class="nx">init</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>В функции <code>init</code> загружаем мир и добавлеем хэндлер кнопки <code>reset</code>, после game over.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">terrainPattern</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">createPattern</span><span class="p">(</span><span class="nx">resources</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;img/terrain.png&#39;</span><span class="p">),</span> <span class="s1">&#39;repeat&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;play-again&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">reset</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>  
+</span><span class='line'>    <span class="nx">reset</span><span class="p">();</span>
+</span><span class='line'>    <span class="nx">lastTime</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+</span><span class='line'>    <span class="nx">main</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Начальное состояние</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">player</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">pos</span><span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+</span><span class='line'>    <span class="nx">sprite</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/hero.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">48</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+</span><span class='line'>    <span class="nx">down</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/hero.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">48</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+</span><span class='line'>    <span class="nx">up</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/hero.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">144</span><span class="p">],</span> <span class="p">[</span><span class="mi">48</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+</span><span class='line'>    <span class="nx">left</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/hero.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">48</span><span class="p">],</span> <span class="p">[</span><span class="mi">48</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+</span><span class='line'>    <span class="nx">right</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/hero.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">96</span><span class="p">],</span> <span class="p">[</span><span class="mi">48</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">towers</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">bullets</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">enemies</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">explosions</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">lastTower</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">gameTime</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">isGameOver</span><span class="p">;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">terrainPattern</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">score</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">scoreEl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;score&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Обновление состояния игрового процесса</h3>
+
+<p>По нашей задумке, пауки должны вылезать со всех 4 сторон игрового поля. Для того чтобы это происходило случайным образом - используем функцию <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random">getRandomInt</a>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">switch</span> <span class="p">(</span><span class="nx">getRandomInt</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">case</span> <span class="mi">0</span><span class="o">:</span> <span class="c1">//left</span>
+</span><span class='line'>          <span class="nx">enemies</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+</span><span class='line'>              <span class="nx">pos</span><span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">-</span> <span class="mi">30</span><span class="p">)],</span>
+</span><span class='line'>              <span class="nx">sprite</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/spider.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>          <span class="p">});</span>
+</span><span class='line'>          <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">case</span> <span class="mi">1</span><span class="o">:</span> <span class="c1">//top</span>
+</span><span class='line'>          <span class="nx">enemies</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+</span><span class='line'>              <span class="nx">pos</span><span class="o">:</span> <span class="p">[</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+</span><span class='line'>              <span class="nx">sprite</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/spider.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>          <span class="p">});</span>
+</span><span class='line'>          <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>          <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>   <span class="c1">//bottom</span>
+</span><span class='line'>          <span class="nx">enemies</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+</span><span class='line'>              <span class="nx">pos</span><span class="o">:</span> <span class="p">[</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">-</span> <span class="mi">30</span><span class="p">],</span>
+</span><span class='line'>              <span class="nx">sprite</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/spider.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>          <span class="p">});</span>
+</span><span class='line'>          <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>          <span class="k">default</span><span class="o">:</span> <span class="c1">//right</span>
+</span><span class='line'>          <span class="nx">enemies</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+</span><span class='line'>              <span class="nx">pos</span><span class="o">:</span> <span class="p">[</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">-</span> <span class="mi">30</span><span class="p">)],</span>
+</span><span class='line'>              <span class="nx">sprite</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/spider.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>          <span class="p">});</span>
+</span><span class='line'>          <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Здесь же используем <code>sprite.js</code>. Всю функцию можно посмотреть в <a href="https://github.com/greybax/towers_game2d/blob/gh-pages/js/app.js#L96">исходниках</a>.</p>
+
+<h2>Этап 4. Обработка событий ввода пользователя</h2>
+
+<p>Наш герой должен умет двигаться вверх, вниз, влево, вправо. Соответственно привожу ниже реализацию данного решения</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;DOWN&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="nx">playerSpeed</span> <span class="o">*</span> <span class="nx">dt</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">player</span><span class="p">.</span><span class="nx">sprite</span> <span class="o">=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">down</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;UP&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="nx">playerSpeed</span> <span class="o">*</span> <span class="nx">dt</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">player</span><span class="p">.</span><span class="nx">sprite</span> <span class="o">=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">up</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;LEFT&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="nx">playerSpeed</span> <span class="o">*</span> <span class="nx">dt</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">player</span><span class="p">.</span><span class="nx">sprite</span> <span class="o">=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">left</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;RIGHT&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="nx">playerSpeed</span> <span class="o">*</span> <span class="nx">dt</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">player</span><span class="p">.</span><span class="nx">sprite</span> <span class="o">=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">right</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>При клике на пробел по задумке должны ставиться башни которые будут стрелять случайным образом во все стороны. Чтобы немного усложнить процесс игры башни разрешается ставить на некоторм расстоянии друг от друга. В данном случае это <code>50px</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;SPACE&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">isGameOver</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">isClosest</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">towers</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="nx">towers</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mi">50</span> <span class="o">&amp;&amp;</span>
+</span><span class='line'>          <span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nx">towers</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">isClosest</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isClosest</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">towers</span><span class="p">[</span><span class="nx">lastTower</span> <span class="o">%</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">pos</span><span class="o">:</span> <span class="p">[</span><span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+</span><span class='line'>          <span class="nx">lastFire</span><span class="o">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span>
+</span><span class='line'>          <span class="nx">sprite</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/tower.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">38</span><span class="p">,</span> <span class="mi">35</span><span class="p">],</span> <span class="mi">8</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>        <span class="nx">lastTower</span><span class="o">++</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Этап 5. Математика и расчет столкновений объектов в игре</h2>
+
+<p>Анимация персонажей, математика движения пуль, и логика движения NPC в игре описаны в функции <code>updateEntities</code>. Вот тут как раз нам и потребуются базовые знания линейной алгебры.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>  <span class="c1">// Update the towers sprite animation</span>
+</span><span class='line'>  <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">towers</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">tower</span> <span class="o">=</span> <span class="nx">towers</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+</span><span class='line'>      <span class="nx">tower</span><span class="p">.</span><span class="nx">sprite</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">dt</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isGameOver</span> <span class="o">&amp;&amp;</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="nx">tower</span><span class="p">.</span><span class="nx">lastFire</span> <span class="o">&gt;</span> <span class="mi">500</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">pi</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">;</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">tower</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nx">tower</span><span class="p">.</span><span class="nx">sprite</span><span class="p">.</span><span class="nx">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">tower</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nx">tower</span><span class="p">.</span><span class="nx">sprite</span><span class="p">.</span><span class="nx">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">bullets</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+</span><span class='line'>          <span class="nx">pos</span><span class="o">:</span> <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">],</span>
+</span><span class='line'>          <span class="nx">k</span><span class="o">:</span> <span class="nx">getRandomArbitrary</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span> <span class="o">*</span> <span class="nx">pi</span><span class="p">,</span> <span class="mi">5</span> <span class="o">*</span> <span class="nx">pi</span><span class="p">),</span>
+</span><span class='line'>          <span class="nx">sprite</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/bullet.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">24</span><span class="p">,</span> <span class="mi">24</span><span class="p">])</span>
+</span><span class='line'>        <span class="p">});</span>
+</span><span class='line'>        <span class="nx">tower</span><span class="p">.</span><span class="nx">lastFire</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Логика обновления анимации спрайтов башни. И создаем патроны для каждой башни в своем массиве.</p>
+
+<p>Динамика пуль башни:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Update all the bullets</span>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">bullets</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">bullet</span> <span class="o">=</span> <span class="nx">bullets</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">dt</span> <span class="o">*</span> <span class="nx">bulletSpeed</span><span class="p">;</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">sin</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">bullet</span><span class="p">.</span><span class="nx">k</span><span class="p">);</span>      
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">cos</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">bullet</span><span class="p">.</span><span class="nx">k</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">bullet</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="nx">sin</span> <span class="o">*</span> <span class="nx">c</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">bullet</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="nx">cos</span> <span class="o">*</span> <span class="nx">c</span><span class="p">;</span>       
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Remove the bullet if it goes offscreen</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nx">bullet</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">bullet</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">||</span>
+</span><span class='line'>        <span class="nx">bullet</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">bullets</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>        <span class="nx">i</span><span class="o">--</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+Напомню, что нашей целью было, чтобы башни стреляли случайным образом во всех направлениях.</p>
+
+<p>Пауков мы наделили простым интелектом и поэтому они ползут всегда за нами, чтобы нас укусить.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Update all the enemies</span>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">enemies</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">x0</span> <span class="o">=</span> <span class="nx">enemies</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">y0</span> <span class="o">=</span> <span class="nx">enemies</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">x1</span> <span class="o">=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">y1</span> <span class="o">=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">enemySpeed</span> <span class="o">*</span> <span class="nx">dt</span><span class="p">;</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">l</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sqrt</span><span class="p">((</span><span class="nx">x1</span> <span class="o">-</span> <span class="nx">x0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nx">x1</span> <span class="o">-</span> <span class="nx">x0</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="nx">y1</span> <span class="o">-</span> <span class="nx">y0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nx">y1</span> <span class="o">-</span> <span class="nx">y0</span><span class="p">));</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="nx">enemies</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">x1</span> <span class="o">-</span> <span class="nx">x0</span><span class="p">)</span> <span class="o">*</span> <span class="nx">c</span> <span class="o">/</span> <span class="nx">l</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">enemies</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">y1</span> <span class="o">-</span> <span class="nx">y0</span><span class="p">)</span> <span class="o">*</span> <span class="nx">c</span> <span class="o">/</span> <span class="nx">l</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">enemies</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">sprite</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">dt</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// Remove if offscreen</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nx">enemies</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nx">enemies</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">sprite</span><span class="p">.</span><span class="nx">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">enemies</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>          <span class="nx">i</span><span class="o">--</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Полный код функции <code>updateEntities</code> можно посмотреть в <a href="https://github.com/greybax/towers_game2d/blob/gh-pages/js/app.js#L179">исходникак на GitHub</a>.</p>
+
+<p>Математика расчета столкновений хорошо <a href="http://jlongster.com/Making-Sprite-based-Games-with-Canvas">описана</a> в статье автора (раздел Collision Detection) используемого мной 2d бутстрапа.</p>
+
+<h2>Этап 6. Game Over и рестарт</h2>
+
+<p>Когда пауки доползают до нашего героя наступает конец <del>света</del> игры.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">gameOver</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;game-over&#39;</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;block&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;game-over-overlay&#39;</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;block&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">isGameOver</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Показываем окно GAME OVER и кнопку &ldquo;Начать заного&rdquo;. Кликаем ее и все начинается сначала :)</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">reset</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;game-over&#39;</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;game-over-overlay&#39;</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">isGameOver</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">gameTime</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">lastTower</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">score</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">towers</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'>    <span class="nx">enemies</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'>    <span class="nx">bullets</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span> <span class="o">=</span> <span class="p">[</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">];</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Заключение</h2>
+
+<p>В итоге, я для себя понял, что в <code>gamedev</code> много плюсов:</p>
+
+<ul>
+<li>Весело и интересно проводишь время</li>
+<li>Повторяешь курс школьной геометрии. Если игра серьезней, то и универ вспоминаешь :)</li>
+<li>Практика программирования игр</li>
+<li>Удовлетворение от проделанной работы</li>
+</ul>
+
+
+<p>Посмотреть исходники можно <a href="https://github.com/greybax/towers_game2d/">тут</a>, поиграть <a href="http://greybax.github.io/towers_game2d">здесь</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Используем Fiddler в качестве прокси]]></title>

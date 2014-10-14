@@ -9,7 +9,7 @@
   <meta name="author" content="Aleksandr Filatov">
 
   
-  <meta name="description" content="Fiddler - мощный инструмент для веб дебагинга, мониторинга веб трафика, манипуляций с сессией и т.п. Кроме того в Fiddler есть еще одна мощная фича &hellip;">
+  <meta name="description" content="На выходных нашлось немного свободного времени и я решил попрактиковаться в gamedev разработке. Давно собирался написать какую-нибудь игрушку, но все &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -62,6 +62,599 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/10/13/pishiem-ighru-na-html5-slash-js/">Пишем игру на HTML5/JS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-10-13T08:34:07+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>На выходных нашлось немного свободного времени и я решил попрактиковаться в <code>gamedev</code> разработке. Давно собирался написать какую-нибудь игрушку, но все руки не доходили. Бегло пробежался по сети в поисках как это делают настоящие гуру. Мне понравилась вот эта <a href="http://jlongster.com/Making-Sprite-based-Games-with-Canvas">статья</a>. За основу своей будущей игры я взял <a href="https://github.com/jlongster/canvas-game-bootstrap">фреймворк автора статьи</a>.</p>
+
+<p><img src="/images/screenshots/towers_game2d.png" alt="Towers game 2D" /></p>
+
+<h2>Начало</h2>
+
+<p>Фреймворк который я стал использовать включает в себя 4 <code>js</code> файла</p>
+
+<ul>
+<li><code>sprite.js</code> - библиотечка работы со спрайтами</li>
+<li><code>resources.js</code> - подгрузка ресурсов</li>
+<li><code>input.js</code> - библиотека ввода с клавиатуры</li>
+<li><code>app.js</code> - основной файл игры</li>
+</ul>
+
+
+<p>Далее буду рассказывать только о файле <code>app.js</code>. Разберем его содержимое.</p>
+
+<p>Для плавности анимации будем использовать <code>requestAnimationFrame</code> подробно о нем ознакомиться можно <a href="https://hacks.mozilla.org/2011/08/animating-with-javascript-from-setinterval-to-requestanimationframe/">здесь</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">requestAnimFrame</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nx">requestAnimationFrame</span>    <span class="o">||</span>
+</span><span class='line'>        <span class="nb">window</span><span class="p">.</span><span class="nx">webkitRequestAnimationFrame</span> <span class="o">||</span>
+</span><span class='line'>        <span class="nb">window</span><span class="p">.</span><span class="nx">mozRequestAnimationFrame</span>    <span class="o">||</span>
+</span><span class='line'>        <span class="nb">window</span><span class="p">.</span><span class="nx">oRequestAnimationFrame</span>      <span class="o">||</span>
+</span><span class='line'>        <span class="nb">window</span><span class="p">.</span><span class="nx">msRequestAnimationFrame</span>     <span class="o">||</span>
+</span><span class='line'>        <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">){</span>
+</span><span class='line'>            <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">60</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'><span class="p">})();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Разделим разработку нашей игры на несколько этапов:</p>
+
+<ol>
+<li>Создание и инициализация холста (canvas) на странице</li>
+<li>Добавление основной функции-цикла игры</li>
+<li>Инициализация и рендер объектов и ресурсов игры</li>
+<li>Обработка событий ввода пользователя</li>
+<li>Математика и расчет столкновений объектов в игре</li>
+<li>Окончание и перезагрузка игры</li>
+</ol>
+
+
+<h2>Этап 1. Создание и инициализация холста</h2>
+
+<p>Первым делом что мы должны сделать, это создать <code>canvas</code> элемент и добавить его к тегу <code>body</code> основной страницы игры.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;canvas&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span>
+</span><span class='line'><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="mi">520</span><span class="p">;</span>
+</span><span class='line'><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">canvas</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Создаем объект <code>canvas</code></li>
+<li>Указываем, что мы создаем 2D игру (далее будем использовать везде в коде объект <code>ctx</code>)</li>
+<li>Задаем размеры холста</li>
+<li>Добавляем холст к тегу <code>body</code> на странице</li>
+</ul>
+
+
+<h2>Этап 2. Добавление основной функции-цикла</h2>
+
+<p>Основной цикл необходим для обновления и рендера игры.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">lastTime</span><span class="p">;</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">now</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">dt</span> <span class="o">=</span> <span class="p">(</span><span class="nx">now</span> <span class="o">-</span> <span class="nx">lastTime</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">update</span><span class="p">(</span><span class="nx">dt</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">render</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">lastTime</span> <span class="o">=</span> <span class="nx">now</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">requestAnimFrame</span><span class="p">(</span><span class="nx">main</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Здесь вызываем функцию requestAnimFrame (к сожалению она <a href="http://caniuse.com/#feat=requestanimationframe">поддерживается</a> не во всех браузерах), которая генерирует 60 фреймов/секунду (как это было описано выше).</p>
+
+<h2>Этап 3. Инициализация и рендер объектов и ресурсов игры</h2>
+
+<p>Используем <code>resource.js</code> для загрузки ресурсов в игру. Хорошим правилом является добавить все изображения  в  1 спрайт, но т.к я рисовал не сам, а брал готовые картинки, поэтому я решил с этим на заморачиваться, тем более, что в данном случае это не столь критично. Так это выглядит <a href="https://github.com/greybax/towers_game2d/blob/gh-pages/js/app.js#L57">в коде</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">resources</span><span class="p">.</span><span class="nx">load</span><span class="p">([</span>
+</span><span class='line'>  <span class="s1">&#39;img/tower.png&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s1">&#39;img/sprites.png&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s1">&#39;img/spider.png&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s1">&#39;img/hero.png&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s1">&#39;img/bullet.png&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s1">&#39;img/terrain.png&#39;</span>
+</span><span class='line'><span class="p">]);</span>
+</span><span class='line'><span class="nx">resources</span><span class="p">.</span><span class="nx">onReady</span><span class="p">(</span><span class="nx">init</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>В функции <code>init</code> загружаем мир и добавлеем хэндлер кнопки <code>reset</code>, после game over.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">terrainPattern</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">createPattern</span><span class="p">(</span><span class="nx">resources</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;img/terrain.png&#39;</span><span class="p">),</span> <span class="s1">&#39;repeat&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;play-again&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">reset</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>  
+</span><span class='line'>    <span class="nx">reset</span><span class="p">();</span>
+</span><span class='line'>    <span class="nx">lastTime</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+</span><span class='line'>    <span class="nx">main</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Начальное состояние</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">player</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">pos</span><span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+</span><span class='line'>    <span class="nx">sprite</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/hero.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">48</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+</span><span class='line'>    <span class="nx">down</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/hero.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">48</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+</span><span class='line'>    <span class="nx">up</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/hero.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">144</span><span class="p">],</span> <span class="p">[</span><span class="mi">48</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+</span><span class='line'>    <span class="nx">left</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/hero.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">48</span><span class="p">],</span> <span class="p">[</span><span class="mi">48</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+</span><span class='line'>    <span class="nx">right</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/hero.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">96</span><span class="p">],</span> <span class="p">[</span><span class="mi">48</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">towers</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">bullets</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">enemies</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">explosions</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">lastTower</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">gameTime</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">isGameOver</span><span class="p">;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">terrainPattern</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">score</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">scoreEl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;score&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Обновление состояния игрового процесса</h3>
+
+<p>По нашей задумке, пауки должны вылезать со всех 4 сторон игрового поля. Для того чтобы это происходило случайным образом - используем функцию <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random">getRandomInt</a>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">switch</span> <span class="p">(</span><span class="nx">getRandomInt</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">case</span> <span class="mi">0</span><span class="o">:</span> <span class="c1">//left</span>
+</span><span class='line'>          <span class="nx">enemies</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+</span><span class='line'>              <span class="nx">pos</span><span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">-</span> <span class="mi">30</span><span class="p">)],</span>
+</span><span class='line'>              <span class="nx">sprite</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/spider.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>          <span class="p">});</span>
+</span><span class='line'>          <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">case</span> <span class="mi">1</span><span class="o">:</span> <span class="c1">//top</span>
+</span><span class='line'>          <span class="nx">enemies</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+</span><span class='line'>              <span class="nx">pos</span><span class="o">:</span> <span class="p">[</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+</span><span class='line'>              <span class="nx">sprite</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/spider.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>          <span class="p">});</span>
+</span><span class='line'>          <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>          <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>   <span class="c1">//bottom</span>
+</span><span class='line'>          <span class="nx">enemies</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+</span><span class='line'>              <span class="nx">pos</span><span class="o">:</span> <span class="p">[</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">-</span> <span class="mi">30</span><span class="p">],</span>
+</span><span class='line'>              <span class="nx">sprite</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/spider.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>          <span class="p">});</span>
+</span><span class='line'>          <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>          <span class="k">default</span><span class="o">:</span> <span class="c1">//right</span>
+</span><span class='line'>          <span class="nx">enemies</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+</span><span class='line'>              <span class="nx">pos</span><span class="o">:</span> <span class="p">[</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">-</span> <span class="mi">30</span><span class="p">)],</span>
+</span><span class='line'>              <span class="nx">sprite</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/spider.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>          <span class="p">});</span>
+</span><span class='line'>          <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Здесь же используем <code>sprite.js</code>. Всю функцию можно посмотреть в <a href="https://github.com/greybax/towers_game2d/blob/gh-pages/js/app.js#L96">исходниках</a>.</p>
+
+<h2>Этап 4. Обработка событий ввода пользователя</h2>
+
+<p>Наш герой должен умет двигаться вверх, вниз, влево, вправо. Соответственно привожу ниже реализацию данного решения</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;DOWN&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="nx">playerSpeed</span> <span class="o">*</span> <span class="nx">dt</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">player</span><span class="p">.</span><span class="nx">sprite</span> <span class="o">=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">down</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;UP&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="nx">playerSpeed</span> <span class="o">*</span> <span class="nx">dt</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">player</span><span class="p">.</span><span class="nx">sprite</span> <span class="o">=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">up</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;LEFT&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="nx">playerSpeed</span> <span class="o">*</span> <span class="nx">dt</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">player</span><span class="p">.</span><span class="nx">sprite</span> <span class="o">=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">left</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;RIGHT&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="nx">playerSpeed</span> <span class="o">*</span> <span class="nx">dt</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">player</span><span class="p">.</span><span class="nx">sprite</span> <span class="o">=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">right</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>При клике на пробел по задумке должны ставиться башни которые будут стрелять случайным образом во все стороны. Чтобы немного усложнить процесс игры башни разрешается ставить на некоторм расстоянии друг от друга. В данном случае это <code>50px</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;SPACE&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">isGameOver</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">isClosest</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">towers</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="nx">towers</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mi">50</span> <span class="o">&amp;&amp;</span>
+</span><span class='line'>          <span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nx">towers</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">isClosest</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isClosest</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">towers</span><span class="p">[</span><span class="nx">lastTower</span> <span class="o">%</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">pos</span><span class="o">:</span> <span class="p">[</span><span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+</span><span class='line'>          <span class="nx">lastFire</span><span class="o">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span>
+</span><span class='line'>          <span class="nx">sprite</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/tower.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">38</span><span class="p">,</span> <span class="mi">35</span><span class="p">],</span> <span class="mi">8</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>        <span class="nx">lastTower</span><span class="o">++</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Этап 5. Математика и расчет столкновений объектов в игре</h2>
+
+<p>Анимация персонажей, математика движения пуль, и логика движения NPC в игре описаны в функции <code>updateEntities</code>. Вот тут как раз нам и потребуются базовые знания линейной алгебры.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>  <span class="c1">// Update the towers sprite animation</span>
+</span><span class='line'>  <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">towers</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">tower</span> <span class="o">=</span> <span class="nx">towers</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+</span><span class='line'>      <span class="nx">tower</span><span class="p">.</span><span class="nx">sprite</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">dt</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isGameOver</span> <span class="o">&amp;&amp;</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="nx">tower</span><span class="p">.</span><span class="nx">lastFire</span> <span class="o">&gt;</span> <span class="mi">500</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">pi</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">;</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">tower</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nx">tower</span><span class="p">.</span><span class="nx">sprite</span><span class="p">.</span><span class="nx">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">tower</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nx">tower</span><span class="p">.</span><span class="nx">sprite</span><span class="p">.</span><span class="nx">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">bullets</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+</span><span class='line'>          <span class="nx">pos</span><span class="o">:</span> <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">],</span>
+</span><span class='line'>          <span class="nx">k</span><span class="o">:</span> <span class="nx">getRandomArbitrary</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span> <span class="o">*</span> <span class="nx">pi</span><span class="p">,</span> <span class="mi">5</span> <span class="o">*</span> <span class="nx">pi</span><span class="p">),</span>
+</span><span class='line'>          <span class="nx">sprite</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/bullet.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">24</span><span class="p">,</span> <span class="mi">24</span><span class="p">])</span>
+</span><span class='line'>        <span class="p">});</span>
+</span><span class='line'>        <span class="nx">tower</span><span class="p">.</span><span class="nx">lastFire</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Логика обновления анимации спрайтов башни. И создаем патроны для каждой башни в своем массиве.</p>
+
+<p>Динамика пуль башни:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Update all the bullets</span>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">bullets</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">bullet</span> <span class="o">=</span> <span class="nx">bullets</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">dt</span> <span class="o">*</span> <span class="nx">bulletSpeed</span><span class="p">;</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">sin</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">bullet</span><span class="p">.</span><span class="nx">k</span><span class="p">);</span>      
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">cos</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">bullet</span><span class="p">.</span><span class="nx">k</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">bullet</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="nx">sin</span> <span class="o">*</span> <span class="nx">c</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">bullet</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="nx">cos</span> <span class="o">*</span> <span class="nx">c</span><span class="p">;</span>       
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Remove the bullet if it goes offscreen</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nx">bullet</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">bullet</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">||</span>
+</span><span class='line'>        <span class="nx">bullet</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">bullets</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>        <span class="nx">i</span><span class="o">--</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+Напомню, что нашей целью было, чтобы башни стреляли случайным образом во всех направлениях.</p>
+
+<p>Пауков мы наделили простым интелектом и поэтому они ползут всегда за нами, чтобы нас укусить.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Update all the enemies</span>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">enemies</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">x0</span> <span class="o">=</span> <span class="nx">enemies</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">y0</span> <span class="o">=</span> <span class="nx">enemies</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">x1</span> <span class="o">=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">y1</span> <span class="o">=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">enemySpeed</span> <span class="o">*</span> <span class="nx">dt</span><span class="p">;</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">l</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sqrt</span><span class="p">((</span><span class="nx">x1</span> <span class="o">-</span> <span class="nx">x0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nx">x1</span> <span class="o">-</span> <span class="nx">x0</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="nx">y1</span> <span class="o">-</span> <span class="nx">y0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nx">y1</span> <span class="o">-</span> <span class="nx">y0</span><span class="p">));</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="nx">enemies</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">x1</span> <span class="o">-</span> <span class="nx">x0</span><span class="p">)</span> <span class="o">*</span> <span class="nx">c</span> <span class="o">/</span> <span class="nx">l</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">enemies</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">y1</span> <span class="o">-</span> <span class="nx">y0</span><span class="p">)</span> <span class="o">*</span> <span class="nx">c</span> <span class="o">/</span> <span class="nx">l</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">enemies</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">sprite</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">dt</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// Remove if offscreen</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nx">enemies</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nx">enemies</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">sprite</span><span class="p">.</span><span class="nx">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">enemies</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>          <span class="nx">i</span><span class="o">--</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Полный код функции <code>updateEntities</code> можно посмотреть в <a href="https://github.com/greybax/towers_game2d/blob/gh-pages/js/app.js#L179">исходникак на GitHub</a>.</p>
+
+<p>Математика расчета столкновений хорошо <a href="http://jlongster.com/Making-Sprite-based-Games-with-Canvas">описана</a> в статье автора (раздел Collision Detection) используемого мной 2d бутстрапа.</p>
+
+<h2>Этап 6. Game Over и рестарт</h2>
+
+<p>Когда пауки доползают до нашего героя наступает конец <del>света</del> игры.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">gameOver</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;game-over&#39;</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;block&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;game-over-overlay&#39;</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;block&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">isGameOver</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Показываем окно GAME OVER и кнопку &ldquo;Начать заного&rdquo;. Кликаем ее и все начинается сначала :)</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">reset</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;game-over&#39;</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;game-over-overlay&#39;</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">isGameOver</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">gameTime</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">lastTower</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">score</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">towers</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'>    <span class="nx">enemies</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'>    <span class="nx">bullets</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span> <span class="o">=</span> <span class="p">[</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">];</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Заключение</h2>
+
+<p>В итоге, я для себя понял, что в <code>gamedev</code> много плюсов:</p>
+
+<ul>
+<li>Весело и интересно проводишь время</li>
+<li>Повторяешь курс школьной геометрии. Если игра серьезней, то и универ вспоминаешь :)</li>
+<li>Практика программирования игр</li>
+<li>Удовлетворение от проделанной работы</li>
+</ul>
+
+
+<p>Посмотреть исходники можно <a href="https://github.com/greybax/towers_game2d/">тут</a>, поиграть <a href="http://greybax.github.io/towers_game2d">здесь</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -489,43 +1082,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/06/13/javascript/">Основы языка Javascript</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-13T00:00:00+00:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Статья посвящена в первую очередь изучающим Javascript. Некоторые из вещей могут показаться очевидными, но я надеюсь, что читатель найдет что-то интересное и для себя. Сам я прочитал достаточное количество статей в сети по этому языку. Но найти материал который бы кратко и просто излагал сущность языка я так и не нашел. Это меня вдохновило на написание собственной статьи.<br /><h2>Javascript - это:</h2><div><ul><li>Прототипированный язык программирования</li><li>С недавних пор не только Client-side технология, но и Server-side (Node.js)</li><li>Не Java :)</li><li>Однопоточный, но асинхронный язык</li></ul><h2><a name='more'></a>Объявление переменных</h2></div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> num;<br />num <span style="color: blue;">=</span> <span style="color: #0066ff;">100500</span>;<br /></pre><div><br />JS слабо типизированный язык, что демонстрирует следующий пример:<br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> text <span style="color: blue;">=</span> <span style="color: #009933;">'some text'</span>;<br />text <span style="color: blue;">=</span> <span style="color: #0066ff;">42</span>; <span style="color: #0066ff; font-style: italic;">// there is 42 now</span><br /></pre><br /><b>Важно:</b><br /><ul><li>Не забывайте ставить &#8216;;&#8217; в конце каждой строки</li><li>Всегда используйте <b>var </b>при объявлении переменных.</li></ul><div><h3>Типы данных</h3></div><h4>Простые</h4><div><ul><li>Number</li><li>String</li><li>Boolean</li><li>Undefined</li><li>Null</li></ul><h4>Ссылочные</h4></div><div><ul><li>Object</li></ul><div>Разберем каждый тип подробнее:</div></div><h4>Number</h4><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> num <span style="color: blue;">=</span> <span style="color: #0066ff;">100500</span>;<span style="color: #0066ff; font-style: italic;"> // this is a number type</span><br />num <span style="color: blue;">=</span> <span style="color: #0066ff;">0.0009</span>;<span style="color: #0066ff; font-style: italic;"> // this is a number type</span><br /></pre></div><br />Доступны все стандартные числовые операции:&nbsp;+, - , *, /, %, ++, &#8211; <br /><br /><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> thisIsInfinity <span style="color: blue;">=</span> <span style="color: #0066ff;">999/0</span>;<span style="color: #0066ff; font-style: italic;"> // Infinity</span><br /><span style="font-weight: 700;">var</span> thisIsNaN <span style="color: blue;">=</span> <span style="color: #0066ff;">"this is not number" * 3</span>;<span style="color: #0066ff; font-style: italic;"> // NaN</span><br /></pre></div><h4>String</h4></div><div>Пример использования кавычек:</div><div><br /></div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> fooString <span style="color: blue;">=</span> "I say: 'Yeah<span style="color: blue;">!</span>' It's cool.";<br />fooString <span style="color: blue;">=</span> 'He said: "Yeah<span style="color: blue;">!</span>"’;<br /></pre><br />Конкатенация строк:<br /><br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> text <span style="color: blue;">=</span> “a” <span style="color: blue;">+</span> “b”; <span style="color: #0066ff; font-style: italic;">// text has value ‘ab’</span><br /></pre><br />Другие полезные методы:<br /><ul><li>charAt()</li><li>indexOf()</li><li>slice()</li><li>toLowerCase()</li><li>toUpperCase()</li></ul><h4>Boolean, undefined and null</h4><div><b>1. Boolean </b>(true/false):<br /><br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> thisIsTrue <span style="color: blue;">=</span> <span style="color: #9700cc;">true</span>;<br /></pre><br /><b>2. Undefined </b>- специальный тип, который означает, что переменная не определена.<br /><br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> foo; <span style="color: #0066ff; font-style: italic;">// It is ‘undefined’</span><br /></pre></div><br /><b>3. Null</b> - специальный тип, означает &#8220;ничего&#8221;.<br /><br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> bar <span style="color: blue;">=</span> <span style="color: #9700cc;">null</span>;<br /></pre><h3>Объекты в Javascript</h3></div><div>Объекты в JS это стандартные ассоциативные массивы, другими словами &#8220;хэш&#8221;.<br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> obj <span style="color: blue;">=</span> {<br />    name: <span style="color: #009933;">"John"</span>,<br />    lastname: <span style="color: #009933;">"Johnson"</span><br />}<br /></pre><br />Ассоциативный массив - абстрактный тип данных состоят из набора из пар &lt;ключ&gt;: &lt;значение&gt;. <br /><h4>Создание объектов</h4></div><div>Оба этих метода эквивалентны:<br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="color: #0066ff; font-style: italic;">// simple creating</span><br /><span style="font-weight: 700;">var</span> obj <span style="color: blue;">=</span> {};<br /> <br /><span style="color: #0066ff; font-style: italic;">// standard syntax</span><br /><span style="font-weight: 700;">var</span> obj <span style="color: blue;">=</span> <span style="color: blue;">new</span> Object();<br /></pre><br />Литеральный синтаксис: <br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="color: #0066ff; font-style: italic;">//creation with properties</span><br /><span style="font-weight: 700;">var</span> obj <span style="color: blue;">=</span> {<br />    name: “John”,<br />    lastName: “Johnson”<br />}<br /></pre><h3>Операции с объектами</h3><pre style="background: rgba(238,238,238,0.92); color: black;">o.<span style="color: #6782d3;">name</span> <span style="color: blue;">=</span> “John”; <span style="color: #0066ff; font-style: italic;">//add property</span><br />o[“lastName”] <span style="color: blue;">=</span> “Johnson”;<br /><br /><span style="color: #3333ff; font-weight: 700;">alert</span>(o.<span style="color: #6782d3;">name</span>); <span style="color: #0066ff; font-style: italic;">//get property</span><br /><span style="color: #3333ff; font-weight: 700;">alert</span>(o[“lastName”]);<br /><br /><span style="color: blue;">delete</span> o.<span style="color: #6782d3;">name</span>; <span style="color: #0066ff; font-style: italic;">//delete property</span><br /></pre><h4>Оператор &#8216;in&#8217;</h4></div><div><pre style="background: rgba(238,238,238,0.92); color: black;">obj <span style="color: blue;">=</span> <span style="color: blue;">new</span> Object();<br />obj.prop <span style="color: blue;">=</span> <span style="color: #009933;">'exists'</span>;<br /><span style="color: #009933;">'prop'</span> <span style="color: blue;">in</span> obj; <span style="color: #0066ff; font-style: italic;">// returns true</span><br /><span style="color: #009933;">'toString'</span> <span style="color: blue;">in</span> obj; <span style="color: #0066ff; font-style: italic;">// returns true</span><br /></pre><h4>hasOwnProperty  </h4></div><div><pre style="background: rgba(238,238,238,0.92); color: black;">obj <span style="color: blue;">=</span> <span style="color: blue;">new</span> Object();<br />obj.prop <span style="color: blue;">=</span> <span style="color: #009933;">'exists'</span>;<br />obj.hasOwnProperty(<span style="color: #009933;">'prop'</span>); <span style="color: #0066ff; font-style: italic;">// returns true</span><br />obj.hasOwnProperty(<span style="color: #009933;">'toString'</span>); <span style="color: #0066ff; font-style: italic;">// returns false</span><br /></pre><br />В отличие от оператора in, метод hasOwnProperty не проверяет по объекту цепочку прототипов. <br /><h4>=== undefined</h4></div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> obj <span style="color: blue;">=</span> {};<br /><span style="color: #0066ff; font-style: italic;">// add property with undefined value </span><br />obj.test <span style="color: blue;">=</span> <span style="color: #9700cc;">undefined</span>; <br /><span style="color: #3333ff; font-weight: 700;">alert</span>(obj.test <span style="color: blue;">===</span> <span style="color: #9700cc;">undefined</span>); <span style="color: #0066ff; font-style: italic;">// true</span><br /><span style="color: #3333ff; font-weight: 700;">alert</span>(obj.test2 <span style="color: blue;">===</span> <span style="color: #9700cc;">undefined</span>); <span style="color: #0066ff; font-style: italic;">// true</span><br /></pre><br />Вполне возможна ситуация, что свойство существует и является равно undefined <br /><h3>Преобразование типов</h3></div><div><h4>String</h4></div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> str1 <span style="color: blue;">=</span> <span style="color: #3333ff; font-weight: 700;">String</span>(<span style="color: #0066ff;">1</span>);  <span style="color: #0066ff; font-style: italic;">// string '1'</span><br /><span style="font-weight: 700;">var</span> str2 <span style="color: blue;">=</span> <span style="color: #009933;">''</span> <span style="color: blue;">+</span> <span style="color: #0066ff;">1</span>;     <span style="color: #0066ff; font-style: italic;">// string '1'</span><br /></pre><h4>Numerical</h4></div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> num1 <span style="color: blue;">=</span> <span style="color: #3333ff; font-weight: 700;">Number</span>(<span style="color: #009933;">'42'</span>);   <span style="color: #0066ff; font-style: italic;">//number 42</span><br /><span style="font-weight: 700;">var</span> num2 <span style="color: blue;">=</span> <span style="color: blue;">+</span><span style="color: #009933;">"42"</span>;          <span style="color: #0066ff; font-style: italic;">//number 42</span><br /></pre><h4>Boolean</h4></div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> bool1 <span style="color: blue;">=</span> <span style="color: #3333ff; font-weight: 700;">Boolean</span>(<span style="color: #9700cc;">null</span>);   <span style="color: #0066ff; font-style: italic;">//false</span><br /><span style="font-weight: 700;">var</span> bool2 <span style="color: blue;">=</span> <span style="color: blue;">!</span><span style="color: blue;">!</span><span style="color: #9700cc;">null</span>;          <span style="color: #0066ff; font-style: italic;">//false</span><br /></pre><h3>Операторы сравнения </h3></div><div>Приведение типов используется в операторах: &lt;,&gt;,&lt;=,=&gt;,==,!= </div><div>Приведение типов НЕ используется в операторах: ===, !== </div><div>Советую использовать для более наглядного сравнения равенства/неравенства операторы === и !== соответственно.<br /><br />Примеры для демонстрации:<br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="color: #009933;">""</span> <span style="color: blue;">==</span> <span style="color: #009933;">"0"</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #0066ff;">0</span> <span style="color: blue;">==</span> <span style="color: #009933;">""</span> <span style="color: #0066ff; font-style: italic;">// true</span><br /><span style="color: #0066ff;">0</span> <span style="color: blue;">==</span> <span style="color: #009933;">"0"</span> <span style="color: #0066ff; font-style: italic;">// true</span><br /><span style="color: #9700cc;">false</span> <span style="color: blue;">==</span> <span style="color: #009933;">"false"</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #9700cc;">false</span> <span style="color: blue;">==</span> <span style="color: #009933;">"0"</span> <span style="color: #0066ff; font-style: italic;">// true</span><br /><span style="color: #9700cc;">false</span> <span style="color: blue;">==</span> <span style="color: #9700cc;">undefined</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #9700cc;">false</span> <span style="color: blue;">==</span> <span style="color: #9700cc;">null</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #9700cc;">null</span> <span style="color: blue;">==</span> <span style="color: #9700cc;">undefined</span> <span style="color: #0066ff; font-style: italic;">// true</span><br /><span style="color: #009933;">"<span style="color: #6782d3;">\t</span><span style="color: #6782d3;">\r</span><span style="color: #6782d3;">\n</span>"</span> <span style="color: blue;">==</span> <span style="color: #0066ff;">0</span> <span style="color: #0066ff; font-style: italic;">// true</span><br /></pre><br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="color: #009933;">""</span> <span style="color: blue;">===</span> <span style="color: #009933;">"0"</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #0066ff;">0</span> <span style="color: blue;">===</span> <span style="color: #009933;">""</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #0066ff;">0</span> <span style="color: blue;">===</span> <span style="color: #009933;">"0"</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #9700cc;">false</span> <span style="color: blue;">===</span> <span style="color: #009933;">"false"</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #9700cc;">false</span> <span style="color: blue;">===</span> <span style="color: #009933;">"0"</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #9700cc;">false</span> <span style="color: blue;">===</span> <span style="color: #9700cc;">undefined</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #9700cc;">false</span> <span style="color: blue;">===</span> <span style="color: #9700cc;">null</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #9700cc;">null</span> <span style="color: blue;">===</span> <span style="color: #9700cc;">undefined</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #009933;">"<span style="color: #6782d3;">\t</span><span style="color: #6782d3;">\r</span><span style="color: #6782d3;">\n</span>"</span> <span style="color: blue;">===</span> <span style="color: #0066ff;">0</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /></pre><h3>Массивы </h3></div><div>Одно из важных и отличительных свойств массивов в Javascript является то, что массивы могут содержать переменные разных типов.</div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> emptyArray <span style="color: blue;">=</span> [ ];<br /><span style="font-weight: 700;">var</span> numberArrray <span style="color: blue;">=</span> [<span style="color: #0066ff;">1</span>, <span style="color: #0066ff;">2</span>, <span style="color: #0066ff;">3</span>]; <br /><span style="font-weight: 700;">var</span> myCollection <span style="color: blue;">=</span> [<span style="color: #0066ff;">1</span>, <span style="color: #009933;">'string'</span>, <span style="color: #9700cc;">true</span>]; <br />myCollection[<span style="color: #0066ff;">0</span>]; <span style="color: #0066ff; font-style: italic;">// Return 1</span><br /></pre><br />Некоторые полезные функции работы с массивами:<br /><ul><li>push/pop</li><li>shift/unshift</li><li>splice</li><li>join/split</li><li>sort</li><li>reverse</li><li>concat</li><li>indexOf/lastIndexOf</li></ul><div>Особое внимание хочется уделить свойстве <b>length </b>массива.</div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> myArray <span style="color: blue;">=</span> [<span style="color: #0066ff;">1</span>, <span style="color: #0066ff;">2</span>, <span style="color: #0066ff;">3</span>]; <br />myArray.<span style="color: #6782d3;">length</span>; <span style="color: #0066ff; font-style: italic;">// It is 3</span><br />myArray.<span style="color: #6782d3;">length</span> <span style="color: blue;">=</span> <span style="color: #0066ff;">4</span>; <br />myArray.<span style="color: #6782d3;">length</span> <span style="color: blue;">=</span> <span style="color: #0066ff;">2</span>; <span style="color: #0066ff; font-style: italic;">// [1, 2]</span><br />myArray[<span style="color: #0066ff;">1000000</span>] <span style="color: blue;">=</span> <span style="color: #0066ff;">4</span>;<br /></pre>Таким образом <b>length = последний индекс массива + 1</b>. Если часть элементов массива не будут инициализированы, то они будут равны undefined. <br /><h3>Функции</h3></div><div>Функции это объекты в Javascript. Поэтому их можно присваивать переменным, передавать и, конечно, у них есть свойства. Существует 3 способа создать функцию. Основное отличие в результате их работы - в том, что именованная функция видна везде, а анонимная - только после объявления.</div><h4>Именнованные</h4><div><pre style="background: rgba(238,238,238,0.92); color: black;">sayAnithing(“Hi<span style="color: blue;">!</span>”);<br /><span style="font-weight: 700;">function</span> <span style="color: #ff8000;">sayAnithing</span>(message) { <span style="color: #3333ff; font-weight: 700;">alert</span>(mesage); }<br /></pre></div><h4>Анонимные</h4><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> <span style="color: #ff8000;">sayBonjour</span> <span style="color: blue;">=</span> <span style="font-weight: 700;">function</span> () { <span style="color: #3333ff; font-weight: 700;">alert</span>(“Bonjour<span style="color: blue;">!</span>”);}<br />sayBonjour(); <span style="color: #0066ff; font-style: italic;">// Says “Bonjour!” </span><br /></pre><h4>Аргументы функции</h4></div><div>Функции можно запускать с любым числом параметров. Если функции передано меньше параметров, чем есть в определении, то отсутствующие считаются undefined.</div><div><pre style="background: rgba(238,238,238,0.92); color: black;">foo(<span style="color: #0066ff;">0</span>, <span style="color: #0066ff;">1</span>, <span style="color: #0066ff;">2</span>, <span style="color: #0066ff;">3</span>, <span style="color: #0066ff;">4</span>); <br /><br /><span style="font-weight: 700;">function</span> <span style="color: #ff8000;">foo</span>(a, b, c) { <br />    arguments[<span style="color: #0066ff;">0</span>] <span style="color: blue;">=</span> <span style="color: #0066ff;">2</span>; <br />    a; <span style="color: #0066ff; font-style: italic;">// 2 </span><br />    b <span style="color: blue;">=</span> <span style="color: #0066ff;">17</span>; <br />    arguments[<span style="color: #0066ff;">1</span>]; <span style="color: #0066ff; font-style: italic;">// 17 </span><br />    arguments[<span style="color: #0066ff;">4</span>]; <span style="color: #0066ff; font-style: italic;">// 4 </span><br />}<br /></pre>Аргументы можно изменять.<br />Одной из любопытных функций является <b>typeof() - которая возвращает тип переменной.</b><br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="color: blue;">typeof</span> <span style="color: #9700cc;">undefined</span> <span style="color: #0066ff; font-style: italic;">// "undefined" </span><br /><span style="color: blue;">typeof</span> <span style="color: #0066ff;">0</span>    <span style="color: #0066ff; font-style: italic;">// "number" </span><br /><span style="color: blue;">typeof</span> <span style="color: #9700cc;">true</span> <span style="color: #0066ff; font-style: italic;">// "boolean" </span><br /><span style="color: blue;">typeof</span> <span style="color: #009933;">"foo"</span> <span style="color: #0066ff; font-style: italic;">// "string" </span><br /><span style="color: blue;">typeof</span> {} <span style="color: #0066ff; font-style: italic;">// "object"</span><br /></pre>Специфика языка Javascript: <br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="color: blue;">typeof</span> <span style="color: #9700cc;">null</span>  <span style="color: #0066ff; font-style: italic;">// "object"</span><br /><span style="color: blue;">typeof</span> <span style="font-weight: 700;">function</span>(){} <span style="color: #0066ff; font-style: italic;">// "function"</span><br /></pre><h3>Scope и контекст выполнения</h3></div><div>Выполнение JavaScript представляет из себя стэк контекстов выполнения. Контекст, который активирует другой контекст, называется вызывающим контекстом (<b>caller</b>). Контекст, который вызывают, называется вызываемым контекстом (<b>callee</b>). При этом callee-контекст может являться caller’ом для другого callee, что частенько и происходит когда один из одной функции вызывается другая. <br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> color <span style="color: blue;">=</span> “blue”; <span style="color: #0066ff; font-style: italic;">// Global scope</span><br /><span style="font-weight: 700;">function</span> <span style="color: #ff8000;">changeColor</span> () { <span style="color: #0066ff; font-style: italic;">// changeColor scope</span><br />  <span style="font-weight: 700;">var</span> anotherColor <span style="color: blue;">=</span> “red”;<br />    <span style="font-weight: 700;">function</span> <span style="color: #ff8000;">swapColors</span> () { <span style="color: #0066ff; font-style: italic;">// swapColors scope</span><br />      <span style="font-weight: 700;">var</span> tempColor <span style="color: blue;">=</span> anotherColor;<br />      anotherColor <span style="color: blue;">=</span> color;<br />      color <span style="color: blue;">=</span> tempColor;<br />    }<br />    swapColors();  <span style="color: #0066ff; font-style: italic;">// function call</span><br />}<br />changeColor();  <span style="color: #0066ff; font-style: italic;">// function call</span><br /></pre><br />Схема ниже иллюстрирует контекст выполнения функций:  <br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-JkQD5nm6wtI/U5rkqe9m1_I/AAAAAAAABBY/JsYrX9EW0u8/s1600/2014-06-13+15-43-51+%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82+%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://2.bp.blogspot.com/-JkQD5nm6wtI/U5rkqe9m1_I/AAAAAAAABBY/JsYrX9EW0u8/s1600/2014-06-13+15-43-51+%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82+%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0.png" /></a></div>Переменные видны внутри контекста функции не зависимо где они объявлены. Необычно для новичков в JS выглядит следующий пример: <br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">function</span> <span style="color: #ff8000;">myFunc</span> () {<br />  If (<span style="color: #9700cc;">true</span>) {<br />    <span style="font-weight: 700;">var</span> localVar <span style="color: blue;">=</span> “I’m local”;<br />  }<br />  console<span style="color: #3333ff; font-weight: 700;">.log</span>(localVar);  <span style="color: #0066ff; font-style: italic;">//Shows “I’m local” in log</span><br />}<br /></pre><h3>Замыкания </h3></div><div>Замыкание - внутренняя функция. Javascript позволяет создавать функции по ходу выполнения скрипта. И эти функции имеют доступ к переменным внешней функции.</div><div>Рассмотрим пример:</div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">function</span> <span style="color: #ff8000;">Counter</span> () {<br />  <span style="font-weight: 700;">var</span> count <span style="color: blue;">=</span> <span style="color: #0066ff;">0</span>;<br />  <span style="color: blue;">return</span> <span style="font-weight: 700;">function</span> () {<br />    <span style="color: blue;">return</span> <span style="color: blue;">++</span>count;<br />  }<br />}<br /><span style="font-weight: 700;">var</span> increaseCount <span style="color: blue;">=</span> Counter();<br /><span style="color: #3333ff; font-weight: 700;">alert</span>(increaseCount()); <span style="color: #0066ff; font-style: italic;">// Shows 1</span><br /><span style="color: #3333ff; font-weight: 700;">alert</span>(increaseCount()); <span style="color: #0066ff; font-style: italic;">// Shows 2</span><br /></pre>Внутренняя анонимная функция замыкает на себе функцию Counter. Это означает что когда заканчивает работать функция Counter, внутренняя функция остается жить, ее можно запускать в другом месте кода. В этой функции мы используем переменную count, т.е получается что внутренняя функция замыкает на себе переменную count внешней функции. <br /><h3>Прототипы</h3></div><div>В Javascript все объекты наследуют Object, поэтому каждый объект имеет&nbsp;<span style="background-color: white; font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif; font-size: 13px;">свойство</span><span style="background-color: white; font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif; font-size: 13px;">&nbsp;</span>prototype. Prototype это объект, которое позволяет шарить свойства с другими объектами.&nbsp;</div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-aE93elcAvL4/U5sBdhK_YUI/AAAAAAAABBo/SWEMu8srCJc/s1600/2014-06-13+17-49-12+%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82+%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://3.bp.blogspot.com/-aE93elcAvL4/U5sBdhK_YUI/AAAAAAAABBo/SWEMu8srCJc/s1600/2014-06-13+17-49-12+%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82+%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0.png" /></a></div><div>Например, когда у объекта свойство &#8220;jump&#8221;, то интерпретатор языка ищет сначала это свойство у самого объекта, а потом спускаясь по цепочке прототипов ищет в них пока не найдет.</div><h3>&#8220;Классы&#8221;</h3><div>В спецификации ECMAScript 5 нет понятия класса. Реализовать класс в привычном понятии для ООП можно путем создания конструктора с прототипом. Принадлежность к классу проверяет оператор <b>instanceof</b></div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">function</span> <span style="color: #ff8000;">Animal</span>(name) {  <span style="color: #0066ff; font-style: italic;">//constructor</span><br />  this.<span style="color: #6782d3;">name</span> <span style="color: blue;">=</span> name;<br />}<br /><br /><span style="color: #3333ff; font-weight: 700;">Animal</span>.<span style="color: #6782d3;">prototype</span>.<span style="color: #ff8000;">speed</span> <span style="color: blue;">=</span> <span style="color: #0066ff;">0</span>;  <span style="color: #0066ff; font-style: italic;">//Property with value by default</span><br /><br /><span style="color: #3333ff; font-weight: 700;">Animal</span>.<span style="color: #6782d3;">prototype</span>.<span style="color: #ff8000;">run</span> <span style="color: blue;">=</span> <span style="font-weight: 700;">function</span>(speed) { <span style="color: #0066ff; font-style: italic;">//Method of prototype</span><br />  this.speed <span style="color: blue;">+</span><span style="color: blue;">=</span> speed;<br />  <span style="color: #3333ff; font-weight: 700;">alert</span>(this.<span style="color: #6782d3;">name</span> <span style="color: blue;">+</span> <span style="color: #009933;">' run, speed'</span> <span style="color: blue;">+</span> this.speed);<br />};<br /></pre><h3>this</h3></div><div>this зависит от контекста вызова. Рассмотрим возможные варианты:</div><h4>this в простом вызове</h4><div>В этом случае this глобальный объект</div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">function</span> <span style="color: #ff8000;">simpleFunction</span> () {<br />  this;<br />}<br /><br />simpleFunction();<br /></pre><h4>this в конструкторе </h4></div><div>В этом случае this - новый объект</div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">function</span> <span style="color: #ff8000;">SimpleConstructor</span> () {<br />  this.someProperty <span style="color: blue;">=</span> “This is some property“;<br />}<br /><br /><span style="font-weight: 700;">var</span> someObject <span style="color: blue;">=</span> <span style="color: blue;">new</span> SimpleConstructor();<br /></pre><h4>this в методе объекта </h4></div><div>В данном примере this это объект country</div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> country <span style="color: blue;">=</span> {<br />  name: “Sparta”<br />}<br /><br /><span style="font-weight: 700;">var</span> <span style="color: #ff8000;">say</span> <span style="color: blue;">=</span> <span style="font-weight: 700;">function</span> () {<br />  <span style="color: #3333ff; font-weight: 700;">alert</span>(“This is “ <span style="color: blue;">+</span> this.<span style="color: #6782d3;">name</span>);<br />}<br /><br />country.sayName <span style="color: blue;">=</span> say;<br />country.sayName();<br /></pre><h4>this как первый аргумент в call/apply </h4></div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">function</span> <span style="color: #ff8000;">sum</span>(a, b) {<br />  this.result <span style="color: blue;">=</span> a <span style="color: blue;">+</span> b;<br />}<br /><span style="font-weight: 700;">var</span> obj <span style="color: blue;">=</span> {};<br /><br />sum.<span style="color: #3333ff; font-weight: 700;">call</span>(obj, <span style="color: #0066ff;">1</span>, <span style="color: #0066ff;">2</span>);<br /><span style="color: #0066ff; font-style: italic;">// sum.apply(obj, [1, 2]);</span><br /><br /><span style="color: #3333ff; font-weight: 700;">alert</span>(obj.result) <span style="color: #0066ff; font-style: italic;">// Property was created. Result is 3</span><br /></pre><h3>Наследование </h3></div><div>В JS в отличие от других языков программирования реализация наследования как одного из принципов ООП, может быть реализовано несколькими способами. Думаю в данной статье будет излишне описывать каждый из способов, подробно о них можно прочитать в книге:&nbsp;<b>&#8220;Professional JavaScript for Web Developers&#8221;, N. Zakas.</b></div><div><ul><li>Prototype Chaining</li><li>Object Masquerading inheritance</li><li>Combination Inheritance</li><li>Prototypal Inheritance</li><li>Parasitic Inheritance</li><li>Parasitic Combination Inheritance</li></ul><div><h3>Литература</h3></div></div><div><div><ul><li><a href="http://www.ecmascript.org/">http://www.ecmascript.org/</a></li><li><a href="http://javascript.ru/">http://javascript.ru/</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide</a></li><li>Larry Ulman “Modern JavaScript Develop and Design”</li><li>David Flanagan “JavaScript: The Definitive Guide”</li><li>Nicholas C. Zakas “Professional JavaScript for Web Developers”</li></ul></div></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="2">&larr; Older</a>
@@ -549,6 +1105,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/10/13/pishiem-ighru-na-html5-slash-js/">Пишем игру на HTML5/JS</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/10/01/ispol'zuiem-fiddler-v-kachiestvie-proksi/">Используем Fiddler в качестве прокси</a>
       </li>
     
@@ -562,10 +1122,6 @@
     
       <li class="post">
         <a href="/blog/2014/07/07/devconf14/">Как я побывал на DevConf'14</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/06/27/google-chrome/">Пишем расширение для браузера Google Chrome</a>
       </li>
     
   </ul>
