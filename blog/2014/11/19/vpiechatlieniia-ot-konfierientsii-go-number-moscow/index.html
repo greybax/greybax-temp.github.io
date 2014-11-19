@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Используем Fiddler в качестве прокси - Aleksandr Filatov</title>
+  <title>Впечатления от конференции Go# Moscow - Aleksandr Filatov</title>
   <meta name="author" content="Aleksandr Filatov">
 
   
-  <meta name="description" content="Fiddler - мощный инструмент для веб дебагинга, мониторинга веб трафика, манипуляций с сессией и т.п. Кроме того в Fiddler есть еще одна мощная фича &hellip;">
+  <meta name="description" content="Недавно я побывал еще на одной конференции Go# Moscow. К языку программирования Go она отношения не имеет. Почему я решил поехать? Для себя я &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://alfilatov.com/blog/2014/10/01/ispol'zuiem-fiddler-v-kachiestvie-proksi">
+  <link rel="canonical" href="http://alfilatov.com/blog/2014/11/19/vpiechatlieniia-ot-konfierientsii-go-number-moscow">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Aleksandr Filatov" type="application/atom+xml">
@@ -65,7 +65,7 @@
   
   <header>
     
-      <h1 class="entry-title">Используем Fiddler в качестве прокси</h1>
+      <h1 class="entry-title">Впечатления от конференции Go# Moscow</h1>
     
     
       <p class="meta">
@@ -81,50 +81,46 @@
   
 
 
-<time datetime="2014-10-01T10:05:46+00:00" pubdate data-updated="true"></time>
+<time datetime="2014-11-19T21:24:13+00:00" pubdate data-updated="true"></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p><a href="http://www.telerik.com/fiddler">Fiddler</a> - мощный инструмент для веб дебагинга, мониторинга веб трафика, манипуляций с сессией и т.п. Кроме того в <code>Fiddler</code> есть еще одна мощная фича - это возможность его использования как самостоятельный proxy сервер на машине где он запущен.</p>
+<div class="entry-content"><p>Недавно я побывал еще на одной конференции Go# Moscow. К языку программирования Go она отношения не имеет. Почему я решил поехать? Для себя я определил 2 причины:</p>
 
-<p>Мне эта фича пригодилась когда пришлось подключаться с моего iPhone девайса через <code>VPN</code> к серверу, который находится на другом конце планеты. Аналогично, вместо iPhone мог быть любой девайс, планшет или десктоп.</p>
+<ul>
+<li>Пообщаться с коллегами из DevExpress</li>
+<li>Послушать доклад от представителя Microsoft про программу BizSpark членом которой я являюсь.</li>
+</ul>
 
-<p>Постараюсь описать процесс настройки максимально детально. Версия установленного <code>Fiddler</code> у меня - <code>Fiddler Web Debugger (v4.4.8.0)</code>. <code>Built: Wednesday, April 23, 2014</code></p>
 
-<h2>Конфигурация Fiddler</h2>
+<p>Скажу заранее что своих целей я достиг. К тому же хорошо провел время с пользой для самообразования.
+Итак, что представляла из себя конференция? Основной направленностью был <code>.NET</code> и как разработчикам приходится подстраиваться под текущие реалии растущей конкуренции и развитии мобильной разработки. Программа состояла из 3 основных секций:</p>
 
 <ol>
-<li>Переходим Tools > Fiddler Options > Connections.</li>
-<li><p>Ставим галку Allow remote computers to connect.
-<img src="/images/screenshots/allow_remote_to_connect.png" alt="Check &quot;Allow remote computers to connect&quot;" /></p></li>
-<li><p>Перезапускаем <code>Fiddler</code></p></li>
-<li><p>Следует проверить что в <code>firewall</code> разрешены входящие соединения для Fiddler
-<img src="/images/screenshots/fiddler_income_connections.png" alt="Income conections for fiddler process" /></p></li>
-<li><p>В правом верхнем углу <code>Fiddler</code> находим <code>Online Indicator</code> и смотрим в нем по какому ip орудует наш <code>Fiddler</code>. Нам нужен локальный адрес машины. Этот ip адрес мы будем указывать в настройках интернет соединения  нашего девайса на вкладке <code>Proxy</code>.
-<img src="/images/screenshots/indicator_ip_address.png" alt="Online Indicator" /></p></li>
+<li>Эффективное написание кода</li>
+<li>Мобильная разработка</li>
+<li>Карьера и образование .net разработчика + секция стартапы.</li>
 </ol>
 
 
-<p>После выполнения этих пунктов наш <code>Fiddler</code> готов принимать входящие соединения с внешних устройств. Соответственно может использоваться как прокси, обрабатывая через себя все запросы, которые приходят с нашего внешнего устройства.</p>
+<p>Хочу рассказать о наиболее значимых на мой взгляд докладах из каждой секции.</p>
 
-<h2>Конфигурация iPhone</h2>
+<h3>Эффективное написание кода</h3>
 
-<ol>
-<li>Переходим &lsquo;Настройки&rsquo; > &lsquo;Wi-Fi&rsquo;</li>
-<li>Переходим в настройки Wi-Fi соединения</li>
-<li>Выбираем раздел &lsquo;Вручную&rsquo; в секции HTTP прокси</li>
-<li>В поле Сервер, вводим IP адрес машины где запущен <code>Fiddler</code></li>
-<li>Порт - 8888</li>
-<li>Аутентификацию отключаем</li>
-</ol>
+<p>Столкнулись 2 конкурирующих продукта и компании Сoderush от DevExpress и R# от JetBrains. Использовать Сoderush как инструмент для облегчения написания кода меня докладчик из devexpress не убедил.</p>
 
+<h3>Мобильная разработка</h3>
 
-<p><img src="/images/screenshots/iPhone_proxy_settings.png" alt="iPhone proxy settings" /></p>
+<p>Секция мобильной разработки вызывала у меня большой интерес. Рассказывалось про продукты Xamarin как альтернатива кроссплатформенной разработке под мобильный приложения на <code>C#</code>. С. Другой стороны это DevExtreme от DevExpress как альтернатива кроссплатформенной разработке с использованием <code>HTML/JS</code>. Несмотря на то, что на работе мне приходится иметь дело с DevExtreme, доклад про Xamarin от ребят из ApperCode и TCS показался гораздо интереснее и живее. После доклада появилось желание потрогать Xamarin. Единественный минус - он платный, а в free версии можно написать приложение только &ldquo;Hello World!&rdquo; судя из огранечений который накладываются.</p>
 
-<p>Теперь после перехода на любой сайт со своего iPhone можно мониторить все request/response в <code>Fiddler</code></p>
+<h3>Карьера и образование .net разработчика + секция стартапы</h3>
+
+<p>Тут отжигал <a href="%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9%20%D0%9F%D0%B0%D0%B2%D0%BB%D0%BE%D0%B2%20%D0%B8%D0%B7%20Toptal">http://www.toptal.com/resume/dmitry-pavlov</a> и Александр Рахманов из Касперского. Оба доклада очень понравились. По окончании доклада Дмитрия, его еще долго окружали интересующиеся работой в toptal. После был доклад от Дианы Токмашевой из Microsoft про программу помощи стартапами BizSpark.</p>
+
+<p>В целом конференцией остался доволен. Особенно понравилась организация общения с докладчиками и коллегами из других компаний. Единственное что не хватало так это розеток для зарядки девайса и места у обеденных стоек.</p>
 </div>
 
 
@@ -147,12 +143,12 @@
   
 
 
-<time datetime="2014-10-01T10:05:46+00:00" pubdate data-updated="true"></time>
+<time datetime="2014-11-19T21:24:13+00:00" pubdate data-updated="true"></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/configuration/'>configuration</a>, <a class='category' href='/blog/categories/debugging/'>debugging</a>, <a class='category' href='/blog/categories/fiddler/'>fiddler</a>, <a class='category' href='/blog/categories/proxy/'>proxy</a>
+    <a class='category' href='/blog/categories/dot-net/'>.net</a>, <a class='category' href='/blog/categories/mobile-development/'>mobile development</a>, <a class='category' href='/blog/categories/konfierientsii/'>конференции</a>
   
 </span>
 
@@ -161,7 +157,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://alfilatov.com/blog/2014/10/01/ispol'zuiem-fiddler-v-kachiestvie-proksi/" data-via="greybax" data-counturl="http://alfilatov.com/blog/2014/10/01/ispol'zuiem-fiddler-v-kachiestvie-proksi/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://alfilatov.com/blog/2014/11/19/vpiechatlieniia-ot-konfierientsii-go-number-moscow/" data-via="greybax" data-counturl="http://alfilatov.com/blog/2014/11/19/vpiechatlieniia-ot-konfierientsii-go-number-moscow/" >Tweet</a>
   
   
   
@@ -172,10 +168,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/09/04/profilirovaniie-v-js/" title="Previous Post: Профилирование в JS">&laquo; Профилирование в JS</a>
+        <a class="basic-alignment left" href="/blog/2014/10/13/pishiem-ighru-na-html5-slash-js/" title="Previous Post: Пишем игру на HTML5/JS">&laquo; Пишем игру на HTML5/JS</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/10/13/pishiem-ighru-na-html5-slash-js/" title="Next Post: Пишем игру на HTML5/JS">Пишем игру на HTML5/JS &raquo;</a>
       
     </p>
   </footer>
@@ -289,8 +283,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://alfilatov.com/blog/2014/10/01/ispol'zuiem-fiddler-v-kachiestvie-proksi/';
-        var disqus_url = 'http://alfilatov.com/blog/2014/10/01/ispol'zuiem-fiddler-v-kachiestvie-proksi/';
+        var disqus_identifier = 'http://alfilatov.com/blog/2014/11/19/vpiechatlieniia-ot-konfierientsii-go-number-moscow/';
+        var disqus_url = 'http://alfilatov.com/blog/2014/11/19/vpiechatlieniia-ot-konfierientsii-go-number-moscow/';
         var disqus_script = 'embed.js';
       
     (function () {

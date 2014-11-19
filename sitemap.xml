@@ -3,6 +3,12 @@
   
   
   <url>
+    <loc>http://alfilatov.com/blog/2014/11/19/vpiechatlieniia-ot-konfierientsii-go-number-moscow/</loc>
+    <lastmod>2014-11-19T21:24:13+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://alfilatov.com/blog/2014/10/13/pishiem-ighru-na-html5-slash-js/</loc>
     <lastmod>2014-10-13T08:34:07+00:00</lastmod>
     <priority>0.8</priority>
@@ -83,21 +89,21 @@
   
   <url>
     <loc>http://alfilatov.com/blog/archives/</loc>
-    <lastmod>2014-11-04T14:42:14+00:00</lastmod>
+    <lastmod>2014-11-19T21:56:29+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://alfilatov.com/</loc>
-    <lastmod>2014-11-04T14:42:14+00:00</lastmod>
+    <lastmod>2014-11-19T21:56:29+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
     <loc>http://alfilatov.com/about/</loc>
-    <lastmod>2014-11-04T14:42:14+00:00</lastmod>
+    <lastmod>2014-11-19T21:56:29+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
