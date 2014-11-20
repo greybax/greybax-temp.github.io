@@ -4,7 +4,7 @@
   <title><![CDATA[Category: конференции | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/konfierientsii/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2014-11-20T09:50:28+00:00</updated>
+  <updated>2014-11-20T09:54:25+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -18,9 +18,11 @@
     <link href="http://alfilatov.com/blog/2014/11/19/vpiechatlieniia-ot-konfierientsii-go-number-moscow/"/>
     <updated>2014-11-19T21:24:13+00:00</updated>
     <id>http://alfilatov.com/blog/2014/11/19/vpiechatlieniia-ot-konfierientsii-go-number-moscow</id>
-    <content type="html"><![CDATA[<p>Недавно я побывал еще на одной конференции - <a href="http://www.gosharp.ru/">Go# Moscow</a>. К языку программирования <code>Go</code> отношения никакого не имеет.
-<img src="/images/screenshots/gosharp_logo.png" alt="GoSharp Logo" />
-Зачем я поехал? Для себя я выделил основные 2 причины:</p>
+    <content type="html"><![CDATA[<p>Недавно я побывал еще на одной конференции - <a href="http://www.gosharp.ru/">Go# Moscow</a>. К языку программирования <code>Go</code> отношения никакого не имеет.</p>
+
+<p><img src="/images/screenshots/gosharp_logo.png" alt="GoSharp Logo" /></p>
+
+<p>Зачем я поехал? Для себя я выделил основные 2 причины:</p>
 
 <ul>
 <li>Пообщаться с коллегами из DevExpress</li>
