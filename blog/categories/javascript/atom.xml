@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Javascript | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2014-12-02T20:32:19+00:00</updated>
+  <updated>2014-12-02T20:37:15+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -18,13 +18,13 @@
     <link href="http://alfilatov.com/blog/2014/12/02/diebaghghingh-typescript-failov-v-emuliatorie-devextreme/"/>
     <updated>2014-12-02T19:45:38+00:00</updated>
     <id>http://alfilatov.com/blog/2014/12/02/diebaghghingh-typescript-failov-v-emuliatorie-devextreme</id>
-    <content type="html"><![CDATA[<p>Недавно встала задача добавить поддержку дебажить файлы <code>*.ts</code> в браузере. В нашем случае это Google Chrome.
+    <content type="html"><![CDATA[<p>Недавно встала задача добавить поддержку debugging&#8217;а файлов <code>*.ts</code> в браузере. В нашем случае это Google Chrome.
 Постараюсь как можно подробнее описать этот процесс.</p>
 
 <ol>
-<li><p>Для начала нужно определить где физически находится DevExtreme сервер, который запускает приложение всякий раз когда мы нажимаем в студии кнопку <code>Запустить в браузере Google Chrome</code>. Ответ на этот вопрос был найден в одном из тикетов на сайте <a href="https://www.devexpress.com/Support/Center/Question/Details/Q523956">DevExpress</a>. В моем случае это путь <code>C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\DevExtreme\WebServer</code> (использую Visual Studio 2012).</p></li>
+<li><p>Для начала нужно определить в какой директории находится DevExtreme сервер, который запускает приложение всякий раз когда мы нажимаем в VS кнопку <code>Запустить в браузере Google Chrome</code>. Ответ на этот вопрос был найден в одном из тикетов на сайте <a href="https://www.devexpress.com/Support/Center/Question/Details/Q523956">DevExpress</a>. В случае Visual Studio 2012 это путь <code>C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\DevExtreme\WebServer</code>.</p></li>
 <li><p>Добавляем в проект <code>*.map файл</code>. Это необходимо для связи файлов <code>js</code> и <code>ts</code></p></li>
-<li><p>Последним этапом является добавление символической ссылки на проект в директории веб сервера DevExtreme. Можно конечно просто скопировать проект в директорию указаную выше. В этом случае мы лишим сервер возможности автоматически подхватывать изменения в вашем проекте. Чтобы это учесть выполним команду <a href="http://ss64.com/nt/mklink.html">mklink</a>. Для этого:</p>
+<li><p>Заключительный этап - добавление &ldquo;символической ссылки&rdquo; на проект в директории веб сервера DevExtreme. Можно просто скопировать проект в директорию указаную выше. В этом случае мы лишим сервер возможности автоматически подхватывать изменения в проекте. Чтобы это учесть выполним команду <a href="http://ss64.com/nt/mklink.html">mklink</a>. Для этого:</p>
 
 <ul>
 <li>Запусукаем <code>cmd</code> под администратором</li>
@@ -36,7 +36,7 @@
 </ol>
 
 
-<p>Допполнительный ссылки:</p>
+<p>Дополнительный ссылки:</p>
 
 <ul>
 <li><p><a href="http://js.devexpress.com/Documentation/Howto/SPA_Framework/Application_Design/?version=14_1#Running">Running, Debugging and Deploy DevExtreme applications</a></p></li>
