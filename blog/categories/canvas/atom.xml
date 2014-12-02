@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Canvas | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/canvas/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2014-12-02T20:39:51+00:00</updated>
+  <updated>2014-12-02T21:28:24+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -24,7 +24,7 @@
 
 <h2>Начало</h2>
 
-<p>Фреймворк который я стал использовать включает в себя 4 <code>js</code> файла</p>
+<p>Фреймворк, который я стал использовать включает в себя 4 <code>js</code> файла</p>
 
 <ul>
 <li><code>sprite.js</code> - библиотечка работы со спрайтами</li>
@@ -36,7 +36,7 @@
 
 <p>Далее буду рассказывать только о файле <code>app.js</code>. Разберем его содержимое.</p>
 
-<p>Для плавности анимации будем использовать <code>requestAnimationFrame</code> подробно о нем ознакомиться можно <a href="https://hacks.mozilla.org/2011/08/animating-with-javascript-from-setinterval-to-requestanimationframe/">здесь</a>
+<p>Для плавности анимации будем использовать <code>requestAnimationFrame</code>. Подробно о нем ознакомиться можно <a href="https://hacks.mozilla.org/2011/08/animating-with-javascript-from-setinterval-to-requestanimationframe/">здесь</a>
 <code>javascript
 var requestAnimFrame = (function(){
     return window.requestAnimationFrame    ||
@@ -64,7 +64,7 @@ var requestAnimFrame = (function(){
 
 <h2>Этап 1. Создание и инициализация холста</h2>
 
-<p>Первым делом что мы должны сделать, это создать <code>canvas</code> элемент и добавить его к тегу <code>body</code> основной страницы игры.
+<p>Первым делом что мы должны сделать - это создать <code>canvas</code> элемент и добавить его к тегу <code>body</code> основной страницы игры.
 <code>javascript
 var canvas = document.createElement("canvas");
 var ctx = canvas.getContext("2d");
@@ -99,7 +99,7 @@ requestAnimFrame(main);
 
 <p>}
 &#8220;`
-Здесь вызываем функцию requestAnimFrame (к сожалению она <a href="http://caniuse.com/#feat=requestanimationframe">поддерживается</a> не во всех браузерах), которая генерирует 60 фреймов/секунду (как это было описано выше).</p>
+Здесь вызываем функцию requestAnimFrame (к сожалению, <a href="http://caniuse.com/#feat=requestanimationframe">поддерживается</a> не во всех браузерах), которая генерирует 60 фреймов/секунду (как это было описано выше).</p>
 
 <h2>Этап 3. Инициализация и рендер объектов и ресурсов игры</h2>
 
@@ -159,7 +159,7 @@ var scoreEl = document.getElementById('score');
 
 <h3>Обновление состояния игрового процесса</h3>
 
-<p>По нашей задумке, пауки должны вылезать со всех 4 сторон игрового поля. Для того чтобы это происходило случайным образом - используем функцию <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random">getRandomInt</a>.
+<p>По нашей задумке пауки должны вылезать со всех 4 сторон игрового поля. Для того чтобы это происходило случайным образом, используем функцию <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random">getRandomInt</a>.
 <code>javascript
 switch (getRandomInt(0,4)) {
           case 0:   //left
@@ -192,7 +192,7 @@ switch (getRandomInt(0,4)) {
 
 <h2>Этап 4. Обработка событий ввода пользователя</h2>
 
-<p>Наш герой должен умет двигаться вверх, вниз, влево, вправо. Соответственно привожу ниже реализацию данного решения
+<p>Наш герой должен уметь двигаться вверх, вниз, влево, вправо. Соответственно привожу ниже реализацию данного решения
 &#8220;`javascript
     if (input.isDown(&lsquo;DOWN&rsquo;) || input.isDown(&rsquo;s&#8217;)) {
         player.pos[1] += playerSpeed * dt;
@@ -288,7 +288,7 @@ for (var i = 0; i &lt; bullets.length; i++) {
 }
 </code></pre>
 
-<pre><code class="">Напомню, что нашей целью было, чтобы башни стреляли случайным образом во всех направлениях.
+<pre><code class="">Напомню, что нашей целью было чтобы башни стреляли случайным образом во всех направлениях.
 
 Пауков мы наделили простым интелектом и поэтому они ползут всегда за нами, чтобы нас укусить.
 </code></pre>

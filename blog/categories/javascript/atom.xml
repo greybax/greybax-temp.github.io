@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Javascript | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2014-12-02T20:39:51+00:00</updated>
+  <updated>2014-12-02T21:28:24+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -22,9 +22,9 @@
 Постараюсь как можно подробнее описать этот процесс.</p>
 
 <ol>
-<li><p>Для начала нужно определить в какой директории находится DevExtreme сервер, который запускает приложение всякий раз когда мы нажимаем в VS кнопку <code>Запустить в браузере Google Chrome</code>. Ответ на этот вопрос был найден в одном из тикетов на сайте <a href="https://www.devexpress.com/Support/Center/Question/Details/Q523956">DevExpress</a>. В случае Visual Studio 2012 это путь <code>C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\DevExtreme\WebServer</code></p></li>
+<li><p>Для начала нужно определить в какой директории находится DevExtreme сервер, который запускает приложение, когда мы нажимаем в VS кнопку <code>Запустить в браузере Google Chrome</code>. Ответ на этот вопрос был найден в одном из тикетов на сайте <a href="https://www.devexpress.com/Support/Center/Question/Details/Q523956">DevExpress</a>. В случае Visual Studio 2012 это путь <code>C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\DevExtreme\WebServer</code></p></li>
 <li><p>Добавляем в проект <code>*.map файл</code>. Это необходимо для связи файлов <code>js</code> и <code>ts</code></p></li>
-<li><p>Заключительный этап - добавление &ldquo;символической ссылки&rdquo; на проект в директории веб сервера DevExtreme. Можно просто скопировать проект в директорию указаную выше. В этом случае мы лишим сервер возможности автоматически подхватывать изменения в проекте. Чтобы это учесть выполним команду <a href="http://ss64.com/nt/mklink.html">mklink</a>. Для этого:</p>
+<li><p>Заключительный этап - добавление &ldquo;символической ссылки&rdquo; на проект в директории веб сервера DevExtreme. Можно просто скопировать проект в директорию указаную выше. В этом случае мы лишим сервер возможности автоматически подхватывать изменения в проекте. Чтобы это учесть, выполним команду <a href="http://ss64.com/nt/mklink.html">mklink</a>. Для этого:</p>
 
 <ul>
 <li>Запусукаем <code>cmd</code> под администратором</li>
@@ -58,7 +58,7 @@
 
 <h2>Начало</h2>
 
-<p>Фреймворк который я стал использовать включает в себя 4 <code>js</code> файла</p>
+<p>Фреймворк, который я стал использовать включает в себя 4 <code>js</code> файла</p>
 
 <ul>
 <li><code>sprite.js</code> - библиотечка работы со спрайтами</li>
@@ -70,7 +70,7 @@
 
 <p>Далее буду рассказывать только о файле <code>app.js</code>. Разберем его содержимое.</p>
 
-<p>Для плавности анимации будем использовать <code>requestAnimationFrame</code> подробно о нем ознакомиться можно <a href="https://hacks.mozilla.org/2011/08/animating-with-javascript-from-setinterval-to-requestanimationframe/">здесь</a>
+<p>Для плавности анимации будем использовать <code>requestAnimationFrame</code>. Подробно о нем ознакомиться можно <a href="https://hacks.mozilla.org/2011/08/animating-with-javascript-from-setinterval-to-requestanimationframe/">здесь</a>
 <code>javascript
 var requestAnimFrame = (function(){
     return window.requestAnimationFrame    ||
@@ -98,7 +98,7 @@ var requestAnimFrame = (function(){
 
 <h2>Этап 1. Создание и инициализация холста</h2>
 
-<p>Первым делом что мы должны сделать, это создать <code>canvas</code> элемент и добавить его к тегу <code>body</code> основной страницы игры.
+<p>Первым делом что мы должны сделать - это создать <code>canvas</code> элемент и добавить его к тегу <code>body</code> основной страницы игры.
 <code>javascript
 var canvas = document.createElement("canvas");
 var ctx = canvas.getContext("2d");
@@ -133,7 +133,7 @@ requestAnimFrame(main);
 
 <p>}
 &#8220;`
-Здесь вызываем функцию requestAnimFrame (к сожалению она <a href="http://caniuse.com/#feat=requestanimationframe">поддерживается</a> не во всех браузерах), которая генерирует 60 фреймов/секунду (как это было описано выше).</p>
+Здесь вызываем функцию requestAnimFrame (к сожалению, <a href="http://caniuse.com/#feat=requestanimationframe">поддерживается</a> не во всех браузерах), которая генерирует 60 фреймов/секунду (как это было описано выше).</p>
 
 <h2>Этап 3. Инициализация и рендер объектов и ресурсов игры</h2>
 
@@ -193,7 +193,7 @@ var scoreEl = document.getElementById('score');
 
 <h3>Обновление состояния игрового процесса</h3>
 
-<p>По нашей задумке, пауки должны вылезать со всех 4 сторон игрового поля. Для того чтобы это происходило случайным образом - используем функцию <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random">getRandomInt</a>.
+<p>По нашей задумке пауки должны вылезать со всех 4 сторон игрового поля. Для того чтобы это происходило случайным образом, используем функцию <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random">getRandomInt</a>.
 <code>javascript
 switch (getRandomInt(0,4)) {
           case 0:   //left
@@ -226,7 +226,7 @@ switch (getRandomInt(0,4)) {
 
 <h2>Этап 4. Обработка событий ввода пользователя</h2>
 
-<p>Наш герой должен умет двигаться вверх, вниз, влево, вправо. Соответственно привожу ниже реализацию данного решения
+<p>Наш герой должен уметь двигаться вверх, вниз, влево, вправо. Соответственно привожу ниже реализацию данного решения
 &#8220;`javascript
     if (input.isDown(&lsquo;DOWN&rsquo;) || input.isDown(&rsquo;s&#8217;)) {
         player.pos[1] += playerSpeed * dt;
@@ -322,7 +322,7 @@ for (var i = 0; i &lt; bullets.length; i++) {
 }
 </code></pre>
 
-<pre><code class="">Напомню, что нашей целью было, чтобы башни стреляли случайным образом во всех направлениях.
+<pre><code class="">Напомню, что нашей целью было чтобы башни стреляли случайным образом во всех направлениях.
 
 Пауков мы наделили простым интелектом и поэтому они ползут всегда за нами, чтобы нас укусить.
 </code></pre>

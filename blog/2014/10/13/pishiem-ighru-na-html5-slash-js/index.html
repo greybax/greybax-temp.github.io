@@ -94,7 +94,7 @@
 
 <h2>Начало</h2>
 
-<p>Фреймворк который я стал использовать включает в себя 4 <code>js</code> файла</p>
+<p>Фреймворк, который я стал использовать включает в себя 4 <code>js</code> файла</p>
 
 <ul>
 <li><code>sprite.js</code> - библиотечка работы со спрайтами</li>
@@ -106,7 +106,7 @@
 
 <p>Далее буду рассказывать только о файле <code>app.js</code>. Разберем его содержимое.</p>
 
-<p>Для плавности анимации будем использовать <code>requestAnimationFrame</code> подробно о нем ознакомиться можно <a href="https://hacks.mozilla.org/2011/08/animating-with-javascript-from-setinterval-to-requestanimationframe/">здесь</a></p>
+<p>Для плавности анимации будем использовать <code>requestAnimationFrame</code>. Подробно о нем ознакомиться можно <a href="https://hacks.mozilla.org/2011/08/animating-with-javascript-from-setinterval-to-requestanimationframe/">здесь</a></p>
 
 <div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -145,7 +145,7 @@
 
 <h2>Этап 1. Создание и инициализация холста</h2>
 
-<p>Первым делом что мы должны сделать, это создать <code>canvas</code> элемент и добавить его к тегу <code>body</code> основной страницы игры.</p>
+<p>Первым делом что мы должны сделать - это создать <code>canvas</code> элемент и добавить его к тегу <code>body</code> основной страницы игры.</p>
 
 <div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -197,7 +197,7 @@
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
-<p>Здесь вызываем функцию requestAnimFrame (к сожалению она <a href="http://caniuse.com/#feat=requestanimationframe">поддерживается</a> не во всех браузерах), которая генерирует 60 фреймов/секунду (как это было описано выше).</p>
+<p>Здесь вызываем функцию requestAnimFrame (к сожалению, <a href="http://caniuse.com/#feat=requestanimationframe">поддерживается</a> не во всех браузерах), которая генерирует 60 фреймов/секунду (как это было описано выше).</p>
 
 <h2>Этап 3. Инициализация и рендер объектов и ресурсов игры</h2>
 
@@ -300,7 +300,7 @@
 
 <h3>Обновление состояния игрового процесса</h3>
 
-<p>По нашей задумке, пауки должны вылезать со всех 4 сторон игрового поля. Для того чтобы это происходило случайным образом - используем функцию <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random">getRandomInt</a>.</p>
+<p>По нашей задумке пауки должны вылезать со всех 4 сторон игрового поля. Для того чтобы это происходило случайным образом, используем функцию <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random">getRandomInt</a>.</p>
 
 <div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -361,7 +361,7 @@
 
 <h2>Этап 4. Обработка событий ввода пользователя</h2>
 
-<p>Наш герой должен умет двигаться вверх, вниз, влево, вправо. Соответственно привожу ниже реализацию данного решения</p>
+<p>Наш герой должен уметь двигаться вверх, вниз, влево, вправо. Соответственно привожу ниже реализацию данного решения</p>
 
 <div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -532,7 +532,7 @@
 
 
 <p>
-Напомню, что нашей целью было, чтобы башни стреляли случайным образом во всех направлениях.</p>
+Напомню, что нашей целью было чтобы башни стреляли случайным образом во всех направлениях.</p>
 
 <p>Пауков мы наделили простым интелектом и поэтому они ползут всегда за нами, чтобы нас укусить.</p>
 

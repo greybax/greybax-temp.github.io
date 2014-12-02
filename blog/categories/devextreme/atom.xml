@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Devextreme | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/devextreme/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2014-12-02T20:39:51+00:00</updated>
+  <updated>2014-12-02T21:28:24+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -22,9 +22,9 @@
 Постараюсь как можно подробнее описать этот процесс.</p>
 
 <ol>
-<li><p>Для начала нужно определить в какой директории находится DevExtreme сервер, который запускает приложение всякий раз когда мы нажимаем в VS кнопку <code>Запустить в браузере Google Chrome</code>. Ответ на этот вопрос был найден в одном из тикетов на сайте <a href="https://www.devexpress.com/Support/Center/Question/Details/Q523956">DevExpress</a>. В случае Visual Studio 2012 это путь <code>C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\DevExtreme\WebServer</code></p></li>
+<li><p>Для начала нужно определить в какой директории находится DevExtreme сервер, который запускает приложение, когда мы нажимаем в VS кнопку <code>Запустить в браузере Google Chrome</code>. Ответ на этот вопрос был найден в одном из тикетов на сайте <a href="https://www.devexpress.com/Support/Center/Question/Details/Q523956">DevExpress</a>. В случае Visual Studio 2012 это путь <code>C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\DevExtreme\WebServer</code></p></li>
 <li><p>Добавляем в проект <code>*.map файл</code>. Это необходимо для связи файлов <code>js</code> и <code>ts</code></p></li>
-<li><p>Заключительный этап - добавление &ldquo;символической ссылки&rdquo; на проект в директории веб сервера DevExtreme. Можно просто скопировать проект в директорию указаную выше. В этом случае мы лишим сервер возможности автоматически подхватывать изменения в проекте. Чтобы это учесть выполним команду <a href="http://ss64.com/nt/mklink.html">mklink</a>. Для этого:</p>
+<li><p>Заключительный этап - добавление &ldquo;символической ссылки&rdquo; на проект в директории веб сервера DevExtreme. Можно просто скопировать проект в директорию указаную выше. В этом случае мы лишим сервер возможности автоматически подхватывать изменения в проекте. Чтобы это учесть, выполним команду <a href="http://ss64.com/nt/mklink.html">mklink</a>. Для этого:</p>
 
 <ul>
 <li>Запусукаем <code>cmd</code> под администратором</li>
