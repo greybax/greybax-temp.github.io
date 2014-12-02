@@ -98,18 +98,26 @@
 <ol>
 <li><p>Для начала нужно определить где физически находится DevExtreme сервер, который запускает приложение всякий раз когда мы нажимаем в студии кнопку <code>Запустить в браузере Google Chrome</code>. Ответ на этот вопрос был найден в одном из тикетов на сайте <a href="https://www.devexpress.com/Support/Center/Question/Details/Q523956">DevExpress</a>. В моем случае это путь <code>C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\DevExtreme\WebServer</code> (использую Visual Studio 2012).</p></li>
 <li><p>Добавляем в проект <code>*.map файл</code>. Это необходимо для связи файлов <code>js</code> и <code>ts</code></p></li>
-<li><p>Последним этапом является добавление символической ссылки на проект в директории веб сервера DevExtreme. Можно конечно просто скопировать проект в директорию указаную выше. В этом случае мы лишим сервер возможности автоматически подхватывать изменения в вашем проекте. Чтобы это учесть выполним команду <a href="http://ss64.com/nt/mklink.html">mklink</a>. Для этого:</p></li>
-<li><p>Запусукаем <code>cmd</code> под администратором</p></li>
+<li><p>Последним этапом является добавление символической ссылки на проект в директории веб сервера DevExtreme. Можно конечно просто скопировать проект в директорию указаную выше. В этом случае мы лишим сервер возможности автоматически подхватывать изменения в вашем проекте. Чтобы это учесть выполним команду <a href="http://ss64.com/nt/mklink.html">mklink</a>. Для этого:</p>
+
+<ul>
+<li>Запусукаем <code>cmd</code> под администратором</li>
 <li>Переходим в каталог DevExpress WebServer</li>
 <li>Выполняем команду <code>mklink /D &lt;project_link_name&gt; &lt;project_path&gt;</code>. В моем случае это <code>mklink /D Pos C:\Projects\Pos</code></li>
 <li>Символическая ссылка <code>project_link_name</code> создана в директории <code>project_path</code></li>
+</ul>
+</li>
 </ol>
 
 
-<p>Допполнительный ссылки:
-* <a href="http://js.devexpress.com/Documentation/Howto/SPA_Framework/Application_Design/?version=14_1#Running">Запуск, дебаггинг и деплой DevExtreme приложений</a>
-* <a href="http://stackoverflow.com/questions/12683820/typescript-in-vs2012-automatically-generating-js-from-ts">Typescript in VS2012: (automatically) generating .js from .ts</a>
-* <a href="http://ss64.com/nt/">An A-Z Index of the Windows CMD command line</a></p>
+<p>Допполнительный ссылки:</p>
+
+<ul>
+<li><p><a href="http://js.devexpress.com/Documentation/Howto/SPA_Framework/Application_Design/?version=14_1#Running">Running, Debugging and Deploy DevExtreme applications</a></p></li>
+<li><p><a href="http://stackoverflow.com/questions/12683820/typescript-in-vs2012-automatically-generating-js-from-ts">Typescript in VS2012: (automatically) generating .js from .ts</a></p></li>
+<li><p><a href="http://ss64.com/nt/">An A-Z Index of the Windows CMD command line</a></p></li>
+</ul>
+
 </div>
   
   
