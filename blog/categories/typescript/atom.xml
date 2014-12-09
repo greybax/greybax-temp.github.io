@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Typescript | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/typescript/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2014-12-02T21:28:24+00:00</updated>
+  <updated>2014-12-09T20:51:42+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Дебаггинг Typescript файлов в эмуляторе DevExtreme]]></title>
+    <title type="html"><![CDATA[Debugging файлов TypeScript в браузере через эмулятор DevExtreme]]></title>
     <link href="http://alfilatov.com/blog/2014/12/02/diebaghghingh-typescript-failov-v-emuliatorie-devextreme/"/>
     <updated>2014-12-02T19:45:38+00:00</updated>
     <id>http://alfilatov.com/blog/2014/12/02/diebaghghingh-typescript-failov-v-emuliatorie-devextreme</id>
@@ -27,7 +27,7 @@
 <li><p>Заключительный этап - добавление &ldquo;символической ссылки&rdquo; на проект в директории веб сервера DevExtreme. Можно просто скопировать проект в директорию указаную выше. В этом случае мы лишим сервер возможности автоматически подхватывать изменения в проекте. Чтобы это учесть, выполним команду <a href="http://ss64.com/nt/mklink.html">mklink</a>. Для этого:</p>
 
 <ul>
-<li>Запусукаем <code>cmd</code> под администратором</li>
+<li>Запускаем <code>cmd</code> под администратором</li>
 <li>Переходим в каталог DevExpress WebServer</li>
 <li>Выполняем команду <code>mklink /D &lt;project_link_name&gt; &lt;project_path&gt;</code>. В моем случае это <code>mklink /D Pos C:\Projects\Pos</code></li>
 <li>Символическая ссылка <code>project_link_name</code> создана в директории <code>project_path</code></li>
