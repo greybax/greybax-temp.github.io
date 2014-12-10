@@ -3,6 +3,12 @@
   
   
   <url>
+    <loc>http://alfilatov.com/blog/2014/12/09/kak-ia-pobyval-na-next-14/</loc>
+    <lastmod>2014-12-09T21:25:37+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://alfilatov.com/blog/2014/12/09/vpiechatlieniia-ot-piervogho-khakatona/</loc>
     <lastmod>2014-12-09T19:44:16+00:00</lastmod>
     <priority>0.8</priority>
@@ -101,21 +107,21 @@
   
   <url>
     <loc>http://alfilatov.com/blog/archives/</loc>
-    <lastmod>2014-12-09T21:14:57+00:00</lastmod>
+    <lastmod>2014-12-10T09:37:43+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://alfilatov.com/</loc>
-    <lastmod>2014-12-09T21:14:57+00:00</lastmod>
+    <lastmod>2014-12-10T09:37:43+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
     <loc>http://alfilatov.com/about/</loc>
-    <lastmod>2014-12-09T21:14:57+00:00</lastmod>
+    <lastmod>2014-12-10T09:37:43+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
