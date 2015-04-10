@@ -4,7 +4,7 @@
   <title><![CDATA[Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2015-04-10T12:45:36+00:00</updated>
+  <updated>2015-04-10T12:48:04+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -55,8 +55,9 @@
 
 <h3>Способ 3</h3>
 
-<p>Можно ничего не писать и использовать сторонние реализации функции, например <a href="https://github.com/alvinteh/geteventlisteners">эту</a>.
-<strong><em>Минусы</em></strong>:</p>
+<p>Можно ничего не писать и использовать сторонние реализации функции, например <a href="https://github.com/alvinteh/geteventlisteners">эту</a>.</p>
+
+<p><strong><em>Минусы</em></strong>:</p>
 
 <ul>
 <li>Плагин, в состоянии обнаружить и получить обработчики событий, зарегистрированные <strong><em>только</em></strong> через <code>jQuery</code>.</li>
