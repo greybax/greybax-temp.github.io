@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Javascript | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2015-04-10T12:48:04+00:00</updated>
+  <updated>2015-04-10T13:51:17+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Получаем список обработчиков элемента в DOM'е]]></title>
-    <link href="http://alfilatov.com/blog/2015/04/08/poluchaiem-spisok-obrabotchikov-eliemienta-stranitsy/"/>
-    <updated>2015-04-08T10:09:10+00:00</updated>
-    <id>http://alfilatov.com/blog/2015/04/08/poluchaiem-spisok-obrabotchikov-eliemienta-stranitsy</id>
+    <link href="http://alfilatov.com/blog/2015/04/10/poluchaiem-spisok-obrabotchikov-eliemienta-stranitsy/"/>
+    <updated>2015-04-10T16:55:10+00:00</updated>
+    <id>http://alfilatov.com/blog/2015/04/10/poluchaiem-spisok-obrabotchikov-eliemienta-stranitsy</id>
     <content type="html"><![CDATA[<p>Допустим, что у нас есть элемент на странице. Пусть это будет <code>div</code>. Наша задача - получить все обработчики этого элемента. Рассмотрим варианты решения этой задачи в различных браузерах, а именно <code>IE</code>, <code>Firefox</code>, <code>Chrome</code>. В каждом современном браузере в консоли разработчка есть специальный UI для этих целей. Например в <code>Chrome</code> это <code>DevTools</code> -> <code>Elements</code> -> <code>Выбрать интересующий DOM узел</code> -> <code>Вкладка Event Listeners</code>. В нашем случае, поговорим о получании списка обработчиков программно.</p>
 
 <h3>Способ 1</h3>
