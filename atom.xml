@@ -4,7 +4,7 @@
   <title><![CDATA[Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2015-04-01T08:35:58+00:00</updated>
+  <updated>2015-04-10T12:45:36+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -14,10 +14,67 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Где я беру информацию о мире Frontend. Часть 1]]></title>
-    <link href="http://alfilatov.com/blog/2015/03/30/gdie-ia-bieru-informatsiiu-o-mirie-frontend-chast'-1/"/>
+    <title type="html"><![CDATA[Получаем список обработчиков элемента в DOM'е]]></title>
+    <link href="http://alfilatov.com/blog/2015/04/08/poluchaiem-spisok-obrabotchikov-eliemienta-stranitsy/"/>
+    <updated>2015-04-08T10:09:10+00:00</updated>
+    <id>http://alfilatov.com/blog/2015/04/08/poluchaiem-spisok-obrabotchikov-eliemienta-stranitsy</id>
+    <content type="html"><![CDATA[<p>Допустим, что у нас есть элемент на странице. Пусть это будет <code>div</code>. Наша задача - получить все обработчики этого элемента. Рассмотрим варианты решения этой задачи в различных браузерах, а именно <code>IE</code>, <code>Firefox</code>, <code>Chrome</code>. В каждом современном браузере в консоли разработчка есть специальный UI для этих целей. Например в <code>Chrome</code> это <code>DevTools</code> -> <code>Elements</code> -> <code>Выбрать интересующий DOM узел</code> -> <code>Вкладка Event Listeners</code>. В нашем случае, поговорим о получании списка обработчиков программно.</p>
+
+<h3>Способ 1</h3>
+
+<ul>
+<li><p>Использовать метод <code>getEventListeners(target)</code>. В браузере <code>Chrome</code> (является методом DevTools API) этот метод работает без лишних телодвижений - возвращает объект-массив эвентов на целевом элементе.</p></li>
+<li><p>Ситуация с <code>Firefox</code> немного сложнее. Данный метод доступен после установки <code>Firebug</code> <a href="http://getfirebug.com/wiki/index.php/GetEventListeners">GetEventListeners</a>.</p></li>
+<li><p>В <code>IE</code> все совсем плохо, т.к такой метод не реализован в API консоли разработчика и нет extensions с его аналогами (я таких не нашел).</p></li>
+</ul>
+
+
+<h3>Способ 2</h3>
+
+<p>Итак, мы выяснили, что метод <code>getEventListeners</code> не является кроссбраузерным и является частью Developer Console API, поэтому рассмотрим следующий <del>костыль</del> вариант решения. Для этого нам придется переопределить нативные методы <code>Element.prototype.addEventListener</code> и <code>Element.prototype.removeEventListener</code> (для старых версий <code>IE</code> нужно переопределить свои аналоги) своими кастомными реализациями которые будут отслеживать <code>event listeners</code>.</p>
+
+<p data-height="268" data-theme-id="0" data-slug-hash="RNzGwj" data-default-tab="result" data-user="greybax" class='codepen'>See the Pen <a href='http://codepen.io/greybax/pen/RNzGwj/'>RNzGwj</a> by Alex Filatov (<a href='http://codepen.io/greybax'>@greybax</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+
+
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+
+<p><strong><em>Плюс</em></strong>:</p>
+
+<ul>
+<li>Это единственный способ получить все обработчики событий (в том числе, зарегистрированные сторонними библиотеками, например, <code>jQuery</code>)</li>
+</ul>
+
+
+<p><strong><em>Минус</em></strong>:</p>
+
+<ul>
+<li>Cкрипт, который выполняет переопределение, должен быть выполнен первым - до <code>jQuery/Prototype/</code> и др., т.к иначе <code>event listeners</code>, зарегистрированные через эти сценарии будут не отражены.</li>
+</ul>
+
+
+<h3>Способ 3</h3>
+
+<p>Можно ничего не писать и использовать сторонние реализации функции, например <a href="https://github.com/alvinteh/geteventlisteners">эту</a>.
+<strong><em>Минусы</em></strong>:</p>
+
+<ul>
+<li>Плагин, в состоянии обнаружить и получить обработчики событий, зарегистрированные <strong><em>только</em></strong> через <code>jQuery</code>.</li>
+<li>Завязан на <code>jQuery</code> версии >=1.8.</li>
+</ul>
+
+
+<h3>Итог</h3>
+
+<p>Универсального (кроссбраузерного) и по-настоящему хорошего варианта, к сожалению, сейчас не существует.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Что можно почитать по Frontend'у]]></title>
+    <link href="http://alfilatov.com/blog/2015/03/30/gdie-ia-bieru-informatsiiu-o-mirie-frontend/"/>
     <updated>2015-03-30T10:43:02+00:00</updated>
-    <id>http://alfilatov.com/blog/2015/03/30/gdie-ia-bieru-informatsiiu-o-mirie-frontend-chast'-1</id>
+    <id>http://alfilatov.com/blog/2015/03/30/gdie-ia-bieru-informatsiiu-o-mirie-frontend</id>
     <content type="html"><![CDATA[<p>Решил написать пост для себя, обобщив (может кому тоже будет интересно), что и где можно почитать о фронтенд разработке. В наше время успешный разработчик должен постоянно развиваться, чтобы успевать за бурным развитием технологий, часть из котороых умирает, не успев завоевать популярность, а другие становится must have.
 Хочу выделить основные источники, из которых я черпаю информацию на данный момент.</p>
 
@@ -40,6 +97,7 @@
 <li><a href="https://twitter.com/jlongster">@jlongster</a> - Works on Firefox Developer Tools at Mozilla.</li>
 <li><a href="https://twitter.com/getify">@getify</a> - твиттер Kyle Simpson. All things JavaScript. Open Web Evangelist.</li>
 <li><a href="https://twitter.com/paul_irish">@paul_irish</a> - твиттер Paul Irish (Engineer at Google)</li>
+<li><a href="https://twitter.com/kangax">@kangax</a> - Javascript maniac. Fitness enthusiast. Ex-Prototype.js core, printio.ru co-founder, @fabricjs creator, HTMLMinifier, JSCritic, ES compat tables, es-discourse</li>
 </ul>
 
 
@@ -1157,8 +1215,15 @@
     <link href="http://alfilatov.com/blog/2012/12/10/my-contribution-in-mozilla-society/"/>
     <updated>2012-12-10T00:00:00+00:00</updated>
     <id>http://alfilatov.com/blog/2012/12/10/my-contribution-in-mozilla-society</id>
-    <content type="html"><![CDATA[<div class='post'>
-<div style="text-align: justify;"><blockquote class="tr_bq" style="text-align: right;"><br /><div style="text-align: justify;"><i style="background-color: white; color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px; text-align: left;">It&#8217;s my first publication on english language. And it&#8217;s blog some training for my english, so I sorry for my not well english, because english is not my first language.</i></div></blockquote><a href="http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-512-noshadow.png" imageanchor="1" style="clear: left; color: #4d469c; float: left; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px; margin-bottom: 1em; margin-right: 1em; text-decoration: none;"><img border="0" height="320" src="http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-512-noshadow.png" style="-webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 0px; border-top-right-radius: 0px; border: 1px solid transparent; box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px; padding: 8px; position: relative;" width="320" /></a><br /><blockquote class="tr_bq" style="text-align: right;"><span style="background-color: white; text-align: left;"></span><br /><div style="text-align: justify;"><span style="color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px;"><br /></span></div><span style="background-color: white; color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px; text-align: left;"><div style="text-align: justify;">And so on, in this topic I would like say about Mozilla society. And how I become &nbsp;in mozilla contribution list &nbsp; &nbsp;. For me it&#8217;s very intresting to participate in some activities. But I&#8217;m not a mozilla evangelist. :)</div></span><div style="text-align: justify;"><span style="color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px;"><br /></span></div><span style="background-color: white; color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px; text-align: left;"><div style="text-align: justify;">I think that not secret for each other that mozilla it&#8217;s &nbsp;global web society where each people can have yours contribution: programming, &nbsp;design sites, translate article on&nbsp;<a href="https://developer.mozilla.org/ru/" style="color: #4d469c; text-decoration: none;" target="_blank">mozilla network&nbsp;</a>and&nbsp;&nbsp;so on. Site&nbsp;<a href="http://whatcanidoformozilla.org/" style="color: #4d469c; text-decoration: none;" target="_blank">what can I do for mozilla</a>&nbsp;help a new people who it&#8217;s can intrested. If you like makes open source world better, that it&#8217;s makes interested you.</div></span><div style="text-align: justify;"><span style="color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px;"><br /></span></div><span style="background-color: white; color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px; text-align: left;"><div style="text-align: justify;">Some of yours can see page with title &#8220;Our Contributors&#8221; on menu &#8220;About Firefox&#8221; - &#8220;global society&#8221; in mozilla products. Perhaps you too would become on this page. It&#8217;s very easy. There are some&nbsp;<span style="font-family: arial, sans-serif; white-space: nowrap;">advice after this.&nbsp;</span></div></span><span style="background-color: white; text-align: left;"><div style="text-align: justify;"><span style="color: #444444; font-family: arial, sans-serif; font-size: 13px; line-height: 18.200000762939453px; white-space: nowrap;"><br /></span></div></span><span style="background-color: white; color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px; text-align: left;"><div style="text-align: justify;"><b>What can you make for example:</b></div></span><br /><ol style="background-color: white; color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px; text-align: left;"><li style="margin: 0px 0px 0.25em; padding: 0px; text-align: justify;">Translate to russian some topics on&nbsp;<a href="https://developer.mozilla.org/ru/" style="color: #4d469c; text-decoration: none;" target="_blank">mozilla network</a>&nbsp;or other resource of this society.</li><li style="margin: 0px 0px 0.25em; padding: 0px; text-align: justify;">If you programmer you can started for fix some light bugs of Firefox, Thunderbird, and etc. After your &nbsp;review code you can get access to repository with more content.</li><li style="margin: 0px 0px 0.25em; padding: 0px; text-align: justify;">If you think that you makes some good things for society you can send letter to credits@mozilla.org &nbsp;giving your name, email address and a sentence (citation) summarizing your contribution.</li><li style="margin: 0px 0px 0.25em; padding: 0px; text-align: justify;">If it&#8217;s true you have a lot of chance be on board contribution. And have&nbsp;mental pleasure :)</li></ol></blockquote></div></div>
+    <content type="html"><![CDATA[<p>It&rsquo;s my first publication on english. And it&rsquo;s blog some training for my english. And so on, in this topic I&rsquo;d like to tell about Mozilla society. And how I become in mozilla contribution list. For me it&rsquo;s very intresting to participate in some activities. But I&rsquo;m not a mozilla evangelist. :)</p>
+
+<p>I think that not secret for each other that mozilla it&rsquo;s global web society where each people can have yours contribution: programming, design sites, translate article on <a href="https://developer.mozilla.org/ru/">mozilla network</a></p>
+
+<p>Site <a href="http://whatcanidoformozilla.org/">what can I do for mozilla</a> help a new people who it&rsquo;s can intrested. If you like makes open source world better, that it&rsquo;s makes interested you. Some of yours can see page with title &ldquo;Our Contributors&rdquo; on menu &ldquo;About Firefox&rdquo; - &ldquo;global society&rdquo; in mozilla products. Perhaps you too would become on this page. It&rsquo;s very easy. There are some advice after this.</p>
+
+<h3>What I can do?</h3>
+
+<p>Translate to russian some topics on <a href="https://developer.mozilla.org/ru/">mozilla network</a> or other resource of this society. If you are developer you can started for fix some minor bugs for Firefox, Thunderbird, and etc. After your &nbsp;review code you can get access to repository with more content. If you think that you makes some good things for society you can send letter to <code>credits@mozilla.org</code> giving your name, email address and a sentence (citation) summarizing your contribution. If it&rsquo;s true you have a lot of chance be on board contribution. And have&nbsp;mental pleasure :)</p>
 ]]></content>
   </entry>
   

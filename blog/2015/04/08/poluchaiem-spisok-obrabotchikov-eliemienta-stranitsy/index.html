@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Как и зачем я перешел с Blogger на Octopress - Aleksandr Filatov</title>
+  <title>Получаем список обработчиков элемента в DOM'е - Aleksandr Filatov</title>
   <meta name="author" content="Aleksandr Filatov">
 
   
-  <meta name="description" content="Я использовал Blogger c 2012 года. Мне эта система показалась недостаточно удобной, чтобы продолжать ее использовать в дальнейшем. Неудобство &hellip;">
+  <meta name="description" content="Допустим, что у нас есть элемент на странице. Пусть это будет div. Наша задача - получить все обработчики этого элемента. Рассмотрим варианты решения &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://alfilatov.com/blog/2014/08/27/kak-i-zachiem-ia-pierieshiel-s-blogger-na-octopress">
+  <link rel="canonical" href="http://alfilatov.com/blog/2015/04/08/poluchaiem-spisok-obrabotchikov-eliemienta-stranitsy">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Aleksandr Filatov" type="application/atom+xml">
@@ -65,7 +65,7 @@
   
   <header>
     
-      <h1 class="entry-title">Как и зачем я перешел с Blogger на Octopress</h1>
+      <h1 class="entry-title">Получаем список обработчиков элемента в DOM'е</h1>
     
     
       <p class="meta">
@@ -81,83 +81,62 @@
   
 
 
-<time datetime="2014-08-27T08:28:59+00:00" pubdate data-updated="true"></time>
+<time datetime="2015-04-08T10:09:10+00:00" pubdate data-updated="true"></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Я использовал Blogger c 2012 года. Мне эта система показалась недостаточно удобной, чтобы продолжать ее использовать в дальнейшем. Неудобство проявлялось, когда в пост нужно было вставить участки кода или добавлять картинки. HTML редактор генерирует много лишнего кода. В итоге я решил подыскать себе новый блог-движок.</p>
+<div class="entry-content"><p>Допустим, что у нас есть элемент на странице. Пусть это будет <code>div</code>. Наша задача - получить все обработчики этого элемента. Рассмотрим варианты решения этой задачи в различных браузерах, а именно <code>IE</code>, <code>Firefox</code>, <code>Chrome</code>. В каждом современном браузере в консоли разработчка есть специальный UI для этих целей. Например в <code>Chrome</code> это <code>DevTools</code> -> <code>Elements</code> -> <code>Выбрать интересующий DOM узел</code> -> <code>Вкладка Event Listeners</code>. В нашем случае, поговорим о получании списка обработчиков программно.</p>
 
-<h2>Что я хотел получить</h2>
+<h3>Способ 1</h3>
 
 <ul>
-<li>Писать больше постов, не заморачиваясь на разметку HTML/CSS</li>
-<li>Иметь больше свободы в редизайне своего блога</li>
+<li><p>Использовать метод <code>getEventListeners(target)</code>. В браузере <code>Chrome</code> (является методом DevTools API) этот метод работает без лишних телодвижений - возвращает объект-массив эвентов на целевом элементе.</p></li>
+<li><p>Ситуация с <code>Firefox</code> немного сложнее. Данный метод доступен после установки <code>Firebug</code> <a href="http://getfirebug.com/wiki/index.php/GetEventListeners">GetEventListeners</a>.</p></li>
+<li><p>В <code>IE</code> все совсем плохо, т.к такой метод не реализован в API консоли разработчика и нет extensions с его аналогами (я таких не нашел).</p></li>
 </ul>
 
 
-<p>Под вышеперечисленное подходит Octopress. Это движок генерации статических веб страниц написанный на <code>Ruby</code>. Окончательное решение было принято после прохождения курса <a href="https://class.coursera.org/webapplications-002">Web Application Architectures</a> на Coursera, где в качестве примера языка использовался <code>Ruby on Rails</code>. В повседневной жизни я пользователь винды, а ставить <code>Ruby</code> окружение на нее дело не из приятных, ставить виртуалку не хочется, и, погуглив, наткнулся на замечательный сайт <a href="https://www.nitrous.io/">nitrous.io</a>. Сайт предлагает на бесплатном аккаунте доступ к box'у с окружением для целого ряда языков. В нашем случае это <code>Ruby</code>
-При таком подходе мы можем писать в блог из любого места, где есть доступ в интернет, и нам не нужно иметь машину или виртуалку с исходниками своего блога. Считаю, что это достаточно весомый аргумент в пользу использования облачного хостинга с поддержкой IDE.</p>
+<h3>Способ 2</h3>
 
-<h2>Плюсы переезда</h2>
+<p>Итак, мы выяснили, что метод <code>getEventListeners</code> не является кроссбраузерным и является частью Developer Console API, поэтому рассмотрим следующий <del>костыль</del> вариант решения. Для этого нам придется переопределить нативные методы <code>Element.prototype.addEventListener</code> и <code>Element.prototype.removeEventListener</code> (для старых версий <code>IE</code> нужно переопределить свои аналоги) своими кастомными реализациями которые будут отслеживать <code>event listeners</code>.</p>
+
+<p data-height="268" data-theme-id="0" data-slug-hash="RNzGwj" data-default-tab="result" data-user="greybax" class='codepen'>See the Pen <a href='http://codepen.io/greybax/pen/RNzGwj/'>RNzGwj</a> by Alex Filatov (<a href='http://codepen.io/greybax'>@greybax</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+
+
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+
+<p><strong><em>Плюс</em></strong>:</p>
 
 <ul>
-<li>Markdown разметка. Не нужно уделять большое внимание HTML разметке. Концентрируешься больше на написание поста.</li>
-<li>Версионирование</li>
-<li>Удобно писать из редакторов Vim, хотя это для меня не является основным выбором</li>
+<li>Это единственный способ получить все обработчики событий (в том числе, зарегистрированные сторонними библиотеками, например, <code>jQuery</code>)</li>
 </ul>
 
 
-<h2>Минусы переезда</h2>
+<p><strong><em>Минус</em></strong>:</p>
 
 <ul>
-<li>Страницы с Blogger стоят выше в результатах поиска гугла при равных условиях</li>
-<li>Не нужно заморачиваться на хостинге. Хотя это не проблема и со случаем Octopress</li>
+<li>Cкрипт, который выполняет переопределение, должен быть выполнен первым - до <code>jQuery/Prototype/</code> и др., т.к иначе <code>event listeners</code>, зарегистрированные через эти сценарии будут не отражены.</li>
 </ul>
 
 
-<h2>Мигригуем</h2>
+<h3>Способ 3</h3>
+
+<p>Можно ничего не писать и использовать сторонние реализации функции, например <a href="https://github.com/alvinteh/geteventlisteners">эту</a>.
+<strong><em>Минусы</em></strong>:</p>
 
 <ul>
-<li>Подготовка</li>
-<li>Развертывание</li>
+<li>Плагин, в состоянии обнаружить и получить обработчики событий, зарегистрированные <strong><em>только</em></strong> через <code>jQuery</code>.</li>
+<li>Завязан на <code>jQuery</code> версии >=1.8.</li>
 </ul>
 
-
-<h3>Подготовка</h3>
-
-<p>Регистрируемся на сайте <a href="https://www.nitrous.io.">https://www.nitrous.io.</a> Выбираем в качестве окружения box c <code>Ruby</code>. Далее выполняем все по шагам как описано <a href="http://octopress.org/docs/setup/">тут</a> и <a href="http://octopress.org/docs/configuring/">конфигурируем</a>.</p>
-
-<p>Для миграции постов на Octopress нужно:</p>
-
-<ul>
-<li>Экспотировать их в файл в своем аккаунте в Blogger</li>
-<li>Заюзать <a href="https://gist.github.com/1765496">скрипт</a></li>
-</ul>
-
-
-<p>После этого вы получите кучу сообщений, которые уже являются частью вашего сайта. Проверьте, все ли корректно.
-Скрипт так же импортирует комментарии, но в неудобном для просмотра виде. (Tip: вы можете отключить комментарии перед экспортом постов из Blogger).
-Теперь все готово для того чтобы равернуть наш блог.</p>
-
-<h3>Развертывание</h3>
-
-<p>На этом этапе мы получили блог на Octopress? куда мы импортировали свои посты из Blogger. Для развертывания я использовал  Github Pages, но процесс развертывания на <a href="http://octopress.org/docs/deploying/heroku">Heroku</a> или <a href="http://octopress.org/docs/deploying/rsync/">через RSync на свой хостинг</a> отличаются незначительно.</p>
-
-<p>Процесс развертывания подробно описан на <a href="http://octopress.org/docs/deploying/github/">сайте Octopress</a>.</p>
 
 <h3>Итог</h3>
 
-<ul>
-<li>Получили окружение с IDE для <code>Ruby</code>, которое доступно прямо из браузера.</li>
-<li>Удовольствие от написания постов в markdown разметке, расходуя минимум времени на HTML разметку.</li>
-<li>Поддержку &ldquo;из коробки&rdquo; различных социальных плагинов (twitter, github, facebook). Легко добавлять свои.</li>
-<li>Удобная кастомизация design themes свое блога. При желании можно сменить стандартную тему или сделать свою. Большой выбор <a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">тут</a></li>
-<li>Стимул изучать <code>Rubу</code> :)</li>
-</ul>
-
+<p>Универсального (кроссбраузерного) и по-настоящему хорошего варианта, к сожалению, сейчас не существует.</p>
 </div>
 
 
@@ -180,12 +159,12 @@
   
 
 
-<time datetime="2014-08-27T08:28:59+00:00" pubdate data-updated="true"></time>
+<time datetime="2015-04-08T10:09:10+00:00" pubdate data-updated="true"></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/blog/'>blog</a>, <a class='category' href='/blog/categories/octopress/'>octopress</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>
+    <a class='category' href='/blog/categories/frontend/'>frontend</a>, <a class='category' href='/blog/categories/javascript/'>javascript</a>
   
 </span>
 
@@ -194,7 +173,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://alfilatov.com/blog/2014/08/27/kak-i-zachiem-ia-pierieshiel-s-blogger-na-octopress/" data-via="greybax" data-counturl="http://alfilatov.com/blog/2014/08/27/kak-i-zachiem-ia-pierieshiel-s-blogger-na-octopress/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://alfilatov.com/blog/2015/04/08/poluchaiem-spisok-obrabotchikov-eliemienta-stranitsy/" data-via="greybax" data-counturl="http://alfilatov.com/blog/2015/04/08/poluchaiem-spisok-obrabotchikov-eliemienta-stranitsy/" >Tweet</a>
   
   
   
@@ -205,10 +184,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/07/07/devconf14/" title="Previous Post: Как я побывал на DevConf'14">&laquo; Как я побывал на DevConf'14</a>
+        <a class="basic-alignment left" href="/blog/2015/03/30/gdie-ia-bieru-informatsiiu-o-mirie-frontend/" title="Previous Post: Что можно почитать по frontend'у">&laquo; Что можно почитать по frontend'у</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/09/04/profilirovaniie-v-js/" title="Next Post: Профилирование в JS">Профилирование в JS &raquo;</a>
       
     </p>
   </footer>
@@ -327,8 +304,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://alfilatov.com/blog/2014/08/27/kak-i-zachiem-ia-pierieshiel-s-blogger-na-octopress/';
-        var disqus_url = 'http://alfilatov.com/blog/2014/08/27/kak-i-zachiem-ia-pierieshiel-s-blogger-na-octopress/';
+        var disqus_identifier = 'http://alfilatov.com/blog/2015/04/08/poluchaiem-spisok-obrabotchikov-eliemienta-stranitsy/';
+        var disqus_url = 'http://alfilatov.com/blog/2015/04/08/poluchaiem-spisok-obrabotchikov-eliemienta-stranitsy/';
         var disqus_script = 'embed.js';
       
     (function () {

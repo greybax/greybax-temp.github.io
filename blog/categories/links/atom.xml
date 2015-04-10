@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Links | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/links/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2015-04-01T08:35:58+00:00</updated>
+  <updated>2015-04-10T12:45:36+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -14,10 +14,10 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Где я беру информацию о мире Frontend. Часть 1]]></title>
-    <link href="http://alfilatov.com/blog/2015/03/30/gdie-ia-bieru-informatsiiu-o-mirie-frontend-chast'-1/"/>
+    <title type="html"><![CDATA[Что можно почитать по Frontend'у]]></title>
+    <link href="http://alfilatov.com/blog/2015/03/30/gdie-ia-bieru-informatsiiu-o-mirie-frontend/"/>
     <updated>2015-03-30T10:43:02+00:00</updated>
-    <id>http://alfilatov.com/blog/2015/03/30/gdie-ia-bieru-informatsiiu-o-mirie-frontend-chast&#8217;-1</id>
+    <id>http://alfilatov.com/blog/2015/03/30/gdie-ia-bieru-informatsiiu-o-mirie-frontend</id>
     <content type="html"><![CDATA[<p>Решил написать пост для себя, обобщив (может кому тоже будет интересно), что и где можно почитать о фронтенд разработке. В наше время успешный разработчик должен постоянно развиваться, чтобы успевать за бурным развитием технологий, часть из котороых умирает, не успев завоевать популярность, а другие становится must have.
 Хочу выделить основные источники, из которых я черпаю информацию на данный момент.</p>
 
@@ -40,6 +40,7 @@
 <li><a href="https://twitter.com/jlongster">@jlongster</a> - Works on Firefox Developer Tools at Mozilla.</li>
 <li><a href="https://twitter.com/getify">@getify</a> - твиттер Kyle Simpson. All things JavaScript. Open Web Evangelist.</li>
 <li><a href="https://twitter.com/paul_irish">@paul_irish</a> - твиттер Paul Irish (Engineer at Google)</li>
+<li><a href="https://twitter.com/kangax">@kangax</a> - Javascript maniac. Fitness enthusiast. Ex-Prototype.js core, printio.ru co-founder, @fabricjs creator, HTMLMinifier, JSCritic, ES compat tables, es-discourse</li>
 </ul>
 
 
