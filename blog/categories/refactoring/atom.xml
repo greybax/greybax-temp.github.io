@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Refactoring | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/refactoring/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2015-04-13T13:19:18+00:00</updated>
+  <updated>2015-04-13T13:21:37+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -34,20 +34,22 @@
 <p>Для установки настроек <strong><em>Stylecop</em></strong> одинаковыми на всех ваших проектах нужно выполнить следующие действия:</p>
 
 <ul>
-<li>Клик правой кнопкой мыши выбираем раздел&amp;nbsp <code>StyleCop Settings</code>
-<img src="http://4.bp.blogspot.com/-Ff4lI2D2Vt8/UzhuaRggbMI/AAAAAAAAA_8/GdbfdLYTOtM/s1600/2.png" alt="pic_1" /> Разберем каждую вкладку в отдельности</li>
-<li>Rules - правила настройки <strong><em>Stylecop</em></strong></li>
-<li>Переходим на вкладку <code>Settings Files</code></li>
-<li>1-ый радиобаттон - не использовать наследование настроек stylecop в солюшене и в проектах</li>
-<li>2-ой - поддержка наследования/переопределения файлов настроек. Т.е файл с настройками лежащий на уровне выше имеет выше приоритет. Если вы хотите изменить настройки для всех проектов сразу, вам нужно перейти на эту вкладку, нажать &ldquo;Edit&rdquo;, и вы увидите окно файла конфигурации с настройками.</li>
-<li>3-й - мерж настроек с указанным файлом.
-<img src="http://1.bp.blogspot.com/-zSzjZtQ2K2k/UzhiQvLTXaI/AAAAAAAAA_s/twkcNLtIRYQ/s1600/1.png" alt="pic_2" /></li>
-<li>Options - настройки обновления и выбор языка</li>
-<li>Spelling - сюда можно добавить слова исключения при проверки <strong><em>Stylecop</em></strong>.</li>
-<li>Company information - думаю и так все понятно</li>
-<li>Hungarian - по умолчанию венгерский стиль отключен, но на этой вкладке вы можете добавить исключения.</li>
+<li>Клик правой кнопкой мыши выбираем раздел <code>StyleCop Settings</code>
+<img src="http://4.bp.blogspot.com/-Ff4lI2D2Vt8/UzhuaRggbMI/AAAAAAAAA_8/GdbfdLYTOtM/s1600/2.png" alt="pic_1" /></li>
 </ul>
 
+
+<p>Разберем каждую вкладку в отдельности
+ * Rules - правила настройки <strong><em>Stylecop</em></strong>
+ * Переходим на вкладку <code>Settings Files</code>
+  * 1-ый радиобаттон - не использовать наследование настроек stylecop в солюшене и в проектах
+  * 2-ой - поддержка наследования/переопределения файлов настроек. Т.е файл с настройками лежащий на уровне выше имеет выше приоритет. Если вы хотите изменить настройки для всех проектов сразу, вам нужно перейти на эту вкладку, нажать &ldquo;Edit&rdquo;, и вы увидите окно файла конфигурации с настройками.
+  * 3-й - мерж настроек с указанным файлом.
+  <img src="http://1.bp.blogspot.com/-zSzjZtQ2K2k/UzhiQvLTXaI/AAAAAAAAA_s/twkcNLtIRYQ/s1600/1.png" alt="pic_2" />
+  * Options - настройки обновления и выбор языка
+  * Spelling - сюда можно добавить слова исключения при проверки <strong><em>Stylecop</em></strong>.
+  * Company information - думаю и так все понятно
+  * Hungarian - по умолчанию венгерский стиль отключен, но на этой вкладке вы можете добавить исключения.</p>
 
 <p>Больше правил и настроек <strong><em>Stylecop</em></strong> вы можете найти на <a href="http://www.stylecop.com/docs/">официальном сайте программы</a>. Так же там есть Rule Suppressions, но лучше ими не злоупотреблять.</p>
 
