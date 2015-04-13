@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Chromium | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/chromium/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2015-04-10T13:51:17+00:00</updated>
+  <updated>2015-04-13T13:08:23+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -18,9 +18,94 @@
     <link href="http://alfilatov.com/blog/2014/06/27/google-chrome/"/>
     <updated>2014-06-27T00:00:00+00:00</updated>
     <id>http://alfilatov.com/blog/2014/06/27/google-chrome</id>
-    <content type="html"><![CDATA[<div class='post'>
-В интернете много сайтов на которых реализована возможность листать страницу вверх без помощи мыши или полосы прокрутки. Но в то же время еще есть сайты где такой реализации нет. &#8220;Почему бы не попробовать написать скрипт который бы добавлял такую кнопку на все сайты?&#8221; - подумал я и принялся за реализацию. Такие скрипты называются пользовательскими и имеют расширение *.user.js. Почитать к примеру можно на <a href="http://habrahabr.ru/post/129343/">хабре</a>. К сожалению без &#8220;подводных камней&#8221; не обходится. Существуют некоторые различия в реализации userjs под разные браузеры. Я остановлюсь на описании реализации нашего userJS как расширения для браузера Google Chrome.<br /><a name='more'></a><br /><h2>manifest.json</h2>Обязательным для расширения Google Chrome является файл <b>manifest.json</b> в котором описываются параметры, пути к внешним файлам (*.js, *.css и др.), поддержка версии и т.п. для расширения. Подробнее о файле можно почитать <a href="https://developer.chrome.com/extensions/manifest">тут</a>. В нашем случае файл manifest.json выглядит следующим образом:<br /><pre style="background: rgba(238,238,238,0.92); color: black;">{<br />    <span style="color: #009933;">"manifest_version"</span>: <span style="color: #0066ff;">2</span>,<br />    <span style="color: #009933;">"content_scripts"</span>: [ {<br />        <span style="color: #009933;">"exclude_globs"</span>:    [  ],<br />        <span style="color: #009933;">"include_globs"</span>:    [ <span style="color: #009933;">"*"</span> ],<br />        <span style="color: #009933;">"js"</span>:               [ <span style="color: #009933;">"jquery.js"</span>, <span style="color: #009933;">"backTopUserJS.user.js"</span> ],<br />        <span style="color: #009933;">"css"</span>:              [ <span style="color: #009933;">"css/style.css"</span> ],<br />        <span style="color: #009933;">"matches"</span>:          [   <span style="color: #009933;">"http://*/*"</span>,<br />                                <span style="color: #009933;">"https://*/*"</span><br />                            ],<br />        <span style="color: #009933;">"run_at"</span>: <span style="color: #009933;">"document_end"</span><br />    } ],<br />    <span style="color: #009933;">"converted_from_user_script"</span>: <span style="color: #9700cc;">true</span>,<br />    <span style="color: #009933;">"description"</span>:  <span style="color: #009933;">"Back top userscript extension for google chrome"</span>,<br />    <span style="color: #009933;">"name"</span>:         <span style="color: #009933;">"backTopUserJS"</span>,<br />    <span style="color: #009933;">"version"</span>:      <span style="color: #009933;">"1"</span><br />}<br /></pre><br />Для удобства мы используем js библиотеку JQuery которую положили рядом с файлом manifest.json и основным файлом скрипта (в нашем случае это <b>backTopUserJS.user.js</b>). Его содержимое следующее: <br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="color: #0066ff; font-style: italic;">// ==UserScript==</span><br /><span style="color: #0066ff; font-style: italic;">// @name backTopUserJS</span><br /><span style="color: #0066ff; font-style: italic;">// @author Aleksandr Filatov</span><br /><span style="color: #0066ff; font-style: italic;">// @license MIT</span><br /><span style="color: #0066ff; font-style: italic;">// @version 1.0</span><br /><span style="color: #0066ff; font-style: italic;">// ==/UserScript==</span><br /><br /><span style="font-weight: 700;">function</span> <span style="color: #ff8000;">main</span>() {<br />    <span style="font-weight: 700;">var</span> disp <span style="color: blue;">=</span> <span style="color: blue;">$</span>(<span style="color: #3333ff; font-weight: 700;">window</span>).scrollTop() <span style="color: blue;">&gt;</span> <span style="color: #0066ff;">400</span> ? <span style="color: #009933;">'block'</span> : <span style="color: #009933;">'none'</span>;<br />    <span style="font-weight: 700;">var</span> <span style="color: blue;">$</span>upButton <span style="color: blue;">=</span> <span style="color: blue;">$</span>(<span style="color: #009933;">'&lt;div class="up-button" title="Наверх" style="display:'</span> <span style="color: blue;">+</span> disp <span style="color: blue;">+</span> <span style="color: #009933;">'"&gt;Наверх&lt;/div&gt;'</span>);<br /><br />    <span style="color: blue;">$</span>(<span style="color: #3333ff; font-weight: 700;">document</span>).<span style="color: #3333ff; font-weight: 700;">find</span>(<span style="color: #009933;">'body'</span>).append(<span style="color: blue;">$</span>upButton);<br />    <span style="color: blue;">$</span>upButton.<span style="color: #3333ff; font-weight: 700;">click</span>(<span style="font-weight: 700;">function</span> () {<br />        <span style="color: blue;">$</span>(<span style="color: #009933;">'html, body'</span>).animate({ scrollTop: <span style="color: #0066ff;">0</span> }, <span style="color: #009933;">'slow'</span>);<br />    });<br /><br />    <span style="color: blue;">$</span>(<span style="color: #3333ff; font-weight: 700;">window</span>).<span style="color: #3333ff; font-weight: 700;">scroll</span>(<span style="font-weight: 700;">function</span> () {<br />        <span style="color: blue;">if</span> (<span style="color: blue;">$</span>(<span style="color: #3333ff; font-weight: 700;">window</span>).scrollTop() <span style="color: blue;">&gt;</span> <span style="color: #0066ff;">400</span>) <span style="color: blue;">$</span>upButton.fadeIn(<span style="color: #009933;">'slow'</span>);<br />        <span style="color: blue;">else</span> <span style="color: blue;">$</span>upButton.fadeOut(<span style="color: #009933;">'slow'</span>);<br />    });<br />};<br /><br /><span style="font-weight: 700;">var</span> script <span style="color: blue;">=</span> <span style="color: #3333ff; font-weight: 700;">document</span>.<span style="color: #3333ff; font-weight: 700;">createElement</span>(<span style="color: #009933;">'script'</span>);<br />script.<span style="color: #3333ff; font-weight: 700;">appendChild</span>(<span style="color: #3333ff; font-weight: 700;">document</span>.<span style="color: #3333ff; font-weight: 700;">createTextNode</span>(<span style="color: #009933;">'('</span><span style="color: blue;">+</span> main <span style="color: blue;">+</span><span style="color: #009933;">')();'</span>));<br />(<span style="color: #3333ff; font-weight: 700;">document</span>.<span style="color: #6782d3;">body</span> <span style="color: blue;">||</span> <span style="color: #3333ff; font-weight: 700;">document</span>.head <span style="color: blue;">||</span> <span style="color: #3333ff; font-weight: 700;">document</span>.<span style="color: #6782d3;">documentElement</span>).<span style="color: #3333ff; font-weight: 700;">appendChild</span>(script);<br /></pre><br />Думаю скрипт достаточно понятен, чтобы его подробно рассматривать. Пояснить стоит лишь последние 3 строчки. На самом деле это мелкий хак, который вставляет наш скрипт в код страницы сайта. Если кто-то из вас найдет способ лучше можете написать к комментах свои фиксы :)<br /><h2>Установка расширения в браузере</h2><div>В Google Chrome можно устанавливать пользовательские скрипты, аналогично другим браузерам, но поскольку Google печется о нашей с вами безопасности, то их приходится оборачивать в расширения для браузера. Разберем установку по шагам.</div><h3>Шаг 1.</h3><div>Создаем папку для нашего расширения например так C:\MyChromeExtensionUserJS</div><h3>Шаг 2.</h3><div>Для каждого расширения создаем свою директорию например в нашем случае назовем ее так C:\MyChromeExtensionUserJS\backTopUserJS&#46; Добавляем файлы расширения в эту директорию.</div><h3>Шаг 3.</h3><div>Заходим &#8220;О браузере Google Chrome&#8221; -&gt; вкладка &#8220;Расширения&#8221; или в адресной строке пишем chrome://extensions/</div><h3>Шаг 4.</h3><div>Ставим галочку &#8220;Режим разработчика&#8221;</div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-bax0UMkP6dU/U60tEjgXiLI/AAAAAAAABCQ/MRKVYzCoHjc/s1600/qwerty.png" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img border="0" src="http://1.bp.blogspot.com/-bax0UMkP6dU/U60tEjgXiLI/AAAAAAAABCQ/MRKVYzCoHjc/s1600/qwerty.png" height="84" width="640" /></a></div><br /><br /><br /><br /><br /><br /><br /><h3>Шаг 5.</h3><div>Нажимаем кнопку &#8220;Загрузить распакованное расширение&#8221; и выбираем директорию нашего расширения. Нажимаем &#8220;OK&#8221;.</div><h3>Шаг 6.</h3><div>Расширение установлено и готово к работе. Чтобы обновить расширения после того как вы внесли в него изменения достаточно просто нажать кнопку &#8220;Обновить расширение&#8221; или в режиме разработчика сочетание клавиш Ctrl+R.</div><div><h2>Итог</h2></div><div>Посмотреть исходники скрипта можно на <a href="https://github.com/greybax/backTopUserJS">github</a>. Скрипт не претендует на звание идеального, а служит лишь примером и толчком к написанию собственных пользовательских скриптов для Google Chrome.</div></div>
+    <content type="html"><![CDATA[<p>В интернете много сайтов на которых реализована возможность пролистывать страницу вверх без помощи мыши или полосы прокрутки. Но в то же время еще есть сайты где такой реализации нет. &ldquo;Почему бы не попробовать написать скрипт который бы добавлял такую кнопку на все сайты?&rdquo; - подумал я и принялся за реализацию. Такие скрипты называются пользовательскими и имеют расширение <code>*.user.js</code>. Почитать к примеру можно на <a href="http://habrahabr.ru/post/129343/">хабре</a>. К сожалению без &ldquo;подводных камней&rdquo; не обходится. Существуют некоторые различия в реализации <code>userjs</code> под разные браузеры. Я остановлюсь на описании реализации нашего <code>userjs</code> скрипта как расширения для браузера <code>Google Chrome</code>.</p>
 
+<h3>manifest.json</h3>
+
+<p>Обязательным для расширения <code>Google Chrome</code> является файл <strong><em>manifest.json</em></strong> в котором описываются параметры, пути к внешним файлам (<code>*.js, *.css</code> и др.), поддержка версии и т.п. для расширения. Подробнее о файле можно почитать <a href="https://developer.chrome.com/extensions/manifest">тут</a>. В нашем случае файл <code>manifest.json</code> выглядит следующим образом:</p>
+
+<pre><code class="javascript">{
+    "manifest_version": 2,
+    "content_scripts": [ {
+        "exclude_globs":    [  ],
+        "include_globs":    [ "*" ],
+        "js":               [ "jquery.js", "backTopUserJS.user.js" ],
+        "css":              [ "css/style.css" ],
+        "matches":          [   "http://*/*",
+                                "https://*/*"
+                            ],
+        "run_at": "document_end"
+    } ],
+    "converted_from_user_script": true,
+    "description":  "Back top userscript extension for google chrome",
+    "name":         "backTopUserJS",
+    "version":      "1"
+}
+</code></pre>
+
+<p>Для удобства мы используем библиотеку <code>JQuery</code> которую положили рядом с файлом <code>manifest.json</code> и основным файлом скрипта (в нашем случае это <code>backTopUserJS.user.js</code>). Его содержимое следующее:</p>
+
+<pre><code class="javascript">// ==UserScript==
+// @name backTopUserJS
+// @author Aleksandr Filatov
+// @license MIT
+// @version 1.0
+// ==/UserScript==
+
+function main() {
+    var disp = $(window).scrollTop() &gt; 400 ? 'block' : 'none';
+    var $upButton = $('&lt;div class="up-button" title="Наверх" style="display:' + disp + '"&gt;Наверх&lt;/div&gt;');
+
+    $(document).find('body').append($upButton);
+    $upButton.click(function () {
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
+    });
+
+    $(window).scroll(function () {
+        if ($(window).scrollTop() &gt; 400) $upButton.fadeIn('slow');
+        else $upButton.fadeOut('slow');
+    });
+};
+
+var script = document.createElement('script');
+script.appendChild(document.createTextNode('('+ main +')();'));
+(document.body || document.head || document.documentElement).appendChild(script);
+</code></pre>
+
+<p>Думаю скрипт достаточно понятен, чтобы его подробно рассматривать. Пояснить стоит лишь последние 3 строчки. На самом деле это мелкий хак, который вставляет наш скрипт в код страницы сайта. Если кто-то из вас найдет способ лучше можете написать к комментах свои фиксы :)</p>
+
+<h3>Установка расширения в браузере</h3>
+
+<p>В <code>Google Chrome</code> можно устанавливать пользовательские скрипты, аналогично другим браузерам, но поскольку Google печется о нашей с вами безопасности, то их приходится оборачивать в расширения для браузера. Разберем установку по шагам.</p>
+
+<h4>Шаг 1</h4>
+
+<p>Создаем папку для нашего расширения например так <code>C:\MyChromeExtensionUserJS</code></p>
+
+<h4>Шаг 2</h4>
+
+<p>Для каждого расширения создаем свою директорию например в нашем случае назовем ее так ```C:\MyChromeExtensionUserJS\backTopUserJS````. Добавляем файлы расширения в эту директорию.</p>
+
+<h4>Шаг 3</h4>
+
+<p>Заходим &ldquo;О браузере Google Chrome&rdquo; -> вкладка &ldquo;Расширения&rdquo; или в адресной строке пишем <code>chrome://extensions/</code></p>
+
+<h4>Шаг 4</h4>
+
+<p>Ставим галочку &ldquo;Режим разработчика&rdquo;
+<img src="http://1.bp.blogspot.com/-bax0UMkP6dU/U60tEjgXiLI/AAAAAAAABCQ/MRKVYzCoHjc/s1600/qwerty.png" alt="developer_mode" /></p>
+
+<h4>Шаг 5</h4>
+
+<p>Нажимаем кнопку &ldquo;Загрузить распакованное расширение&rdquo; и выбираем директорию нашего расширения. Нажимаем &ldquo;OK&rdquo;.</p>
+
+<h4>Шаг 6</h4>
+
+<p>Расширение установлено и готово к работе. Чтобы обновить расширения после того как вы внесли в него изменения достаточно просто нажать кнопку &ldquo;Обновить расширение&rdquo; или в режиме разработчика сочетание клавиш <code>Ctrl+R</code>.</p>
+
+<h3>Итог</h3>
+
+<p>Посмотреть исходники скрипта можно на <a href="https://github.com/greybax/backTopUserJS">github</a>. Скрипт не претендует на звание идеального, а служит лишь примером и толчком к написанию собственных пользовательских скриптов для <code>Google Chrome</code>.</p>
 ]]></content>
   </entry>
   
@@ -29,9 +114,24 @@
     <link href="http://alfilatov.com/blog/2012/12/13/yandex-browser-it-need-or-not/"/>
     <updated>2012-12-13T00:00:00+00:00</updated>
     <id>http://alfilatov.com/blog/2012/12/13/yandex-browser-it-need-or-not</id>
-    <content type="html"><![CDATA[<div class='post'>
-<div style="text-align: justify;"><blockquote class="tr_bq" style="text-align: right;"><span style="background-color: white; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: left;">Yandex.Browser with a full set of features designed specifically for the English-speaking users will be released soon. (с)</span></blockquote><div class="separator" style="clear: both; text-align: center;"><a href="http://yabs.yandex.ru/count/AI9QGHYaezm40002Zhqbnmm5KPK2cmPfMeYosr1G0vAjXGQgfZIAe4K6Kge2fPOOP92W7mBUaRpGIMG6an11hlnExYmQdEFG1B41VmS0" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://yabs.yandex.ru/count/AI9QGHYaezm40002Zhqbnmm5KPK2cmPfMeYosr1G0vAjXGQgfZIAe4K6Kge2fPOOP92W7mBUaRpGIMG6an11hlnExYmQdEFG1B41VmS0" /></a></div>Not so early, Yandex company on yours conference is <a href="http://fotki.yandex.ru/users/ya-events/album/136128/" target="_blank">YaC 2012</a> present the <a href="http://browser.yandex.com/" target="_blank">Yandex browser 1.0</a>. Let&#8217;s show it inside.<br /><img alt="Новый Яндекс.Браузер" src="http://yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" /><br /><img alt="Новый Яндекс.Браузер" class="b-icon" src="http://yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" /></div><div style="text-align: justify;">The engine of this thing is open source&nbsp; browser Chromium. Some intresting, that Some sites detected that it&#8217;s 19 version of google chr<span style="font-family: inherit;">ome, but at the moment of this post Google Chrome has 23.xxx version :). String of search find in Yandex on default. So, already we have some Google and some Yandex. &#8220;Yeah.. Not enough Opera&#8221; - thinking guys from Yandex and added Turbo technology by Opera. It&#8217;s mix equals to Yandex browser. Some people have</span> a nick &#8220;Stringy&#8221; for the specific logo.</div><br /><a name='more'></a><br /><br /><div style="text-align: justify;">And we can see a mix of modern teccnology. Therefore, on my mind it&#8217;s &#8220;discovered bicycle&#8221; (it is russian flying phrase). At the first time, we can&#8217;t see new&nbsp;any&nbsp;features.&nbsp;Of all proposed <a href="http://browser.yandex.com/" target="_blank">here</a>,&nbsp;I would single out only the following:</div><ol><a href="http://browser.yandex.com/i/win-feature-turbo-com-eng.png" imageanchor="1" style="clear: right; float: right; margin-bottom: 1em; margin-left: 1em; text-align: center;"><img border="0" src="http://browser.yandex.com/i/win-feature-turbo-com-eng.png" height="180" width="320" /></a></ol><span style="font-family: inherit; text-align: justify;">&nbsp;1. &nbsp;New view of URL. Now url will not so lenght. It&#8217;s will be name of web page look like bread crumbs.</span><br /><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><br /></div><span style="font-family: inherit; text-align: justify;"></span><br /><div><span style="font-family: inherit; text-align: justify;"><span style="font-family: inherit; text-align: justify;"><br /></span></span></div><span style="font-family: inherit; text-align: justify;"></span><br /><div><span style="font-family: inherit; text-align: justify;"><span style="font-family: inherit; text-align: justify;"><br /></span></span></div><span style="font-family: inherit; text-align: justify;"></span><div><span style="font-family: inherit; text-align: justify;"><span style="font-family: inherit; text-align: justify;"><br /></span></span></div><span style="font-family: inherit; text-align: justify;">2. New menu of fast link - &#8220;Tableu&#8221;. F</span><span style="background-color: white; font-size: 14px; line-height: 18px; text-align: justify;"><span style="font-family: inherit;">avorite sites will only be a click away and colorful widgets will show you up-to-date information about the weather and traffic, as well as social network </span><span style="font-family: Arial, Helvetica, sans-serif;">notifications.</span></span><a href="http://browser.yandex.com/i/win-feature-tablo-com-eng.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em; text-align: center;"><img border="0" src="http://browser.yandex.com/i/win-feature-tablo-com-eng.png" height="180" width="320" /></a><br /><div><br /><span style="font-family: inherit; text-align: justify;">3. Smartbox -&nbsp;</span><span style="background-color: white; font-family: inherit; font-size: 14px; line-height: 18px; text-align: justify;">Enter your searches and websites into the Smartbox. Search suggestions will help you search more quickly and autocorrect errors.</span><br /><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: justify;"><span style="clear: right; float: right; font-family: inherit; margin-bottom: 1em; margin-left: 1em;"><img border="0" src="http://browser.yandex.com/i/win-feature-smartsearch-com-eng.png" height="180" width="320" /></span></div><div class="separator" style="clear: both; text-align: justify;"><br /></div><div style="text-align: justify;"><span style="font-family: inherit;">And so on, I think that guys from Yandex must have hard working on th</span>is thing, and may be some version their have a fortune.</div><div style="text-align: justify;"><br /></div></div></div>
+    <content type="html"><![CDATA[<p>Yandex.Browser with a full set of features designed specifically for the English-speaking users will be released soon. (с)
+<img src="http://yabs.yandex.ru/count/AI9QGHYaezm40002Zhqbnmm5KPK2cmPfMeYosr1G0vAjXGQgfZIAe4K6Kge2fPOOP92W7mBUaRpGIMG6an11hlnExYmQdEFG1B41VmS0" alt="yandex_browser_logo" />
+Not so early, Yandex company on yours conference is <a href="http://fotki.yandex.ru/users/ya-events/album/136128/">YaC 2012</a> presented the <a href="http://browser.yandex.com/">Yandex browser 1.0</a>. Let&rsquo;s show it inside.</p>
 
+<p><img src="http://yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" alt="Новый Яндекс.Браузер" /></p>
+
+<p>The engine of this thing is open source browser <code>Chromium</code>. Some intresting, that Some sites detected that it&rsquo;s 19 version of google chrome, but at the moment of this post <code>Google Chrome</code> has 23.xxx version. String of search find in Yandex on default. So, already we have some Google and some Yandex. &ldquo;Yeah.. Not enough Opera&rdquo; - thinking guys from Yandex and added Turbo technology by Opera. It&rsquo;s mix equals to Yandex browser. Some people have a nick &ldquo;Stringy&rdquo; for the specific logo.</p>
+
+<p>And we can see a mix of modern technology. Therefore, on my mind it&rsquo;s &ldquo;discovered bicycle&rdquo; (it is russian flying phrase). At the first time, we can&rsquo;t see new many features. Of all proposed <a href="http://browser.yandex.com/">here</a>, I would single out only the following:</p>
+
+<ul>
+<li>New view of URL. Now url will not so lenght. It&rsquo;s will be name of web page look like bread crumbs</li>
+<li>New menu of fast link - &ldquo;Tableu&rdquo;. Favorite sites will only be a click away and colorful widgets will show you up-to-date information about the weather and traffic, as well as social network notifications.</li>
+<li>Smartbox - Enter your searches and websites into the Smartbox. Search suggestions will help you search more quickly and autocorrect errors.</li>
+</ul>
+
+
+<p>And so on, I think that guys from Yandex must have hard working on th</span>is thing, and may be some version their have a fortune.</p>
 ]]></content>
   </entry>
   
