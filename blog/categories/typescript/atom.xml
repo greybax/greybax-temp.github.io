@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Typescript | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/typescript/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2015-04-13T13:11:50+00:00</updated>
+  <updated>2015-04-13T13:19:18+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -18,7 +18,7 @@
     <link href="http://alfilatov.com/blog/2014/12/02/diebaghghingh-typescript-failov-v-emuliatorie-devextreme/"/>
     <updated>2014-12-02T19:45:38+00:00</updated>
     <id>http://alfilatov.com/blog/2014/12/02/diebaghghingh-typescript-failov-v-emuliatorie-devextreme</id>
-    <content type="html"><![CDATA[<p>Недавно встала задача добавить поддержку debugging'а файлов <code>*.ts</code> в браузере. В нашем случае это Google Chrome.
+    <content type="html"><![CDATA[<p>Недавно встала задача добавить поддержку debugging&#8217;а файлов <code>*.ts</code> в браузере. В нашем случае это Google Chrome.
 Постараюсь как можно подробнее описать этот процесс.</p>
 
 <ol>

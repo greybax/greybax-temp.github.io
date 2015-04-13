@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Stylecop | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/stylecop/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2015-04-13T13:11:50+00:00</updated>
+  <updated>2015-04-13T13:19:18+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -55,13 +55,15 @@
 
 <p>Если вы хотите запускать <strong><em>StyleCop</em></strong> при каждом билде проекта, вам следует отредактировать <code>.csproj</code> file. В конец файла следует добавить следующую строку (для StyleCop v4.7):</p>
 
-<p><code>&lt;Import Project="$(ProgramFiles)\MSBuild\StyleCop\v4.7\StyleCop.targets" /&gt;</code></p>
+<pre><code class="xml">&lt;Import Project="$(ProgramFiles)\MSBuild\StyleCop\v4.7\StyleCop.targets" /&gt;
+</code></pre>
 
 <p><img src="http://1.bp.blogspot.com/-SDkTXb4NLbE/Uzhvc4Dig2I/AAAAAAAABAE/RhC66zW-saI/s1600/3.png" alt="pic_3" /></p>
 
 <p>После этого вы будете получать <code>Warnings</code> в коде после билда о всех несоответствиях вашего кода с настройками <strong><em>Stylecop</em></strong>. Если вы хотите получать <code>Errors</code>, вам следует добавить в раздел <code>PropertyGroup</code> следующую строку:</p>
 
-<p><code>&lt;StyleCopTreatErrorsAsWarnings&gt;false&lt;/StyleCopTreatErrorsAsWarnings&gt;</code></p>
+<pre><code class="xml">&lt;StyleCopTreatErrorsAsWarnings&gt;false&lt;/StyleCopTreatErrorsAsWarnings&gt;
+</code></pre>
 
 <p><img src="http://1.bp.blogspot.com/-9SnH6nIlF9w/Uzhw2FtausI/AAAAAAAABAQ/KSjgBAcDLH8/s1600/4.png" alt="pic_4" /></p>
 ]]></content>

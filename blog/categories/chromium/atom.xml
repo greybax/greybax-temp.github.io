@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Chromium | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/chromium/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2015-04-13T13:11:50+00:00</updated>
+  <updated>2015-04-13T13:19:18+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -84,7 +84,7 @@ script.appendChild(document.createTextNode('('+ main +')();'));
 
 <h4>Шаг 2</h4>
 
-<p>Для каждого расширения создаем свою директорию например в нашем случае назовем ее так ```C:\MyChromeExtensionUserJS\backTopUserJS````. Добавляем файлы расширения в эту директорию.</p>
+<p>Для каждого расширения создаем свою директорию например в нашем случае назовем ее так <code>C:\MyChromeExtensionUserJS\backTopUserJS</code>. Добавляем файлы расширения в эту директорию.</p>
 
 <h4>Шаг 3</h4>
 

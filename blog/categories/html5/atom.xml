@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Html5 | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/html5/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2015-04-13T13:11:50+00:00</updated>
+  <updated>2015-04-13T13:19:18+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -84,7 +84,7 @@ document.body.appendChild(canvas);
 <h2>Этап 2. Добавление основной функции-цикла</h2>
 
 <p>Основной цикл необходим для обновления и рендера игры.
-```javascript
+&#8220;`javascript
 var lastTime;
 function main() {
     var now = Date.now();
@@ -98,7 +98,7 @@ requestAnimFrame(main);
 </code></pre>
 
 <p>}
-```
+&#8220;`
 Здесь вызываем функцию requestAnimFrame (к сожалению, <a href="http://caniuse.com/#feat=requestanimationframe">поддерживается</a> не во всех браузерах), которая генерирует 60 фреймов/секунду (как это было описано выше).</p>
 
 <h2>Этап 3. Инициализация и рендер объектов и ресурсов игры</h2>
@@ -116,7 +116,7 @@ resources.load([
 resources.onReady(init);
 </code>
 В функции <code>init</code> загружаем мир и добавлеем хэндлер кнопки <code>reset</code>, после game over.
-```javascript
+&#8220;`javascript
 function init() {
     terrainPattern = ctx.createPattern(resources.get(&lsquo;img/terrain.png&rsquo;), &lsquo;repeat&rsquo;);</p>
 
@@ -130,7 +130,7 @@ main();
 </code></pre>
 
 <p>}
-```</p>
+&#8220;`</p>
 
 <h3>Начальное состояние</h3>
 
@@ -193,8 +193,8 @@ switch (getRandomInt(0,4)) {
 <h2>Этап 4. Обработка событий ввода пользователя</h2>
 
 <p>Наш герой должен уметь двигаться вверх, вниз, влево, вправо. Соответственно привожу ниже реализацию данного решения
-```javascript
-    if (input.isDown(&lsquo;DOWN&rsquo;) || input.isDown(&rsquo;s')) {
+&#8220;`javascript
+    if (input.isDown(&lsquo;DOWN&rsquo;) || input.isDown(&rsquo;s&#8217;)) {
         player.pos[1] += playerSpeed * dt;
             player.sprite = player.down;
     }</p>
@@ -348,7 +348,7 @@ player.pos = [canvas.width / 2, canvas.height / 2];
 </code></pre>
 
 <p>}
-```</p>
+&#8220;`</p>
 
 <h2>Заключение</h2>
 

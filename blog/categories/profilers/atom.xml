@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Profilers | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/profilers/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2015-04-13T13:11:50+00:00</updated>
+  <updated>2015-04-13T13:19:18+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -129,12 +129,12 @@ function profile(func) {
 }
 </code>
 Вызываем функцию профайлер так
-```javascript
+&#8220;`javascript
 code_to_measure = profile(code_to_measure);
 code_to_measure();</p>
 
 <blockquote><p>code_to_measure 10 ms
-```</p></blockquote>
+&#8220;`</p></blockquote>
 
 <h2>Итог</h2>
 
