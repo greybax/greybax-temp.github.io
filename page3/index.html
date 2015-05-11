@@ -9,7 +9,7 @@
   <meta name="author" content="Aleksandr Filatov">
 
   
-  <meta name="description" content="Статья посвящена в первую очередь изучающим Javascript. Некоторые из вещей могут показаться очевидными, но я надеюсь, что читатель найдет что-то &hellip;">
+  <meta name="description" content="В интернете много сайтов на которых реализована возможность пролистывать страницу вверх без помощи мыши или полосы прокрутки. Но в то же время еще &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -62,6 +62,173 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/06/27/google-chrome/">Пишем расширение для браузера Google Chrome</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-27T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>В интернете много сайтов на которых реализована возможность пролистывать страницу вверх без помощи мыши или полосы прокрутки. Но в то же время еще есть сайты где такой реализации нет. &ldquo;Почему бы не попробовать написать скрипт который бы добавлял такую кнопку на все сайты?&rdquo; - подумал я и принялся за реализацию. Такие скрипты называются пользовательскими и имеют расширение <code>*.user.js</code>. Почитать к примеру можно на <a href="http://habrahabr.ru/post/129343/">хабре</a>. К сожалению без &ldquo;подводных камней&rdquo; не обходится. Существуют некоторые различия в реализации <code>userjs</code> под разные браузеры. Я остановлюсь на описании реализации нашего <code>userjs</code> скрипта как расширения для браузера <code>Google Chrome</code>.</p>
+
+<h3>manifest.json</h3>
+
+<p>Обязательным для расширения <code>Google Chrome</code> является файл <strong><em>manifest.json</em></strong> в котором описываются параметры, пути к внешним файлам (<code>*.js, *.css</code> и др.), поддержка версии и т.п. для расширения. Подробнее о файле можно почитать <a href="https://developer.chrome.com/extensions/manifest">тут</a>. В нашем случае файл <code>manifest.json</code> выглядит следующим образом:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="s2">&quot;manifest_version&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;content_scripts&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">{</span>
+</span><span class='line'>        <span class="s2">&quot;exclude_globs&quot;</span><span class="o">:</span>    <span class="p">[</span>  <span class="p">],</span>
+</span><span class='line'>        <span class="s2">&quot;include_globs&quot;</span><span class="o">:</span>    <span class="p">[</span> <span class="s2">&quot;*&quot;</span> <span class="p">],</span>
+</span><span class='line'>        <span class="s2">&quot;js&quot;</span><span class="o">:</span>               <span class="p">[</span> <span class="s2">&quot;jquery.js&quot;</span><span class="p">,</span> <span class="s2">&quot;backTopUserJS.user.js&quot;</span> <span class="p">],</span>
+</span><span class='line'>        <span class="s2">&quot;css&quot;</span><span class="o">:</span>              <span class="p">[</span> <span class="s2">&quot;css/style.css&quot;</span> <span class="p">],</span>
+</span><span class='line'>        <span class="s2">&quot;matches&quot;</span><span class="o">:</span>          <span class="p">[</span>   <span class="s2">&quot;http://*/*&quot;</span><span class="p">,</span>
+</span><span class='line'>                                <span class="s2">&quot;https://*/*&quot;</span>
+</span><span class='line'>                            <span class="p">],</span>
+</span><span class='line'>        <span class="s2">&quot;run_at&quot;</span><span class="o">:</span> <span class="s2">&quot;document_end&quot;</span>
+</span><span class='line'>    <span class="p">}</span> <span class="p">],</span>
+</span><span class='line'>    <span class="s2">&quot;converted_from_user_script&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;description&quot;</span><span class="o">:</span>  <span class="s2">&quot;Back top userscript extension for google chrome&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;name&quot;</span><span class="o">:</span>         <span class="s2">&quot;backTopUserJS&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;version&quot;</span><span class="o">:</span>      <span class="s2">&quot;1&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Для удобства мы используем библиотеку <code>JQuery</code> которую положили рядом с файлом <code>manifest.json</code> и основным файлом скрипта (в нашем случае это <code>backTopUserJS.user.js</code>). Его содержимое следующее:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// ==UserScript==</span>
+</span><span class='line'><span class="c1">// @name backTopUserJS</span>
+</span><span class='line'><span class="c1">// @author Aleksandr Filatov</span>
+</span><span class='line'><span class="c1">// @license MIT</span>
+</span><span class='line'><span class="c1">// @version 1.0</span>
+</span><span class='line'><span class="c1">// ==/UserScript==</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">disp</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">scrollTop</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">400</span> <span class="o">?</span> <span class="s1">&#39;block&#39;</span> <span class="o">:</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">$upButton</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;up-button&quot; title=&quot;Наверх&quot; style=&quot;display:&#39;</span> <span class="o">+</span> <span class="nx">disp</span> <span class="o">+</span> <span class="s1">&#39;&quot;&gt;Наверх&lt;/div&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">$upButton</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">$upButton</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;html, body&#39;</span><span class="p">).</span><span class="nx">animate</span><span class="p">({</span> <span class="nx">scrollTop</span><span class="o">:</span> <span class="mi">0</span> <span class="p">},</span> <span class="s1">&#39;slow&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">scroll</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">scrollTop</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">400</span><span class="p">)</span> <span class="nx">$upButton</span><span class="p">.</span><span class="nx">fadeIn</span><span class="p">(</span><span class="s1">&#39;slow&#39;</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">else</span> <span class="nx">$upButton</span><span class="p">.</span><span class="nx">fadeOut</span><span class="p">(</span><span class="s1">&#39;slow&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">script</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">script</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="s1">&#39;(&#39;</span><span class="o">+</span> <span class="nx">main</span> <span class="o">+</span><span class="s1">&#39;)();&#39;</span><span class="p">));</span>
+</span><span class='line'><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">head</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Думаю скрипт достаточно понятен, чтобы его подробно рассматривать. Пояснить стоит лишь последние 3 строчки. На самом деле это мелкий хак, который вставляет наш скрипт в код страницы сайта. Если кто-то из вас найдет способ лучше можете написать к комментах свои фиксы :)</p>
+
+<h3>Установка расширения в браузере</h3>
+
+<p>В <code>Google Chrome</code> можно устанавливать пользовательские скрипты, аналогично другим браузерам, но поскольку Google печется о нашей с вами безопасности, то их приходится оборачивать в расширения для браузера. Разберем установку по шагам.</p>
+
+<h4>Шаг 1</h4>
+
+<p>Создаем папку для нашего расширения например так <code>C:\MyChromeExtensionUserJS</code></p>
+
+<h4>Шаг 2</h4>
+
+<p>Для каждого расширения создаем свою директорию например в нашем случае назовем ее так <code>C:\MyChromeExtensionUserJS\backTopUserJS</code>. Добавляем файлы расширения в эту директорию.</p>
+
+<h4>Шаг 3</h4>
+
+<p>Заходим &ldquo;О браузере Google Chrome&rdquo; -> вкладка &ldquo;Расширения&rdquo; или в адресной строке пишем <code>chrome://extensions/</code></p>
+
+<h4>Шаг 4</h4>
+
+<p>Ставим галочку &ldquo;Режим разработчика&rdquo;
+<img src="http://1.bp.blogspot.com/-bax0UMkP6dU/U60tEjgXiLI/AAAAAAAABCQ/MRKVYzCoHjc/s1600/qwerty.png" alt="developer_mode" /></p>
+
+<h4>Шаг 5</h4>
+
+<p>Нажимаем кнопку &ldquo;Загрузить распакованное расширение&rdquo; и выбираем директорию нашего расширения. Нажимаем &ldquo;OK&rdquo;.</p>
+
+<h4>Шаг 6</h4>
+
+<p>Расширение установлено и готово к работе. Чтобы обновить расширения после того как вы внесли в него изменения достаточно просто нажать кнопку &ldquo;Обновить расширение&rdquo; или в режиме разработчика сочетание клавиш <code>Ctrl+R</code>.</p>
+
+<h3>Итог</h3>
+
+<p>Посмотреть исходники скрипта можно на <a href="https://github.com/greybax/backTopUserJS">github</a>. Скрипт не претендует на звание идеального, а служит лишь примером и толчком к написанию собственных пользовательских скриптов для <code>Google Chrome</code>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -349,57 +516,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/12/13/yandex-browser-it-need-or-not/">Yandex Browser? It's Need or Not?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-13T00:00:00+00:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Yandex.Browser with a full set of features designed specifically for the English-speaking users will be released soon. (с)
-<img src="http://yabs.yandex.ru/count/AI9QGHYaezm40002Zhqbnmm5KPK2cmPfMeYosr1G0vAjXGQgfZIAe4K6Kge2fPOOP92W7mBUaRpGIMG6an11hlnExYmQdEFG1B41VmS0" alt="yandex_browser_logo" />
-Not so early, Yandex company on yours conference is <a href="http://fotki.yandex.ru/users/ya-events/album/136128/">YaC 2012</a> presented the <a href="http://browser.yandex.com/">Yandex browser 1.0</a>. Let&rsquo;s show it inside.</p>
-
-<p>The engine of this thing is open source browser <code>Chromium</code>. Some intresting, that Some sites detected that it&rsquo;s 19 version of google chrome, but at the moment of this post <code>Google Chrome</code> has 23.xxx version. String of search find in Yandex on default. So, already we have some Google and some Yandex. &ldquo;Yeah.. Not enough Opera&rdquo; - thinking guys from Yandex and added Turbo technology by Opera. It&rsquo;s mix equals to Yandex browser. Some people have a nick &ldquo;Stringy&rdquo; for the specific logo.</p>
-
-<p>And we can see a mix of modern technology. Therefore, on my mind it&rsquo;s &ldquo;discovered bicycle&rdquo; (it is russian flying phrase). At the first time, we can&rsquo;t see new many features. Of all proposed <a href="http://browser.yandex.com/">here</a>, I would single out only the following:</p>
-
-<ul>
-<li>New view of URL. Now url will not so lenght. It&rsquo;s will be name of web page look like bread crumbs</li>
-<li>New menu of fast link - &ldquo;Tableu&rdquo;. Favorite sites will only be a click away and colorful widgets will show you up-to-date information about the weather and traffic, as well as social network notifications.</li>
-<li>Smartbox - Enter your searches and websites into the Smartbox. Search suggestions will help you search more quickly and autocorrect errors.</li>
-</ul>
-
-
-<p>And so on, I think that guys from Yandex must have hard working on th</span>is thing, and may be some version their have a fortune.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="4">&larr; Older</a>
@@ -425,6 +541,10 @@ Not so early, Yandex company on yours conference is <a href="http://fotki.yandex
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/11/poiezdka-v-shri-lanku/">Поездка в Шри-Ланку</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/04/10/poluchaiem-spisok-obrabotchikov-eliemienta-stranitsy/">Получаем список обработчиков элемента в DOM'е</a>
       </li>
     
@@ -438,10 +558,6 @@ Not so early, Yandex company on yours conference is <a href="http://fotki.yandex
     
       <li class="post">
         <a href="/blog/2014/12/09/vpiechatlieniia-ot-piervogho-khakatona/">Впечатления от первого хакатона</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/02/diebaghghingh-typescript-failov-v-emuliatorie-devextreme/">Debugging файлов TypeScript в браузере через эмулятор DevExtreme</a>
       </li>
     
   </ul>
