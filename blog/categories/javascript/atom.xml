@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Javascript | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2015-06-05T08:59:34+00:00</updated>
+  <updated>2015-06-05T09:06:46+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -26,7 +26,7 @@
 превращение:</p>
 
 <ul>
-<li>Переимунуем все <code>.js</code> файлы в <code>.ts</code></li>
+<li>Переименуем все <code>.js</code> файлы в <code>.ts</code></li>
 <li><p>Настраиваем компиляцию из <code>.ts</code> в <code>.js</code></p>
 
 <ul>
