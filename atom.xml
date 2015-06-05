@@ -4,7 +4,7 @@
   <title><![CDATA[Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2015-06-01T08:44:24+00:00</updated>
+  <updated>2015-06-05T08:51:30+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -12,6 +12,54 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Мигрируем Javascript код в TypeScript]]></title>
+    <link href="http://alfilatov.com/blog/2015/06/05/mighriruiem-js-kod-v-typescript/"/>
+    <updated>2015-06-05T13:16:39+00:00</updated>
+    <id>http://alfilatov.com/blog/2015/06/05/mighriruiem-js-kod-v-typescript</id>
+    <content type="html"><![CDATA[<p>Не так давно стояла задача перевести один старый проект из <code>Javascript</code> в
+<code>TypeScript</code>. Хочу поделиться своим опытом такого перехода. Рассмотрим на
+примере разработки в Visual Studio.</p>
+
+<p>Для начала стоит отметить, что такая миграция не является проблемой с точки зрения совместимости, т.к код на <code>Javascript</code> - это синтаксически корректный код на <code>TypeScript</code>.</p>
+
+<p>Итак, выделим основные этапы, после выполнения которых произойдет чудесное
+превращение:</p>
+
+<ol>
+<li>Переимунуем все <code>.js</code> файлы в <code>.ts</code></li>
+<li>Настраиваем компиляцию из <code>.ts</code> в <code>.js</code></li>
+</ol>
+
+
+<p>Для этого нужно скачать и установить <code>TypeScript</code> плагин для студии с <a href="http://www.typescriptlang.org/#Download">официального сайта</a>, позволяющий компилировать <code>.ts</code> файлы в <code>.js</code>.</p>
+
+<ol>
+<li>Устанавливаем определения для библиотек (<code>.d.ts</code>)</li>
+</ol>
+
+
+<p>Коллекция определений библиотек находится в <a href="https://github.com/borisyankov/DefinitelyTyped">открытом доступе</a>
+Определения для <code>javascript</code> библиотек можно установить через <a href="http://definitelytyped.org/tsd/">tsd</a> - это аналог NuGet Package Manager.</p>
+
+<ol>
+<li>Пишем определения для своего кода</li>
+</ol>
+
+
+<p>Это совсем не сложно и делается по аналогии с кучей примеров из <a href="https://github.com/borisyankov/DefinitelyTyped">DefinitelyTyped on GitHub</a>.</p>
+
+<ol>
+<li>Рефакторим чтобы использовать язык <code>TypeScript</code></li>
+</ol>
+
+
+<p>После компиляции проекта в вашем коде будут возникать ошибки, которые слудует исправлять в соответвии с семантикой <code>TypeScript</code>. После исправления всех ошибок вы получите рабочий проект на <code>TypeScript</code> со всеми вытекающими отсюда удобствами.</p>
+
+<p><strong>Итог</strong>: Все, как оказалось невероятно просто, как досчитать до 5! :)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Поездка в Шри-Ланку]]></title>
@@ -1563,23 +1611,6 @@ Not so early, Yandex company on yours conference is <a href="http://fotki.yandex
 
 
 <p>And so on, I think that guys from Yandex must have hard working on th</span>is thing, and may be some version their have a fortune.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[My Contribution in Mozilla Society]]></title>
-    <link href="http://alfilatov.com/blog/2012/12/10/my-contribution-in-mozilla-society/"/>
-    <updated>2012-12-10T00:00:00+00:00</updated>
-    <id>http://alfilatov.com/blog/2012/12/10/my-contribution-in-mozilla-society</id>
-    <content type="html"><![CDATA[<p>It&rsquo;s my first publication on english. And it&rsquo;s blog some training for my english. And so on, in this topic I&rsquo;d like to tell about Mozilla society. And how I become in mozilla contribution list. For me it&rsquo;s very intresting to participate in some activities. But I&rsquo;m not a mozilla evangelist. :)</p>
-
-<p>I think that not secret for each other that mozilla it&rsquo;s global web society where each people can have yours contribution: programming, design sites, translate article on <a href="https://developer.mozilla.org/ru/">mozilla network</a></p>
-
-<p>Site <a href="http://whatcanidoformozilla.org/">what can I do for mozilla</a> help a new people who it&rsquo;s can intrested. If you like makes open source world better, that it&rsquo;s makes interested you. Some of yours can see page with title &ldquo;Our Contributors&rdquo; on menu &ldquo;About Firefox&rdquo; - &ldquo;global society&rdquo; in mozilla products. Perhaps you too would become on this page. It&rsquo;s very easy. There are some advice after this.</p>
-
-<h3>What I can do?</h3>
-
-<p>Translate to russian some topics on <a href="https://developer.mozilla.org/ru/">mozilla network</a> or other resource of this society. If you are developer you can started for fix some minor bugs for Firefox, Thunderbird, and etc. After your review code you can get access to repository with more content. If you think that you makes some good things for society you can send letter to <code>credits@mozilla.org</code> giving your name, email address and a sentence (citation) summarizing your contribution. If it&rsquo;s true you have a lot of chance be on board contribution. And have mental pleasure :)</p>
 ]]></content>
   </entry>
   

@@ -9,7 +9,8 @@
   <meta name="author" content="Aleksandr Filatov">
 
   
-  <meta name="description" content="После зимы всегда хочется на море - туда где тепло и растут пальмы. Погуглив погоду в конце апреля на курортах, мы решили выбраться на Индийский &hellip;">
+  <meta name="description" content="Не так давно стояла задача перевести один старый проект из Javascript в
+TypeScript. Хочу поделиться своим опытом такого перехода. Рассмотрим на &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -62,6 +63,81 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/06/05/mighriruiem-js-kod-v-typescript/">Мигрируем Javascript код в TypeScript</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-06-05T13:16:39+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Не так давно стояла задача перевести один старый проект из <code>Javascript</code> в
+<code>TypeScript</code>. Хочу поделиться своим опытом такого перехода. Рассмотрим на
+примере разработки в Visual Studio.</p>
+
+<p>Для начала стоит отметить, что такая миграция не является проблемой с точки зрения совместимости, т.к код на <code>Javascript</code> - это синтаксически корректный код на <code>TypeScript</code>.</p>
+
+<p>Итак, выделим основные этапы, после выполнения которых произойдет чудесное
+превращение:</p>
+
+<ol>
+<li>Переимунуем все <code>.js</code> файлы в <code>.ts</code></li>
+<li>Настраиваем компиляцию из <code>.ts</code> в <code>.js</code></li>
+</ol>
+
+
+<p>Для этого нужно скачать и установить <code>TypeScript</code> плагин для студии с <a href="http://www.typescriptlang.org/#Download">официального сайта</a>, позволяющий компилировать <code>.ts</code> файлы в <code>.js</code>.</p>
+
+<ol>
+<li>Устанавливаем определения для библиотек (<code>.d.ts</code>)</li>
+</ol>
+
+
+<p>Коллекция определений библиотек находится в <a href="https://github.com/borisyankov/DefinitelyTyped">открытом доступе</a>
+Определения для <code>javascript</code> библиотек можно установить через <a href="http://definitelytyped.org/tsd/">tsd</a> - это аналог NuGet Package Manager.</p>
+
+<ol>
+<li>Пишем определения для своего кода</li>
+</ol>
+
+
+<p>Это совсем не сложно и делается по аналогии с кучей примеров из <a href="https://github.com/borisyankov/DefinitelyTyped">DefinitelyTyped on GitHub</a>.</p>
+
+<ol>
+<li>Рефакторим чтобы использовать язык <code>TypeScript</code></li>
+</ol>
+
+
+<p>После компиляции проекта в вашем коде будут возникать ошибки, которые слудует исправлять в соответвии с семантикой <code>TypeScript</code>. После исправления всех ошибок вы получите рабочий проект на <code>TypeScript</code> со всеми вытекающими отсюда удобствами.</p>
+
+<p><strong>Итог</strong>: Все, как оказалось невероятно просто, как досчитать до 5! :)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -485,67 +561,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/02/diebaghghingh-typescript-failov-v-emuliatorie-devextreme/">Debugging файлов TypeScript в браузере через эмулятор DevExtreme</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-12-02T19:45:38+00:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Недавно встала задача добавить поддержку debugging&#8217;а файлов <code>*.ts</code> в браузере. В нашем случае это Google Chrome.
-Постараюсь как можно подробнее описать этот процесс.</p>
-
-<ol>
-<li><p>Для начала нужно определить в какой директории находится DevExtreme сервер, который запускает приложение, когда мы нажимаем в VS кнопку <code>Запустить в браузере Google Chrome</code>. Ответ на этот вопрос был найден в одном из тикетов на сайте <a href="https://www.devexpress.com/Support/Center/Question/Details/Q523956">DevExpress</a>. В случае Visual Studio 2012 это путь <code>C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\DevExtreme\WebServer</code></p></li>
-<li><p>Добавляем в проект <code>*.map файл</code>. Это необходимо для связи файлов <code>js</code> и <code>ts</code></p></li>
-<li><p>Заключительный этап - добавление &ldquo;символической ссылки&rdquo; на проект в директории веб сервера DevExtreme. Можно просто скопировать проект в директорию указаную выше. В этом случае мы лишим сервер возможности автоматически подхватывать изменения в проекте. Чтобы это учесть, выполним команду <a href="http://ss64.com/nt/mklink.html">mklink</a>. Для этого:</p>
-
-<ul>
-<li>Запускаем <code>cmd</code> под администратором</li>
-<li>Переходим в каталог DevExpress WebServer</li>
-<li>Выполняем команду <code>mklink /D &lt;project_link_name&gt; &lt;project_path&gt;</code>. В моем случае это <code>mklink /D Pos C:\Projects\Pos</code></li>
-<li>Символическая ссылка <code>project_link_name</code> создана в директории <code>project_path</code></li>
-</ul>
-</li>
-</ol>
-
-
-<p>Дополнительный ссылки:</p>
-
-<ul>
-<li><a href="http://js.devexpress.com/Documentation/Howto/SPA_Framework/Application_Design/?version=14_1#Running">Running, Debugging and Deploy DevExtreme applications</a></li>
-<li><a href="http://stackoverflow.com/questions/12683820/typescript-in-vs2012-automatically-generating-js-from-ts">Typescript in VS2012: (automatically) generating .js from .ts</a></li>
-<li><a href="http://ss64.com/nt/">An A-Z Index of the Windows CMD command line</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="2">&larr; Older</a>
@@ -569,6 +584,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/06/05/mighriruiem-js-kod-v-typescript/">Мигрируем Javascript код в TypeScript</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/05/11/poiezdka-v-shri-lanku/">Поездка в Шри-Ланку</a>
       </li>
     
@@ -582,10 +601,6 @@
     
       <li class="post">
         <a href="/blog/2014/12/09/kak-ia-pobyval-na-next-14/">Как я побывал на .NEXT'14</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/09/vpiechatlieniia-ot-piervogho-khakatona/">Впечатления от первого хакатона</a>
       </li>
     
   </ul>

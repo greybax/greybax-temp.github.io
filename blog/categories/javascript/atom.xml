@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Javascript | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2015-06-01T08:44:24+00:00</updated>
+  <updated>2015-06-05T08:51:30+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -12,6 +12,54 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Мигрируем Javascript код в TypeScript]]></title>
+    <link href="http://alfilatov.com/blog/2015/06/05/mighriruiem-js-kod-v-typescript/"/>
+    <updated>2015-06-05T13:16:39+00:00</updated>
+    <id>http://alfilatov.com/blog/2015/06/05/mighriruiem-js-kod-v-typescript</id>
+    <content type="html"><![CDATA[<p>Не так давно стояла задача перевести один старый проект из <code>Javascript</code> в
+<code>TypeScript</code>. Хочу поделиться своим опытом такого перехода. Рассмотрим на
+примере разработки в Visual Studio.</p>
+
+<p>Для начала стоит отметить, что такая миграция не является проблемой с точки зрения совместимости, т.к код на <code>Javascript</code> - это синтаксически корректный код на <code>TypeScript</code>.</p>
+
+<p>Итак, выделим основные этапы, после выполнения которых произойдет чудесное
+превращение:</p>
+
+<ol>
+<li>Переимунуем все <code>.js</code> файлы в <code>.ts</code></li>
+<li>Настраиваем компиляцию из <code>.ts</code> в <code>.js</code></li>
+</ol>
+
+
+<p>Для этого нужно скачать и установить <code>TypeScript</code> плагин для студии с <a href="http://www.typescriptlang.org/#Download">официального сайта</a>, позволяющий компилировать <code>.ts</code> файлы в <code>.js</code>.</p>
+
+<ol>
+<li>Устанавливаем определения для библиотек (<code>.d.ts</code>)</li>
+</ol>
+
+
+<p>Коллекция определений библиотек находится в <a href="https://github.com/borisyankov/DefinitelyTyped">открытом доступе</a>
+Определения для <code>javascript</code> библиотек можно установить через <a href="http://definitelytyped.org/tsd/">tsd</a> - это аналог NuGet Package Manager.</p>
+
+<ol>
+<li>Пишем определения для своего кода</li>
+</ol>
+
+
+<p>Это совсем не сложно и делается по аналогии с кучей примеров из <a href="https://github.com/borisyankov/DefinitelyTyped">DefinitelyTyped on GitHub</a>.</p>
+
+<ol>
+<li>Рефакторим чтобы использовать язык <code>TypeScript</code></li>
+</ol>
+
+
+<p>После компиляции проекта в вашем коде будут возникать ошибки, которые слудует исправлять в соответвии с семантикой <code>TypeScript</code>. После исправления всех ошибок вы получите рабочий проект на <code>TypeScript</code> со всеми вытекающими отсюда удобствами.</p>
+
+<p><strong>Итог</strong>: Все, как оказалось невероятно просто, как досчитать до 5! :)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Получаем список обработчиков элемента в DOM'е]]></title>
@@ -511,135 +559,6 @@ player.pos = [canvas.width / 2, canvas.height / 2];
 
 
 <p>Посмотреть исходники можно <a href="https://github.com/greybax/towers_game2d/">тут</a>, поиграть <a href="http://greybax.github.io/towers_game2d">здесь</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Профилирование в JS]]></title>
-    <link href="http://alfilatov.com/blog/2014/09/04/profilirovaniie-v-js/"/>
-    <updated>2014-09-04T13:20:43+00:00</updated>
-    <id>http://alfilatov.com/blog/2014/09/04/profilirovaniie-v-js</id>
-    <content type="html"><![CDATA[<p>Профилирование - это в первую очерель сбор и анализ информации, а уже потом программирование и работы по улучшению производительности программы.</p>
-
-<h2>Зачем нужна оптимизация?</h2>
-
-<ol>
-<li>Загрузка страницы экономит нервы пользователя. Следствие из этого мы получаем лояльных пользователей.</li>
-<li>Полезно разработчику, чтобы лучше понять &ldquo;узкие места&rdquo; своего сайта в которых его приложение подвисает.</li>
-</ol>
-
-
-<p>Самый простой способ посмотреть время загрузки <code>DOM</code> не заморачиваясь на профилировании это конечно стандартные профайлеры такие как <code>Chrome Inspector Network</code>, <code>Firebug Net Panel</code> и т.д. Итак, разберемся какие бывают способы оптимизировать работу своего приложения.</p>
-
-<ul>
-<li>Метод пристального взгляда</li>
-<li>Инструментальное (средствами исполняемой среды)</li>
-<li>Ручное (средствами языка)</li>
-</ul>
-
-
-<p>Если с первым методом все понятно, то про другие два я хочу рассказать.</p>
-
-<h2>Инструментальное профилирование</h2>
-
-<p>Во все актуальные версии браузеров уже встроены инструменты разработчика, в которые входит <code>profiler</code>. Так профайлеры есть в: <code>Firefox</code>, <code>IE</code>, <code>Chrome</code>.</p>
-
-<h3>Chrome Inspector Network</h3>
-
-<p>Версия <code>Chrome</code>: 37.0.2062.103 m
-<img src="/images/screenshots/ChromeProfiler.png" alt="Chrome Profiler" /></p>
-
-<p>Результат работы профайлера приведен выше. Есть таблица с общим и собственным временем выполнения загрузки скрипта</p>
-
-<p>Плюсы:</p>
-
-<ul>
-<li>Возможность профилировать как производительность так и утечки памяти</li>
-<li>Варинт просмотра выполнения скриптов на странице графиком и деревом вызовов</li>
-<li>Доступен фокус просмотра на конрктной функции или дереве вызова функций</li>
-<li>Возможность перейти в участок кода функции</li>
-<li>Дерево вызовов</li>
-<li>Сортировка</li>
-</ul>
-
-
-<p>Минусы:</p>
-
-<ul>
-<li>Слишком нагроможденный интерфейс в режиме просмотра Chart (В <code>Firefox</code> профайлере c этим дела обстоят лучше)</li>
-<li>Профилирует не саму страницу, а все что видит, т.е. в профайлер попадают куча плагинов и расширений</li>
-<li>Нет возможности выбрать конретный метод или конструктор который мы хотим профилировать</li>
-</ul>
-
-
-<p>Подробно о <a href="https://developer.chrome.com/devtools/docs/cpu-profiling">Profiling JavaScript Performance</a> и о <a href="https://developer.chrome.com/devtools/docs/javascript-memory-profiling">Javascript Memory Profiling</a></p>
-
-<h3>Firebug Net Panel</h3>
-
-<p>Версия <code>Firefox</code>: 32.0
-<img src="/images/screenshots/FirefoxProfiler.png" alt="Firebug Profiler" /></p>
-
-<p>Результат работы профайлера приведен выше. Здесь в интерфейс профайлера уже интегрирована диаграмма времени загрузки скриптов по умолчанию. Остальные элементы интерфейса аналогичны профайлеру в Хроме.</p>
-
-<p>Плюсы:</p>
-
-<ul>
-<li>Диаграмма времени вызова функций и удобная фильтрация по ней</li>
-<li>Возможность перейти в участок кода функции</li>
-<li>Дерево вызовов</li>
-<li>Сортировка</li>
-<li>Удобно выделять детально промежутки времени и детально наблюдать время загрузки</li>
-</ul>
-
-
-<p>Минусы:</p>
-
-<ul>
-<li>Нет фильтрации по конретным функциям</li>
-<li>Нет возможности выбрать конретный метод или конструктор который мы хотим профилировать</li>
-</ul>
-
-
-<p>Подробно о <a href="https://developer.mozilla.org/en-US/docs/Tools/Profiler">профайлере</a></p>
-
-<h3>Internet Explorer 11</h3>
-
-<p><img src="/images/screenshots/IEProfiler.png" alt="IE Profiler" />
-Здесь аналогично Хрому есть профайлер CPU и профайлер памяти.</p>
-
-<p>Плюсы и минусы профилировщика аналогичны тем что описаны выше. Наконец-то появилась возможность переходить прямо из профайлера в код скрипта. До <code>IE 9</code> эта функция отстутствовала.</p>
-
-<h2>Ручное профилирование</h2>
-
-<p>Бывают задачи когда нужно посмореть время выполнения конкретных функций или конструкторов, использовать встроенные профилировщики и разбираться в дереве вызовов в поисках нужной функции бывает довольно неудобно. На эти случаи удобно использовать следующие конструкции языка <code>javascript</code>:
-<code>javascript
-t = +new Date();
-code_to_measure();
-time = +new Date() - t;
-</code>
-Более удобный варинт реализует паттерн Декоратор:
-<code>javascript
-function profile(func) {
-  var wrapper = function() {
-    var start = +new Date();
-    var result = func.apply(null, arguments);
-    console.log(func.name, +new Date() - start, "ms");
-    return result;
-  }
-  return wrapper;
-}
-</code>
-Вызываем функцию профайлер так
-&#8220;`javascript
-code_to_measure = profile(code_to_measure);
-code_to_measure();</p>
-
-<blockquote><p>code_to_measure 10 ms
-&#8220;`</p></blockquote>
-
-<h2>Итог</h2>
-
-<p>Идеального для себя профайлера я не нашел, довольно симпатичными выглядят встроенные в <code>Chrome</code> и в <code>Firefox</code>, но они не имеют части функционала которая выделяла бы их из общей массы. Тем более, оптимузируя свое приложение под тот или иной браузер приходится сталкиваться с его встроенным профайлером. Не стоит забывать и про старые ручные методы которые часто помогают.</p>
 ]]></content>
   </entry>
   

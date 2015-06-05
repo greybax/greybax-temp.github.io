@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Frontend | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/frontend/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2015-06-01T08:44:24+00:00</updated>
+  <updated>2015-06-05T08:51:30+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -12,6 +12,54 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Мигрируем Javascript код в TypeScript]]></title>
+    <link href="http://alfilatov.com/blog/2015/06/05/mighriruiem-js-kod-v-typescript/"/>
+    <updated>2015-06-05T13:16:39+00:00</updated>
+    <id>http://alfilatov.com/blog/2015/06/05/mighriruiem-js-kod-v-typescript</id>
+    <content type="html"><![CDATA[<p>Не так давно стояла задача перевести один старый проект из <code>Javascript</code> в
+<code>TypeScript</code>. Хочу поделиться своим опытом такого перехода. Рассмотрим на
+примере разработки в Visual Studio.</p>
+
+<p>Для начала стоит отметить, что такая миграция не является проблемой с точки зрения совместимости, т.к код на <code>Javascript</code> - это синтаксически корректный код на <code>TypeScript</code>.</p>
+
+<p>Итак, выделим основные этапы, после выполнения которых произойдет чудесное
+превращение:</p>
+
+<ol>
+<li>Переимунуем все <code>.js</code> файлы в <code>.ts</code></li>
+<li>Настраиваем компиляцию из <code>.ts</code> в <code>.js</code></li>
+</ol>
+
+
+<p>Для этого нужно скачать и установить <code>TypeScript</code> плагин для студии с <a href="http://www.typescriptlang.org/#Download">официального сайта</a>, позволяющий компилировать <code>.ts</code> файлы в <code>.js</code>.</p>
+
+<ol>
+<li>Устанавливаем определения для библиотек (<code>.d.ts</code>)</li>
+</ol>
+
+
+<p>Коллекция определений библиотек находится в <a href="https://github.com/borisyankov/DefinitelyTyped">открытом доступе</a>
+Определения для <code>javascript</code> библиотек можно установить через <a href="http://definitelytyped.org/tsd/">tsd</a> - это аналог NuGet Package Manager.</p>
+
+<ol>
+<li>Пишем определения для своего кода</li>
+</ol>
+
+
+<p>Это совсем не сложно и делается по аналогии с кучей примеров из <a href="https://github.com/borisyankov/DefinitelyTyped">DefinitelyTyped on GitHub</a>.</p>
+
+<ol>
+<li>Рефакторим чтобы использовать язык <code>TypeScript</code></li>
+</ol>
+
+
+<p>После компиляции проекта в вашем коде будут возникать ошибки, которые слудует исправлять в соответвии с семантикой <code>TypeScript</code>. После исправления всех ошибок вы получите рабочий проект на <code>TypeScript</code> со всеми вытекающими отсюда удобствами.</p>
+
+<p><strong>Итог</strong>: Все, как оказалось невероятно просто, как досчитать до 5! :)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Получаем список обработчиков элемента в DOM'е]]></title>
