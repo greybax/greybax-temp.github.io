@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Migration | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/migration/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2015-06-05T09:12:23+00:00</updated>
+  <updated>2015-06-18T12:27:25+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -42,7 +42,7 @@
 <li><p>Пишем определения для своего кода</p>
 
 <ul>
-<li>Это совсем не сложно и делается по аналогии с кучей примеров из <a href="https://github.com/borisyankov/DefinitelyTyped">DefinitelyTyped on GitHub</a>.</li>
+<li>Это совсем не сложно и делается по аналогии с кучей примеров из <a href="https://github.com/borisyankov/DefinitelyTyped">DefinitelyTyped on GitHub</a>. Мой пример можно посмотреть <a href="https://github.com/greybax/DefinitelyTyped/tree/master/quixote">тут</a>, который я писал по <a href="https://github.com/jamesshore/quixote/blob/master/docs/api.md">документации для библиотеки quixote</a></li>
 </ul>
 </li>
 <li><p>Рефакторим чтобы использовать язык <code>TypeScript</code></p>
