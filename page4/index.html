@@ -9,7 +9,7 @@
   <meta name="author" content="Aleksandr Filatov">
 
   
-  <meta name="description" content="I would like propose to your attention the list of hotkeys, the use of which makes the work with the Windows 7 more usability. Some hotkeys may be &hellip;">
+  <meta name="description" content="В каждой компании существует свой code style по написанию правильного и красивого кода. Недавно в одном из проектов наша команда решила &ldquo; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -63,6 +63,99 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/03/30/stylecop/">StyleCop - или как соблюдать Code Style?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-30T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>В каждой компании существует свой code style по написанию правильного и красивого кода. Недавно в одном из проектов наша команда решила &ldquo;причесать&rdquo; код. На помощь пришел <strong><em>StyleCop</em></strong>. Итак.</p>
+
+<h3>Установка</h3>
+
+<ul>
+<li>Вы можете скачать <strong><em>Stylecop</em></strong> c <a href="http://stylecop.codeplex.com/">сайта</a>.</li>
+<li>Советую не изменять пусть установки, потому что это может привести к некоторым проблемам.</li>
+<li>После установки может потребоваться перезагрузка компьютера.</li>
+</ul>
+
+
+<h3>Настройка</h3>
+
+<p>Для установки настроек <strong><em>Stylecop</em></strong> одинаковыми на всех ваших проектах нужно выполнить следующие действия:</p>
+
+<ul>
+<li>Клик правой кнопкой мыши выбираем раздел <code>StyleCop Settings</code>
+<img src="http://4.bp.blogspot.com/-Ff4lI2D2Vt8/UzhuaRggbMI/AAAAAAAAA_8/GdbfdLYTOtM/s1600/2.png" alt="pic_1" /></li>
+</ul>
+
+
+<p>Разберем каждую вкладку в отдельности</p>
+
+<ul>
+<li>Rules - правила настройки <strong><em>Stylecop</em></strong></li>
+<li>Переходим на вкладку <code>Settings Files</code></li>
+<li>1-ый радиобаттон - не использовать наследование настроек stylecop в солюшене и в проектах</li>
+<li>2-ой - поддержка наследования/переопределения файлов настроек. Т.е файл с настройками лежащий на уровне выше имеет выше приоритет. Если вы хотите изменить настройки для всех проектов сразу, вам нужно перейти на эту вкладку, нажать &ldquo;Edit&rdquo;, и вы увидите окно файла конфигурации с настройками.</li>
+<li><p>3-й - мерж настроек с указанным файлом.
+<img src="http://1.bp.blogspot.com/-zSzjZtQ2K2k/UzhiQvLTXaI/AAAAAAAAA_s/twkcNLtIRYQ/s1600/1.png" alt="pic_2" /></p></li>
+<li><p>Options - настройки обновления и выбор языка</p></li>
+<li>Spelling - сюда можно добавить слова исключения при проверки <strong><em>Stylecop</em></strong>.</li>
+<li>Company information - думаю и так все понятно</li>
+<li>Hungarian - по умолчанию венгерский стиль отключен, но на этой вкладке вы можете добавить исключения.</li>
+</ul>
+
+
+<p>Больше правил и настроек <strong><em>Stylecop</em></strong> вы можете найти на <a href="http://www.stylecop.com/docs/">официальном сайте программы</a>. Так же там есть Rule Suppressions, но лучше ими не злоупотреблять.</p>
+
+<h3>StyleCop и Build</h3>
+
+<p>Если вы хотите запускать <strong><em>StyleCop</em></strong> при каждом билде проекта, вам следует отредактировать <code>.csproj</code> file. В конец файла следует добавить следующую строку (для StyleCop v4.7):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;Import</span> <span class="na">Project=</span><span class="s">&quot;$(ProgramFiles)\MSBuild\StyleCop\v4.7\StyleCop.targets&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://1.bp.blogspot.com/-SDkTXb4NLbE/Uzhvc4Dig2I/AAAAAAAABAE/RhC66zW-saI/s1600/3.png" alt="pic_3" /></p>
+
+<p>После этого вы будете получать <code>Warnings</code> в коде после билда о всех несоответствиях вашего кода с настройками <strong><em>Stylecop</em></strong>. Если вы хотите получать <code>Errors</code>, вам следует добавить в раздел <code>PropertyGroup</code> следующую строку:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;StyleCopTreatErrorsAsWarnings&gt;</span>false<span class="nt">&lt;/StyleCopTreatErrorsAsWarnings&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://1.bp.blogspot.com/-9SnH6nIlF9w/Uzhw2FtausI/AAAAAAAABAQ/KSjgBAcDLH8/s1600/4.png" alt="pic_4" /></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -264,6 +357,10 @@ Not so early, Yandex company on yours conference is <a href="http://fotki.yandex
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/06/29/probuiem-es2015-es6-v-dieistvii/">Пробуем ES2015(ES6) в действии</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/06/05/mighriruiem-js-kod-v-typescript/">Мигрируем Javascript код в TypeScript</a>
       </li>
     
@@ -277,10 +374,6 @@ Not so early, Yandex company on yours conference is <a href="http://fotki.yandex
     
       <li class="post">
         <a href="/blog/2015/03/30/gdie-ia-bieru-informatsiiu-o-mirie-frontend/">Что можно почитать по Frontend'у</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/09/kak-ia-pobyval-na-next-14/">Как я побывал на .NEXT'14</a>
       </li>
     
   </ul>

@@ -9,7 +9,7 @@
   <meta name="author" content="Aleksandr Filatov">
 
   
-  <meta name="description" content="Наконец-то нашел время написать свои впечатления от прошедшей конференции DevConf&#8217;14. Посетил я эту конференцию в первый раз, но по рассказам &hellip;">
+  <meta name="description" content="Я использовал Blogger c 2012 года. Мне эта система показалась недостаточно удобной, чтобы продолжать ее использовать в дальнейшем. Неудобство &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -63,6 +63,111 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/08/27/kak-i-zachiem-ia-pierieshiel-s-blogger-na-octopress/">Как и зачем я перешел с Blogger на Octopress</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-27T08:28:59+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Я использовал Blogger c 2012 года. Мне эта система показалась недостаточно удобной, чтобы продолжать ее использовать в дальнейшем. Неудобство проявлялось, когда в пост нужно было вставить участки кода или добавлять картинки. HTML редактор генерирует много лишнего кода. В итоге я решил подыскать себе новый блог-движок.</p>
+
+<h2>Что я хотел получить</h2>
+
+<ul>
+<li>Писать больше постов, не заморачиваясь на разметку HTML/CSS</li>
+<li>Иметь больше свободы в редизайне своего блога</li>
+</ul>
+
+
+<p>Под вышеперечисленное подходит Octopress. Это движок генерации статических веб страниц написанный на <code>Ruby</code>. Окончательное решение было принято после прохождения курса <a href="https://class.coursera.org/webapplications-002">Web Application Architectures</a> на Coursera, где в качестве примера языка использовался <code>Ruby on Rails</code>. В повседневной жизни я пользователь винды, а ставить <code>Ruby</code> окружение на нее дело не из приятных, ставить виртуалку не хочется, и, погуглив, наткнулся на замечательный сайт <a href="https://www.nitrous.io/">nitrous.io</a>. Сайт предлагает на бесплатном аккаунте доступ к box&#8217;у с окружением для целого ряда языков. В нашем случае это <code>Ruby</code>
+При таком подходе мы можем писать в блог из любого места, где есть доступ в интернет, и нам не нужно иметь машину или виртуалку с исходниками своего блога. Считаю, что это достаточно весомый аргумент в пользу использования облачного хостинга с поддержкой IDE.</p>
+
+<h2>Плюсы переезда</h2>
+
+<ul>
+<li>Markdown разметка. Не нужно уделять большое внимание HTML разметке. Концентрируешься больше на написание поста.</li>
+<li>Версионирование</li>
+<li>Удобно писать из редакторов Vim, хотя это для меня не является основным выбором</li>
+</ul>
+
+
+<h2>Минусы переезда</h2>
+
+<ul>
+<li>Страницы с Blogger стоят выше в результатах поиска гугла при равных условиях</li>
+<li>Не нужно заморачиваться на хостинге. Хотя это не проблема и со случаем Octopress</li>
+</ul>
+
+
+<h2>Мигригуем</h2>
+
+<ul>
+<li>Подготовка</li>
+<li>Развертывание</li>
+</ul>
+
+
+<h3>Подготовка</h3>
+
+<p>Регистрируемся на сайте <a href="https://www.nitrous.io.">https://www.nitrous.io.</a> Выбираем в качестве окружения box c <code>Ruby</code>. Далее выполняем все по шагам как описано <a href="http://octopress.org/docs/setup/">тут</a> и <a href="http://octopress.org/docs/configuring/">конфигурируем</a>.</p>
+
+<p>Для миграции постов на Octopress нужно:</p>
+
+<ul>
+<li>Экспотировать их в файл в своем аккаунте в Blogger</li>
+<li>Заюзать <a href="https://gist.github.com/1765496">скрипт</a></li>
+</ul>
+
+
+<p>После этого вы получите кучу сообщений, которые уже являются частью вашего сайта. Проверьте, все ли корректно.
+Скрипт так же импортирует комментарии, но в неудобном для просмотра виде. (Tip: вы можете отключить комментарии перед экспортом постов из Blogger).
+Теперь все готово для того чтобы равернуть наш блог.</p>
+
+<h3>Развертывание</h3>
+
+<p>На этом этапе мы получили блог на Octopress? куда мы импортировали свои посты из Blogger. Для развертывания я использовал  Github Pages, но процесс развертывания на <a href="http://octopress.org/docs/deploying/heroku">Heroku</a> или <a href="http://octopress.org/docs/deploying/rsync/">через RSync на свой хостинг</a> отличаются незначительно.</p>
+
+<p>Процесс развертывания подробно описан на <a href="http://octopress.org/docs/deploying/github/">сайте Octopress</a>.</p>
+
+<h3>Итог</h3>
+
+<ul>
+<li>Получили окружение с IDE для <code>Ruby</code>, которое доступно прямо из браузера.</li>
+<li>Удовольствие от написания постов в markdown разметке, расходуя минимум времени на HTML разметку.</li>
+<li>Поддержку &ldquo;из коробки&rdquo; различных социальных плагинов (twitter, github, facebook). Легко добавлять свои.</li>
+<li>Удобная кастомизация design themes свое блога. При желании можно сменить стандартную тему или сделать свою. Большой выбор <a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">тут</a></li>
+<li>Стимул изучать <code>Rubу</code> :)</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -402,99 +507,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/03/30/stylecop/">StyleCop - или как соблюдать Code Style?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-30T00:00:00+00:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>В каждой компании существует свой code style по написанию правильного и красивого кода. Недавно в одном из проектов наша команда решила &ldquo;причесать&rdquo; код. На помощь пришел <strong><em>StyleCop</em></strong>. Итак.</p>
-
-<h3>Установка</h3>
-
-<ul>
-<li>Вы можете скачать <strong><em>Stylecop</em></strong> c <a href="http://stylecop.codeplex.com/">сайта</a>.</li>
-<li>Советую не изменять пусть установки, потому что это может привести к некоторым проблемам.</li>
-<li>После установки может потребоваться перезагрузка компьютера.</li>
-</ul>
-
-
-<h3>Настройка</h3>
-
-<p>Для установки настроек <strong><em>Stylecop</em></strong> одинаковыми на всех ваших проектах нужно выполнить следующие действия:</p>
-
-<ul>
-<li>Клик правой кнопкой мыши выбираем раздел <code>StyleCop Settings</code>
-<img src="http://4.bp.blogspot.com/-Ff4lI2D2Vt8/UzhuaRggbMI/AAAAAAAAA_8/GdbfdLYTOtM/s1600/2.png" alt="pic_1" /></li>
-</ul>
-
-
-<p>Разберем каждую вкладку в отдельности</p>
-
-<ul>
-<li>Rules - правила настройки <strong><em>Stylecop</em></strong></li>
-<li>Переходим на вкладку <code>Settings Files</code></li>
-<li>1-ый радиобаттон - не использовать наследование настроек stylecop в солюшене и в проектах</li>
-<li>2-ой - поддержка наследования/переопределения файлов настроек. Т.е файл с настройками лежащий на уровне выше имеет выше приоритет. Если вы хотите изменить настройки для всех проектов сразу, вам нужно перейти на эту вкладку, нажать &ldquo;Edit&rdquo;, и вы увидите окно файла конфигурации с настройками.</li>
-<li><p>3-й - мерж настроек с указанным файлом.
-<img src="http://1.bp.blogspot.com/-zSzjZtQ2K2k/UzhiQvLTXaI/AAAAAAAAA_s/twkcNLtIRYQ/s1600/1.png" alt="pic_2" /></p></li>
-<li><p>Options - настройки обновления и выбор языка</p></li>
-<li>Spelling - сюда можно добавить слова исключения при проверки <strong><em>Stylecop</em></strong>.</li>
-<li>Company information - думаю и так все понятно</li>
-<li>Hungarian - по умолчанию венгерский стиль отключен, но на этой вкладке вы можете добавить исключения.</li>
-</ul>
-
-
-<p>Больше правил и настроек <strong><em>Stylecop</em></strong> вы можете найти на <a href="http://www.stylecop.com/docs/">официальном сайте программы</a>. Так же там есть Rule Suppressions, но лучше ими не злоупотреблять.</p>
-
-<h3>StyleCop и Build</h3>
-
-<p>Если вы хотите запускать <strong><em>StyleCop</em></strong> при каждом билде проекта, вам следует отредактировать <code>.csproj</code> file. В конец файла следует добавить следующую строку (для StyleCop v4.7):</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;Import</span> <span class="na">Project=</span><span class="s">&quot;$(ProgramFiles)\MSBuild\StyleCop\v4.7\StyleCop.targets&quot;</span> <span class="nt">/&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://1.bp.blogspot.com/-SDkTXb4NLbE/Uzhvc4Dig2I/AAAAAAAABAE/RhC66zW-saI/s1600/3.png" alt="pic_3" /></p>
-
-<p>После этого вы будете получать <code>Warnings</code> в коде после билда о всех несоответствиях вашего кода с настройками <strong><em>Stylecop</em></strong>. Если вы хотите получать <code>Errors</code>, вам следует добавить в раздел <code>PropertyGroup</code> следующую строку:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;StyleCopTreatErrorsAsWarnings&gt;</span>false<span class="nt">&lt;/StyleCopTreatErrorsAsWarnings&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://1.bp.blogspot.com/-9SnH6nIlF9w/Uzhw2FtausI/AAAAAAAABAQ/KSjgBAcDLH8/s1600/4.png" alt="pic_4" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="4">&larr; Older</a>
@@ -520,6 +532,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/06/29/probuiem-es2015-es6-v-dieistvii/">Пробуем ES2015(ES6) в действии</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/06/05/mighriruiem-js-kod-v-typescript/">Мигрируем Javascript код в TypeScript</a>
       </li>
     
@@ -533,10 +549,6 @@
     
       <li class="post">
         <a href="/blog/2015/03/30/gdie-ia-bieru-informatsiiu-o-mirie-frontend/">Что можно почитать по Frontend'у</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/09/kak-ia-pobyval-na-next-14/">Как я побывал на .NEXT'14</a>
       </li>
     
   </ul>
