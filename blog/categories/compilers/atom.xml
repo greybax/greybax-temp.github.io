@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Compilers | Aleksandr Filatov]]></title>
   <link href="http://alfilatov.com/blog/categories/compilers/atom.xml" rel="self"/>
   <link href="http://alfilatov.com/"/>
-  <updated>2015-07-01T11:20:07+00:00</updated>
+  <updated>2015-07-23T13:26:55+00:00</updated>
   <id>http://alfilatov.com/</id>
   <author>
     <name><![CDATA[Aleksandr Filatov]]></name>
@@ -75,9 +75,9 @@
 <li><strong>Шаблоны строк</strong> <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-template-literals">12.2.9</a>, <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-tagged-templates">12.3.7</a>, предоставляющие удобные средства для форматирования строк.</li>
 <li>Поддержка <strong>лексических объявлений переменных</strong> <a href="http://people.mozilla.org/~jorendorff/es6-draft.html#sec-let-and-const-declarations">13.2.1</a> (Lexical Declarations), позволяющих ограничить текущим блоком область видимости ключевых слов, через их повторное определение при помощи оператора <code>let</code> вместо <code>var</code></li>
 <li><strong>Оператор const</strong> <a href="http://people.mozilla.org/~jorendorff/es6-draft.html#sec-let-and-const-declarations">13.2.1</a> для определения переменных, доступных только для чтения</li>
+<li><strong>Сокращённый формат задания объектов</strong> <a href="http://people.mozilla.org/~jorendorff/es6-draft.html#sec-let-and-const-declarations">13.2.1</a> (запись <code>var a = {'obj1': obj1, 'obj2': obj2}</code> теперь можно сократить до <code>var a = {obj1, obj2}</code> )</li>
 <li><strong>Модули</strong> <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-modules">15.2</a>. Для экспорта и импорта модулей введены операторы export и import, например, <code>import * as mymodule from "lib/mymodule</code>. Предоставляются средства динамической загрузки модулей, пространства имён и изоляция состояния</li>
 <li><strong>Arrow-функции</strong> <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-arrow-function-definitions">14.2</a> (синтаксис <code>=&gt;</code>) для быстрого определения анонимных функций (например, <code>x.map(x =&gt; console.log(x * x));</code>)</li>
-<li><strong>Сокращённый формат задания объектов</strong> (запись <code>var a = {'obj1': obj1, 'obj2': obj2}</code> теперь можно сократить до <code>var a = {obj1, obj2}</code> )</li>
 <li>Добавлен новый тип <strong>Symbol</strong> <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-symbol-objects">19.4</a>, применимый для идентификаторов свойств объектов</li>
 <li><strong>Генераторы</strong> <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-generatorfunction-objects">25.2</a>, позволяющие организовать эффективное выполнение функций в асинхронном режиме. Генераторы представляют собой специальные функции, генерирующие итераторы. Использование выражения <code>yield</code> для генератора, позволяет приостановить его выполнение и вернуть управление вызвавшей генератор функции. Особенность генератора состоит в том, что последующие вызовы будут использовать предыдущее состояние и продолжат выполнение кода генератора с того места, где он был приостановлен</li>
 <li>Объект <strong>WeakSet</strong> <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-weakset-objects">23.4</a>, позволяющий определить множество из объектов, и объект <strong>WeakMap</strong> <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-weakmap-objects">23.3</a>, определяет коллекцию пар ключ/значение в которых ключ является объектом, к которому может быть прикреплено произвольное значение. WeakSet и WeakMap отличаются использованием эффективных с точки зрения потребления памяти структур, использующих сборщик мусора для удаления неиспользуемых объектов (объект удаляется, если на него больше не осталось ссылок, кроме ссылки из текущей коллекции) и предотвращающих возникновение утечек памяти;</li>
