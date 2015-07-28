@@ -3,72 +3,85 @@
   
   
   <url>
-    <loc>http://greybax.github.io/blog/2014/07/07/devconf14/</loc>
+    <loc>http://alfilatov.com/blog/2014/08/27/kak-i-zachiem-ia-pierieshiel-s-blogger-na-octopress/</loc>
+    <lastmod>2014-08-27T08:28:59+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://alfilatov.com/blog/2014/07/07/devconf14/</loc>
     <lastmod>2014-07-07T00:00:00+00:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>http://greybax.github.io/blog/2014/06/27/google-chrome/</loc>
+    <loc>http://alfilatov.com/blog/2014/06/27/google-chrome/</loc>
     <lastmod>2014-06-27T00:00:00+00:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>http://greybax.github.io/blog/2014/06/13/javascript/</loc>
+    <loc>http://alfilatov.com/blog/2014/06/13/javascript/</loc>
     <lastmod>2014-06-13T00:00:00+00:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>http://greybax.github.io/blog/2014/05/12/aspnet/</loc>
+    <loc>http://alfilatov.com/blog/2014/05/12/aspnet/</loc>
     <lastmod>2014-05-12T00:00:00+00:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>http://greybax.github.io/blog/2014/04/23/aspnet/</loc>
+    <loc>http://alfilatov.com/blog/2014/04/23/aspnet/</loc>
     <lastmod>2014-04-23T00:00:00+00:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>http://greybax.github.io/blog/2014/03/30/stylecop/</loc>
+    <loc>http://alfilatov.com/blog/2014/03/30/stylecop/</loc>
     <lastmod>2014-03-30T00:00:00+00:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>http://greybax.github.io/blog/2012/12/18/windows-7-hotkeys/</loc>
+    <loc>http://alfilatov.com/blog/2012/12/18/windows-7-hotkeys/</loc>
     <lastmod>2012-12-18T00:00:00+00:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>http://greybax.github.io/blog/2012/12/13/yandex-browser-it-need-or-not/</loc>
+    <loc>http://alfilatov.com/blog/2012/12/13/yandex-browser-it-need-or-not/</loc>
     <lastmod>2012-12-13T00:00:00+00:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>http://greybax.github.io/blog/2012/12/10/my-contribution-in-mozilla-society/</loc>
+    <loc>http://alfilatov.com/blog/2012/12/10/my-contribution-in-mozilla-society/</loc>
     <lastmod>2012-12-10T00:00:00+00:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   
   <url>
-    <loc>http://greybax.github.io/blog/archives/</loc>
-    <lastmod>2014-08-20T20:31:00+00:00</lastmod>
+    <loc>http://alfilatov.com/blog/archives/</loc>
+    <lastmod>2014-08-27T13:34:14+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>http://greybax.github.io/</loc>
-    <lastmod>2014-08-20T20:31:00+00:00</lastmod>
+    <loc>http://alfilatov.com/</loc>
+    <lastmod>2014-08-27T13:34:14+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://alfilatov.com/about/</loc>
+    <lastmod>2014-08-27T13:34:14+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   
   

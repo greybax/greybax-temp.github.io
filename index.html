@@ -9,7 +9,7 @@
   <meta name="author" content="Aleksandr Filatov">
 
   
-  <meta name="description" content="Наконец-то нашел время написать свои впечатления от прошедшей конференции DevConf&#8217;14. Посетил я эту конференцию в первый раз, но по рассказам &hellip;">
+  <meta name="description" content="Я использовал Blogger c 2012 года. Для меня эта система показалась достаточно не удобной, чтобы продолжать ее использовать в дальнейшем. Неудобство &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://greybax.github.io">
+  <link rel="canonical" href="http://alfilatov.com">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Aleksandr Filatov" type="application/atom+xml">
@@ -38,31 +38,132 @@
   <header role="banner"><hgroup>
   <h1><a href="/">Aleksandr Filatov</a></h1>
   
-    <h2>Мысли и идеи программиста</h2>
+    <h2>Blog about life and software development</h2>
   
 </hgroup>
 
 </header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  
-  
-</ul>
-
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="/atom.xml">RSS</a></li>
-  <li><a href="/blog/aboutme">About Me</a></li>  
-  <li><a href="https://github.com/greybax">Github</a></li>
-  <li><a href="https://twitter.com/greybax">Twitter</a></li>
-  <li><a href="https://github.com/greybax">LinkedIn</a></li>
-</ul>
-
+  <nav role="navigation">
+    <ul class="subscription" data-subscription="rss">
+    </ul>
+    
+    <ul class="main-navigation">
+      <li><a href="/">Blog</a></li>
+      <li><a href="/blog/archives">Archives</a></li>
+      <li><a href="/atom.xml">RSS</a></li>
+      <li><a href="/about/index">About Me</a></li>  
+      <li><a href="https://github.com/greybax">Github</a></li>
+      <li><a href="https://twitter.com/greybax">Twitter</a></li>
+      <li><a href="http://ru.linkedin.com/pub/aleksandr-filatov/89/608/66b/">LinkedIn</a></li>
+    </ul>
 </nav>
   <div id="main">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/08/27/kak-i-zachiem-ia-pierieshiel-s-blogger-na-octopress/">Как и зачем я перешел с Blogger на Octopress</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-27T08:28:59+00:00" pubdate data-updated="true"></time>
+        
+           | <a href="/blog/2014/08/27/kak-i-zachiem-ia-pierieshiel-s-blogger-na-octopress/#disqus_thread"
+             data-disqus-identifier="http://alfilatov.com/blog/2014/08/27/kak-i-zachiem-ia-pierieshiel-s-blogger-na-octopress/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Я использовал Blogger c 2012 года. Для меня эта система показалась достаточно не удобной, чтобы продолжать ее использовать в дальнейшем. Неудобство заключалось в написании постов где нужно вставлять участки кода или добавять картинки. HTML редактор генерит кучу лишнего кода. В итоге я решил подыскать себе новый блог-движок.</p>
+
+<h2>Что я хотел получить</h2>
+
+<ul>
+<li>Писать больше постов не заморачиваясь на разметку HTML/CSS</li>
+<li>Иметь больше свободы в редизайне своего блога</li>
+</ul>
+
+
+<p>Выбор пал Octopress. Движок герерации статических веб страниц написанный на <code>Ruby</code>. Окончательное решение о переезде было принято после прохождения курса (Web Application Architectures)[<a href="https://class.coursera.org/webapplications-002">https://class.coursera.org/webapplications-002</a>] на Coursera где в качестве примера языка был взят <code>Ruby on Rails</code>. Т.к в повседневной жизни я пользователь винды, а ставить Ruby окружение на нее дело не из приятных, а заморачиваться с виртуалкой не хочется, погуглив наткнулся на замечательный сайт <a href="https://www.nitrous.io/.">https://www.nitrous.io/.</a> Сайт предлагает на free аккаунте доступ к box&#8217;у с environment для целого ряда языков. В нашем случае это <code>Ruby</code>
+При таком подходе мы сможем писать в блог из любого места где есть интернет и нам не нужно иметь машину или виртуалку с исходниками своего блога. Считаю что это достаточно весомый аргумент в пользу использования облачного хостинга с поддержкой IDE.</p>
+
+<h2>Плюсы переезда</h2>
+
+<ul>
+<li>Markdown разметка. Не нужно уделять большое внимание HTML разметке. Концентрируешься больше на написание поста.</li>
+<li>Версионирование</li>
+<li>Удобно писать из редакторов Vim, хотя это для меня не является основным выбором</li>
+</ul>
+
+
+<h2>Минусы переезда</h2>
+
+<ul>
+<li>Страницы с Blogger стоят выше в результатах поиска гугла при равных условиях</li>
+<li>Не нужно заморачиваться на хостинге. Хотя это не проблема и со случаем Octopress</li>
+</ul>
+
+
+<h2>Мигригуем</h2>
+
+<ul>
+<li>Подготовка</li>
+<li>Развертывание</li>
+</ul>
+
+
+<h3>Подготовка</h3>
+
+<p>Регистрируемся на сайте <a href="https://www.nitrous.io.">https://www.nitrous.io.</a> Выбираем в качестве окружения box c Ruby. Далее выполняем все по шагам как описано тут <a href="http://octopress.org/docs/setup/">http://octopress.org/docs/setup/</a> и (конфигурируем)[<a href="http://octopress.org/docs/configuring/">http://octopress.org/docs/configuring/</a>].
+Для миграции постов на Octopress нужно:
+* Экспотировать их в файл в своем аккаунте в Blogger
+* Заюзать (скрипт)[<a href="https://gist.github.com/1765496">https://gist.github.com/1765496</a>]</p>
+
+<p>После этого вы получите кучу сообщений которые уже являются частью вашего сайта. Проверьте все ли корректно.
+Скрипт так же импортирует комментарии, но в неудобном для просмотра виде. (Tip, вы можете отключить комментарии перед экспортом постов из Blogger).
+Теперь все готово для того чтобы равернуть наш блог.</p>
+
+<h3>Развертывание</h3>
+
+<p>На этом этапе мы получили блог на Octopress куда мы мигрировали свои посты из Blogger. Для развертывания я использовал  Github Pages, но процесс развертывания на Heroku или через RSync на свой хостинг отличаются незначительно.</p>
+
+<p>Процесс развертывания подробно описан на сайте Octopress (тут)[<a href="http://octopress.org/docs/deploying/github/">http://octopress.org/docs/deploying/github/</a>].</p>
+
+<h3>Итог</h3>
+
+<ul>
+<li>Получили окружение с IDE для <code>Ruby</code>, которое доступно прямо из браузера.</li>
+<li>Удовольствие от написания постов в markdown разметке, расходуя минимум времени на HTML разметку</li>
+<li>Поддержку &ldquo;из коробки&rdquo; различных социальных плагинов (twitter, github, facebook). Легко добавлять свои</li>
+<li>Удобная кастомизация design themes свое блога. При желании можно сменить стандартную тему или сделать свою. Большой выбор тут <a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes</a></li>
+<li>Стимул учить <code>Rubу</code> :)</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -86,6 +187,9 @@
 
 
 <time datetime="2014-07-07T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+           | <a href="/blog/2014/07/07/devconf14/#disqus_thread"
+             data-disqus-identifier="http://alfilatov.com/blog/2014/07/07/devconf14/">Comments</a>
         
       </p>
     
@@ -124,6 +228,9 @@
 
 <time datetime="2014-06-27T00:00:00+00:00" pubdate data-updated="true"></time>
         
+           | <a href="/blog/2014/06/27/google-chrome/#disqus_thread"
+             data-disqus-identifier="http://alfilatov.com/blog/2014/06/27/google-chrome/">Comments</a>
+        
       </p>
     
   </header>
@@ -160,6 +267,9 @@
 
 
 <time datetime="2014-06-13T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+           | <a href="/blog/2014/06/13/javascript/#disqus_thread"
+             data-disqus-identifier="http://alfilatov.com/blog/2014/06/13/javascript/">Comments</a>
         
       </p>
     
@@ -198,6 +308,9 @@
 
 <time datetime="2014-05-12T00:00:00+00:00" pubdate data-updated="true"></time>
         
+           | <a href="/blog/2014/05/12/aspnet/#disqus_thread"
+             data-disqus-identifier="http://alfilatov.com/blog/2014/05/12/aspnet/">Comments</a>
+        
       </p>
     
   </header>
@@ -235,6 +348,9 @@
 
 <time datetime="2014-04-23T00:00:00+00:00" pubdate data-updated="true"></time>
         
+           | <a href="/blog/2014/04/23/aspnet/#disqus_thread"
+             data-disqus-identifier="http://alfilatov.com/blog/2014/04/23/aspnet/">Comments</a>
+        
       </p>
     
   </header>
@@ -249,155 +365,9 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/03/30/stylecop/">StyleCop - или как соблюдать Code Style?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-30T00:00:00+00:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<div dir="ltr" style="text-align: left;" trbidi="on"><span style="font-family: Arial, Helvetica, sans-serif;">Думаю что в каждой компании существует свой code style по написанию правильного и красивого кода. Недавно в одном из проектов наша команда решила &#8220;причесать&#8221; код. На помощь пришел <b>StyleCop</b>. Итак.</span><br /><h2 style="text-align: left;"><b><span style="font-family: Arial, Helvetica, sans-serif;">Установка</span></b></h2><div><ol style="text-align: left;"><li><span style="font-family: Arial, Helvetica, sans-serif;">Вы можете скачать <b>stylecop</b> c <a href="http://stylecop.codeplex.com/" target="_blank">сайта</a><span style="font-size: 14px; line-height: 19.9999942779541px;">.</span></span></li><li><span style="font-family: Arial, Helvetica, sans-serif;"><span style="font-size: 14px; line-height: 19.9999942779541px;">Советую не изменять пусть установки, потому что</span><span style="font-size: 14px; line-height: 19.9999942779541px;">&nbsp;это может привести к некоторым проблемам.</span></span></li><li><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 19.9999942779541px;">После установки может потребоваться перезагрузка компьютера.</span></li></ol><div><h2 style="border: 0px; font-size: 1em; line-height: 19.9999942779541px; margin: 1.4285em 0px 0.714285em; padding: 0px; text-align: left;"><span style="font-family: Arial, Helvetica, sans-serif;">Настройка</span></h2><div><span style="font-family: Arial, Helvetica, sans-serif;">Для установки настроек <b>stylecop </b>одинаковыми на всех ваших проектах нужно выполнить следующие действия:</span></div><div><span style="font-family: Arial, Helvetica, sans-serif;"></span><br /><a name='more'></a><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></div><div><ul style="text-align: left;"><li><span style="font-family: Arial, Helvetica, sans-serif;">Клик правой кнопкой мыши выбираем раздел&nbsp;<span style="font-size: 14px; line-height: 19.9999942779541px;"><i>&#8216;StyleCop Settings&#8217;</i>.&nbsp;<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-Ff4lI2D2Vt8/UzhuaRggbMI/AAAAAAAAA_8/GdbfdLYTOtM/s1600/2.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://4.bp.blogspot.com/-Ff4lI2D2Vt8/UzhuaRggbMI/AAAAAAAAA_8/GdbfdLYTOtM/s1600/2.png" /></a></div></span><span style="font-size: 14px; line-height: 19.9999942779541px;">Разберем каждую вкладку в отдельности</span></span></li><ul><li><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 19.9999942779541px;"><i><b>&#8216;Rules&#8217;</b> - </i>правила настройки stylecop</span></li><li><span style="font-family: Arial, Helvetica, sans-serif;"><span style="font-size: 14px; line-height: 19.9999942779541px;">Переходим на вкладку&nbsp;</span><span style="font-size: 14px; line-height: 19.9999942779541px;"><i><b>&#8216;Settings Files&#8217;</b>.&nbsp;</i></span></span></li><ul><li><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 19.9999942779541px;">1-ый радиобаттон &nbsp;значит не использовать наследование настроек stylecop в солюшене и в проектах</span></li><li><span style="font-family: Arial, Helvetica, sans-serif;"><span style="font-size: 14px; line-height: 19.9999942779541px;">2-ой - поддержка&nbsp;наследования/переопределения файлов настроек. Т.е файл с настройками&nbsp;лежащий на уровне выше имеет выше приоритет. Solution - project. Если вы хотите&nbsp;</span><strong style="line-height: 1.428571em;">изменить настройки для всех проектов сразу</strong>, вам нужно перейти на эту вкладку, нажать <i>&#8220;Edit&#8221;</i>, и вы увидите окно файла конфигурации с настройками.</span></li><li><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 19.9999942779541px;">3-й мерж настроек с указанным файлом.</span></li></ul></ul></ul></div><div style="border: 0px; font-size: 14px; line-height: 19.9999942779541px; margin-bottom: 0.714285em; padding: 0px;"><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-zSzjZtQ2K2k/UzhiQvLTXaI/AAAAAAAAA_s/twkcNLtIRYQ/s1600/1.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><span style="font-family: Arial, Helvetica, sans-serif;"><img border="0" src="http://1.bp.blogspot.com/-zSzjZtQ2K2k/UzhiQvLTXaI/AAAAAAAAA_s/twkcNLtIRYQ/s1600/1.png" /></span></a></div><div class="separator" style="clear: both; text-align: center;"><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></div><div class="separator" style="clear: both; text-align: center;"></div><ul><ul><li><span style="font-family: Arial, Helvetica, sans-serif;"><b style="font-style: italic;">&#8220;Options&#8221; </b>- настройки обновления и выбор языка</span></li><li><span style="font-family: Arial, Helvetica, sans-serif;"><i style="font-weight: bold;">&#8220;Spelling&#8221; </i>- сюда можно добавить слова исключения при проверки stylecop.</span></li><li><span style="font-family: Arial, Helvetica, sans-serif;"><b><i>&#8220;Company information&#8221;</i></b> - думаю и так все понятно :)</span></li><li><span style="font-family: Arial, Helvetica, sans-serif;"><i style="font-weight: bold;">&#8220;Hungarian&#8221; </i>- по умолчанию венгерский стиль отключен, но на этой вкладке вы можете добавить исключения.</span></li></ul></ul><div><span style="font-family: Arial, Helvetica, sans-serif;">Больше правил и настроек <b>stylecop </b>вы можете найти на <a href="http://www.stylecop.com/docs/" target="_blank">официальном сайте программы</a>.&nbsp;Так же там есть&nbsp;Rule Suppressions, но лучше ими не злоупотреблять.</span></div></div></div></div><div><h2 style="border: 0px; font-size: 1em; line-height: 19.9999942779541px; margin: 1.4285em 0px 0.714285em; padding: 0px; text-align: left;"><span style="font-family: Arial, Helvetica, sans-serif;">StyleCop и Build</span></h2><div style="border: 0px; font-size: 14px; line-height: 19.9999942779541px; margin-bottom: 0.714285em; padding: 0px;"><span style="font-family: Arial, Helvetica, sans-serif;">Если вы хотите запускать StyleCop при каждом билде проекта, вам следует отредактировать .csproj file:</span><br /><span style="font-family: Arial, Helvetica, sans-serif;">В конец файла следует добавить следующую строку (для StyleCop v4.7 ):</span></div><div style="border: 0px; font-size: 14px; line-height: 19.9999942779541px; margin: 0px; padding: 0px;"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><table border="0" cellpadding="0" cellspacing="0" style="font-size: 1em; line-height: 1.428571em;"><tbody style="line-height: 1.428571em;"><tr style="line-height: 1.428571em;"><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;" title="Hint: double-click to select code"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><span style="font-family: Arial, Helvetica, sans-serif;"><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;">&lt;Import Project=</code><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;">"$(ProgramFiles)\MSBuild\StyleCop\v4.7\StyleCop.targets"</code>&nbsp;<code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;">/&gt;</code></span><br /><span style="font-family: Arial, Helvetica, sans-serif;"><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><br /></code></span><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-SDkTXb4NLbE/Uzhvc4Dig2I/AAAAAAAABAE/RhC66zW-saI/s1600/3.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><span style="font-family: Arial, Helvetica, sans-serif;"><img border="0" src="http://1.bp.blogspot.com/-SDkTXb4NLbE/Uzhvc4Dig2I/AAAAAAAABAE/RhC66zW-saI/s1600/3.png" height="267" width="640" /></span></a></div><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></code></div></div></td></tr></tbody></table></div></div></div><div style="border: 0px; font-size: 14px; line-height: 19.9999942779541px; margin-bottom: 0.714285em; padding: 0px;"><div><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></div><span style="font-family: Arial, Helvetica, sans-serif;">После этого вы бедете получать <b>warnings </b>в коде после билда о всех несоответствиях вашего кода с настройками <b>stylecop</b>.&nbsp;</span></div><div style="border: 0px; font-size: 14px; line-height: 19.9999942779541px; margin-bottom: 0.714285em; padding: 0px;"><span style="font-family: Arial, Helvetica, sans-serif;">Если вы хотите получать <b>errors</b>, вам следует добавить в&nbsp;<i><b>раздел &#8216;PropertyGroup&#8217;</b></i> следующую строку:</span></div><div style="border: 0px; font-size: 14px; line-height: 19.9999942779541px; margin: 0px; padding: 0px;"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><table border="0" cellpadding="0" cellspacing="0" style="font-size: 1em; line-height: 1.428571em;"><tbody style="line-height: 1.428571em;"><tr style="line-height: 1.428571em;"><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;" title="Hint: double-click to select code"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><span style="font-family: Arial, Helvetica, sans-serif;"><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;">&lt;StyleCopTreatErrorsAsWarnings&gt;</code><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;">false</code><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;">&lt;/StyleCopTreatErrorsAsWarnings&gt;</code></span><br /><span style="font-family: Arial, Helvetica, sans-serif;"><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><br /></code></span><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-9SnH6nIlF9w/Uzhw2FtausI/AAAAAAAABAQ/KSjgBAcDLH8/s1600/4.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><span style="font-family: Arial, Helvetica, sans-serif;"><img border="0" src="http://1.bp.blogspot.com/-9SnH6nIlF9w/Uzhw2FtausI/AAAAAAAABAQ/KSjgBAcDLH8/s1600/4.png" height="376" width="640" /></span></a></div><div class="separator" style="clear: both; text-align: center;"><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></div><div class="separator" style="clear: both; text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif;">На этом моя статья по установке и настройке stylecop подошла к концу. Надеюсь в ней вы найдете что-то интересное для себя.&nbsp;</span></div><div class="separator" style="clear: both; text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></div><div class="separator" style="clear: both; text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif;"><span style="background-color: white; font-size: 13px; line-height: 18.479999542236328px; text-align: start;">Со мной вы можете связаться через&nbsp;</span><a href="https://twitter.com/greybax" rel="nofollow" style="background-color: white; color: purple; font-size: 13px; line-height: 18.479999542236328px; text-align: start;">twitter</a><span style="background-color: white; font-size: 13px; line-height: 18.479999542236328px; text-align: start;">&nbsp;или&nbsp;</span><a href="http://greybax.blogspot.com/" style="background-color: white; color: purple; font-size: 13px; line-height: 18.479999542236328px; text-align: start;">блог</a><span style="background-color: white; font-size: 13px; line-height: 18.479999542236328px; text-align: start;">.</span></span></div><div class="separator" style="clear: both; text-align: justify;"><span style="background-color: white; font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 18.479999542236328px; text-align: start;"><br /></span></div><div class="separator" style="clear: both; text-align: right;"><span style="font-family: Arial, Helvetica, sans-serif;">Спасибо.</span></div><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></code></div></div></td></tr></tbody></table></div></div></div></div></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/12/18/windows-7-hotkeys/">Windows 7 HotKeys</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-18T00:00:00+00:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<span style="background-color: white;"><span style="font-family: Arial, sans-serif;"><span style="font-size: 15px;">I would like propose to your attention the list of hotkeys, the use of which makes the work with the Windows 7 more&nbsp;usability. Some hotkeys&nbsp;</span></span></span><span style="background-color: white; font-family: Arial, sans-serif; font-size: 15px;">may be available in Windows 8.&nbsp;</span><br /><br style="background-color: white; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px;" /><h4 style="background-color: white; border: 0px; color: #999999; font-family: Verdana, sans-serif; font-size: 16px; font-weight: normal; line-height: 20px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Manage windows</h4><br style="background-color: white; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px;" /><ul style="background-color: white; border: 0px; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px; list-style-image: initial; list-style-position: outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Home</b>: Minimize/Maximize all windows, but active. («Shake» the window)</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Space</b>: Make all windows <span style="font-family: Arial, sans-serif; font-size: 15px; line-height: normal;">transparent</span>.</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Up</b>: Maximize active window full screen.&nbsp;</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Down</b>: Minimize active window or restore previous size, if it maximized on full screen.</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Shift</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Up</b>: Expand the window height (drag the bottom border of the window to the taskbar)</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Left</b>/<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Right</b>: Take the window left / right side of the monitor, or restore the size (drag the window to the left / right all the way)</li></ul><br /><a name='more'></a><br style="background-color: white; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px;" /><br /><h4 style="background-color: white; border: 0px; color: #999999; font-family: Verdana, sans-serif; font-size: 16px; font-weight: normal; line-height: 20px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Taskbar</h4><br style="background-color: white; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px;" /><ul style="background-color: white; border: 0px; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px; list-style-image: initial; list-style-position: outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">digit</b>: Run the program with that number, or switch to it.</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Shift</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">digit</b>: Launch a new copy of the program under this number (click on the wheel icon).</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Ctrl</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">digit</b>: Switch to the next window in that number (click, hold&nbsp;<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Ctrl</b>).</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Alt</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">digit</b>: Open jump list program under this number.</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">T</b>(+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Shift</b>): Switch between all open windows on the taskbar thumbnails in the forward (reverse) order.</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">B</b>: Focus on the tray.</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Ctrl</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Shift</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Click</b>: Run this program as an administrator.</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Shift</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Right-click</b>: Show the window menu / group.</li></ul><br style="background-color: white; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px;" /><h4 style="background-color: white; border: 0px; color: #999999; font-family: Verdana, sans-serif; font-size: 16px; font-weight: normal; line-height: 20px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Explorer (and Desktop)</h4><br style="background-color: white; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px;" /><ul style="background-color: white; border: 0px; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px; list-style-image: initial; list-style-position: outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Ctrl</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Shift</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">N</b>: Create new folder.</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Alt</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Up</b>: To rise to a higher level by folder.</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Alt</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">P</b>: Enable file browsing panel.</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Shift</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Right-Click</b>&nbsp;(on ​​file): Adds a context menu item &#8220;Copy path&#8221; and a lot of additional items in the menu &#8220;Send&#8221;</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Shift</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Right-Click</b>&nbsp;(a folder): Adds a context menu that lets you open a command prompt in that folder.</li></ul><br style="background-color: white; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px;" /><h4 style="background-color: white; border: 0px; color: #999999; font-family: Verdana, sans-serif; font-size: 16px; font-weight: normal; line-height: 20px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Other</h4><br style="background-color: white; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px;" /><ul style="background-color: white; border: 0px; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px; list-style-image: initial; list-style-position: outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">P</b>: Open setting menu presentation (second monitor - projector)</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+(<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">+</b>/<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">-</b>): zoom in / zoom out (causes Magnifier).</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">G</b>: Switch between running gadgets.</li></ul></div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/12/13/yandex-browser-it-need-or-not/">Yandex Browser? It's Need or Not?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-13T00:00:00+00:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<div style="text-align: justify;"><blockquote class="tr_bq" style="text-align: right;"><span style="background-color: white; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: left;">Yandex.Browser with a full set of features designed specifically for the English-speaking users will be released soon. (с)</span></blockquote><div class="separator" style="clear: both; text-align: center;"><a href="http://yabs.yandex.ru/count/AI9QGHYaezm40002Zhqbnmm5KPK2cmPfMeYosr1G0vAjXGQgfZIAe4K6Kge2fPOOP92W7mBUaRpGIMG6an11hlnExYmQdEFG1B41VmS0" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://yabs.yandex.ru/count/AI9QGHYaezm40002Zhqbnmm5KPK2cmPfMeYosr1G0vAjXGQgfZIAe4K6Kge2fPOOP92W7mBUaRpGIMG6an11hlnExYmQdEFG1B41VmS0" /></a></div>Not so early, Yandex company on yours conference is <a href="http://fotki.yandex.ru/users/ya-events/album/136128/" target="_blank">YaC 2012</a> present the <a href="http://browser.yandex.com/" target="_blank">Yandex browser 1.0</a>. Let&#8217;s show it inside.<br /><img alt="Новый Яндекс.Браузер" src="http://yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" /><br /><img alt="Новый Яндекс.Браузер" class="b-icon" src="http://yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" /></div><div style="text-align: justify;">The engine of this thing is open source&nbsp; browser Chromium. Some intresting, that Some sites detected that it&#8217;s 19 version of google chr<span style="font-family: inherit;">ome, but at the moment of this post Google Chrome has 23.xxx version :). String of search find in Yandex on default. So, already we have some Google and some Yandex. &#8220;Yeah.. Not enough Opera&#8221; - thinking guys from Yandex and added Turbo technology by Opera. It&#8217;s mix equals to Yandex browser. Some people have</span> a nick &#8220;Stringy&#8221; for the specific logo.</div><br /><a name='more'></a><br /><br /><div style="text-align: justify;">And we can see a mix of modern teccnology. Therefore, on my mind it&#8217;s &#8220;discovered bicycle&#8221; (it is russian flying phrase). At the first time, we can&#8217;t see new&nbsp;any&nbsp;features.&nbsp;Of all proposed <a href="http://browser.yandex.com/" target="_blank">here</a>,&nbsp;I would single out only the following:</div><ol><a href="http://browser.yandex.com/i/win-feature-turbo-com-eng.png" imageanchor="1" style="clear: right; float: right; margin-bottom: 1em; margin-left: 1em; text-align: center;"><img border="0" src="http://browser.yandex.com/i/win-feature-turbo-com-eng.png" height="180" width="320" /></a></ol><span style="font-family: inherit; text-align: justify;">&nbsp;1. &nbsp;New view of URL. Now url will not so lenght. It&#8217;s will be name of web page look like bread crumbs.</span><br /><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><br /></div><span style="font-family: inherit; text-align: justify;"></span><br /><div><span style="font-family: inherit; text-align: justify;"><span style="font-family: inherit; text-align: justify;"><br /></span></span></div><span style="font-family: inherit; text-align: justify;"></span><br /><div><span style="font-family: inherit; text-align: justify;"><span style="font-family: inherit; text-align: justify;"><br /></span></span></div><span style="font-family: inherit; text-align: justify;"></span><div><span style="font-family: inherit; text-align: justify;"><span style="font-family: inherit; text-align: justify;"><br /></span></span></div><span style="font-family: inherit; text-align: justify;">2. New menu of fast link - &#8220;Tableu&#8221;. F</span><span style="background-color: white; font-size: 14px; line-height: 18px; text-align: justify;"><span style="font-family: inherit;">avorite sites will only be a click away and colorful widgets will show you up-to-date information about the weather and traffic, as well as social network </span><span style="font-family: Arial, Helvetica, sans-serif;">notifications.</span></span><a href="http://browser.yandex.com/i/win-feature-tablo-com-eng.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em; text-align: center;"><img border="0" src="http://browser.yandex.com/i/win-feature-tablo-com-eng.png" height="180" width="320" /></a><br /><div><br /><span style="font-family: inherit; text-align: justify;">3. Smartbox -&nbsp;</span><span style="background-color: white; font-family: inherit; font-size: 14px; line-height: 18px; text-align: justify;">Enter your searches and websites into the Smartbox. Search suggestions will help you search more quickly and autocorrect errors.</span><br /><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: justify;"><span style="clear: right; float: right; font-family: inherit; margin-bottom: 1em; margin-left: 1em;"><img border="0" src="http://browser.yandex.com/i/win-feature-smartsearch-com-eng.png" height="180" width="320" /></span></div><div class="separator" style="clear: both; text-align: justify;"><br /></div><div style="text-align: justify;"><span style="font-family: inherit;">And so on, I think that guys from Yandex must have hard working on th</span>is thing, and may be some version their have a fortune.</div><div style="text-align: justify;"><br /></div></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/12/10/my-contribution-in-mozilla-society/">My Contribution in Mozilla Society</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-10T00:00:00+00:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<div style="text-align: justify;"><blockquote class="tr_bq" style="text-align: right;"><br /><div style="text-align: justify;"><i style="background-color: white; color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px; text-align: left;">It&#8217;s my first publication on english language. And it&#8217;s blog some training for my english, so I sorry for my not well english, because english is not my first language.</i></div></blockquote><a href="http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-512-noshadow.png" imageanchor="1" style="clear: left; color: #4d469c; float: left; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px; margin-bottom: 1em; margin-right: 1em; text-decoration: none;"><img border="0" height="320" src="http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-512-noshadow.png" style="-webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 0px; border-top-right-radius: 0px; border: 1px solid transparent; box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px; padding: 8px; position: relative;" width="320" /></a><br /><blockquote class="tr_bq" style="text-align: right;"><span style="background-color: white; text-align: left;"></span><br /><div style="text-align: justify;"><span style="color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px;"><br /></span></div><span style="background-color: white; color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px; text-align: left;"><div style="text-align: justify;">And so on, in this topic I would like say about Mozilla society. And how I become &nbsp;in mozilla contribution list &nbsp; &nbsp;. For me it&#8217;s very intresting to participate in some activities. But I&#8217;m not a mozilla evangelist. :)</div></span><div style="text-align: justify;"><span style="color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px;"><br /></span></div><span style="background-color: white; color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px; text-align: left;"><div style="text-align: justify;">I think that not secret for each other that mozilla it&#8217;s &nbsp;global web society where each people can have yours contribution: programming, &nbsp;design sites, translate article on&nbsp;<a href="https://developer.mozilla.org/ru/" style="color: #4d469c; text-decoration: none;" target="_blank">mozilla network&nbsp;</a>and&nbsp;&nbsp;so on. Site&nbsp;<a href="http://whatcanidoformozilla.org/" style="color: #4d469c; text-decoration: none;" target="_blank">what can I do for mozilla</a>&nbsp;help a new people who it&#8217;s can intrested. If you like makes open source world better, that it&#8217;s makes interested you.</div></span><div style="text-align: justify;"><span style="color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px;"><br /></span></div><span style="background-color: white; color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px; text-align: left;"><div style="text-align: justify;">Some of yours can see page with title &#8220;Our Contributors&#8221; on menu &#8220;About Firefox&#8221; - &#8220;global society&#8221; in mozilla products. Perhaps you too would become on this page. It&#8217;s very easy. There are some&nbsp;<span style="font-family: arial, sans-serif; white-space: nowrap;">advice after this.&nbsp;</span></div></span><span style="background-color: white; text-align: left;"><div style="text-align: justify;"><span style="color: #444444; font-family: arial, sans-serif; font-size: 13px; line-height: 18.200000762939453px; white-space: nowrap;"><br /></span></div></span><span style="background-color: white; color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px; text-align: left;"><div style="text-align: justify;"><b>What can you make for example:</b></div></span><br /><ol style="background-color: white; color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px; text-align: left;"><li style="margin: 0px 0px 0.25em; padding: 0px; text-align: justify;">Translate to russian some topics on&nbsp;<a href="https://developer.mozilla.org/ru/" style="color: #4d469c; text-decoration: none;" target="_blank">mozilla network</a>&nbsp;or other resource of this society.</li><li style="margin: 0px 0px 0.25em; padding: 0px; text-align: justify;">If you programmer you can started for fix some light bugs of Firefox, Thunderbird, and etc. After your &nbsp;review code you can get access to repository with more content.</li><li style="margin: 0px 0px 0.25em; padding: 0px; text-align: justify;">If you think that you makes some good things for society you can send letter to credits@mozilla.org &nbsp;giving your name, email address and a sentence (citation) summarizing your contribution.</li><li style="margin: 0px 0px 0.25em; padding: 0px; text-align: justify;">If it&#8217;s true you have a lot of chance be on board contribution. And have&nbsp;mental pleasure :)</li></ol></blockquote></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="2">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -407,7 +377,7 @@
    
 <form action="https://www.google.com/search" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:greybax.github.io" />
+    <input type="hidden" name="q" value="site:alfilatov.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
@@ -416,6 +386,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/08/27/kak-i-zachiem-ia-pierieshiel-s-blogger-na-octopress/">Как и зачем я перешел с Blogger на Octopress</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/07/07/devconf14/">Как я побывал на DevConf'14</a>
@@ -431,10 +405,6 @@
     
       <li class="post">
         <a href="/blog/2014/05/12/aspnet/">ASP.NET: События жизненного цикла страницы</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/23/aspnet/">ASP.NET: Этапы жизненного цикла страницы</a>
       </li>
     
   </ul>
@@ -470,15 +440,38 @@
 </section>
 
 
-
-
-
   
 </aside>
 
 
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter25504124 = new Ya.Metrika({id:25504124,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/25504124" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
     </div>
-  </div>
   <footer role="contentinfo"><p>
   Copyright &copy; 2014 - Aleksandr Filatov -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
@@ -487,7 +480,29 @@
 </footer>
   
 
+<script type="text/javascript">
+      var disqus_shortname = 'greybax';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 
 

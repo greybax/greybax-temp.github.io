@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://greybax.github.io/sitemap.xml 
+Sitemap: http://alfilatov.com/sitemap.xml 

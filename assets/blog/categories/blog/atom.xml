@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Blog | Aleksandr Filatov]]></title>
+  <link href="http://alfilatov.com/blog/categories/blog/atom.xml" rel="self"/>
+  <link href="http://alfilatov.com/"/>
+  <updated>2014-08-27T13:34:14+00:00</updated>
+  <id>http://alfilatov.com/</id>
+  <author>
+    <name><![CDATA[Aleksandr Filatov]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Как и зачем я перешел с Blogger на Octopress]]></title>
+    <link href="http://alfilatov.com/blog/2014/08/27/kak-i-zachiem-ia-pierieshiel-s-blogger-na-octopress/"/>
+    <updated>2014-08-27T08:28:59+00:00</updated>
+    <id>http://alfilatov.com/blog/2014/08/27/kak-i-zachiem-ia-pierieshiel-s-blogger-na-octopress</id>
+    <content type="html"><![CDATA[<p>Я использовал Blogger c 2012 года. Для меня эта система показалась достаточно не удобной, чтобы продолжать ее использовать в дальнейшем. Неудобство заключалось в написании постов где нужно вставлять участки кода или добавять картинки. HTML редактор генерит кучу лишнего кода. В итоге я решил подыскать себе новый блог-движок.</p>
+
+<h2>Что я хотел получить</h2>
+
+<ul>
+<li>Писать больше постов не заморачиваясь на разметку HTML/CSS</li>
+<li>Иметь больше свободы в редизайне своего блога</li>
+</ul>
+
+
+<p>Выбор пал Octopress. Движок герерации статических веб страниц написанный на <code>Ruby</code>. Окончательное решение о переезде было принято после прохождения курса (Web Application Architectures)[<a href="https://class.coursera.org/webapplications-002">https://class.coursera.org/webapplications-002</a>] на Coursera где в качестве примера языка был взят <code>Ruby on Rails</code>. Т.к в повседневной жизни я пользователь винды, а ставить Ruby окружение на нее дело не из приятных, а заморачиваться с виртуалкой не хочется, погуглив наткнулся на замечательный сайт <a href="https://www.nitrous.io/.">https://www.nitrous.io/.</a> Сайт предлагает на free аккаунте доступ к box&#8217;у с environment для целого ряда языков. В нашем случае это <code>Ruby</code>
+При таком подходе мы сможем писать в блог из любого места где есть интернет и нам не нужно иметь машину или виртуалку с исходниками своего блога. Считаю что это достаточно весомый аргумент в пользу использования облачного хостинга с поддержкой IDE.</p>
+
+<h2>Плюсы переезда</h2>
+
+<ul>
+<li>Markdown разметка. Не нужно уделять большое внимание HTML разметке. Концентрируешься больше на написание поста.</li>
+<li>Версионирование</li>
+<li>Удобно писать из редакторов Vim, хотя это для меня не является основным выбором</li>
+</ul>
+
+
+<h2>Минусы переезда</h2>
+
+<ul>
+<li>Страницы с Blogger стоят выше в результатах поиска гугла при равных условиях</li>
+<li>Не нужно заморачиваться на хостинге. Хотя это не проблема и со случаем Octopress</li>
+</ul>
+
+
+<h2>Мигригуем</h2>
+
+<ul>
+<li>Подготовка</li>
+<li>Развертывание</li>
+</ul>
+
+
+<h3>Подготовка</h3>
+
+<p>Регистрируемся на сайте <a href="https://www.nitrous.io.">https://www.nitrous.io.</a> Выбираем в качестве окружения box c Ruby. Далее выполняем все по шагам как описано тут <a href="http://octopress.org/docs/setup/">http://octopress.org/docs/setup/</a> и (конфигурируем)[<a href="http://octopress.org/docs/configuring/">http://octopress.org/docs/configuring/</a>].
+Для миграции постов на Octopress нужно:
+* Экспотировать их в файл в своем аккаунте в Blogger
+* Заюзать (скрипт)[<a href="https://gist.github.com/1765496">https://gist.github.com/1765496</a>]</p>
+
+<p>После этого вы получите кучу сообщений которые уже являются частью вашего сайта. Проверьте все ли корректно.
+Скрипт так же импортирует комментарии, но в неудобном для просмотра виде. (Tip, вы можете отключить комментарии перед экспортом постов из Blogger).
+Теперь все готово для того чтобы равернуть наш блог.</p>
+
+<h3>Развертывание</h3>
+
+<p>На этом этапе мы получили блог на Octopress куда мы мигрировали свои посты из Blogger. Для развертывания я использовал  Github Pages, но процесс развертывания на Heroku или через RSync на свой хостинг отличаются незначительно.</p>
+
+<p>Процесс развертывания подробно описан на сайте Octopress (тут)[<a href="http://octopress.org/docs/deploying/github/">http://octopress.org/docs/deploying/github/</a>].</p>
+
+<h3>Итог</h3>
+
+<ul>
+<li>Получили окружение с IDE для <code>Ruby</code>, которое доступно прямо из браузера.</li>
+<li>Удовольствие от написания постов в markdown разметке, расходуя минимум времени на HTML разметку</li>
+<li>Поддержку &ldquo;из коробки&rdquo; различных социальных плагинов (twitter, github, facebook). Легко добавлять свои</li>
+<li>Удобная кастомизация design themes свое блога. При желании можно сменить стандартную тему или сделать свою. Большой выбор тут <a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes</a></li>
+<li>Стимул учить <code>Rubу</code> :)</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
