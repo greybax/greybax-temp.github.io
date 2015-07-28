@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Windows Hotkeys | Aleksandr Filatov]]></title>
+  <link href="http://alfilatov.com/blog/categories/windows-hotkeys/atom.xml" rel="self"/>
+  <link href="http://alfilatov.com/"/>
+  <updated>2015-07-23T16:47:12+00:00</updated>
+  <id>http://alfilatov.com/</id>
+  <author>
+    <name><![CDATA[Aleksandr Filatov]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Windows 7 HotKeys]]></title>
+    <link href="http://alfilatov.com/blog/2012/12/18/windows-7-hotkeys/"/>
+    <updated>2012-12-18T00:00:00+00:00</updated>
+    <id>http://alfilatov.com/blog/2012/12/18/windows-7-hotkeys</id>
+    <content type="html"><![CDATA[<p>I would like propose to your attention the list of hotkeys, the use of which makes the work with the Windows 7 more usability. Some hotkeys may be available in Windows 8.</p>
+
+<h3>Manage windows</h3>
+
+<ul>
+<li><strong><em>Win + Home</em></strong> - Minimize/Maximize all windows, but active. («Shake» the window)</li>
+<li><strong><em>Win + Space</em></strong> - Make all windows transparent</li>
+<li><strong><em>Win + Up</em></strong> - Maximize active window full screen.</li>
+<li><strong><em>Win + Down</em></strong> - Minimize active window or restore previous size, if it maximized on full screen.</li>
+<li><strong><em>Shift + Win + Up</em></strong> - Expand the window height (drag the bottom border of the window to the taskbar)</li>
+<li><strong><em>Win + left/Right</em></strong> - Take the window left / right side of the monitor, or restore the size (drag the window to the left / right all the way)</li>
+</ul>
+
+
+<h3>Taskbar</h3>
+
+<ul>
+<li><strong><em>Win + digit</em></strong> - Run the program with that number, or switch to it.</li>
+<li><strong><em>Shift + Win + digit</em></strong> - Launch a new copy of the program under this number (click on the wheel icon).</li>
+<li><strong><em>Ctrl + Win + digit</em></strong> - Switch to the next window in that number (click, hold Ctrl).</li>
+<li><strong><em>Alt + Win + digit</em></strong> - Open jump list program under this number.</li>
+<li><strong><em>Win + T(+ Shift)</em></strong> - Switch between all open windows on the taskbar thumbnails in the forward (reverse) order.</li>
+<li><strong><em>Win + B</em></strong> - Focus on the tray.</li>
+<li><strong><em>Ctrl + Shift + Click</em></strong> - Run this program as an administrator.</li>
+<li><strong><em>Shift + Right-click</em></strong> - Show the window menu / group.</li>
+</ul>
+
+
+<h3>Explorer (and Desktop)</h3>
+
+<ul>
+<li><strong><em>Ctrl + Shift + N</em></strong> - Create new folder.</li>
+<li><strong><em>Alt + Up</em></strong> - To rise to a higher level by folder.</li>
+<li><strong><em>Alt + P</em></strong> - Enable file browsing panel.</li>
+<li><strong><em>Shift + Right-Click (on file)</em></strong> - Adds a context menu item &ldquo;Copy path&rdquo; and a lot of additional items in the menu &ldquo;Send&rdquo;</li>
+<li><strong><em>Shift + Right-Click (on a folder)</em></strong> - Adds a context menu that lets you open a command prompt in that folder.</li>
+</ul>
+
+
+<h3>Other</h3>
+
+<ul>
+<li><strong><em>Win + P</em></strong> - Open setting menu presentation (second monitor - projector)</li>
+<li><strong><em>Win + (+/-)</em></strong> - zoom in / zoom out (causes Magnifier).</li>
+<li><strong><em>Win + G</em></strong> - Switch between running gadgets.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

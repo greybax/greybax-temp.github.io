@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Мигрируем Javascript код в TypeScript - Aleksandr Filatov</title>
+  <meta name="author" content="Aleksandr Filatov">
+
+  
+  <meta name="description" content="Не так давно стояла задача перевести один старый проект из кода на Javascript в TypeScript. Хочу поделиться своим опытом такого перехода. Рассмотрим &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://alfilatov.com/blog/2015/06/05/mighriruiem-js-kod-v-typescript">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/myStyles.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Aleksandr Filatov" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Aleksandr Filatov</a></h1>
+  
+    <h2>Blog about life and software development</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about/index">About Me</a></li>
+  <li><a href="https://stackoverflow.com/users/2173016/greybax">StackOverflow</a></li>
+  <li><a href="https://github.com/greybax">Github</a></li>
+  <li><a href="https://twitter.com/greybax">Twitter</a></li>
+  <li><a href="http://ru.linkedin.com/pub/aleksandr-filatov/89/608/66b/">LinkedIn</a></li>
+</ul>
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Мигрируем Javascript код в TypeScript</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-06-05T13:16:39+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Не так давно стояла задача перевести один старый проект из кода на <code>Javascript</code> в <code>TypeScript</code>. Хочу поделиться своим опытом такого перехода. Рассмотрим на примере разработки в Visual Studio.</p>
+
+<p>Для начала стоит отметить, что такая миграция не является проблемой с точки зрения совместимости, т.к код на <code>Javascript</code> - это синтаксически корректный код на <code>TypeScript</code>.</p>
+
+<p>Итак, выделим основные этапы, после выполнения которых произойдет чудесное
+превращение:</p>
+
+<ul>
+<li>Переименуем все <code>.js</code> файлы в <code>.ts</code></li>
+<li><p>Настраиваем компиляцию из <code>.ts</code> в <code>.js</code></p>
+
+<ul>
+<li>Для этого нужно скачать и установить <code>TypeScript</code> плагин для студии с <a href="http://www.typescriptlang.org/#Download">официального сайта</a>, позволяющий компилировать <code>.ts</code> файлы в <code>.js</code>.</li>
+</ul>
+</li>
+<li><p>Устанавливаем определения для библиотек (<code>.d.ts</code>)</p>
+
+<ul>
+<li>Коллекция определений библиотек находится в <a href="https://github.com/borisyankov/DefinitelyTyped">открытом доступе</a>. Определения для <code>javascript</code> библиотек можно установить через <a href="http://definitelytyped.org/tsd/">tsd</a> - это аналог NuGet Package Manager.</li>
+</ul>
+</li>
+<li><p>Пишем определения для своего кода</p>
+
+<ul>
+<li>Это совсем не сложно и делается по аналогии с кучей примеров из <a href="https://github.com/borisyankov/DefinitelyTyped">DefinitelyTyped on GitHub</a>. Мой пример можно посмотреть <a href="https://github.com/greybax/DefinitelyTyped/tree/master/quixote">тут</a>, который я писал по <a href="https://github.com/jamesshore/quixote/blob/master/docs/api.md">документации для библиотеки quixote</a></li>
+</ul>
+</li>
+<li><p>Рефакторим чтобы использовать язык <code>TypeScript</code></p>
+
+<ul>
+<li>После компиляции проекта в вашем коде будут возникать ошибки, которые слудует исправлять в соответвии с семантикой <code>TypeScript</code>. После исправления всех ошибок вы получите рабочий проект на <code>TypeScript</code> со всеми вытекающими отсюда удобствами.</li>
+</ul>
+</li>
+</ul>
+
+
+<p><strong>Итог</strong>: Все, как оказалось невероятно просто, как досчитать до 5! :)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Aleksandr Filatov</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-06-05T13:16:39+00:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/frontend/'>frontend</a>, <a class='category' href='/blog/categories/javascript/'>javascript</a>, <a class='category' href='/blog/categories/migration/'>migration</a>, <a class='category' href='/blog/categories/typescript/'>typescript</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://alfilatov.com/blog/2015/06/05/mighriruiem-js-kod-v-typescript/" data-via="greybax" data-counturl="http://alfilatov.com/blog/2015/06/05/mighriruiem-js-kod-v-typescript/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/05/11/poiezdka-v-shri-lanku/" title="Previous Post: Поездка в Шри-Ланку">&laquo; Поездка в Шри-Ланку</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2015/06/29/probuiem-es2015-es6-v-dieistvii/" title="Next Post: Пробуем ES2015(ES6) в действии">Пробуем ES2015(ES6) в действии &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:alfilatov.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/06/29/probuiem-es2015-es6-v-dieistvii/">Пробуем ES2015(ES6) в действии</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/06/05/mighriruiem-js-kod-v-typescript/">Мигрируем Javascript код в TypeScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/05/11/poiezdka-v-shri-lanku/">Поездка в Шри-Ланку</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/10/poluchaiem-spisok-obrabotchikov-eliemienta-stranitsy/">Получаем список обработчиков элемента в DOM'е</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/30/gdie-ia-bieru-informatsiiu-o-mirie-frontend/">Что можно почитать по Frontend'у</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/greybax">@greybax</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'greybax',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<section>
+  <h1>RSS</h1>
+  <p style="margin-top:10px; margin-bottom:0; padding-bottom:0; text-align:center; line-height:0">
+    <a target="_blank" href="http://feeds.feedburner.com/~r/greybax/~6/1"><img src="http://feeds.feedburner.com/greybax.1.gif" alt="Aleksandr Filatov" style="border:0"></a>
+  </p>
+  
+  <a href="https://feedburner.google.com/fb/a/mailverify?uri=greybax&amp;loc=en_US">Subscribe to Aleksandr Filatov by Email</a>
+</section>
+<section>
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("greybax", 0, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/greybax" class="twitter-follow-button" data-show-count="true">Follow @greybax</a>
+  
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  The content on this site represents my own personal opinions and thoughts at the time of posting. <br />
+  Copyright &copy; 2015 - Aleksandr Filatov -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. </span>
+  <span class="credit">Blog theme is <a href="https://github.com/johnkeith/boldandblue">Bold-and-Blue</a></span>
+</p>
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'greybax';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://alfilatov.com/blog/2015/06/05/mighriruiem-js-kod-v-typescript/';
+        var disqus_url = 'http://alfilatov.com/blog/2015/06/05/mighriruiem-js-kod-v-typescript/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>

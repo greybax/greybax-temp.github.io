@@ -9,7 +9,7 @@
   <meta name="author" content="Aleksandr Filatov">
 
   
-  <meta name="description" content="Думаю что в каждой компании существует свой code style по написанию правильного и красивого кода. Недавно в одном из проектов наша команда решила " &hellip;">
+  <meta name="description" content="В каждой компании существует свой code style по написанию правильного и красивого кода. Недавно в одном из проектов наша команда решила &ldquo; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,6 +21,7 @@
   <link rel="canonical" href="http://alfilatov.com/blog/2014/03/30/stylecop">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/myStyles.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Aleksandr Filatov" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -51,8 +52,8 @@
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="/atom.xml">RSS</a></li>
-  <li><a href="/about/index">About Me</a></li>  
+  <li><a href="/about/index">About Me</a></li>
+  <li><a href="https://stackoverflow.com/users/2173016/greybax">StackOverflow</a></li>
   <li><a href="https://github.com/greybax">Github</a></li>
   <li><a href="https://twitter.com/greybax">Twitter</a></li>
   <li><a href="http://ru.linkedin.com/pub/aleksandr-filatov/89/608/66b/">LinkedIn</a></li>
@@ -83,16 +84,69 @@
 
 <time datetime="2014-03-30T00:00:00+00:00" pubdate data-updated="true"></time>
         
-           | <a href="#disqus_thread"
-             data-disqus-identifier="http://alfilatov.com">Comments</a>
-        
       </p>
     
   </header>
 
 
-<div class="entry-content"><div class='post'>
-<div dir="ltr" style="text-align: left;" trbidi="on"><span style="font-family: Arial, Helvetica, sans-serif;">Думаю что в каждой компании существует свой code style по написанию правильного и красивого кода. Недавно в одном из проектов наша команда решила "причесать" код. На помощь пришел <b>StyleCop</b>. Итак.</span><br /><h2 style="text-align: left;"><b><span style="font-family: Arial, Helvetica, sans-serif;">Установка</span></b></h2><div><ol style="text-align: left;"><li><span style="font-family: Arial, Helvetica, sans-serif;">Вы можете скачать <b>stylecop</b> c <a href="http://stylecop.codeplex.com/" target="_blank">сайта</a><span style="font-size: 14px; line-height: 19.9999942779541px;">.</span></span></li><li><span style="font-family: Arial, Helvetica, sans-serif;"><span style="font-size: 14px; line-height: 19.9999942779541px;">Советую не изменять пусть установки, потому что</span><span style="font-size: 14px; line-height: 19.9999942779541px;">&nbsp;это может привести к некоторым проблемам.</span></span></li><li><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 19.9999942779541px;">После установки может потребоваться перезагрузка компьютера.</span></li></ol><div><h2 style="border: 0px; font-size: 1em; line-height: 19.9999942779541px; margin: 1.4285em 0px 0.714285em; padding: 0px; text-align: left;"><span style="font-family: Arial, Helvetica, sans-serif;">Настройка</span></h2><div><span style="font-family: Arial, Helvetica, sans-serif;">Для установки настроек <b>stylecop </b>одинаковыми на всех ваших проектах нужно выполнить следующие действия:</span></div><div><span style="font-family: Arial, Helvetica, sans-serif;"></span><br /><a name='more'></a><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></div><div><ul style="text-align: left;"><li><span style="font-family: Arial, Helvetica, sans-serif;">Клик правой кнопкой мыши выбираем раздел&nbsp;<span style="font-size: 14px; line-height: 19.9999942779541px;"><i>'StyleCop Settings'</i>.&nbsp;<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-Ff4lI2D2Vt8/UzhuaRggbMI/AAAAAAAAA_8/GdbfdLYTOtM/s1600/2.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://4.bp.blogspot.com/-Ff4lI2D2Vt8/UzhuaRggbMI/AAAAAAAAA_8/GdbfdLYTOtM/s1600/2.png" /></a></div></span><span style="font-size: 14px; line-height: 19.9999942779541px;">Разберем каждую вкладку в отдельности</span></span></li><ul><li><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 19.9999942779541px;"><i><b>'Rules'</b> - </i>правила настройки stylecop</span></li><li><span style="font-family: Arial, Helvetica, sans-serif;"><span style="font-size: 14px; line-height: 19.9999942779541px;">Переходим на вкладку&nbsp;</span><span style="font-size: 14px; line-height: 19.9999942779541px;"><i><b>'Settings Files'</b>.&nbsp;</i></span></span></li><ul><li><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 19.9999942779541px;">1-ый радиобаттон &nbsp;значит не использовать наследование настроек stylecop в солюшене и в проектах</span></li><li><span style="font-family: Arial, Helvetica, sans-serif;"><span style="font-size: 14px; line-height: 19.9999942779541px;">2-ой - поддержка&nbsp;наследования/переопределения файлов настроек. Т.е файл с настройками&nbsp;лежащий на уровне выше имеет выше приоритет. Solution - project. Если вы хотите&nbsp;</span><strong style="line-height: 1.428571em;">изменить настройки для всех проектов сразу</strong>, вам нужно перейти на эту вкладку, нажать <i>"Edit"</i>, и вы увидите окно файла конфигурации с настройками.</span></li><li><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 19.9999942779541px;">3-й мерж настроек с указанным файлом.</span></li></ul></ul></ul></div><div style="border: 0px; font-size: 14px; line-height: 19.9999942779541px; margin-bottom: 0.714285em; padding: 0px;"><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-zSzjZtQ2K2k/UzhiQvLTXaI/AAAAAAAAA_s/twkcNLtIRYQ/s1600/1.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><span style="font-family: Arial, Helvetica, sans-serif;"><img border="0" src="http://1.bp.blogspot.com/-zSzjZtQ2K2k/UzhiQvLTXaI/AAAAAAAAA_s/twkcNLtIRYQ/s1600/1.png" /></span></a></div><div class="separator" style="clear: both; text-align: center;"><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></div><div class="separator" style="clear: both; text-align: center;"></div><ul><ul><li><span style="font-family: Arial, Helvetica, sans-serif;"><b style="font-style: italic;">"Options" </b>- настройки обновления и выбор языка</span></li><li><span style="font-family: Arial, Helvetica, sans-serif;"><i style="font-weight: bold;">"Spelling" </i>- сюда можно добавить слова исключения при проверки stylecop.</span></li><li><span style="font-family: Arial, Helvetica, sans-serif;"><b><i>"Company information"</i></b> - думаю и так все понятно :)</span></li><li><span style="font-family: Arial, Helvetica, sans-serif;"><i style="font-weight: bold;">"Hungarian" </i>- по умолчанию венгерский стиль отключен, но на этой вкладке вы можете добавить исключения.</span></li></ul></ul><div><span style="font-family: Arial, Helvetica, sans-serif;">Больше правил и настроек <b>stylecop </b>вы можете найти на <a href="http://www.stylecop.com/docs/" target="_blank">официальном сайте программы</a>.&nbsp;Так же там есть&nbsp;Rule Suppressions, но лучше ими не злоупотреблять.</span></div></div></div></div><div><h2 style="border: 0px; font-size: 1em; line-height: 19.9999942779541px; margin: 1.4285em 0px 0.714285em; padding: 0px; text-align: left;"><span style="font-family: Arial, Helvetica, sans-serif;">StyleCop и Build</span></h2><div style="border: 0px; font-size: 14px; line-height: 19.9999942779541px; margin-bottom: 0.714285em; padding: 0px;"><span style="font-family: Arial, Helvetica, sans-serif;">Если вы хотите запускать StyleCop при каждом билде проекта, вам следует отредактировать .csproj file:</span><br /><span style="font-family: Arial, Helvetica, sans-serif;">В конец файла следует добавить следующую строку (для StyleCop v4.7 ):</span></div><div style="border: 0px; font-size: 14px; line-height: 19.9999942779541px; margin: 0px; padding: 0px;"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><table border="0" cellpadding="0" cellspacing="0" style="font-size: 1em; line-height: 1.428571em;"><tbody style="line-height: 1.428571em;"><tr style="line-height: 1.428571em;"><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;" title="Hint: double-click to select code"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><span style="font-family: Arial, Helvetica, sans-serif;"><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;">&lt;Import Project=</code><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;">"$(ProgramFiles)\MSBuild\StyleCop\v4.7\StyleCop.targets"</code>&nbsp;<code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;">/&gt;</code></span><br /><span style="font-family: Arial, Helvetica, sans-serif;"><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><br /></code></span><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-SDkTXb4NLbE/Uzhvc4Dig2I/AAAAAAAABAE/RhC66zW-saI/s1600/3.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><span style="font-family: Arial, Helvetica, sans-serif;"><img border="0" src="http://1.bp.blogspot.com/-SDkTXb4NLbE/Uzhvc4Dig2I/AAAAAAAABAE/RhC66zW-saI/s1600/3.png" height="267" width="640" /></span></a></div><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></code></div></div></td></tr></tbody></table></div></div></div><div style="border: 0px; font-size: 14px; line-height: 19.9999942779541px; margin-bottom: 0.714285em; padding: 0px;"><div><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></div><span style="font-family: Arial, Helvetica, sans-serif;">После этого вы бедете получать <b>warnings </b>в коде после билда о всех несоответствиях вашего кода с настройками <b>stylecop</b>.&nbsp;</span></div><div style="border: 0px; font-size: 14px; line-height: 19.9999942779541px; margin-bottom: 0.714285em; padding: 0px;"><span style="font-family: Arial, Helvetica, sans-serif;">Если вы хотите получать <b>errors</b>, вам следует добавить в&nbsp;<i><b>раздел 'PropertyGroup'</b></i> следующую строку:</span></div><div style="border: 0px; font-size: 14px; line-height: 19.9999942779541px; margin: 0px; padding: 0px;"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><table border="0" cellpadding="0" cellspacing="0" style="font-size: 1em; line-height: 1.428571em;"><tbody style="line-height: 1.428571em;"><tr style="line-height: 1.428571em;"><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;" title="Hint: double-click to select code"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><span style="font-family: Arial, Helvetica, sans-serif;"><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;">&lt;StyleCopTreatErrorsAsWarnings&gt;</code><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;">false</code><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;">&lt;/StyleCopTreatErrorsAsWarnings&gt;</code></span><br /><span style="font-family: Arial, Helvetica, sans-serif;"><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><br /></code></span><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-9SnH6nIlF9w/Uzhw2FtausI/AAAAAAAABAQ/KSjgBAcDLH8/s1600/4.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><span style="font-family: Arial, Helvetica, sans-serif;"><img border="0" src="http://1.bp.blogspot.com/-9SnH6nIlF9w/Uzhw2FtausI/AAAAAAAABAQ/KSjgBAcDLH8/s1600/4.png" height="376" width="640" /></span></a></div><div class="separator" style="clear: both; text-align: center;"><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></div><div class="separator" style="clear: both; text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif;">На этом моя статья по установке и настройке stylecop подошла к концу. Надеюсь в ней вы найдете что-то интересное для себя.&nbsp;</span></div><div class="separator" style="clear: both; text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></div><div class="separator" style="clear: both; text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif;"><span style="background-color: white; font-size: 13px; line-height: 18.479999542236328px; text-align: start;">Со мной вы можете связаться через&nbsp;</span><a href="https://twitter.com/greybax" rel="nofollow" style="background-color: white; color: purple; font-size: 13px; line-height: 18.479999542236328px; text-align: start;">twitter</a><span style="background-color: white; font-size: 13px; line-height: 18.479999542236328px; text-align: start;">&nbsp;или&nbsp;</span><a href="http://greybax.blogspot.com/" style="background-color: white; color: purple; font-size: 13px; line-height: 18.479999542236328px; text-align: start;">блог</a><span style="background-color: white; font-size: 13px; line-height: 18.479999542236328px; text-align: start;">.</span></span></div><div class="separator" style="clear: both; text-align: justify;"><span style="background-color: white; font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 18.479999542236328px; text-align: start;"><br /></span></div><div class="separator" style="clear: both; text-align: right;"><span style="font-family: Arial, Helvetica, sans-serif;">Спасибо.</span></div><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></code></div></div></td></tr></tbody></table></div></div></div></div></div></div>
+<div class="entry-content"><p>В каждой компании существует свой code style по написанию правильного и красивого кода. Недавно в одном из проектов наша команда решила &ldquo;причесать&rdquo; код. На помощь пришел <strong><em>StyleCop</em></strong>. Итак.</p>
+
+<h3>Установка</h3>
+
+<ul>
+<li>Вы можете скачать <strong><em>Stylecop</em></strong> c <a href="http://stylecop.codeplex.com/">сайта</a>.</li>
+<li>Советую не изменять пусть установки, потому что это может привести к некоторым проблемам.</li>
+<li>После установки может потребоваться перезагрузка компьютера.</li>
+</ul>
+
+
+<h3>Настройка</h3>
+
+<p>Для установки настроек <strong><em>Stylecop</em></strong> одинаковыми на всех ваших проектах нужно выполнить следующие действия:</p>
+
+<ul>
+<li>Клик правой кнопкой мыши выбираем раздел <code>StyleCop Settings</code>
+<img src="http://4.bp.blogspot.com/-Ff4lI2D2Vt8/UzhuaRggbMI/AAAAAAAAA_8/GdbfdLYTOtM/s1600/2.png" alt="pic_1" /></li>
+</ul>
+
+
+<p>Разберем каждую вкладку в отдельности</p>
+
+<ul>
+<li>Rules - правила настройки <strong><em>Stylecop</em></strong></li>
+<li>Переходим на вкладку <code>Settings Files</code></li>
+<li>1-ый радиобаттон - не использовать наследование настроек stylecop в солюшене и в проектах</li>
+<li>2-ой - поддержка наследования/переопределения файлов настроек. Т.е файл с настройками лежащий на уровне выше имеет выше приоритет. Если вы хотите изменить настройки для всех проектов сразу, вам нужно перейти на эту вкладку, нажать &ldquo;Edit&rdquo;, и вы увидите окно файла конфигурации с настройками.</li>
+<li><p>3-й - мерж настроек с указанным файлом.
+<img src="http://1.bp.blogspot.com/-zSzjZtQ2K2k/UzhiQvLTXaI/AAAAAAAAA_s/twkcNLtIRYQ/s1600/1.png" alt="pic_2" /></p></li>
+<li><p>Options - настройки обновления и выбор языка</p></li>
+<li>Spelling - сюда можно добавить слова исключения при проверки <strong><em>Stylecop</em></strong>.</li>
+<li>Company information - думаю и так все понятно</li>
+<li>Hungarian - по умолчанию венгерский стиль отключен, но на этой вкладке вы можете добавить исключения.</li>
+</ul>
+
+
+<p>Больше правил и настроек <strong><em>Stylecop</em></strong> вы можете найти на <a href="http://www.stylecop.com/docs/">официальном сайте программы</a>. Так же там есть Rule Suppressions, но лучше ими не злоупотреблять.</p>
+
+<h3>StyleCop и Build</h3>
+
+<p>Если вы хотите запускать <strong><em>StyleCop</em></strong> при каждом билде проекта, вам следует отредактировать <code>.csproj</code> file. В конец файла следует добавить следующую строку (для StyleCop v4.7):</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;Import</span> <span class="na">Project=</span><span class="s">&quot;$(ProgramFiles)\MSBuild\StyleCop\v4.7\StyleCop.targets&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p><img src="http://1.bp.blogspot.com/-SDkTXb4NLbE/Uzhvc4Dig2I/AAAAAAAABAE/RhC66zW-saI/s1600/3.png" alt="pic_3" /></p>
+
+<p>После этого вы будете получать <code>Warnings</code> в коде после билда о всех несоответствиях вашего кода с настройками <strong><em>Stylecop</em></strong>. Если вы хотите получать <code>Errors</code>, вам следует добавить в раздел <code>PropertyGroup</code> следующую строку:</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;StyleCopTreatErrorsAsWarnings&gt;</span>false<span class="nt">&lt;/StyleCopTreatErrorsAsWarnings&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p><img src="http://1.bp.blogspot.com/-9SnH6nIlF9w/Uzhw2FtausI/AAAAAAAABAQ/KSjgBAcDLH8/s1600/4.png" alt="pic_4" /></p>
 </div>
 
 
@@ -159,7 +213,7 @@
 
   <aside class="sidebar">
    
-<form action="https://www.google.com/search" method="get">
+<form action="http://google.com/search" method="get">
   <fieldset role="search">
     <input type="hidden" name="q" value="site:alfilatov.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
@@ -172,23 +226,23 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/08/27/kak-i-zachiem-ia-pierieshiel-s-blogger-na-octopress/">Как и зачем я перешел с Blogger на Octopress</a>
+        <a href="/blog/2015/06/29/probuiem-es2015-es6-v-dieistvii/">Пробуем ES2015(ES6) в действии</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/07/07/devconf14/">Как я побывал на DevConf'14</a>
+        <a href="/blog/2015/06/05/mighriruiem-js-kod-v-typescript/">Мигрируем Javascript код в TypeScript</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/06/27/google-chrome/">Пишем расширение для браузера Google Chrome</a>
+        <a href="/blog/2015/05/11/poiezdka-v-shri-lanku/">Поездка в Шри-Ланку</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/06/13/javascript/">Основы языка Javascript</a>
+        <a href="/blog/2015/04/10/poluchaiem-spisok-obrabotchikov-eliemienta-stranitsy/">Получаем список обработчиков элемента в DOM'е</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/05/12/aspnet/">ASP.NET: События жизненного цикла страницы</a>
+        <a href="/blog/2015/03/30/gdie-ia-bieru-informatsiiu-o-mirie-frontend/">Что можно почитать по Frontend'у</a>
       </li>
     
   </ul>
@@ -214,7 +268,7 @@
 
         github.showRepos({
             user: 'greybax',
-            count: 0,
+            count: 4,
             skip_forks: true,
             target: '#gh_repos'
         });
@@ -223,6 +277,26 @@
   <script src="/javascripts/github.js" type="text/javascript"> </script>
 </section>
 
+<section>
+  <h1>RSS</h1>
+  <p style="margin-top:10px; margin-bottom:0; padding-bottom:0; text-align:center; line-height:0">
+    <a target="_blank" href="http://feeds.feedburner.com/~r/greybax/~6/1"><img src="http://feeds.feedburner.com/greybax.1.gif" alt="Aleksandr Filatov" style="border:0"></a>
+  </p>
+  
+  <a href="https://feedburner.google.com/fb/a/mailverify?uri=greybax&amp;loc=en_US">Subscribe to Aleksandr Filatov by Email</a>
+</section>
+<section>
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("greybax", 0, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/greybax" class="twitter-follow-button" data-show-count="true">Follow @greybax</a>
+  
+</section>
 
   
 </aside>
@@ -231,10 +305,11 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Aleksandr Filatov -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+  The content on this site represents my own personal opinions and thoughts at the time of posting. <br />
+  Copyright &copy; 2015 - Aleksandr Filatov -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. </span>
+  <span class="credit">Blog theme is <a href="https://github.com/johnkeith/boldandblue">Bold-and-Blue</a></span>
 </p>
-
 </footer>
   
 

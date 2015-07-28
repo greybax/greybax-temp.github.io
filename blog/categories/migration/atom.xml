@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Migration | Aleksandr Filatov]]></title>
+  <link href="http://alfilatov.com/blog/categories/migration/atom.xml" rel="self"/>
+  <link href="http://alfilatov.com/"/>
+  <updated>2015-07-23T16:47:12+00:00</updated>
+  <id>http://alfilatov.com/</id>
+  <author>
+    <name><![CDATA[Aleksandr Filatov]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Мигрируем Javascript код в TypeScript]]></title>
+    <link href="http://alfilatov.com/blog/2015/06/05/mighriruiem-js-kod-v-typescript/"/>
+    <updated>2015-06-05T13:16:39+00:00</updated>
+    <id>http://alfilatov.com/blog/2015/06/05/mighriruiem-js-kod-v-typescript</id>
+    <content type="html"><![CDATA[<p>Не так давно стояла задача перевести один старый проект из кода на <code>Javascript</code> в <code>TypeScript</code>. Хочу поделиться своим опытом такого перехода. Рассмотрим на примере разработки в Visual Studio.</p>
+
+<p>Для начала стоит отметить, что такая миграция не является проблемой с точки зрения совместимости, т.к код на <code>Javascript</code> - это синтаксически корректный код на <code>TypeScript</code>.</p>
+
+<p>Итак, выделим основные этапы, после выполнения которых произойдет чудесное
+превращение:</p>
+
+<ul>
+<li>Переименуем все <code>.js</code> файлы в <code>.ts</code></li>
+<li><p>Настраиваем компиляцию из <code>.ts</code> в <code>.js</code></p>
+
+<ul>
+<li>Для этого нужно скачать и установить <code>TypeScript</code> плагин для студии с <a href="http://www.typescriptlang.org/#Download">официального сайта</a>, позволяющий компилировать <code>.ts</code> файлы в <code>.js</code>.</li>
+</ul>
+</li>
+<li><p>Устанавливаем определения для библиотек (<code>.d.ts</code>)</p>
+
+<ul>
+<li>Коллекция определений библиотек находится в <a href="https://github.com/borisyankov/DefinitelyTyped">открытом доступе</a>. Определения для <code>javascript</code> библиотек можно установить через <a href="http://definitelytyped.org/tsd/">tsd</a> - это аналог NuGet Package Manager.</li>
+</ul>
+</li>
+<li><p>Пишем определения для своего кода</p>
+
+<ul>
+<li>Это совсем не сложно и делается по аналогии с кучей примеров из <a href="https://github.com/borisyankov/DefinitelyTyped">DefinitelyTyped on GitHub</a>. Мой пример можно посмотреть <a href="https://github.com/greybax/DefinitelyTyped/tree/master/quixote">тут</a>, который я писал по <a href="https://github.com/jamesshore/quixote/blob/master/docs/api.md">документации для библиотеки quixote</a></li>
+</ul>
+</li>
+<li><p>Рефакторим чтобы использовать язык <code>TypeScript</code></p>
+
+<ul>
+<li>После компиляции проекта в вашем коде будут возникать ошибки, которые слудует исправлять в соответвии с семантикой <code>TypeScript</code>. После исправления всех ошибок вы получите рабочий проект на <code>TypeScript</code> со всеми вытекающими отсюда удобствами.</li>
+</ul>
+</li>
+</ul>
+
+
+<p><strong>Итог</strong>: Все, как оказалось невероятно просто, как досчитать до 5! :)</p>
+]]></content>
+  </entry>
+  
+</feed>

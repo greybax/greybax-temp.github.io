@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Debugging | Aleksandr Filatov]]></title>
+  <link href="http://alfilatov.com/blog/categories/debugging/atom.xml" rel="self"/>
+  <link href="http://alfilatov.com/"/>
+  <updated>2015-07-23T16:47:12+00:00</updated>
+  <id>http://alfilatov.com/</id>
+  <author>
+    <name><![CDATA[Aleksandr Filatov]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Debugging файлов TypeScript в браузере через эмулятор DevExtreme]]></title>
+    <link href="http://alfilatov.com/blog/2014/12/02/diebaghghingh-typescript-failov-v-emuliatorie-devextreme/"/>
+    <updated>2014-12-02T19:45:38+00:00</updated>
+    <id>http://alfilatov.com/blog/2014/12/02/diebaghghingh-typescript-failov-v-emuliatorie-devextreme</id>
+    <content type="html"><![CDATA[<p>Недавно встала задача добавить поддержку debugging&#8217;а файлов <code>*.ts</code> в браузере. В нашем случае это Google Chrome.
+Постараюсь как можно подробнее описать этот процесс.</p>
+
+<ol>
+<li><p>Для начала нужно определить в какой директории находится DevExtreme сервер, который запускает приложение, когда мы нажимаем в VS кнопку <code>Запустить в браузере Google Chrome</code>. Ответ на этот вопрос был найден в одном из тикетов на сайте <a href="https://www.devexpress.com/Support/Center/Question/Details/Q523956">DevExpress</a>. В случае Visual Studio 2012 это путь <code>C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\DevExtreme\WebServer</code></p></li>
+<li><p>Добавляем в проект <code>*.map файл</code>. Это необходимо для связи файлов <code>js</code> и <code>ts</code></p></li>
+<li><p>Заключительный этап - добавление &ldquo;символической ссылки&rdquo; на проект в директории веб сервера DevExtreme. Можно просто скопировать проект в директорию указаную выше. В этом случае мы лишим сервер возможности автоматически подхватывать изменения в проекте. Чтобы это учесть, выполним команду <a href="http://ss64.com/nt/mklink.html">mklink</a>. Для этого:</p>
+
+<ul>
+<li>Запускаем <code>cmd</code> под администратором</li>
+<li>Переходим в каталог DevExpress WebServer</li>
+<li>Выполняем команду <code>mklink /D &lt;project_link_name&gt; &lt;project_path&gt;</code>. В моем случае это <code>mklink /D Pos C:\Projects\Pos</code></li>
+<li>Символическая ссылка <code>project_link_name</code> создана в директории <code>project_path</code></li>
+</ul>
+</li>
+</ol>
+
+
+<p>Дополнительный ссылки:</p>
+
+<ul>
+<li><a href="http://js.devexpress.com/Documentation/Howto/SPA_Framework/Application_Design/?version=14_1#Running">Running, Debugging and Deploy DevExtreme applications</a></li>
+<li><a href="http://stackoverflow.com/questions/12683820/typescript-in-vs2012-automatically-generating-js-from-ts">Typescript in VS2012: (automatically) generating .js from .ts</a></li>
+<li><a href="http://ss64.com/nt/">An A-Z Index of the Windows CMD command line</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Используем Fiddler в качестве прокси]]></title>
+    <link href="http://alfilatov.com/blog/2014/10/01/ispol'zuiem-fiddler-v-kachiestvie-proksi/"/>
+    <updated>2014-10-01T10:05:46+00:00</updated>
+    <id>http://alfilatov.com/blog/2014/10/01/ispol&#8217;zuiem-fiddler-v-kachiestvie-proksi</id>
+    <content type="html"><![CDATA[<p><a href="http://www.telerik.com/fiddler">Fiddler</a> - мощный инструмент для веб дебагинга, мониторинга веб трафика, манипуляций с сессией и т.п. Кроме того в <code>Fiddler</code> есть еще одна мощная фича - это возможность его использования как самостоятельный proxy сервер на машине где он запущен.</p>
+
+<p>Мне эта фича пригодилась когда пришлось подключаться с моего iPhone девайса через <code>VPN</code> к серверу, который находится на другом конце планеты. Аналогично, вместо iPhone мог быть любой девайс, планшет или десктоп.</p>
+
+<p>Постараюсь описать процесс настройки максимально детально. Версия установленного <code>Fiddler</code> у меня - <code>Fiddler Web Debugger (v4.4.8.0)</code>. <code>Built: Wednesday, April 23, 2014</code></p>
+
+<h2>Конфигурация Fiddler</h2>
+
+<ol>
+<li>Переходим Tools > Fiddler Options > Connections.</li>
+<li><p>Ставим галку Allow remote computers to connect.
+<img src="/images/screenshots/allow_remote_to_connect.png" alt="Check &quot;Allow remote computers to connect&quot;" /></p></li>
+<li><p>Перезапускаем <code>Fiddler</code></p></li>
+<li><p>Следует проверить что в <code>firewall</code> разрешены входящие соединения для Fiddler
+<img src="/images/screenshots/fiddler_income_connections.png" alt="Income conections for fiddler process" /></p></li>
+<li><p>В правом верхнем углу <code>Fiddler</code> находим <code>Online Indicator</code> и смотрим в нем по какому ip орудует наш <code>Fiddler</code>. Нам нужен локальный адрес машины. Этот ip адрес мы будем указывать в настройках интернет соединения  нашего девайса на вкладке <code>Proxy</code>.
+<img src="/images/screenshots/indicator_ip_address.png" alt="Online Indicator" /></p></li>
+</ol>
+
+
+<p>После выполнения этих пунктов наш <code>Fiddler</code> готов принимать входящие соединения с внешних устройств. Соответственно может использоваться как прокси, обрабатывая через себя все запросы, которые приходят с нашего внешнего устройства.</p>
+
+<h2>Конфигурация iPhone</h2>
+
+<ol>
+<li>Переходим &lsquo;Настройки&rsquo; > &lsquo;Wi-Fi&rsquo;</li>
+<li>Переходим в настройки Wi-Fi соединения</li>
+<li>Выбираем раздел &lsquo;Вручную&rsquo; в секции HTTP прокси</li>
+<li>В поле Сервер, вводим IP адрес машины где запущен <code>Fiddler</code></li>
+<li>Порт - 8888</li>
+<li>Аутентификацию отключаем</li>
+</ol>
+
+
+<p><img src="/images/screenshots/iPhone_proxy_settings.png" alt="iPhone proxy settings" /></p>
+
+<p>Теперь после перехода на любой сайт со своего iPhone можно мониторить все request/response в <code>Fiddler</code></p>
+]]></content>
+  </entry>
+  
+</feed>

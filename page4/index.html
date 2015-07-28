@@ -1,0 +1,538 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Aleksandr Filatov</title>
+  <meta name="author" content="Aleksandr Filatov">
+
+  
+  <meta name="description" content="В каждой компании существует свой code style по написанию правильного и красивого кода. Недавно в одном из проектов наша команда решила &ldquo; &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://alfilatov.com/page4">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/myStyles.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Aleksandr Filatov" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Aleksandr Filatov</a></h1>
+  
+    <h2>Blog about life and software development</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about/index">About Me</a></li>
+  <li><a href="https://stackoverflow.com/users/2173016/greybax">StackOverflow</a></li>
+  <li><a href="https://github.com/greybax">Github</a></li>
+  <li><a href="https://twitter.com/greybax">Twitter</a></li>
+  <li><a href="http://ru.linkedin.com/pub/aleksandr-filatov/89/608/66b/">LinkedIn</a></li>
+</ul>
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/03/30/stylecop/">StyleCop - или как соблюдать Code Style?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-30T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>В каждой компании существует свой code style по написанию правильного и красивого кода. Недавно в одном из проектов наша команда решила &ldquo;причесать&rdquo; код. На помощь пришел <strong><em>StyleCop</em></strong>. Итак.</p>
+
+<h3>Установка</h3>
+
+<ul>
+<li>Вы можете скачать <strong><em>Stylecop</em></strong> c <a href="http://stylecop.codeplex.com/">сайта</a>.</li>
+<li>Советую не изменять пусть установки, потому что это может привести к некоторым проблемам.</li>
+<li>После установки может потребоваться перезагрузка компьютера.</li>
+</ul>
+
+
+<h3>Настройка</h3>
+
+<p>Для установки настроек <strong><em>Stylecop</em></strong> одинаковыми на всех ваших проектах нужно выполнить следующие действия:</p>
+
+<ul>
+<li>Клик правой кнопкой мыши выбираем раздел <code>StyleCop Settings</code>
+<img src="http://4.bp.blogspot.com/-Ff4lI2D2Vt8/UzhuaRggbMI/AAAAAAAAA_8/GdbfdLYTOtM/s1600/2.png" alt="pic_1" /></li>
+</ul>
+
+
+<p>Разберем каждую вкладку в отдельности</p>
+
+<ul>
+<li>Rules - правила настройки <strong><em>Stylecop</em></strong></li>
+<li>Переходим на вкладку <code>Settings Files</code></li>
+<li>1-ый радиобаттон - не использовать наследование настроек stylecop в солюшене и в проектах</li>
+<li>2-ой - поддержка наследования/переопределения файлов настроек. Т.е файл с настройками лежащий на уровне выше имеет выше приоритет. Если вы хотите изменить настройки для всех проектов сразу, вам нужно перейти на эту вкладку, нажать &ldquo;Edit&rdquo;, и вы увидите окно файла конфигурации с настройками.</li>
+<li><p>3-й - мерж настроек с указанным файлом.
+<img src="http://1.bp.blogspot.com/-zSzjZtQ2K2k/UzhiQvLTXaI/AAAAAAAAA_s/twkcNLtIRYQ/s1600/1.png" alt="pic_2" /></p></li>
+<li><p>Options - настройки обновления и выбор языка</p></li>
+<li>Spelling - сюда можно добавить слова исключения при проверки <strong><em>Stylecop</em></strong>.</li>
+<li>Company information - думаю и так все понятно</li>
+<li>Hungarian - по умолчанию венгерский стиль отключен, но на этой вкладке вы можете добавить исключения.</li>
+</ul>
+
+
+<p>Больше правил и настроек <strong><em>Stylecop</em></strong> вы можете найти на <a href="http://www.stylecop.com/docs/">официальном сайте программы</a>. Так же там есть Rule Suppressions, но лучше ими не злоупотреблять.</p>
+
+<h3>StyleCop и Build</h3>
+
+<p>Если вы хотите запускать <strong><em>StyleCop</em></strong> при каждом билде проекта, вам следует отредактировать <code>.csproj</code> file. В конец файла следует добавить следующую строку (для StyleCop v4.7):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;Import</span> <span class="na">Project=</span><span class="s">&quot;$(ProgramFiles)\MSBuild\StyleCop\v4.7\StyleCop.targets&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://1.bp.blogspot.com/-SDkTXb4NLbE/Uzhvc4Dig2I/AAAAAAAABAE/RhC66zW-saI/s1600/3.png" alt="pic_3" /></p>
+
+<p>После этого вы будете получать <code>Warnings</code> в коде после билда о всех несоответствиях вашего кода с настройками <strong><em>Stylecop</em></strong>. Если вы хотите получать <code>Errors</code>, вам следует добавить в раздел <code>PropertyGroup</code> следующую строку:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;StyleCopTreatErrorsAsWarnings&gt;</span>false<span class="nt">&lt;/StyleCopTreatErrorsAsWarnings&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://1.bp.blogspot.com/-9SnH6nIlF9w/Uzhw2FtausI/AAAAAAAABAQ/KSjgBAcDLH8/s1600/4.png" alt="pic_4" /></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/18/windows-7-hotkeys/">Windows 7 HotKeys</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-18T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I would like propose to your attention the list of hotkeys, the use of which makes the work with the Windows 7 more usability. Some hotkeys may be available in Windows 8.</p>
+
+<h3>Manage windows</h3>
+
+<ul>
+<li><strong><em>Win + Home</em></strong> - Minimize/Maximize all windows, but active. («Shake» the window)</li>
+<li><strong><em>Win + Space</em></strong> - Make all windows transparent</li>
+<li><strong><em>Win + Up</em></strong> - Maximize active window full screen.</li>
+<li><strong><em>Win + Down</em></strong> - Minimize active window or restore previous size, if it maximized on full screen.</li>
+<li><strong><em>Shift + Win + Up</em></strong> - Expand the window height (drag the bottom border of the window to the taskbar)</li>
+<li><strong><em>Win + left/Right</em></strong> - Take the window left / right side of the monitor, or restore the size (drag the window to the left / right all the way)</li>
+</ul>
+
+
+<h3>Taskbar</h3>
+
+<ul>
+<li><strong><em>Win + digit</em></strong> - Run the program with that number, or switch to it.</li>
+<li><strong><em>Shift + Win + digit</em></strong> - Launch a new copy of the program under this number (click on the wheel icon).</li>
+<li><strong><em>Ctrl + Win + digit</em></strong> - Switch to the next window in that number (click, hold Ctrl).</li>
+<li><strong><em>Alt + Win + digit</em></strong> - Open jump list program under this number.</li>
+<li><strong><em>Win + T(+ Shift)</em></strong> - Switch between all open windows on the taskbar thumbnails in the forward (reverse) order.</li>
+<li><strong><em>Win + B</em></strong> - Focus on the tray.</li>
+<li><strong><em>Ctrl + Shift + Click</em></strong> - Run this program as an administrator.</li>
+<li><strong><em>Shift + Right-click</em></strong> - Show the window menu / group.</li>
+</ul>
+
+
+<h3>Explorer (and Desktop)</h3>
+
+<ul>
+<li><strong><em>Ctrl + Shift + N</em></strong> - Create new folder.</li>
+<li><strong><em>Alt + Up</em></strong> - To rise to a higher level by folder.</li>
+<li><strong><em>Alt + P</em></strong> - Enable file browsing panel.</li>
+<li><strong><em>Shift + Right-Click (on file)</em></strong> - Adds a context menu item &ldquo;Copy path&rdquo; and a lot of additional items in the menu &ldquo;Send&rdquo;</li>
+<li><strong><em>Shift + Right-Click (on a folder)</em></strong> - Adds a context menu that lets you open a command prompt in that folder.</li>
+</ul>
+
+
+<h3>Other</h3>
+
+<ul>
+<li><strong><em>Win + P</em></strong> - Open setting menu presentation (second monitor - projector)</li>
+<li><strong><em>Win + (+/-)</em></strong> - zoom in / zoom out (causes Magnifier).</li>
+<li><strong><em>Win + G</em></strong> - Switch between running gadgets.</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/13/yandex-browser-it-need-or-not/">Yandex Browser? It's Need or Not?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-13T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Yandex.Browser with a full set of features designed specifically for the English-speaking users will be released soon. (с)
+<img src="http://yabs.yandex.ru/count/AI9QGHYaezm40002Zhqbnmm5KPK2cmPfMeYosr1G0vAjXGQgfZIAe4K6Kge2fPOOP92W7mBUaRpGIMG6an11hlnExYmQdEFG1B41VmS0" alt="yandex_browser_logo" />
+Not so early, Yandex company on yours conference is <a href="http://fotki.yandex.ru/users/ya-events/album/136128/">YaC 2012</a> presented the <a href="http://browser.yandex.com/">Yandex browser 1.0</a>. Let&rsquo;s show it inside.</p>
+
+<p>The engine of this thing is open source browser <code>Chromium</code>. Some intresting, that Some sites detected that it&rsquo;s 19 version of google chrome, but at the moment of this post <code>Google Chrome</code> has 23.xxx version. String of search find in Yandex on default. So, already we have some Google and some Yandex. &ldquo;Yeah.. Not enough Opera&rdquo; - thinking guys from Yandex and added Turbo technology by Opera. It&rsquo;s mix equals to Yandex browser. Some people have a nick &ldquo;Stringy&rdquo; for the specific logo.</p>
+
+<p>And we can see a mix of modern technology. Therefore, on my mind it&rsquo;s &ldquo;discovered bicycle&rdquo; (it is russian flying phrase). At the first time, we can&rsquo;t see new many features. Of all proposed <a href="http://browser.yandex.com/">here</a>, I would single out only the following:</p>
+
+<ul>
+<li>New view of URL. Now url will not so lenght. It&rsquo;s will be name of web page look like bread crumbs</li>
+<li>New menu of fast link - &ldquo;Tableu&rdquo;. Favorite sites will only be a click away and colorful widgets will show you up-to-date information about the weather and traffic, as well as social network notifications.</li>
+<li>Smartbox - Enter your searches and websites into the Smartbox. Search suggestions will help you search more quickly and autocorrect errors.</li>
+</ul>
+
+
+<p>And so on, I think that guys from Yandex must have hard working on th</span>is thing, and may be some version their have a fortune.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/10/my-contribution-in-mozilla-society/">My Contribution in Mozilla Society</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-10T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It&rsquo;s my first publication on english. And it&rsquo;s blog some training for my english. And so on, in this topic I&rsquo;d like to tell about Mozilla society. And how I become in mozilla contribution list. For me it&rsquo;s very intresting to participate in some activities. But I&rsquo;m not a mozilla evangelist. :)</p>
+
+<p>I think that not secret for each other that mozilla it&rsquo;s global web society where each people can have yours contribution: programming, design sites, translate article on <a href="https://developer.mozilla.org/ru/">mozilla network</a></p>
+
+<p>Site <a href="http://whatcanidoformozilla.org/">what can I do for mozilla</a> help a new people who it&rsquo;s can intrested. If you like makes open source world better, that it&rsquo;s makes interested you. Some of yours can see page with title &ldquo;Our Contributors&rdquo; on menu &ldquo;About Firefox&rdquo; - &ldquo;global society&rdquo; in mozilla products. Perhaps you too would become on this page. It&rsquo;s very easy. There are some advice after this.</p>
+
+<h3>What I can do?</h3>
+
+<p>Translate to russian some topics on <a href="https://developer.mozilla.org/ru/">mozilla network</a> or other resource of this society. If you are developer you can started for fix some minor bugs for Firefox, Thunderbird, and etc. After your review code you can get access to repository with more content. If you think that you makes some good things for society you can send letter to <code>credits@mozilla.org</code> giving your name, email address and a sentence (citation) summarizing your contribution. If it&rsquo;s true you have a lot of chance be on board contribution. And have mental pleasure :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="3">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+   
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:alfilatov.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/06/29/probuiem-es2015-es6-v-dieistvii/">Пробуем ES2015(ES6) в действии</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/06/05/mighriruiem-js-kod-v-typescript/">Мигрируем Javascript код в TypeScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/05/11/poiezdka-v-shri-lanku/">Поездка в Шри-Ланку</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/10/poluchaiem-spisok-obrabotchikov-eliemienta-stranitsy/">Получаем список обработчиков элемента в DOM'е</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/30/gdie-ia-bieru-informatsiiu-o-mirie-frontend/">Что можно почитать по Frontend'у</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/greybax">@greybax</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'greybax',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<section>
+  <h1>RSS</h1>
+  <p style="margin-top:10px; margin-bottom:0; padding-bottom:0; text-align:center; line-height:0">
+    <a target="_blank" href="http://feeds.feedburner.com/~r/greybax/~6/1"><img src="http://feeds.feedburner.com/greybax.1.gif" alt="Aleksandr Filatov" style="border:0"></a>
+  </p>
+  
+  <a href="https://feedburner.google.com/fb/a/mailverify?uri=greybax&amp;loc=en_US">Subscribe to Aleksandr Filatov by Email</a>
+</section>
+<section>
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("greybax", 0, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/greybax" class="twitter-follow-button" data-show-count="true">Follow @greybax</a>
+  
+</section>
+
+  
+</aside>
+
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter25504124 = new Ya.Metrika({id:25504124,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/25504124" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  The content on this site represents my own personal opinions and thoughts at the time of posting. <br />
+  Copyright &copy; 2015 - Aleksandr Filatov -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. </span>
+  <span class="credit">Blog theme is <a href="https://github.com/johnkeith/boldandblue">Bold-and-Blue</a></span>
+</p>
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'greybax';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>

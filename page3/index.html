@@ -1,0 +1,713 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Aleksandr Filatov</title>
+  <meta name="author" content="Aleksandr Filatov">
+
+  
+  <meta name="description" content="Я использовал Blogger c 2012 года. Мне эта система показалась недостаточно удобной, чтобы продолжать ее использовать в дальнейшем. Неудобство &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://alfilatov.com/page3">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/myStyles.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Aleksandr Filatov" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Aleksandr Filatov</a></h1>
+  
+    <h2>Blog about life and software development</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about/index">About Me</a></li>
+  <li><a href="https://stackoverflow.com/users/2173016/greybax">StackOverflow</a></li>
+  <li><a href="https://github.com/greybax">Github</a></li>
+  <li><a href="https://twitter.com/greybax">Twitter</a></li>
+  <li><a href="http://ru.linkedin.com/pub/aleksandr-filatov/89/608/66b/">LinkedIn</a></li>
+</ul>
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/08/27/kak-i-zachiem-ia-pierieshiel-s-blogger-na-octopress/">Как и зачем я перешел с Blogger на Octopress</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-27T08:28:59+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Я использовал Blogger c 2012 года. Мне эта система показалась недостаточно удобной, чтобы продолжать ее использовать в дальнейшем. Неудобство проявлялось, когда в пост нужно было вставить участки кода или добавлять картинки. HTML редактор генерирует много лишнего кода. В итоге я решил подыскать себе новый блог-движок.</p>
+
+<h2>Что я хотел получить</h2>
+
+<ul>
+<li>Писать больше постов, не заморачиваясь на разметку HTML/CSS</li>
+<li>Иметь больше свободы в редизайне своего блога</li>
+</ul>
+
+
+<p>Под вышеперечисленное подходит Octopress. Это движок генерации статических веб страниц написанный на <code>Ruby</code>. Окончательное решение было принято после прохождения курса <a href="https://class.coursera.org/webapplications-002">Web Application Architectures</a> на Coursera, где в качестве примера языка использовался <code>Ruby on Rails</code>. В повседневной жизни я пользователь винды, а ставить <code>Ruby</code> окружение на нее дело не из приятных, ставить виртуалку не хочется, и, погуглив, наткнулся на замечательный сайт <a href="https://www.nitrous.io/">nitrous.io</a>. Сайт предлагает на бесплатном аккаунте доступ к box&#8217;у с окружением для целого ряда языков. В нашем случае это <code>Ruby</code>
+При таком подходе мы можем писать в блог из любого места, где есть доступ в интернет, и нам не нужно иметь машину или виртуалку с исходниками своего блога. Считаю, что это достаточно весомый аргумент в пользу использования облачного хостинга с поддержкой IDE.</p>
+
+<h2>Плюсы переезда</h2>
+
+<ul>
+<li>Markdown разметка. Не нужно уделять большое внимание HTML разметке. Концентрируешься больше на написание поста.</li>
+<li>Версионирование</li>
+<li>Удобно писать из редакторов Vim, хотя это для меня не является основным выбором</li>
+</ul>
+
+
+<h2>Минусы переезда</h2>
+
+<ul>
+<li>Страницы с Blogger стоят выше в результатах поиска гугла при равных условиях</li>
+<li>Не нужно заморачиваться на хостинге. Хотя это не проблема и со случаем Octopress</li>
+</ul>
+
+
+<h2>Мигригуем</h2>
+
+<ul>
+<li>Подготовка</li>
+<li>Развертывание</li>
+</ul>
+
+
+<h3>Подготовка</h3>
+
+<p>Регистрируемся на сайте <a href="https://www.nitrous.io.">https://www.nitrous.io.</a> Выбираем в качестве окружения box c <code>Ruby</code>. Далее выполняем все по шагам как описано <a href="http://octopress.org/docs/setup/">тут</a> и <a href="http://octopress.org/docs/configuring/">конфигурируем</a>.</p>
+
+<p>Для миграции постов на Octopress нужно:</p>
+
+<ul>
+<li>Экспотировать их в файл в своем аккаунте в Blogger</li>
+<li>Заюзать <a href="https://gist.github.com/1765496">скрипт</a></li>
+</ul>
+
+
+<p>После этого вы получите кучу сообщений, которые уже являются частью вашего сайта. Проверьте, все ли корректно.
+Скрипт так же импортирует комментарии, но в неудобном для просмотра виде. (Tip: вы можете отключить комментарии перед экспортом постов из Blogger).
+Теперь все готово для того чтобы равернуть наш блог.</p>
+
+<h3>Развертывание</h3>
+
+<p>На этом этапе мы получили блог на Octopress? куда мы импортировали свои посты из Blogger. Для развертывания я использовал  Github Pages, но процесс развертывания на <a href="http://octopress.org/docs/deploying/heroku">Heroku</a> или <a href="http://octopress.org/docs/deploying/rsync/">через RSync на свой хостинг</a> отличаются незначительно.</p>
+
+<p>Процесс развертывания подробно описан на <a href="http://octopress.org/docs/deploying/github/">сайте Octopress</a>.</p>
+
+<h3>Итог</h3>
+
+<ul>
+<li>Получили окружение с IDE для <code>Ruby</code>, которое доступно прямо из браузера.</li>
+<li>Удовольствие от написания постов в markdown разметке, расходуя минимум времени на HTML разметку.</li>
+<li>Поддержку &ldquo;из коробки&rdquo; различных социальных плагинов (twitter, github, facebook). Легко добавлять свои.</li>
+<li>Удобная кастомизация design themes свое блога. При желании можно сменить стандартную тему или сделать свою. Большой выбор <a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">тут</a></li>
+<li>Стимул изучать <code>Rubу</code> :)</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/07/07/devconf14/">Как я побывал на DevConf'14</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-07T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Наконец-то нашел время написать свои впечатления от прошедшей конференции <a href="http://devconf.ru/">DevConf&#8217;14</a>. Посетил я эту конференцию в первый раз, но по рассказам знакомых слышал что конференция имеет широкий формат и приезжают на нее иностранные докладчики (однажды ее посетил сам <a href="http://ru.wikipedia.org/wiki/%D0%9B%D0%B5%D1%80%D0%B4%D0%BE%D1%80%D1%84,_%D0%A0%D0%B0%D1%81%D0%BC%D1%83%D1%81">Расмус Лендорф</a>). Конференция имеет созвучное название схожее с DevCon, но общего с той конференцией имеет мало. Если кратко, то DevConf - конференция веб разработчиков. DevCon - - конференция технологий Microsoft.</p>
+
+<p><img src="http://4.bp.blogspot.com/-vTyfJO6tRmo/U7m8cR-sWJI/AAAAAAAABCw/9Aja0kfPa64/s1600/iMyKWnmAMGk.jpg" alt="devconf_1" /></p>
+
+<p>В этом году конференция имела 7 секций (php, ruby, python, common, js, mobi, storage) + <a href="http://devconf.ru/mk">мастер классы</a> которые проходили на второй день, но на них мне попасть не довелось. Оплатил только первый день. Меня интересовали секции common, js и storage.</p>
+
+<h3>Как добирался</h3>
+
+<p>Я сам из Ярославля, а конференция проходила в Москве, соответственно добирался я на электричке (это ~3.5 часа). Регистрация начиналась в 10 утра. И как оказалось мой поезд приезжал в Москву только в 10:30. С помощью Яндекс.Метро проложил себе кратчайший маршрут по времени. Слегка потерявшись в комплексе гостиниц &ldquo;Измайловская&rdquo; нашел нужную и вот я уже у стойки регистрации.</p>
+
+<h3>Организация и доклады</h3>
+
+<p>На стойке регистрации меня ждал сюрпиз - бэйджек участника с моим ФИО не нашли, поэтому мне написали на на чистом бэйдже (как я понял позже так делали всем кто был из mail.ru :)). Зато, как полагается, мне выдали &ldquo;пляжную&rdquo; сумочку с логотипом DevConf, в которой лежали рекламные буклеты, блокнотики, ручки и пара журналов и расписание докладов - все как полагается.</p>
+
+<p>К сожалению, к первому докладу я не успевал, поэтому решил пойти выпить кофе, благо я вовремя успел к кофебрейку. Забегая вперед скажу, что за день я побывал на 6 докладах по javascript. Из них наверно половина показалась мне интересной и не заставила скучать. Порадовал доклад про профилирование и опмитизацию js. Круто когда докладчик приводит результаты своих исследований в цифрах на реальных примерах. Запомнился доклад представителя компании 2GIS, который рассказывал как они дружат C++ c JS и название его доклада не совсем соответствовал ожидаемому (такой &ldquo;маркетинговый ход&rdquo; как он впоследствии сам признался).</p>
+
+<p>Что касается обеда, то он входил в стоимость одного дня конференции. Доклады в разных секциях заканчивались в разное время, возможно поэтому очередей в зале где проходил обед я не заметил. Обед представлял из себя шведский стол. Единственное, что мне показалось недостаточным - это кофе в ограниченных количествах. Видимо так организаторы беспокоились о здоровье разработчиков. Хотелось бы выпивать чашечку кофе/чаю в любое время на протяжении всей конференции, а не только во время кофебрейков.</p>
+
+<h3>Итог</h3>
+
+<p>К сожалению, на после-пати побывать не удалось - торопился на поезд. В целом, впечатлениями от конференции остался доволен. Чувствовался профессионализм и опыт докладчиков. В следующем году надеюсь опять посетить эту конфу. Спасибо ребятам из <a href="http://badoo.com/">Badoo</a>, которые не только рассказали про свою компанию, но и делали подарки в виде ручек-стилусов, маек и прочих мелочей с атрибутикой компании. Аналогичные призы разыгрывали и другие партнеры конференции, но, по уже известным обстоятельствам, я не смог поучаствовать в их розыгрыше. По приезду домой мой кот похоже тоже оценил сумку DevConf :)</p>
+
+<p><img src="http://3.bp.blogspot.com/-nsvdm7XSYNk/U7m5w1qDz0I/AAAAAAAABCk/2qZP-_D4mPM/s1600/GIzaou4Ntg4.jpg" alt="devconf_2" /></p>
+
+<p>Больше фото с конференции можно найти на <a href="https://www.flickr.com/photos/devconf">flickr</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/06/27/google-chrome/">Пишем расширение для браузера Google Chrome</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-27T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>В интернете много сайтов на которых реализована возможность пролистывать страницу вверх без помощи мыши или полосы прокрутки. Но в то же время еще есть сайты где такой реализации нет. &ldquo;Почему бы не попробовать написать скрипт который бы добавлял такую кнопку на все сайты?&rdquo; - подумал я и принялся за реализацию. Такие скрипты называются пользовательскими и имеют расширение <code>*.user.js</code>. Почитать к примеру можно на <a href="http://habrahabr.ru/post/129343/">хабре</a>. К сожалению без &ldquo;подводных камней&rdquo; не обходится. Существуют некоторые различия в реализации <code>userjs</code> под разные браузеры. Я остановлюсь на описании реализации нашего <code>userjs</code> скрипта как расширения для браузера <code>Google Chrome</code>.</p>
+
+<h3>manifest.json</h3>
+
+<p>Обязательным для расширения <code>Google Chrome</code> является файл <strong><em>manifest.json</em></strong> в котором описываются параметры, пути к внешним файлам (<code>*.js, *.css</code> и др.), поддержка версии и т.п. для расширения. Подробнее о файле можно почитать <a href="https://developer.chrome.com/extensions/manifest">тут</a>. В нашем случае файл <code>manifest.json</code> выглядит следующим образом:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="s2">&quot;manifest_version&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;content_scripts&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">{</span>
+</span><span class='line'>        <span class="s2">&quot;exclude_globs&quot;</span><span class="o">:</span>    <span class="p">[</span>  <span class="p">],</span>
+</span><span class='line'>        <span class="s2">&quot;include_globs&quot;</span><span class="o">:</span>    <span class="p">[</span> <span class="s2">&quot;*&quot;</span> <span class="p">],</span>
+</span><span class='line'>        <span class="s2">&quot;js&quot;</span><span class="o">:</span>               <span class="p">[</span> <span class="s2">&quot;jquery.js&quot;</span><span class="p">,</span> <span class="s2">&quot;backTopUserJS.user.js&quot;</span> <span class="p">],</span>
+</span><span class='line'>        <span class="s2">&quot;css&quot;</span><span class="o">:</span>              <span class="p">[</span> <span class="s2">&quot;css/style.css&quot;</span> <span class="p">],</span>
+</span><span class='line'>        <span class="s2">&quot;matches&quot;</span><span class="o">:</span>          <span class="p">[</span>   <span class="s2">&quot;http://*/*&quot;</span><span class="p">,</span>
+</span><span class='line'>                                <span class="s2">&quot;https://*/*&quot;</span>
+</span><span class='line'>                            <span class="p">],</span>
+</span><span class='line'>        <span class="s2">&quot;run_at&quot;</span><span class="o">:</span> <span class="s2">&quot;document_end&quot;</span>
+</span><span class='line'>    <span class="p">}</span> <span class="p">],</span>
+</span><span class='line'>    <span class="s2">&quot;converted_from_user_script&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;description&quot;</span><span class="o">:</span>  <span class="s2">&quot;Back top userscript extension for google chrome&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;name&quot;</span><span class="o">:</span>         <span class="s2">&quot;backTopUserJS&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;version&quot;</span><span class="o">:</span>      <span class="s2">&quot;1&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Для удобства мы используем библиотеку <code>JQuery</code> которую положили рядом с файлом <code>manifest.json</code> и основным файлом скрипта (в нашем случае это <code>backTopUserJS.user.js</code>). Его содержимое следующее:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// ==UserScript==</span>
+</span><span class='line'><span class="c1">// @name backTopUserJS</span>
+</span><span class='line'><span class="c1">// @author Aleksandr Filatov</span>
+</span><span class='line'><span class="c1">// @license MIT</span>
+</span><span class='line'><span class="c1">// @version 1.0</span>
+</span><span class='line'><span class="c1">// ==/UserScript==</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">disp</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">scrollTop</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">400</span> <span class="o">?</span> <span class="s1">&#39;block&#39;</span> <span class="o">:</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">$upButton</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;up-button&quot; title=&quot;Наверх&quot; style=&quot;display:&#39;</span> <span class="o">+</span> <span class="nx">disp</span> <span class="o">+</span> <span class="s1">&#39;&quot;&gt;Наверх&lt;/div&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">$upButton</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">$upButton</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;html, body&#39;</span><span class="p">).</span><span class="nx">animate</span><span class="p">({</span> <span class="nx">scrollTop</span><span class="o">:</span> <span class="mi">0</span> <span class="p">},</span> <span class="s1">&#39;slow&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">scroll</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">scrollTop</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">400</span><span class="p">)</span> <span class="nx">$upButton</span><span class="p">.</span><span class="nx">fadeIn</span><span class="p">(</span><span class="s1">&#39;slow&#39;</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">else</span> <span class="nx">$upButton</span><span class="p">.</span><span class="nx">fadeOut</span><span class="p">(</span><span class="s1">&#39;slow&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">script</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">script</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="s1">&#39;(&#39;</span><span class="o">+</span> <span class="nx">main</span> <span class="o">+</span><span class="s1">&#39;)();&#39;</span><span class="p">));</span>
+</span><span class='line'><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">head</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Думаю скрипт достаточно понятен, чтобы его подробно рассматривать. Пояснить стоит лишь последние 3 строчки. На самом деле это мелкий хак, который вставляет наш скрипт в код страницы сайта. Если кто-то из вас найдет способ лучше можете написать к комментах свои фиксы :)</p>
+
+<h3>Установка расширения в браузере</h3>
+
+<p>В <code>Google Chrome</code> можно устанавливать пользовательские скрипты, аналогично другим браузерам, но поскольку Google печется о нашей с вами безопасности, то их приходится оборачивать в расширения для браузера. Разберем установку по шагам.</p>
+
+<h4>Шаг 1</h4>
+
+<p>Создаем папку для нашего расширения например так <code>C:\MyChromeExtensionUserJS</code></p>
+
+<h4>Шаг 2</h4>
+
+<p>Для каждого расширения создаем свою директорию например в нашем случае назовем ее так <code>C:\MyChromeExtensionUserJS\backTopUserJS</code>. Добавляем файлы расширения в эту директорию.</p>
+
+<h4>Шаг 3</h4>
+
+<p>Заходим &ldquo;О браузере Google Chrome&rdquo; -> вкладка &ldquo;Расширения&rdquo; или в адресной строке пишем <code>chrome://extensions/</code></p>
+
+<h4>Шаг 4</h4>
+
+<p>Ставим галочку &ldquo;Режим разработчика&rdquo;
+<img src="http://1.bp.blogspot.com/-bax0UMkP6dU/U60tEjgXiLI/AAAAAAAABCQ/MRKVYzCoHjc/s1600/qwerty.png" alt="developer_mode" /></p>
+
+<h4>Шаг 5</h4>
+
+<p>Нажимаем кнопку &ldquo;Загрузить распакованное расширение&rdquo; и выбираем директорию нашего расширения. Нажимаем &ldquo;OK&rdquo;.</p>
+
+<h4>Шаг 6</h4>
+
+<p>Расширение установлено и готово к работе. Чтобы обновить расширения после того как вы внесли в него изменения достаточно просто нажать кнопку &ldquo;Обновить расширение&rdquo; или в режиме разработчика сочетание клавиш <code>Ctrl+R</code>.</p>
+
+<h3>Итог</h3>
+
+<p>Посмотреть исходники скрипта можно на <a href="https://github.com/greybax/backTopUserJS">github</a>. Скрипт не претендует на звание идеального, а служит лишь примером и толчком к написанию собственных пользовательских скриптов для <code>Google Chrome</code>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/06/13/javascript/">Основы языка Javascript</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-13T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Статья посвящена в первую очередь изучающим Javascript. Некоторые из вещей могут показаться очевидными, но я надеюсь, что читатель найдет что-то интересное и для себя. Сам я прочитал достаточное количество статей в сети по этому языку. Но найти материал который бы кратко и просто излагал сущность языка я так и не нашел. Это меня вдохновило на написание собственной статьи.<br /><h2>Javascript - это:</h2><div><ul><li>Прототипированный язык программирования</li><li>С недавних пор не только Client-side технология, но и Server-side (Node.js)</li><li>Не Java :)</li><li>Однопоточный, но асинхронный язык</li></ul><h2><a name='more'></a>Объявление переменных</h2></div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> num;<br />num <span style="color: blue;">=</span> <span style="color: #0066ff;">100500</span>;<br /></pre><div><br />JS слабо типизированный язык, что демонстрирует следующий пример:<br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> text <span style="color: blue;">=</span> <span style="color: #009933;">'some text'</span>;<br />text <span style="color: blue;">=</span> <span style="color: #0066ff;">42</span>; <span style="color: #0066ff; font-style: italic;">// there is 42 now</span><br /></pre><br /><b>Важно:</b><br /><ul><li>Не забывайте ставить &#8216;;&#8217; в конце каждой строки</li><li>Всегда используйте <b>var </b>при объявлении переменных.</li></ul><div><h3>Типы данных</h3></div><h4>Простые</h4><div><ul><li>Number</li><li>String</li><li>Boolean</li><li>Undefined</li><li>Null</li></ul><h4>Ссылочные</h4></div><div><ul><li>Object</li></ul><div>Разберем каждый тип подробнее:</div></div><h4>Number</h4><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> num <span style="color: blue;">=</span> <span style="color: #0066ff;">100500</span>;<span style="color: #0066ff; font-style: italic;"> // this is a number type</span><br />num <span style="color: blue;">=</span> <span style="color: #0066ff;">0.0009</span>;<span style="color: #0066ff; font-style: italic;"> // this is a number type</span><br /></pre></div><br />Доступны все стандартные числовые операции:&nbsp;+, - , *, /, %, ++, &#8211; <br /><br /><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> thisIsInfinity <span style="color: blue;">=</span> <span style="color: #0066ff;">999/0</span>;<span style="color: #0066ff; font-style: italic;"> // Infinity</span><br /><span style="font-weight: 700;">var</span> thisIsNaN <span style="color: blue;">=</span> <span style="color: #0066ff;">"this is not number" * 3</span>;<span style="color: #0066ff; font-style: italic;"> // NaN</span><br /></pre></div><h4>String</h4></div><div>Пример использования кавычек:</div><div><br /></div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> fooString <span style="color: blue;">=</span> "I say: 'Yeah<span style="color: blue;">!</span>' It's cool.";<br />fooString <span style="color: blue;">=</span> 'He said: "Yeah<span style="color: blue;">!</span>"’;<br /></pre><br />Конкатенация строк:<br /><br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> text <span style="color: blue;">=</span> “a” <span style="color: blue;">+</span> “b”; <span style="color: #0066ff; font-style: italic;">// text has value ‘ab’</span><br /></pre><br />Другие полезные методы:<br /><ul><li>charAt()</li><li>indexOf()</li><li>slice()</li><li>toLowerCase()</li><li>toUpperCase()</li></ul><h4>Boolean, undefined and null</h4><div><b>1. Boolean </b>(true/false):<br /><br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> thisIsTrue <span style="color: blue;">=</span> <span style="color: #9700cc;">true</span>;<br /></pre><br /><b>2. Undefined </b>- специальный тип, который означает, что переменная не определена.<br /><br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> foo; <span style="color: #0066ff; font-style: italic;">// It is ‘undefined’</span><br /></pre></div><br /><b>3. Null</b> - специальный тип, означает &#8220;ничего&#8221;.<br /><br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> bar <span style="color: blue;">=</span> <span style="color: #9700cc;">null</span>;<br /></pre><h3>Объекты в Javascript</h3></div><div>Объекты в JS это стандартные ассоциативные массивы, другими словами &#8220;хэш&#8221;.<br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> obj <span style="color: blue;">=</span> {<br />    name: <span style="color: #009933;">"John"</span>,<br />    lastname: <span style="color: #009933;">"Johnson"</span><br />}<br /></pre><br />Ассоциативный массив - абстрактный тип данных состоят из набора из пар &lt;ключ&gt;: &lt;значение&gt;. <br /><h4>Создание объектов</h4></div><div>Оба этих метода эквивалентны:<br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="color: #0066ff; font-style: italic;">// simple creating</span><br /><span style="font-weight: 700;">var</span> obj <span style="color: blue;">=</span> {};<br /> <br /><span style="color: #0066ff; font-style: italic;">// standard syntax</span><br /><span style="font-weight: 700;">var</span> obj <span style="color: blue;">=</span> <span style="color: blue;">new</span> Object();<br /></pre><br />Литеральный синтаксис: <br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="color: #0066ff; font-style: italic;">//creation with properties</span><br /><span style="font-weight: 700;">var</span> obj <span style="color: blue;">=</span> {<br />    name: “John”,<br />    lastName: “Johnson”<br />}<br /></pre><h3>Операции с объектами</h3><pre style="background: rgba(238,238,238,0.92); color: black;">o.<span style="color: #6782d3;">name</span> <span style="color: blue;">=</span> “John”; <span style="color: #0066ff; font-style: italic;">//add property</span><br />o[“lastName”] <span style="color: blue;">=</span> “Johnson”;<br /><br /><span style="color: #3333ff; font-weight: 700;">alert</span>(o.<span style="color: #6782d3;">name</span>); <span style="color: #0066ff; font-style: italic;">//get property</span><br /><span style="color: #3333ff; font-weight: 700;">alert</span>(o[“lastName”]);<br /><br /><span style="color: blue;">delete</span> o.<span style="color: #6782d3;">name</span>; <span style="color: #0066ff; font-style: italic;">//delete property</span><br /></pre><h4>Оператор &#8216;in&#8217;</h4></div><div><pre style="background: rgba(238,238,238,0.92); color: black;">obj <span style="color: blue;">=</span> <span style="color: blue;">new</span> Object();<br />obj.prop <span style="color: blue;">=</span> <span style="color: #009933;">'exists'</span>;<br /><span style="color: #009933;">'prop'</span> <span style="color: blue;">in</span> obj; <span style="color: #0066ff; font-style: italic;">// returns true</span><br /><span style="color: #009933;">'toString'</span> <span style="color: blue;">in</span> obj; <span style="color: #0066ff; font-style: italic;">// returns true</span><br /></pre><h4>hasOwnProperty  </h4></div><div><pre style="background: rgba(238,238,238,0.92); color: black;">obj <span style="color: blue;">=</span> <span style="color: blue;">new</span> Object();<br />obj.prop <span style="color: blue;">=</span> <span style="color: #009933;">'exists'</span>;<br />obj.hasOwnProperty(<span style="color: #009933;">'prop'</span>); <span style="color: #0066ff; font-style: italic;">// returns true</span><br />obj.hasOwnProperty(<span style="color: #009933;">'toString'</span>); <span style="color: #0066ff; font-style: italic;">// returns false</span><br /></pre><br />В отличие от оператора in, метод hasOwnProperty не проверяет по объекту цепочку прототипов. <br /><h4>=== undefined</h4></div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> obj <span style="color: blue;">=</span> {};<br /><span style="color: #0066ff; font-style: italic;">// add property with undefined value </span><br />obj.test <span style="color: blue;">=</span> <span style="color: #9700cc;">undefined</span>; <br /><span style="color: #3333ff; font-weight: 700;">alert</span>(obj.test <span style="color: blue;">===</span> <span style="color: #9700cc;">undefined</span>); <span style="color: #0066ff; font-style: italic;">// true</span><br /><span style="color: #3333ff; font-weight: 700;">alert</span>(obj.test2 <span style="color: blue;">===</span> <span style="color: #9700cc;">undefined</span>); <span style="color: #0066ff; font-style: italic;">// true</span><br /></pre><br />Вполне возможна ситуация, что свойство существует и является равно undefined <br /><h3>Преобразование типов</h3></div><div><h4>String</h4></div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> str1 <span style="color: blue;">=</span> <span style="color: #3333ff; font-weight: 700;">String</span>(<span style="color: #0066ff;">1</span>);  <span style="color: #0066ff; font-style: italic;">// string '1'</span><br /><span style="font-weight: 700;">var</span> str2 <span style="color: blue;">=</span> <span style="color: #009933;">''</span> <span style="color: blue;">+</span> <span style="color: #0066ff;">1</span>;     <span style="color: #0066ff; font-style: italic;">// string '1'</span><br /></pre><h4>Numerical</h4></div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> num1 <span style="color: blue;">=</span> <span style="color: #3333ff; font-weight: 700;">Number</span>(<span style="color: #009933;">'42'</span>);   <span style="color: #0066ff; font-style: italic;">//number 42</span><br /><span style="font-weight: 700;">var</span> num2 <span style="color: blue;">=</span> <span style="color: blue;">+</span><span style="color: #009933;">"42"</span>;          <span style="color: #0066ff; font-style: italic;">//number 42</span><br /></pre><h4>Boolean</h4></div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> bool1 <span style="color: blue;">=</span> <span style="color: #3333ff; font-weight: 700;">Boolean</span>(<span style="color: #9700cc;">null</span>);   <span style="color: #0066ff; font-style: italic;">//false</span><br /><span style="font-weight: 700;">var</span> bool2 <span style="color: blue;">=</span> <span style="color: blue;">!</span><span style="color: blue;">!</span><span style="color: #9700cc;">null</span>;          <span style="color: #0066ff; font-style: italic;">//false</span><br /></pre><h3>Операторы сравнения </h3></div><div>Приведение типов используется в операторах: &lt;,&gt;,&lt;=,=&gt;,==,!= </div><div>Приведение типов НЕ используется в операторах: ===, !== </div><div>Советую использовать для более наглядного сравнения равенства/неравенства операторы === и !== соответственно.<br /><br />Примеры для демонстрации:<br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="color: #009933;">""</span> <span style="color: blue;">==</span> <span style="color: #009933;">"0"</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #0066ff;">0</span> <span style="color: blue;">==</span> <span style="color: #009933;">""</span> <span style="color: #0066ff; font-style: italic;">// true</span><br /><span style="color: #0066ff;">0</span> <span style="color: blue;">==</span> <span style="color: #009933;">"0"</span> <span style="color: #0066ff; font-style: italic;">// true</span><br /><span style="color: #9700cc;">false</span> <span style="color: blue;">==</span> <span style="color: #009933;">"false"</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #9700cc;">false</span> <span style="color: blue;">==</span> <span style="color: #009933;">"0"</span> <span style="color: #0066ff; font-style: italic;">// true</span><br /><span style="color: #9700cc;">false</span> <span style="color: blue;">==</span> <span style="color: #9700cc;">undefined</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #9700cc;">false</span> <span style="color: blue;">==</span> <span style="color: #9700cc;">null</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #9700cc;">null</span> <span style="color: blue;">==</span> <span style="color: #9700cc;">undefined</span> <span style="color: #0066ff; font-style: italic;">// true</span><br /><span style="color: #009933;">"<span style="color: #6782d3;">\t</span><span style="color: #6782d3;">\r</span><span style="color: #6782d3;">\n</span>"</span> <span style="color: blue;">==</span> <span style="color: #0066ff;">0</span> <span style="color: #0066ff; font-style: italic;">// true</span><br /></pre><br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="color: #009933;">""</span> <span style="color: blue;">===</span> <span style="color: #009933;">"0"</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #0066ff;">0</span> <span style="color: blue;">===</span> <span style="color: #009933;">""</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #0066ff;">0</span> <span style="color: blue;">===</span> <span style="color: #009933;">"0"</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #9700cc;">false</span> <span style="color: blue;">===</span> <span style="color: #009933;">"false"</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #9700cc;">false</span> <span style="color: blue;">===</span> <span style="color: #009933;">"0"</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #9700cc;">false</span> <span style="color: blue;">===</span> <span style="color: #9700cc;">undefined</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #9700cc;">false</span> <span style="color: blue;">===</span> <span style="color: #9700cc;">null</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #9700cc;">null</span> <span style="color: blue;">===</span> <span style="color: #9700cc;">undefined</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /><span style="color: #009933;">"<span style="color: #6782d3;">\t</span><span style="color: #6782d3;">\r</span><span style="color: #6782d3;">\n</span>"</span> <span style="color: blue;">===</span> <span style="color: #0066ff;">0</span> <span style="color: #0066ff; font-style: italic;">// false</span><br /></pre><h3>Массивы </h3></div><div>Одно из важных и отличительных свойств массивов в Javascript является то, что массивы могут содержать переменные разных типов.</div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> emptyArray <span style="color: blue;">=</span> [ ];<br /><span style="font-weight: 700;">var</span> numberArrray <span style="color: blue;">=</span> [<span style="color: #0066ff;">1</span>, <span style="color: #0066ff;">2</span>, <span style="color: #0066ff;">3</span>]; <br /><span style="font-weight: 700;">var</span> myCollection <span style="color: blue;">=</span> [<span style="color: #0066ff;">1</span>, <span style="color: #009933;">'string'</span>, <span style="color: #9700cc;">true</span>]; <br />myCollection[<span style="color: #0066ff;">0</span>]; <span style="color: #0066ff; font-style: italic;">// Return 1</span><br /></pre><br />Некоторые полезные функции работы с массивами:<br /><ul><li>push/pop</li><li>shift/unshift</li><li>splice</li><li>join/split</li><li>sort</li><li>reverse</li><li>concat</li><li>indexOf/lastIndexOf</li></ul><div>Особое внимание хочется уделить свойстве <b>length </b>массива.</div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> myArray <span style="color: blue;">=</span> [<span style="color: #0066ff;">1</span>, <span style="color: #0066ff;">2</span>, <span style="color: #0066ff;">3</span>]; <br />myArray.<span style="color: #6782d3;">length</span>; <span style="color: #0066ff; font-style: italic;">// It is 3</span><br />myArray.<span style="color: #6782d3;">length</span> <span style="color: blue;">=</span> <span style="color: #0066ff;">4</span>; <br />myArray.<span style="color: #6782d3;">length</span> <span style="color: blue;">=</span> <span style="color: #0066ff;">2</span>; <span style="color: #0066ff; font-style: italic;">// [1, 2]</span><br />myArray[<span style="color: #0066ff;">1000000</span>] <span style="color: blue;">=</span> <span style="color: #0066ff;">4</span>;<br /></pre>Таким образом <b>length = последний индекс массива + 1</b>. Если часть элементов массива не будут инициализированы, то они будут равны undefined. <br /><h3>Функции</h3></div><div>Функции это объекты в Javascript. Поэтому их можно присваивать переменным, передавать и, конечно, у них есть свойства. Существует 3 способа создать функцию. Основное отличие в результате их работы - в том, что именованная функция видна везде, а анонимная - только после объявления.</div><h4>Именнованные</h4><div><pre style="background: rgba(238,238,238,0.92); color: black;">sayAnithing(“Hi<span style="color: blue;">!</span>”);<br /><span style="font-weight: 700;">function</span> <span style="color: #ff8000;">sayAnithing</span>(message) { <span style="color: #3333ff; font-weight: 700;">alert</span>(mesage); }<br /></pre></div><h4>Анонимные</h4><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> <span style="color: #ff8000;">sayBonjour</span> <span style="color: blue;">=</span> <span style="font-weight: 700;">function</span> () { <span style="color: #3333ff; font-weight: 700;">alert</span>(“Bonjour<span style="color: blue;">!</span>”);}<br />sayBonjour(); <span style="color: #0066ff; font-style: italic;">// Says “Bonjour!” </span><br /></pre><h4>Аргументы функции</h4></div><div>Функции можно запускать с любым числом параметров. Если функции передано меньше параметров, чем есть в определении, то отсутствующие считаются undefined.</div><div><pre style="background: rgba(238,238,238,0.92); color: black;">foo(<span style="color: #0066ff;">0</span>, <span style="color: #0066ff;">1</span>, <span style="color: #0066ff;">2</span>, <span style="color: #0066ff;">3</span>, <span style="color: #0066ff;">4</span>); <br /><br /><span style="font-weight: 700;">function</span> <span style="color: #ff8000;">foo</span>(a, b, c) { <br />    arguments[<span style="color: #0066ff;">0</span>] <span style="color: blue;">=</span> <span style="color: #0066ff;">2</span>; <br />    a; <span style="color: #0066ff; font-style: italic;">// 2 </span><br />    b <span style="color: blue;">=</span> <span style="color: #0066ff;">17</span>; <br />    arguments[<span style="color: #0066ff;">1</span>]; <span style="color: #0066ff; font-style: italic;">// 17 </span><br />    arguments[<span style="color: #0066ff;">4</span>]; <span style="color: #0066ff; font-style: italic;">// 4 </span><br />}<br /></pre>Аргументы можно изменять.<br />Одной из любопытных функций является <b>typeof() - которая возвращает тип переменной.</b><br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="color: blue;">typeof</span> <span style="color: #9700cc;">undefined</span> <span style="color: #0066ff; font-style: italic;">// "undefined" </span><br /><span style="color: blue;">typeof</span> <span style="color: #0066ff;">0</span>    <span style="color: #0066ff; font-style: italic;">// "number" </span><br /><span style="color: blue;">typeof</span> <span style="color: #9700cc;">true</span> <span style="color: #0066ff; font-style: italic;">// "boolean" </span><br /><span style="color: blue;">typeof</span> <span style="color: #009933;">"foo"</span> <span style="color: #0066ff; font-style: italic;">// "string" </span><br /><span style="color: blue;">typeof</span> {} <span style="color: #0066ff; font-style: italic;">// "object"</span><br /></pre>Специфика языка Javascript: <br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="color: blue;">typeof</span> <span style="color: #9700cc;">null</span>  <span style="color: #0066ff; font-style: italic;">// "object"</span><br /><span style="color: blue;">typeof</span> <span style="font-weight: 700;">function</span>(){} <span style="color: #0066ff; font-style: italic;">// "function"</span><br /></pre><h3>Scope и контекст выполнения</h3></div><div>Выполнение JavaScript представляет из себя стэк контекстов выполнения. Контекст, который активирует другой контекст, называется вызывающим контекстом (<b>caller</b>). Контекст, который вызывают, называется вызываемым контекстом (<b>callee</b>). При этом callee-контекст может являться caller’ом для другого callee, что частенько и происходит когда один из одной функции вызывается другая. <br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> color <span style="color: blue;">=</span> “blue”; <span style="color: #0066ff; font-style: italic;">// Global scope</span><br /><span style="font-weight: 700;">function</span> <span style="color: #ff8000;">changeColor</span> () { <span style="color: #0066ff; font-style: italic;">// changeColor scope</span><br />  <span style="font-weight: 700;">var</span> anotherColor <span style="color: blue;">=</span> “red”;<br />    <span style="font-weight: 700;">function</span> <span style="color: #ff8000;">swapColors</span> () { <span style="color: #0066ff; font-style: italic;">// swapColors scope</span><br />      <span style="font-weight: 700;">var</span> tempColor <span style="color: blue;">=</span> anotherColor;<br />      anotherColor <span style="color: blue;">=</span> color;<br />      color <span style="color: blue;">=</span> tempColor;<br />    }<br />    swapColors();  <span style="color: #0066ff; font-style: italic;">// function call</span><br />}<br />changeColor();  <span style="color: #0066ff; font-style: italic;">// function call</span><br /></pre><br />Схема ниже иллюстрирует контекст выполнения функций:  <br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-JkQD5nm6wtI/U5rkqe9m1_I/AAAAAAAABBY/JsYrX9EW0u8/s1600/2014-06-13+15-43-51+%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82+%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://2.bp.blogspot.com/-JkQD5nm6wtI/U5rkqe9m1_I/AAAAAAAABBY/JsYrX9EW0u8/s1600/2014-06-13+15-43-51+%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82+%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0.png" /></a></div>Переменные видны внутри контекста функции не зависимо где они объявлены. Необычно для новичков в JS выглядит следующий пример: <br /><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">function</span> <span style="color: #ff8000;">myFunc</span> () {<br />  If (<span style="color: #9700cc;">true</span>) {<br />    <span style="font-weight: 700;">var</span> localVar <span style="color: blue;">=</span> “I’m local”;<br />  }<br />  console<span style="color: #3333ff; font-weight: 700;">.log</span>(localVar);  <span style="color: #0066ff; font-style: italic;">//Shows “I’m local” in log</span><br />}<br /></pre><h3>Замыкания </h3></div><div>Замыкание - внутренняя функция. Javascript позволяет создавать функции по ходу выполнения скрипта. И эти функции имеют доступ к переменным внешней функции.</div><div>Рассмотрим пример:</div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">function</span> <span style="color: #ff8000;">Counter</span> () {<br />  <span style="font-weight: 700;">var</span> count <span style="color: blue;">=</span> <span style="color: #0066ff;">0</span>;<br />  <span style="color: blue;">return</span> <span style="font-weight: 700;">function</span> () {<br />    <span style="color: blue;">return</span> <span style="color: blue;">++</span>count;<br />  }<br />}<br /><span style="font-weight: 700;">var</span> increaseCount <span style="color: blue;">=</span> Counter();<br /><span style="color: #3333ff; font-weight: 700;">alert</span>(increaseCount()); <span style="color: #0066ff; font-style: italic;">// Shows 1</span><br /><span style="color: #3333ff; font-weight: 700;">alert</span>(increaseCount()); <span style="color: #0066ff; font-style: italic;">// Shows 2</span><br /></pre>Внутренняя анонимная функция замыкает на себе функцию Counter. Это означает что когда заканчивает работать функция Counter, внутренняя функция остается жить, ее можно запускать в другом месте кода. В этой функции мы используем переменную count, т.е получается что внутренняя функция замыкает на себе переменную count внешней функции. <br /><h3>Прототипы</h3></div><div>В Javascript все объекты наследуют Object, поэтому каждый объект имеет&nbsp;<span style="background-color: white; font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif; font-size: 13px;">свойство</span><span style="background-color: white; font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif; font-size: 13px;">&nbsp;</span>prototype. Prototype это объект, которое позволяет шарить свойства с другими объектами.&nbsp;</div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-aE93elcAvL4/U5sBdhK_YUI/AAAAAAAABBo/SWEMu8srCJc/s1600/2014-06-13+17-49-12+%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82+%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://3.bp.blogspot.com/-aE93elcAvL4/U5sBdhK_YUI/AAAAAAAABBo/SWEMu8srCJc/s1600/2014-06-13+17-49-12+%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82+%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0.png" /></a></div><div>Например, когда у объекта свойство &#8220;jump&#8221;, то интерпретатор языка ищет сначала это свойство у самого объекта, а потом спускаясь по цепочке прототипов ищет в них пока не найдет.</div><h3>&#8220;Классы&#8221;</h3><div>В спецификации ECMAScript 5 нет понятия класса. Реализовать класс в привычном понятии для ООП можно путем создания конструктора с прототипом. Принадлежность к классу проверяет оператор <b>instanceof</b></div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">function</span> <span style="color: #ff8000;">Animal</span>(name) {  <span style="color: #0066ff; font-style: italic;">//constructor</span><br />  this.<span style="color: #6782d3;">name</span> <span style="color: blue;">=</span> name;<br />}<br /><br /><span style="color: #3333ff; font-weight: 700;">Animal</span>.<span style="color: #6782d3;">prototype</span>.<span style="color: #ff8000;">speed</span> <span style="color: blue;">=</span> <span style="color: #0066ff;">0</span>;  <span style="color: #0066ff; font-style: italic;">//Property with value by default</span><br /><br /><span style="color: #3333ff; font-weight: 700;">Animal</span>.<span style="color: #6782d3;">prototype</span>.<span style="color: #ff8000;">run</span> <span style="color: blue;">=</span> <span style="font-weight: 700;">function</span>(speed) { <span style="color: #0066ff; font-style: italic;">//Method of prototype</span><br />  this.speed <span style="color: blue;">+</span><span style="color: blue;">=</span> speed;<br />  <span style="color: #3333ff; font-weight: 700;">alert</span>(this.<span style="color: #6782d3;">name</span> <span style="color: blue;">+</span> <span style="color: #009933;">' run, speed'</span> <span style="color: blue;">+</span> this.speed);<br />};<br /></pre><h3>this</h3></div><div>this зависит от контекста вызова. Рассмотрим возможные варианты:</div><h4>this в простом вызове</h4><div>В этом случае this глобальный объект</div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">function</span> <span style="color: #ff8000;">simpleFunction</span> () {<br />  this;<br />}<br /><br />simpleFunction();<br /></pre><h4>this в конструкторе </h4></div><div>В этом случае this - новый объект</div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">function</span> <span style="color: #ff8000;">SimpleConstructor</span> () {<br />  this.someProperty <span style="color: blue;">=</span> “This is some property“;<br />}<br /><br /><span style="font-weight: 700;">var</span> someObject <span style="color: blue;">=</span> <span style="color: blue;">new</span> SimpleConstructor();<br /></pre><h4>this в методе объекта </h4></div><div>В данном примере this это объект country</div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">var</span> country <span style="color: blue;">=</span> {<br />  name: “Sparta”<br />}<br /><br /><span style="font-weight: 700;">var</span> <span style="color: #ff8000;">say</span> <span style="color: blue;">=</span> <span style="font-weight: 700;">function</span> () {<br />  <span style="color: #3333ff; font-weight: 700;">alert</span>(“This is “ <span style="color: blue;">+</span> this.<span style="color: #6782d3;">name</span>);<br />}<br /><br />country.sayName <span style="color: blue;">=</span> say;<br />country.sayName();<br /></pre><h4>this как первый аргумент в call/apply </h4></div><div><pre style="background: rgba(238,238,238,0.92); color: black;"><span style="font-weight: 700;">function</span> <span style="color: #ff8000;">sum</span>(a, b) {<br />  this.result <span style="color: blue;">=</span> a <span style="color: blue;">+</span> b;<br />}<br /><span style="font-weight: 700;">var</span> obj <span style="color: blue;">=</span> {};<br /><br />sum.<span style="color: #3333ff; font-weight: 700;">call</span>(obj, <span style="color: #0066ff;">1</span>, <span style="color: #0066ff;">2</span>);<br /><span style="color: #0066ff; font-style: italic;">// sum.apply(obj, [1, 2]);</span><br /><br /><span style="color: #3333ff; font-weight: 700;">alert</span>(obj.result) <span style="color: #0066ff; font-style: italic;">// Property was created. Result is 3</span><br /></pre><h3>Наследование </h3></div><div>В JS в отличие от других языков программирования реализация наследования как одного из принципов ООП, может быть реализовано несколькими способами. Думаю в данной статье будет излишне описывать каждый из способов, подробно о них можно прочитать в книге:&nbsp;<b>&#8220;Professional JavaScript for Web Developers&#8221;, N. Zakas.</b></div><div><ul><li>Prototype Chaining</li><li>Object Masquerading inheritance</li><li>Combination Inheritance</li><li>Prototypal Inheritance</li><li>Parasitic Inheritance</li><li>Parasitic Combination Inheritance</li></ul><div><h3>Литература</h3></div></div><div><div><ul><li><a href="http://www.ecmascript.org/">http://www.ecmascript.org/</a></li><li><a href="http://javascript.ru/">http://javascript.ru/</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide</a></li><li>Larry Ulman “Modern JavaScript Develop and Design”</li><li>David Flanagan “JavaScript: The Definitive Guide”</li><li>Nicholas C. Zakas “Professional JavaScript for Web Developers”</li></ul></div></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/05/12/aspnet/">ASP.NET: События жизненного цикла страницы</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-12T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<div dir="ltr" style="text-align: left;" trbidi="on"><div style="text-align: left;"><span style="font-family: inherit;">Эта статья является продолжением статьи&nbsp;<a href="http://greybax.blogspot.ru/2014/04/aspnet.html" style="color: #3778cd;">ASP.NET: Этапы жизненного цикла страницы</a>. Сейчас я хочу более подробно рассказать о событийной модели в ASP.NET.&nbsp;<span style="line-height: 19.9999942779541px; text-align: justify;">Во время прохождения этапов жизненного цикла возникают события, подписавшись на которые, разработчик может выполнять свой собственный код. Зачастую, многие начинающие разработчики, путают порядок событий в asp.net приложении. Проверить trace загрузки страницы достаточно просто:</span></span></div><ul style="text-align: left;"><li><span style="font-family: inherit;">Создадим простое ASP.NET Web Forms Application в студии</span></li><li><span style="font-family: inherit;">Добавляем атрибуты Trace и TraceMode директивы&nbsp;@Page и устанавливаем значения &#8216;true&#8217; и &#8216;SortByName&#8217; соответственно.</span></li></ul><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-t8kJhuvsFzY/U2dzRQx22fI/AAAAAAAABA4/joxV8eAvuIE/s1600/Untitled.png" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em; text-align: center;"><span style="font-family: inherit;"><img border="0" src="http://2.bp.blogspot.com/-t8kJhuvsFzY/U2dzRQx22fI/AAAAAAAABA4/joxV8eAvuIE/s1600/Untitled.png" height="74" width="640" /></span></a><a href="http://2.bp.blogspot.com/-t8kJhuvsFzY/U2dzRQx22fI/AAAAAAAABA4/joxV8eAvuIE/s1600/Untitled.png" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em; text-align: center;"><span style="font-family: inherit;"><br /></span></a></div><span style="font-family: inherit;"><br /><br /><br /><br /><br /></span><br /><ul style="text-align: left;"><li><span style="font-family: inherit;">Запускаем наш сайт (нажимаем F5 в студии)</span></li><li><span style="font-family: inherit;">Прямо в окне браузера вместе с сайтом загрузилась информации трассировки.</span></li></ul><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-6tgWMi1IZHk/U2d3K3cYC7I/AAAAAAAABBE/vDJc1nhg8FU/s1600/22.png" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><span style="font-family: inherit;"><img border="0" src="http://4.bp.blogspot.com/-6tgWMi1IZHk/U2d3K3cYC7I/AAAAAAAABBE/vDJc1nhg8FU/s1600/22.png" height="296" width="640" /></span></a></div><div class="separator" style="clear: both; text-align: center;"></div><div style="text-align: left;"><br /><a name='more'></a>Во время трассировки не выводится событие&nbsp;<b style="line-height: 19.9999942779541px; text-align: justify;">Unload</b><span style="background-color: white; font-family: inherit; line-height: 16px;">, потому что оно происходит, когда весь код уже выведен.&nbsp;</span><span style="font-family: inherit; line-height: 19.9999942779541px; text-align: justify;">Из всех событий жизненного цикла страницы, разработчик может подписаться только на пять, помимо событий дочерних элементов управления. Эти события: <b>PreInit, Init, Load, PreRender, Unload</b>.&nbsp;</span><span style="line-height: 22.857135772705078px; text-align: justify;">Во время любого события можно использовать свойство IsPostBack, для того, чтобы определить вызвана ли эта страница в первый раз или в результате postback.&nbsp;</span><span style="font-family: inherit; line-height: 19.9999942779541px; text-align: justify;">Рассмотрим варианты использования этих событий.</span></div><div style="text-align: left;"><span style="font-family: inherit; line-height: 19.9999942779541px; text-align: justify;"><br /></span></div><table border="0" cellpadding="5" cellspacing="2" style="line-height: 1.428571em; width: 568px;"><tbody style="line-height: 1.428571em;"><tr style="line-height: 1.428571em;"><th colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: inherit;">Событие</span></th><th colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: inherit;">Использование</span></th></tr><tr style="line-height: 1.428571em;"><td align="center" colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><strong style="line-height: 1.428571em;"><span style="font-family: inherit;">PreInit</span></strong></td><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><div align="justify" style="border: 0px; line-height: 1.428571em; margin-bottom: 0.714285em; padding: 0px;"><span style="line-height: 1.428571em; text-align: left;">На данном этапе элементы управления еще не созданы и равны null. Здесь разработчик может создать динамически элементы управления, динамически устанавливать шаблон дизайна или тему оформления, считывать или устанавливать свойства объекта Profile.</span></div></td></tr><tr style="line-height: 1.428571em;"><td align="center" colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><strong style="line-height: 1.428571em;"><span style="font-family: inherit;">Init</span></strong></td><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;">Здесь происходит начальная инициализация контролов, значения берутся из aspx файла. Tracking ViewState еще отключен.<span style="line-height: 1.428571em;">&nbsp;В случае, если разработчик самостоятельно установит свойства на этом этапе, то на следующем установленные значения могут быть изменены</span><span style="font-family: inherit; line-height: 1.428571em;">. На этом этапе разработчик может считывать или инициализировать свойства элементов управления.</span></td></tr><tr style="line-height: 1.428571em;"><td align="center" colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><strong style="line-height: 1.428571em;"><span style="font-family: inherit;">Load</span></strong></td><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: inherit;">Загружаются данные из ресурсов. Если произошел Postback, элементы управления получают значения, которые были отправлены с формы. На этом этапе разработчик может считывать или изменять свойства элементов управления.&nbsp;</span></td></tr><tr style="line-height: 1.428571em;"><td align="center" colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><strong style="line-height: 1.428571em;"><span style="font-family: inherit;">PreRender</span></strong></td><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: inherit;">Последняя возможность внести изменения во внешний вид страницы.</span></td></tr><tr style="line-height: 1.428571em;"><td align="center" colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><strong style="line-height: 1.428571em;"><span style="font-family: inherit;">Unload</span></strong></td><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: inherit;">Освобождение занятых ресурсов (закрытие открытых соединений с базой данных, завершение работы с файлами и т.п.)&nbsp;<span style="line-height: 1.428571em;">Важно, что на этом этапе уже создано HTML представление страницы и попытка внести какие-либо изменения (например, вызвав метод Response.Write()), приведет к исключению. Если на данном этапе изменить знамения элементов управления, они не попадут конечному пользователю.</span></span></td></tr></tbody></table><h4><span style="font-family: inherit;">Пример</span></h4><script src="https://gist.github.com/greybax/d4147fb046cf9b3cf7d3.js"></script> <br /><div class="separator" style="clear: both; text-align: center;"></div>Результат работы скрипта приведен в таблице ниже.<br /><table border="1"><tbody><tr> <td align="center" rowspan="3">Событие</td> <td align="center" colspan="8">IsPostBack</td></tr><tr> <td align="center" colspan="4">До</td> <td align="center" colspan="4">После</td></tr><tr> <td>Tracking ViewState</td> <td>TextBox (на момент входа в функцию)</td> <td>TextBox  (на момент выхода из функции)</td> <td>Response.<br />Write</td> <td>Tracking ViewState</td> <td>TextBox (на момент входа в функцию)</td> <td>TextBox (на момент выхода из функции)</td> <td>Response.<br />Write</td></tr><tr><td><b>OnPreInit</b></td><td>False</td><td>null</td><td>null</td><td>OnPreInit</td><td>False</td><td>null</td><td>null</td><td>OnPreInit</td></tr><tr><td><b>OnInit</b></td><td>False</td><td>Sample text</td><td>Sample text OnInit</td><td>OnInit</td><td>False</td><td>Sample text</td><td>Sample text OnInit</td><td>OnInit</td></tr><tr><td><b>OnPreLoad</b></td><td>True</td><td>Sample text OnInit</td><td>Sample text OnInit  OnPreLoad</td><td>OnPreLoad</td><td>True</td><td>Sample text OnInit  OnPreLoad  OnPreRender</td><td>Sample text OnInit  OnPreLoad  OnPreRender  OnPreLoad</td><td>OnPreLoad</td></tr><tr><td><b>OnPreRender</b></td><td>True</td><td>Sample text OnInit  OnPreLoad</td><td>Sample text OnInit  OnPreLoad  OnPreRender</td><td>OnPreRender</td><td>True</td><td>Sample text OnInit  OnPreLoad  OnPreRender  OnPreLoad</td><td>Sample text OnInit  OnPreLoad  OnPreRender  OnPreLoad  OnPreRender</td><td>OnPreRender</td></tr><tr><td><b>OnUnload</b></td><td>True</td><td>Sample text OnInit  OnPreLoad  OnPreRender</td><td>Sample text OnInit  OnPreLoad  OnPreRender  OnUnload</td><td>Error</td><td>True</td><td>Sample text OnInit  OnPreLoad  OnPreRender  OnPreLoad  OnPreRender</td><td>Sample text OnInit  OnPreLoad  OnPreRender  OnPreLoad  OnPreRender  OnUnload</td><td>Error</td></tr></tbody></table><br /><div><br /></div></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/23/aspnet/">ASP.NET: Этапы жизненного цикла страницы</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-23T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<div dir="ltr" style="text-align: left;" trbidi="on"><div class="separator" style="clear: both; text-align: center;"></div><br /><div style="text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif;">Наверно редкое собеседование по&nbsp;ASP.NET&nbsp;не обходится без вопроса о жизненном цикле&nbsp;страницы в ASP.NET Web Forms (далее для краткости&nbsp;ASP.NET). Попытаемся разобраться в этом вопросе. Разделил тему на две. В текущей статье разберем </span><b style="font-family: Arial, Helvetica, sans-serif;">этапы&nbsp;жизненного цикла страницы в ASP.NET</b><span style="font-family: Arial, Helvetica, sans-serif;">.</span></div><br /><h2 style="text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif; font-size: small;">Общий план</span></h2><div style="border: 0px; margin-bottom: 0.714285em; padding: 0px; text-align: justify;"><h3 style="line-height: 19.9999942779541px;"><span style="font-family: Arial, Helvetica, sans-serif; font-size: small;"><b>Жизненный цикл страницы ASP.NET</b></span></h3><ol style="line-height: 19.9999942779541px;"><li style="text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif; text-align: left;">получение и обработка web-сервером IIS запроса к странице</span></li><li style="text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif; text-align: left;">дальнейшей передачи запроса среде выполнения ASP.NET.</span></li><li style="text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif; text-align: left;">среда выполнения:</span></li><ol><li style="text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif; text-align: left;">загружает класс вызываемой страницы</span></li><li style="text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif; text-align: left;">устанавливает свойства класса страницы</span></li><li style="text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif; text-align: left;">выстраивает дерево элементов</span></li><li style="text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif; text-align: left;">заполняет свойства Request и Response</span></li><li style="text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif; text-align: left;">вызывает метод IHttpHandler.ProcessRequest</span></li></ol></ol><div style="line-height: 19.9999942779541px;"><span style="font-family: Arial, Helvetica, sans-serif;"></span><br /><a name='more'></a><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></div><div style="line-height: 19.9999942779541px;"><span style="font-family: Arial, Helvetica, sans-serif;">Далее среда выполнения проверяет каким образом была вызвана эта страницы и если страница вызвана путем передачи данных с другой страницы, то среда выполнения устанавливает свойство PreviousPage.</span></div><h2 style="line-height: 19.9999942779541px;"><span style="font-family: Arial, Helvetica, sans-serif; font-size: small;">Этапы</span></h2><div style="line-height: 19.9999942779541px;"><span style="font-family: Arial, Helvetica, sans-serif;">Выделяется 8 основных этапов.&nbsp;</span><span style="text-align: left;"><span style="font-family: Arial, Helvetica, sans-serif;">Наглядно это демонстрирует&nbsp;</span></span><span style="font-family: Arial, Helvetica, sans-serif; line-height: normal; text-align: left;">следующая схема</span></div></div><table border="0" cellpadding="5" cellspacing="2" style="line-height: 1.428571em; text-align: justify;"><tbody style="line-height: 1.428571em;"><tr style="line-height: 1.428571em;"><th colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;">Этап</span></th><th colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;">Описание</span></th></tr><tr style="line-height: 1.428571em;"><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;"><i>Запрос станицы</i></span></td><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;">Запрос страницы осуществляется до начала жизненного цикла страницы. Пользователь осуществляет запрос, среда выполнения ASP.NET устанавливает, необходимо ли осуществить компиляцию страницы и начать жизненный цикл, либо можно выдать в качестве ответа страницу из кеша, не выполняя страницы.</span></td></tr><tr style="line-height: 1.428571em;"><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;"><i>Начало обработки</i></span></td><td colspan="1" rowspan="1" style="padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;"><span style="line-height: 1.428571em;">На этом этапе происходит установка свойство Response и Request и свойства UICulture. Также, на этом этапе устанавливается, была ли эта страница запрошена в результате postback и соответствующим образом устанавливается&nbsp;</span>свойство<span style="line-height: 1.428571em;">&nbsp;IsPostBack.</span></span></td></tr><tr style="line-height: 1.428571em;"><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;"><i>Инициализация страницы</i></span></td><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;">Ко времени инициализации страницы все дочерние пользовательские элементы управления уже созданы и имеют установленный свойства UniqueID. В это время к странице применяются темы оформления. Если страница вызвана в результате&nbsp;</span><span style="font-family: Arial, Helvetica, sans-serif;">postback</span><span style="font-family: Arial, Helvetica, sans-serif;">, то данные,&nbsp;отправленные на сервер, еще не загружены в свойства элементов управления, на этом этапе.</span></td></tr><tr style="line-height: 1.428571em;"><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;"><i>Загрузка</i></span></td><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;">Если страница вызвана в результате&nbsp;</span><span style="font-family: Arial, Helvetica, sans-serif;">postback</span><span style="font-family: Arial, Helvetica, sans-serif;">, то на этом этапе&nbsp;устанавливаются свойства элементов управления, на основании информации о состоянии (ViewState и ControlState).</span></td></tr><tr style="line-height: 1.428571em;"><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;"><i>Валидация</i></span></td><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;">Вызывается метод Validate() для всех, находящихся на странице валидаторов.</span></td></tr><tr style="line-height: 1.428571em;"><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;"><i>Обработка постбэка</i></span></td><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;">Вызываются обработчики событий если&nbsp;</span><span style="font-family: Arial, Helvetica, sans-serif;">postback&nbsp;</span><span style="font-family: Arial, Helvetica, sans-serif;">произошел.</span></td></tr><tr style="line-height: 1.428571em;"><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;"><i>Рендеринг</i></span></td><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;">Сохраняется информация о состоянии, затем класс страницы вызывает соответствующие методы дочерних элементов управления для генерации HTML представления и передачи его в Response.OutputStream.</span></td></tr><tr style="line-height: 1.428571em;"><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;"><i>Выгрузка</i></span></td><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><span style="font-family: Arial, Helvetica, sans-serif;">Выгрузка происходит после того, как создано HTML представление для всей страницы.</span></td></tr></tbody></table></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="4">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="2">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+   
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:alfilatov.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/06/29/probuiem-es2015-es6-v-dieistvii/">Пробуем ES2015(ES6) в действии</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/06/05/mighriruiem-js-kod-v-typescript/">Мигрируем Javascript код в TypeScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/05/11/poiezdka-v-shri-lanku/">Поездка в Шри-Ланку</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/10/poluchaiem-spisok-obrabotchikov-eliemienta-stranitsy/">Получаем список обработчиков элемента в DOM'е</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/30/gdie-ia-bieru-informatsiiu-o-mirie-frontend/">Что можно почитать по Frontend'у</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/greybax">@greybax</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'greybax',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<section>
+  <h1>RSS</h1>
+  <p style="margin-top:10px; margin-bottom:0; padding-bottom:0; text-align:center; line-height:0">
+    <a target="_blank" href="http://feeds.feedburner.com/~r/greybax/~6/1"><img src="http://feeds.feedburner.com/greybax.1.gif" alt="Aleksandr Filatov" style="border:0"></a>
+  </p>
+  
+  <a href="https://feedburner.google.com/fb/a/mailverify?uri=greybax&amp;loc=en_US">Subscribe to Aleksandr Filatov by Email</a>
+</section>
+<section>
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("greybax", 0, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/greybax" class="twitter-follow-button" data-show-count="true">Follow @greybax</a>
+  
+</section>
+
+  
+</aside>
+
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter25504124 = new Ya.Metrika({id:25504124,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/25504124" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  The content on this site represents my own personal opinions and thoughts at the time of posting. <br />
+  Copyright &copy; 2015 - Aleksandr Filatov -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. </span>
+  <span class="credit">Blog theme is <a href="https://github.com/johnkeith/boldandblue">Bold-and-Blue</a></span>
+</p>
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'greybax';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>

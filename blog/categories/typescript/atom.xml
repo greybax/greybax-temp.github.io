@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Typescript | Aleksandr Filatov]]></title>
+  <link href="http://alfilatov.com/blog/categories/typescript/atom.xml" rel="self"/>
+  <link href="http://alfilatov.com/"/>
+  <updated>2015-07-23T16:47:12+00:00</updated>
+  <id>http://alfilatov.com/</id>
+  <author>
+    <name><![CDATA[Aleksandr Filatov]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Мигрируем Javascript код в TypeScript]]></title>
+    <link href="http://alfilatov.com/blog/2015/06/05/mighriruiem-js-kod-v-typescript/"/>
+    <updated>2015-06-05T13:16:39+00:00</updated>
+    <id>http://alfilatov.com/blog/2015/06/05/mighriruiem-js-kod-v-typescript</id>
+    <content type="html"><![CDATA[<p>Не так давно стояла задача перевести один старый проект из кода на <code>Javascript</code> в <code>TypeScript</code>. Хочу поделиться своим опытом такого перехода. Рассмотрим на примере разработки в Visual Studio.</p>
+
+<p>Для начала стоит отметить, что такая миграция не является проблемой с точки зрения совместимости, т.к код на <code>Javascript</code> - это синтаксически корректный код на <code>TypeScript</code>.</p>
+
+<p>Итак, выделим основные этапы, после выполнения которых произойдет чудесное
+превращение:</p>
+
+<ul>
+<li>Переименуем все <code>.js</code> файлы в <code>.ts</code></li>
+<li><p>Настраиваем компиляцию из <code>.ts</code> в <code>.js</code></p>
+
+<ul>
+<li>Для этого нужно скачать и установить <code>TypeScript</code> плагин для студии с <a href="http://www.typescriptlang.org/#Download">официального сайта</a>, позволяющий компилировать <code>.ts</code> файлы в <code>.js</code>.</li>
+</ul>
+</li>
+<li><p>Устанавливаем определения для библиотек (<code>.d.ts</code>)</p>
+
+<ul>
+<li>Коллекция определений библиотек находится в <a href="https://github.com/borisyankov/DefinitelyTyped">открытом доступе</a>. Определения для <code>javascript</code> библиотек можно установить через <a href="http://definitelytyped.org/tsd/">tsd</a> - это аналог NuGet Package Manager.</li>
+</ul>
+</li>
+<li><p>Пишем определения для своего кода</p>
+
+<ul>
+<li>Это совсем не сложно и делается по аналогии с кучей примеров из <a href="https://github.com/borisyankov/DefinitelyTyped">DefinitelyTyped on GitHub</a>. Мой пример можно посмотреть <a href="https://github.com/greybax/DefinitelyTyped/tree/master/quixote">тут</a>, который я писал по <a href="https://github.com/jamesshore/quixote/blob/master/docs/api.md">документации для библиотеки quixote</a></li>
+</ul>
+</li>
+<li><p>Рефакторим чтобы использовать язык <code>TypeScript</code></p>
+
+<ul>
+<li>После компиляции проекта в вашем коде будут возникать ошибки, которые слудует исправлять в соответвии с семантикой <code>TypeScript</code>. После исправления всех ошибок вы получите рабочий проект на <code>TypeScript</code> со всеми вытекающими отсюда удобствами.</li>
+</ul>
+</li>
+</ul>
+
+
+<p><strong>Итог</strong>: Все, как оказалось невероятно просто, как досчитать до 5! :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Debugging файлов TypeScript в браузере через эмулятор DevExtreme]]></title>
+    <link href="http://alfilatov.com/blog/2014/12/02/diebaghghingh-typescript-failov-v-emuliatorie-devextreme/"/>
+    <updated>2014-12-02T19:45:38+00:00</updated>
+    <id>http://alfilatov.com/blog/2014/12/02/diebaghghingh-typescript-failov-v-emuliatorie-devextreme</id>
+    <content type="html"><![CDATA[<p>Недавно встала задача добавить поддержку debugging&#8217;а файлов <code>*.ts</code> в браузере. В нашем случае это Google Chrome.
+Постараюсь как можно подробнее описать этот процесс.</p>
+
+<ol>
+<li><p>Для начала нужно определить в какой директории находится DevExtreme сервер, который запускает приложение, когда мы нажимаем в VS кнопку <code>Запустить в браузере Google Chrome</code>. Ответ на этот вопрос был найден в одном из тикетов на сайте <a href="https://www.devexpress.com/Support/Center/Question/Details/Q523956">DevExpress</a>. В случае Visual Studio 2012 это путь <code>C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\DevExtreme\WebServer</code></p></li>
+<li><p>Добавляем в проект <code>*.map файл</code>. Это необходимо для связи файлов <code>js</code> и <code>ts</code></p></li>
+<li><p>Заключительный этап - добавление &ldquo;символической ссылки&rdquo; на проект в директории веб сервера DevExtreme. Можно просто скопировать проект в директорию указаную выше. В этом случае мы лишим сервер возможности автоматически подхватывать изменения в проекте. Чтобы это учесть, выполним команду <a href="http://ss64.com/nt/mklink.html">mklink</a>. Для этого:</p>
+
+<ul>
+<li>Запускаем <code>cmd</code> под администратором</li>
+<li>Переходим в каталог DevExpress WebServer</li>
+<li>Выполняем команду <code>mklink /D &lt;project_link_name&gt; &lt;project_path&gt;</code>. В моем случае это <code>mklink /D Pos C:\Projects\Pos</code></li>
+<li>Символическая ссылка <code>project_link_name</code> создана в директории <code>project_path</code></li>
+</ul>
+</li>
+</ol>
+
+
+<p>Дополнительный ссылки:</p>
+
+<ul>
+<li><a href="http://js.devexpress.com/Documentation/Howto/SPA_Framework/Application_Design/?version=14_1#Running">Running, Debugging and Deploy DevExtreme applications</a></li>
+<li><a href="http://stackoverflow.com/questions/12683820/typescript-in-vs2012-automatically-generating-js-from-ts">Typescript in VS2012: (automatically) generating .js from .ts</a></li>
+<li><a href="http://ss64.com/nt/">An A-Z Index of the Windows CMD command line</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

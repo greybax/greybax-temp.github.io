@@ -9,7 +9,7 @@
   <meta name="author" content="Aleksandr Filatov">
 
   
-  <meta name="description" content="Думаю что в каждой компании существует свой code style по написанию правильного и красивого кода. Недавно в одном из проектов наша команда решила &# &hellip;">
+  <meta name="description" content="Пару недель назад мне пришло письмо от одного из представителей Microsoft (который кстати заапрувил меня на BizSpark, наверно это тоже одно из &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,6 +21,7 @@
   <link rel="canonical" href="http://alfilatov.com/page2">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/myStyles.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Aleksandr Filatov" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -51,8 +52,8 @@
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="/atom.xml">RSS</a></li>
-  <li><a href="/about/index">About Me</a></li>  
+  <li><a href="/about/index">About Me</a></li>
+  <li><a href="https://stackoverflow.com/users/2173016/greybax">StackOverflow</a></li>
   <li><a href="https://github.com/greybax">Github</a></li>
   <li><a href="https://twitter.com/greybax">Twitter</a></li>
   <li><a href="http://ru.linkedin.com/pub/aleksandr-filatov/89/608/66b/">LinkedIn</a></li>
@@ -68,7 +69,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/03/30/stylecop/">StyleCop - или как соблюдать Code Style?</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/12/09/vpiechatlieniia-ot-piervogho-khakatona/">Впечатления от первого хакатона</a></h1>
     
     
       <p class="meta">
@@ -84,18 +85,43 @@
   
 
 
-<time datetime="2014-03-30T00:00:00+00:00" pubdate data-updated="true"></time>
-        
-           | <a href="/blog/2014/03/30/stylecop/#disqus_thread"
-             data-disqus-identifier="http://alfilatov.com/blog/2014/03/30/stylecop/">Comments</a>
+<time datetime="2014-12-09T19:44:16+00:00" pubdate data-updated="true"></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><div class='post'>
-<div dir="ltr" style="text-align: left;" trbidi="on"><span style="font-family: Arial, Helvetica, sans-serif;">Думаю что в каждой компании существует свой code style по написанию правильного и красивого кода. Недавно в одном из проектов наша команда решила &#8220;причесать&#8221; код. На помощь пришел <b>StyleCop</b>. Итак.</span><br /><h2 style="text-align: left;"><b><span style="font-family: Arial, Helvetica, sans-serif;">Установка</span></b></h2><div><ol style="text-align: left;"><li><span style="font-family: Arial, Helvetica, sans-serif;">Вы можете скачать <b>stylecop</b> c <a href="http://stylecop.codeplex.com/" target="_blank">сайта</a><span style="font-size: 14px; line-height: 19.9999942779541px;">.</span></span></li><li><span style="font-family: Arial, Helvetica, sans-serif;"><span style="font-size: 14px; line-height: 19.9999942779541px;">Советую не изменять пусть установки, потому что</span><span style="font-size: 14px; line-height: 19.9999942779541px;">&nbsp;это может привести к некоторым проблемам.</span></span></li><li><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 19.9999942779541px;">После установки может потребоваться перезагрузка компьютера.</span></li></ol><div><h2 style="border: 0px; font-size: 1em; line-height: 19.9999942779541px; margin: 1.4285em 0px 0.714285em; padding: 0px; text-align: left;"><span style="font-family: Arial, Helvetica, sans-serif;">Настройка</span></h2><div><span style="font-family: Arial, Helvetica, sans-serif;">Для установки настроек <b>stylecop </b>одинаковыми на всех ваших проектах нужно выполнить следующие действия:</span></div><div><span style="font-family: Arial, Helvetica, sans-serif;"></span><br /><a name='more'></a><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></div><div><ul style="text-align: left;"><li><span style="font-family: Arial, Helvetica, sans-serif;">Клик правой кнопкой мыши выбираем раздел&nbsp;<span style="font-size: 14px; line-height: 19.9999942779541px;"><i>&#8216;StyleCop Settings&#8217;</i>.&nbsp;<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-Ff4lI2D2Vt8/UzhuaRggbMI/AAAAAAAAA_8/GdbfdLYTOtM/s1600/2.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://4.bp.blogspot.com/-Ff4lI2D2Vt8/UzhuaRggbMI/AAAAAAAAA_8/GdbfdLYTOtM/s1600/2.png" /></a></div></span><span style="font-size: 14px; line-height: 19.9999942779541px;">Разберем каждую вкладку в отдельности</span></span></li><ul><li><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 19.9999942779541px;"><i><b>&#8216;Rules&#8217;</b> - </i>правила настройки stylecop</span></li><li><span style="font-family: Arial, Helvetica, sans-serif;"><span style="font-size: 14px; line-height: 19.9999942779541px;">Переходим на вкладку&nbsp;</span><span style="font-size: 14px; line-height: 19.9999942779541px;"><i><b>&#8216;Settings Files&#8217;</b>.&nbsp;</i></span></span></li><ul><li><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 19.9999942779541px;">1-ый радиобаттон &nbsp;значит не использовать наследование настроек stylecop в солюшене и в проектах</span></li><li><span style="font-family: Arial, Helvetica, sans-serif;"><span style="font-size: 14px; line-height: 19.9999942779541px;">2-ой - поддержка&nbsp;наследования/переопределения файлов настроек. Т.е файл с настройками&nbsp;лежащий на уровне выше имеет выше приоритет. Solution - project. Если вы хотите&nbsp;</span><strong style="line-height: 1.428571em;">изменить настройки для всех проектов сразу</strong>, вам нужно перейти на эту вкладку, нажать <i>&#8220;Edit&#8221;</i>, и вы увидите окно файла конфигурации с настройками.</span></li><li><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 19.9999942779541px;">3-й мерж настроек с указанным файлом.</span></li></ul></ul></ul></div><div style="border: 0px; font-size: 14px; line-height: 19.9999942779541px; margin-bottom: 0.714285em; padding: 0px;"><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-zSzjZtQ2K2k/UzhiQvLTXaI/AAAAAAAAA_s/twkcNLtIRYQ/s1600/1.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><span style="font-family: Arial, Helvetica, sans-serif;"><img border="0" src="http://1.bp.blogspot.com/-zSzjZtQ2K2k/UzhiQvLTXaI/AAAAAAAAA_s/twkcNLtIRYQ/s1600/1.png" /></span></a></div><div class="separator" style="clear: both; text-align: center;"><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></div><div class="separator" style="clear: both; text-align: center;"></div><ul><ul><li><span style="font-family: Arial, Helvetica, sans-serif;"><b style="font-style: italic;">&#8220;Options&#8221; </b>- настройки обновления и выбор языка</span></li><li><span style="font-family: Arial, Helvetica, sans-serif;"><i style="font-weight: bold;">&#8220;Spelling&#8221; </i>- сюда можно добавить слова исключения при проверки stylecop.</span></li><li><span style="font-family: Arial, Helvetica, sans-serif;"><b><i>&#8220;Company information&#8221;</i></b> - думаю и так все понятно :)</span></li><li><span style="font-family: Arial, Helvetica, sans-serif;"><i style="font-weight: bold;">&#8220;Hungarian&#8221; </i>- по умолчанию венгерский стиль отключен, но на этой вкладке вы можете добавить исключения.</span></li></ul></ul><div><span style="font-family: Arial, Helvetica, sans-serif;">Больше правил и настроек <b>stylecop </b>вы можете найти на <a href="http://www.stylecop.com/docs/" target="_blank">официальном сайте программы</a>.&nbsp;Так же там есть&nbsp;Rule Suppressions, но лучше ими не злоупотреблять.</span></div></div></div></div><div><h2 style="border: 0px; font-size: 1em; line-height: 19.9999942779541px; margin: 1.4285em 0px 0.714285em; padding: 0px; text-align: left;"><span style="font-family: Arial, Helvetica, sans-serif;">StyleCop и Build</span></h2><div style="border: 0px; font-size: 14px; line-height: 19.9999942779541px; margin-bottom: 0.714285em; padding: 0px;"><span style="font-family: Arial, Helvetica, sans-serif;">Если вы хотите запускать StyleCop при каждом билде проекта, вам следует отредактировать .csproj file:</span><br /><span style="font-family: Arial, Helvetica, sans-serif;">В конец файла следует добавить следующую строку (для StyleCop v4.7 ):</span></div><div style="border: 0px; font-size: 14px; line-height: 19.9999942779541px; margin: 0px; padding: 0px;"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><table border="0" cellpadding="0" cellspacing="0" style="font-size: 1em; line-height: 1.428571em;"><tbody style="line-height: 1.428571em;"><tr style="line-height: 1.428571em;"><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;" title="Hint: double-click to select code"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><span style="font-family: Arial, Helvetica, sans-serif;"><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;">&lt;Import Project=</code><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;">"$(ProgramFiles)\MSBuild\StyleCop\v4.7\StyleCop.targets"</code>&nbsp;<code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;">/&gt;</code></span><br /><span style="font-family: Arial, Helvetica, sans-serif;"><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><br /></code></span><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-SDkTXb4NLbE/Uzhvc4Dig2I/AAAAAAAABAE/RhC66zW-saI/s1600/3.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><span style="font-family: Arial, Helvetica, sans-serif;"><img border="0" src="http://1.bp.blogspot.com/-SDkTXb4NLbE/Uzhvc4Dig2I/AAAAAAAABAE/RhC66zW-saI/s1600/3.png" height="267" width="640" /></span></a></div><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></code></div></div></td></tr></tbody></table></div></div></div><div style="border: 0px; font-size: 14px; line-height: 19.9999942779541px; margin-bottom: 0.714285em; padding: 0px;"><div><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></div><span style="font-family: Arial, Helvetica, sans-serif;">После этого вы бедете получать <b>warnings </b>в коде после билда о всех несоответствиях вашего кода с настройками <b>stylecop</b>.&nbsp;</span></div><div style="border: 0px; font-size: 14px; line-height: 19.9999942779541px; margin-bottom: 0.714285em; padding: 0px;"><span style="font-family: Arial, Helvetica, sans-serif;">Если вы хотите получать <b>errors</b>, вам следует добавить в&nbsp;<i><b>раздел &#8216;PropertyGroup&#8217;</b></i> следующую строку:</span></div><div style="border: 0px; font-size: 14px; line-height: 19.9999942779541px; margin: 0px; padding: 0px;"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><table border="0" cellpadding="0" cellspacing="0" style="font-size: 1em; line-height: 1.428571em;"><tbody style="line-height: 1.428571em;"><tr style="line-height: 1.428571em;"><td colspan="1" rowspan="1" style="line-height: 1.428571em; padding: 0.2em 2em 0.2em 0em;"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;" title="Hint: double-click to select code"><div style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><span style="font-family: Arial, Helvetica, sans-serif;"><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;">&lt;StyleCopTreatErrorsAsWarnings&gt;</code><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;">false</code><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;">&lt;/StyleCopTreatErrorsAsWarnings&gt;</code></span><br /><span style="font-family: Arial, Helvetica, sans-serif;"><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><br /></code></span><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-9SnH6nIlF9w/Uzhw2FtausI/AAAAAAAABAQ/KSjgBAcDLH8/s1600/4.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><span style="font-family: Arial, Helvetica, sans-serif;"><img border="0" src="http://1.bp.blogspot.com/-9SnH6nIlF9w/Uzhw2FtausI/AAAAAAAABAQ/KSjgBAcDLH8/s1600/4.png" height="376" width="640" /></span></a></div><div class="separator" style="clear: both; text-align: center;"><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></div><div class="separator" style="clear: both; text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif;">На этом моя статья по установке и настройке stylecop подошла к концу. Надеюсь в ней вы найдете что-то интересное для себя.&nbsp;</span></div><div class="separator" style="clear: both; text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></div><div class="separator" style="clear: both; text-align: justify;"><span style="font-family: Arial, Helvetica, sans-serif;"><span style="background-color: white; font-size: 13px; line-height: 18.479999542236328px; text-align: start;">Со мной вы можете связаться через&nbsp;</span><a href="https://twitter.com/greybax" rel="nofollow" style="background-color: white; color: purple; font-size: 13px; line-height: 18.479999542236328px; text-align: start;">twitter</a><span style="background-color: white; font-size: 13px; line-height: 18.479999542236328px; text-align: start;">&nbsp;или&nbsp;</span><a href="http://greybax.blogspot.com/" style="background-color: white; color: purple; font-size: 13px; line-height: 18.479999542236328px; text-align: start;">блог</a><span style="background-color: white; font-size: 13px; line-height: 18.479999542236328px; text-align: start;">.</span></span></div><div class="separator" style="clear: both; text-align: justify;"><span style="background-color: white; font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 18.479999542236328px; text-align: start;"><br /></span></div><div class="separator" style="clear: both; text-align: right;"><span style="font-family: Arial, Helvetica, sans-serif;">Спасибо.</span></div><code style="border: 0px; line-height: 1.428571em; margin: 0px; padding: 0px;"><span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></code></div></div></td></tr></tbody></table></div></div></div></div></div></div>
+  <div class="entry-content"><p>Пару недель назад мне пришло письмо от одного из представителей Microsoft (который кстати заапрувил меня на BizSpark, наверно это тоже одно из преимуществ моего аккаунта на BizSpark&#8217;е) на тему игрового хакатона, который организует Microsoft в Москве. В хакатонах до этого я никогда не участвовал и, хотя тема <code>gamedev</code> не совсем близка моему профилю, я решил попробовать.
+Почему я решил участвовать:</p>
+
+<ul>
+<li>Это новый challenge и это круто</li>
+<li>Общение с интересными людьми (на хакатоне были представители Microsoft, Unity, Nival, Mail.ru)</li>
+<li>Весело провести время</li>
+<li>Сразу после хакатона в Москве проходила конференция .NEXT на которую я хотел попасть :). О ней я напишу в следующей своей статье.</li>
+</ul>
+
+
+<p>Хакатон называется Microsoft Games Jam и проходил он в рамках глобального игрового хакатона <a href="http://ludumdare.com/">Ludum Dare</a> который проходит онлайн. В отличие от Ludum Dare игру нужно было написать за 24 часа, а не за 72.</p>
+
+<p>Как и все хакатоны этот был разделен на этапы:</p>
+
+<ul>
+<li>регистрация</li>
+<li>представление проектов</li>
+<li>формирование команд</li>
+<li>кодинг.. пицца&hellip;кодинг&hellip; кофе&hellip; кодинг&hellip; кофе&hellip; спать 2 часа&hellip;и еще куча пиццы и кофе кодинга</li>
+<li>представление своих проектов, что успели написать</li>
+<li>Определение и награждение победителей по номинациям</li>
+</ul>
+
+
+<p>Т.к основной платформой данного хакатона была <code>Unity</code> решили и мы с коллегой не выделяться и попробовать запилить что нибудь на ней. К слову сказать, поставил я Unity 4.6 за день до хакатона, так что все изучали по ходу. Возможность получить прописку, практически в центре Москвы, на 1.5 суток, да еще и с бесплатной едой, выглядит довольно привлекательно, не так ли? :) Вообщем пилили-пилили мы наш Santa Shooter целые сутки, и, наверно как всегда бывает, идея переписать игру пришла к нам за час до окончания кодинга. В итоге, идея получилась довольно интересная, но отсутствие дизайнера/художника/аниматора сказалась. Выглядел наш game play не слишком презентабельно, поэтому рассчитывать на призовые места нам не пришлось. Зато звук нашей игры оценили в зале и хлопали громко (по крайне мере нам так показалось :)).</p>
+
+<h3>Ссылки</h3>
+
+<p><a href="http://www.youtube.com/watch?v=0L7VA9Jmix4#t=833">Видео</a> с нашим выступлением. Кстати, ребят которые выступали на этом видео в самом начале, мы обошли :)</p>
 </div>
   
   
@@ -108,7 +134,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/12/18/windows-7-hotkeys/">Windows 7 HotKeys</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/12/02/diebaghghingh-typescript-failov-v-emuliatorie-devextreme/">Debugging файлов TypeScript в браузере через эмулятор DevExtreme</a></h1>
     
     
       <p class="meta">
@@ -124,18 +150,39 @@
   
 
 
-<time datetime="2012-12-18T00:00:00+00:00" pubdate data-updated="true"></time>
-        
-           | <a href="/blog/2012/12/18/windows-7-hotkeys/#disqus_thread"
-             data-disqus-identifier="http://alfilatov.com/blog/2012/12/18/windows-7-hotkeys/">Comments</a>
+<time datetime="2014-12-02T19:45:38+00:00" pubdate data-updated="true"></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><div class='post'>
-<span style="background-color: white;"><span style="font-family: Arial, sans-serif;"><span style="font-size: 15px;">I would like propose to your attention the list of hotkeys, the use of which makes the work with the Windows 7 more&nbsp;usability. Some hotkeys&nbsp;</span></span></span><span style="background-color: white; font-family: Arial, sans-serif; font-size: 15px;">may be available in Windows 8.&nbsp;</span><br /><br style="background-color: white; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px;" /><h4 style="background-color: white; border: 0px; color: #999999; font-family: Verdana, sans-serif; font-size: 16px; font-weight: normal; line-height: 20px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Manage windows</h4><br style="background-color: white; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px;" /><ul style="background-color: white; border: 0px; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px; list-style-image: initial; list-style-position: outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Home</b>: Minimize/Maximize all windows, but active. («Shake» the window)</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Space</b>: Make all windows <span style="font-family: Arial, sans-serif; font-size: 15px; line-height: normal;">transparent</span>.</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Up</b>: Maximize active window full screen.&nbsp;</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Down</b>: Minimize active window or restore previous size, if it maximized on full screen.</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Shift</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Up</b>: Expand the window height (drag the bottom border of the window to the taskbar)</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Left</b>/<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Right</b>: Take the window left / right side of the monitor, or restore the size (drag the window to the left / right all the way)</li></ul><br /><a name='more'></a><br style="background-color: white; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px;" /><br /><h4 style="background-color: white; border: 0px; color: #999999; font-family: Verdana, sans-serif; font-size: 16px; font-weight: normal; line-height: 20px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Taskbar</h4><br style="background-color: white; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px;" /><ul style="background-color: white; border: 0px; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px; list-style-image: initial; list-style-position: outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">digit</b>: Run the program with that number, or switch to it.</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Shift</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">digit</b>: Launch a new copy of the program under this number (click on the wheel icon).</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Ctrl</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">digit</b>: Switch to the next window in that number (click, hold&nbsp;<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Ctrl</b>).</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Alt</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">digit</b>: Open jump list program under this number.</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">T</b>(+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Shift</b>): Switch between all open windows on the taskbar thumbnails in the forward (reverse) order.</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">B</b>: Focus on the tray.</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Ctrl</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Shift</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Click</b>: Run this program as an administrator.</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Shift</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Right-click</b>: Show the window menu / group.</li></ul><br style="background-color: white; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px;" /><h4 style="background-color: white; border: 0px; color: #999999; font-family: Verdana, sans-serif; font-size: 16px; font-weight: normal; line-height: 20px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Explorer (and Desktop)</h4><br style="background-color: white; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px;" /><ul style="background-color: white; border: 0px; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px; list-style-image: initial; list-style-position: outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Ctrl</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Shift</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">N</b>: Create new folder.</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Alt</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Up</b>: To rise to a higher level by folder.</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Alt</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">P</b>: Enable file browsing panel.</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Shift</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Right-Click</b>&nbsp;(on ​​file): Adds a context menu item &#8220;Copy path&#8221; and a lot of additional items in the menu &#8220;Send&#8221;</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Shift</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Right-Click</b>&nbsp;(a folder): Adds a context menu that lets you open a command prompt in that folder.</li></ul><br style="background-color: white; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px;" /><h4 style="background-color: white; border: 0px; color: #999999; font-family: Verdana, sans-serif; font-size: 16px; font-weight: normal; line-height: 20px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Other</h4><br style="background-color: white; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px;" /><ul style="background-color: white; border: 0px; font-family: Verdana, sans-serif; font-size: 13px; line-height: 20px; list-style-image: initial; list-style-position: outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">P</b>: Open setting menu presentation (second monitor - projector)</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+(<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">+</b>/<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">-</b>): zoom in / zoom out (causes Magnifier).</li><li style="border: 0px; list-style: disc outside; margin: 0px 0px 0px 20px; outline: 0px; padding: 0px; vertical-align: baseline;"><b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">Win</b>+<b style="border: 0px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline;">G</b>: Switch between running gadgets.</li></ul></div>
+  <div class="entry-content"><p>Недавно встала задача добавить поддержку debugging&#8217;а файлов <code>*.ts</code> в браузере. В нашем случае это Google Chrome.
+Постараюсь как можно подробнее описать этот процесс.</p>
+
+<ol>
+<li><p>Для начала нужно определить в какой директории находится DevExtreme сервер, который запускает приложение, когда мы нажимаем в VS кнопку <code>Запустить в браузере Google Chrome</code>. Ответ на этот вопрос был найден в одном из тикетов на сайте <a href="https://www.devexpress.com/Support/Center/Question/Details/Q523956">DevExpress</a>. В случае Visual Studio 2012 это путь <code>C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\DevExtreme\WebServer</code></p></li>
+<li><p>Добавляем в проект <code>*.map файл</code>. Это необходимо для связи файлов <code>js</code> и <code>ts</code></p></li>
+<li><p>Заключительный этап - добавление &ldquo;символической ссылки&rdquo; на проект в директории веб сервера DevExtreme. Можно просто скопировать проект в директорию указаную выше. В этом случае мы лишим сервер возможности автоматически подхватывать изменения в проекте. Чтобы это учесть, выполним команду <a href="http://ss64.com/nt/mklink.html">mklink</a>. Для этого:</p>
+
+<ul>
+<li>Запускаем <code>cmd</code> под администратором</li>
+<li>Переходим в каталог DevExpress WebServer</li>
+<li>Выполняем команду <code>mklink /D &lt;project_link_name&gt; &lt;project_path&gt;</code>. В моем случае это <code>mklink /D Pos C:\Projects\Pos</code></li>
+<li>Символическая ссылка <code>project_link_name</code> создана в директории <code>project_path</code></li>
+</ul>
+</li>
+</ol>
+
+
+<p>Дополнительный ссылки:</p>
+
+<ul>
+<li><a href="http://js.devexpress.com/Documentation/Howto/SPA_Framework/Application_Design/?version=14_1#Running">Running, Debugging and Deploy DevExtreme applications</a></li>
+<li><a href="http://stackoverflow.com/questions/12683820/typescript-in-vs2012-automatically-generating-js-from-ts">Typescript in VS2012: (automatically) generating .js from .ts</a></li>
+<li><a href="http://ss64.com/nt/">An A-Z Index of the Windows CMD command line</a></li>
+</ul>
+
 </div>
   
   
@@ -148,7 +195,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/12/13/yandex-browser-it-need-or-not/">Yandex Browser? It's Need or Not?</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/11/19/vpiechatlieniia-ot-konfierientsii-go-number-moscow/">Впечатления от конференции Go# Moscow</a></h1>
     
     
       <p class="meta">
@@ -164,18 +211,52 @@
   
 
 
-<time datetime="2012-12-13T00:00:00+00:00" pubdate data-updated="true"></time>
-        
-           | <a href="/blog/2012/12/13/yandex-browser-it-need-or-not/#disqus_thread"
-             data-disqus-identifier="http://alfilatov.com/blog/2012/12/13/yandex-browser-it-need-or-not/">Comments</a>
+<time datetime="2014-11-19T21:24:13+00:00" pubdate data-updated="true"></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><div class='post'>
-<div style="text-align: justify;"><blockquote class="tr_bq" style="text-align: right;"><span style="background-color: white; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: left;">Yandex.Browser with a full set of features designed specifically for the English-speaking users will be released soon. (с)</span></blockquote><div class="separator" style="clear: both; text-align: center;"><a href="http://yabs.yandex.ru/count/AI9QGHYaezm40002Zhqbnmm5KPK2cmPfMeYosr1G0vAjXGQgfZIAe4K6Kge2fPOOP92W7mBUaRpGIMG6an11hlnExYmQdEFG1B41VmS0" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://yabs.yandex.ru/count/AI9QGHYaezm40002Zhqbnmm5KPK2cmPfMeYosr1G0vAjXGQgfZIAe4K6Kge2fPOOP92W7mBUaRpGIMG6an11hlnExYmQdEFG1B41VmS0" /></a></div>Not so early, Yandex company on yours conference is <a href="http://fotki.yandex.ru/users/ya-events/album/136128/" target="_blank">YaC 2012</a> present the <a href="http://browser.yandex.com/" target="_blank">Yandex browser 1.0</a>. Let&#8217;s show it inside.<br /><img alt="Новый Яндекс.Браузер" src="http://yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" /><br /><img alt="Новый Яндекс.Браузер" class="b-icon" src="http://yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" /></div><div style="text-align: justify;">The engine of this thing is open source&nbsp; browser Chromium. Some intresting, that Some sites detected that it&#8217;s 19 version of google chr<span style="font-family: inherit;">ome, but at the moment of this post Google Chrome has 23.xxx version :). String of search find in Yandex on default. So, already we have some Google and some Yandex. &#8220;Yeah.. Not enough Opera&#8221; - thinking guys from Yandex and added Turbo technology by Opera. It&#8217;s mix equals to Yandex browser. Some people have</span> a nick &#8220;Stringy&#8221; for the specific logo.</div><br /><a name='more'></a><br /><br /><div style="text-align: justify;">And we can see a mix of modern teccnology. Therefore, on my mind it&#8217;s &#8220;discovered bicycle&#8221; (it is russian flying phrase). At the first time, we can&#8217;t see new&nbsp;any&nbsp;features.&nbsp;Of all proposed <a href="http://browser.yandex.com/" target="_blank">here</a>,&nbsp;I would single out only the following:</div><ol><a href="http://browser.yandex.com/i/win-feature-turbo-com-eng.png" imageanchor="1" style="clear: right; float: right; margin-bottom: 1em; margin-left: 1em; text-align: center;"><img border="0" src="http://browser.yandex.com/i/win-feature-turbo-com-eng.png" height="180" width="320" /></a></ol><span style="font-family: inherit; text-align: justify;">&nbsp;1. &nbsp;New view of URL. Now url will not so lenght. It&#8217;s will be name of web page look like bread crumbs.</span><br /><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><br /></div><span style="font-family: inherit; text-align: justify;"></span><br /><div><span style="font-family: inherit; text-align: justify;"><span style="font-family: inherit; text-align: justify;"><br /></span></span></div><span style="font-family: inherit; text-align: justify;"></span><br /><div><span style="font-family: inherit; text-align: justify;"><span style="font-family: inherit; text-align: justify;"><br /></span></span></div><span style="font-family: inherit; text-align: justify;"></span><div><span style="font-family: inherit; text-align: justify;"><span style="font-family: inherit; text-align: justify;"><br /></span></span></div><span style="font-family: inherit; text-align: justify;">2. New menu of fast link - &#8220;Tableu&#8221;. F</span><span style="background-color: white; font-size: 14px; line-height: 18px; text-align: justify;"><span style="font-family: inherit;">avorite sites will only be a click away and colorful widgets will show you up-to-date information about the weather and traffic, as well as social network </span><span style="font-family: Arial, Helvetica, sans-serif;">notifications.</span></span><a href="http://browser.yandex.com/i/win-feature-tablo-com-eng.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em; text-align: center;"><img border="0" src="http://browser.yandex.com/i/win-feature-tablo-com-eng.png" height="180" width="320" /></a><br /><div><br /><span style="font-family: inherit; text-align: justify;">3. Smartbox -&nbsp;</span><span style="background-color: white; font-family: inherit; font-size: 14px; line-height: 18px; text-align: justify;">Enter your searches and websites into the Smartbox. Search suggestions will help you search more quickly and autocorrect errors.</span><br /><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: justify;"><span style="clear: right; float: right; font-family: inherit; margin-bottom: 1em; margin-left: 1em;"><img border="0" src="http://browser.yandex.com/i/win-feature-smartsearch-com-eng.png" height="180" width="320" /></span></div><div class="separator" style="clear: both; text-align: justify;"><br /></div><div style="text-align: justify;"><span style="font-family: inherit;">And so on, I think that guys from Yandex must have hard working on th</span>is thing, and may be some version their have a fortune.</div><div style="text-align: justify;"><br /></div></div></div>
+  <div class="entry-content"><p>Недавно я побывал еще на одной конференции - <a href="http://www.gosharp.ru/">Go# Moscow</a>. К языку программирования <code>Go</code> отношения никакого не имеет.</p>
+
+<p><img src="/images/screenshots/gosharp_logo.png" alt="GoSharp Logo" /></p>
+
+<p>Зачем я поехал? Для себя я выделил основные 2 причины:</p>
+
+<ul>
+<li>Пообщаться с коллегами из DevExpress</li>
+<li>Послушать доклад от представителя Microsoft про программу BizSpark, членом которой я являюсь.</li>
+</ul>
+
+
+<p>Цели были достигнуты + хорошо провел время с пользой для самообразования. Считаю, что конференции помогают разработчикам оставаться в тренде. Хабр хабром, а живое общение с коллегами имхо считаю продуктивнее.
+Итак, что представляла из себя конференция? Конференция была ориентирована на <code>.NET</code>  разработчиков и как им приходится выживать в растущей конкуренции и столь сильном развитии мобильной разработки. Программа конференции состояла из 3 основных секций:</p>
+
+<ol>
+<li>Эффективное написание кода</li>
+<li>Мобильная разработка</li>
+<li>Карьера и образование <code>.NET</code> разработчика + секция стартапы.</li>
+</ol>
+
+
+<p>Хочу рассказать о наиболее значимых на мой взгляд докладах из каждой секции.</p>
+
+<h3>Эффективное написание кода</h3>
+
+<p>Столкнулись два конкурирующих продукта и компании - Сoderush от DevExpress и R# от JetBrains. Использовать Сoderush как инструмент для облегчения написания кода меня докладчик из DevExpress не убедил.</p>
+
+<h3>Мобильная разработка</h3>
+
+<p>Секция мобильной разработки вызывала у меня большой интерес. Здесь обсуждались продукты Xamarin как альтернатива кроссплатформенной разработке под мобильный приложения на <code>C#</code>. и DevExtreme от DevExpress как альтернатива кроссплатформенной разработке с использованием <code>HTML/JS</code>. Несмотря на то, что на работе мне приходится иметь дело с DevExtreme, доклад про Xamarin от ребят из ApperCode и TCS показался гораздо интереснее и живее. После доклада появилось желание потрогать Xamarin. Единственный минус - он платный, а в free версии можно написать приложение только &ldquo;Hello World!&rdquo;, судя по огранечениям которые накладываются.</p>
+
+<h3>Карьера и образование .net разработчика + секция стартапы</h3>
+
+<p>В этой секции доклады были ориентированы больше на студентов и их мотивацию быть крутыми программистами. Был очень содержательный и убедительный доклад от <a href="http://www.toptal.com/resume/dmitry-pavlov">Дмитрия Павлова из Toptal</a> и Александра Рахманова из Kaspersky. Дмитрий рассказывал про компанию где он работает и какие джедаи и ниндзя требуются в топ компаниях. По окончании доклада Дмитрия его еще долго окружали люди, интересующиеся работой в Toptal. После был доклад от Дианы Токмашевой из Microsoft про программу помощи стартапами BizSpark.</p>
+
+<h3>Итог</h3>
+
+<p>В целом конференцией остался доволен. Особенно понравилась организация общения с докладчиками и коллегами из других компаний. Единственное что не хватало, так это розеток для зарядки девайса и места у обеденных стоек.</p>
 </div>
   
   
@@ -188,7 +269,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/12/10/my-contribution-in-mozilla-society/">My Contribution in Mozilla Society</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/10/13/pishiem-ighru-na-html5-slash-js/">Пишем игру на HTML5/JS</a></h1>
     
     
       <p class="meta">
@@ -204,18 +285,818 @@
   
 
 
-<time datetime="2012-12-10T00:00:00+00:00" pubdate data-updated="true"></time>
-        
-           | <a href="/blog/2012/12/10/my-contribution-in-mozilla-society/#disqus_thread"
-             data-disqus-identifier="http://alfilatov.com/blog/2012/12/10/my-contribution-in-mozilla-society/">Comments</a>
+<time datetime="2014-10-13T08:34:07+00:00" pubdate data-updated="true"></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><div class='post'>
-<div style="text-align: justify;"><blockquote class="tr_bq" style="text-align: right;"><br /><div style="text-align: justify;"><i style="background-color: white; color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px; text-align: left;">It&#8217;s my first publication on english language. And it&#8217;s blog some training for my english, so I sorry for my not well english, because english is not my first language.</i></div></blockquote><a href="http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-512-noshadow.png" imageanchor="1" style="clear: left; color: #4d469c; float: left; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px; margin-bottom: 1em; margin-right: 1em; text-decoration: none;"><img border="0" height="320" src="http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-512-noshadow.png" style="-webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 0px; border-top-right-radius: 0px; border: 1px solid transparent; box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px; padding: 8px; position: relative;" width="320" /></a><br /><blockquote class="tr_bq" style="text-align: right;"><span style="background-color: white; text-align: left;"></span><br /><div style="text-align: justify;"><span style="color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px;"><br /></span></div><span style="background-color: white; color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px; text-align: left;"><div style="text-align: justify;">And so on, in this topic I would like say about Mozilla society. And how I become &nbsp;in mozilla contribution list &nbsp; &nbsp;. For me it&#8217;s very intresting to participate in some activities. But I&#8217;m not a mozilla evangelist. :)</div></span><div style="text-align: justify;"><span style="color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px;"><br /></span></div><span style="background-color: white; color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px; text-align: left;"><div style="text-align: justify;">I think that not secret for each other that mozilla it&#8217;s &nbsp;global web society where each people can have yours contribution: programming, &nbsp;design sites, translate article on&nbsp;<a href="https://developer.mozilla.org/ru/" style="color: #4d469c; text-decoration: none;" target="_blank">mozilla network&nbsp;</a>and&nbsp;&nbsp;so on. Site&nbsp;<a href="http://whatcanidoformozilla.org/" style="color: #4d469c; text-decoration: none;" target="_blank">what can I do for mozilla</a>&nbsp;help a new people who it&#8217;s can intrested. If you like makes open source world better, that it&#8217;s makes interested you.</div></span><div style="text-align: justify;"><span style="color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px;"><br /></span></div><span style="background-color: white; color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px; text-align: left;"><div style="text-align: justify;">Some of yours can see page with title &#8220;Our Contributors&#8221; on menu &#8220;About Firefox&#8221; - &#8220;global society&#8221; in mozilla products. Perhaps you too would become on this page. It&#8217;s very easy. There are some&nbsp;<span style="font-family: arial, sans-serif; white-space: nowrap;">advice after this.&nbsp;</span></div></span><span style="background-color: white; text-align: left;"><div style="text-align: justify;"><span style="color: #444444; font-family: arial, sans-serif; font-size: 13px; line-height: 18.200000762939453px; white-space: nowrap;"><br /></span></div></span><span style="background-color: white; color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px; text-align: left;"><div style="text-align: justify;"><b>What can you make for example:</b></div></span><br /><ol style="background-color: white; color: #444444; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 18.200000762939453px; text-align: left;"><li style="margin: 0px 0px 0.25em; padding: 0px; text-align: justify;">Translate to russian some topics on&nbsp;<a href="https://developer.mozilla.org/ru/" style="color: #4d469c; text-decoration: none;" target="_blank">mozilla network</a>&nbsp;or other resource of this society.</li><li style="margin: 0px 0px 0.25em; padding: 0px; text-align: justify;">If you programmer you can started for fix some light bugs of Firefox, Thunderbird, and etc. After your &nbsp;review code you can get access to repository with more content.</li><li style="margin: 0px 0px 0.25em; padding: 0px; text-align: justify;">If you think that you makes some good things for society you can send letter to credits@mozilla.org &nbsp;giving your name, email address and a sentence (citation) summarizing your contribution.</li><li style="margin: 0px 0px 0.25em; padding: 0px; text-align: justify;">If it&#8217;s true you have a lot of chance be on board contribution. And have&nbsp;mental pleasure :)</li></ol></blockquote></div></div>
+  <div class="entry-content"><p>На выходных нашлось немного свободного времени и я решил попрактиковаться в <code>gamedev</code> разработке. Давно собирался написать какую-нибудь игрушку, но все руки не доходили. Бегло пробежался по сети в поисках как это делают настоящие гуру. Мне понравилась вот эта <a href="http://jlongster.com/Making-Sprite-based-Games-with-Canvas">статья</a>. За основу своей будущей игры я взял <a href="https://github.com/jlongster/canvas-game-bootstrap">фреймворк автора статьи</a>.</p>
+
+<p><img src="/images/screenshots/towers_game2d.png" alt="Towers game 2D" /></p>
+
+<h2>Начало</h2>
+
+<p>Фреймворк, который я стал использовать включает в себя 4 <code>js</code> файла</p>
+
+<ul>
+<li><code>sprite.js</code> - библиотечка работы со спрайтами</li>
+<li><code>resources.js</code> - подгрузка ресурсов</li>
+<li><code>input.js</code> - библиотека ввода с клавиатуры</li>
+<li><code>app.js</code> - основной файл игры</li>
+</ul>
+
+
+<p>Далее буду рассказывать только о файле <code>app.js</code>. Разберем его содержимое.</p>
+
+<p>Для плавности анимации будем использовать <code>requestAnimationFrame</code>. Подробно о нем ознакомиться можно <a href="https://hacks.mozilla.org/2011/08/animating-with-javascript-from-setinterval-to-requestanimationframe/">здесь</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">requestAnimFrame</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nx">requestAnimationFrame</span>    <span class="o">||</span>
+</span><span class='line'>        <span class="nb">window</span><span class="p">.</span><span class="nx">webkitRequestAnimationFrame</span> <span class="o">||</span>
+</span><span class='line'>        <span class="nb">window</span><span class="p">.</span><span class="nx">mozRequestAnimationFrame</span>    <span class="o">||</span>
+</span><span class='line'>        <span class="nb">window</span><span class="p">.</span><span class="nx">oRequestAnimationFrame</span>      <span class="o">||</span>
+</span><span class='line'>        <span class="nb">window</span><span class="p">.</span><span class="nx">msRequestAnimationFrame</span>     <span class="o">||</span>
+</span><span class='line'>        <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">){</span>
+</span><span class='line'>            <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">60</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'><span class="p">})();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Разделим разработку нашей игры на несколько этапов:</p>
+
+<ol>
+<li>Создание и инициализация холста (canvas) на странице</li>
+<li>Добавление основной функции-цикла игры</li>
+<li>Инициализация и рендер объектов и ресурсов игры</li>
+<li>Обработка событий ввода пользователя</li>
+<li>Математика и расчет столкновений объектов в игре</li>
+<li>Окончание и перезагрузка игры</li>
+</ol>
+
+
+<h2>Этап 1. Создание и инициализация холста</h2>
+
+<p>Первым делом что мы должны сделать - это создать <code>canvas</code> элемент и добавить его к тегу <code>body</code> основной страницы игры.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;canvas&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span>
+</span><span class='line'><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="mi">520</span><span class="p">;</span>
+</span><span class='line'><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">canvas</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Создаем объект <code>canvas</code></li>
+<li>Указываем, что мы создаем 2D игру (далее будем использовать везде в коде объект <code>ctx</code>)</li>
+<li>Задаем размеры холста</li>
+<li>Добавляем холст к тегу <code>body</code> на странице</li>
+</ul>
+
+
+<h2>Этап 2. Добавление основной функции-цикла</h2>
+
+<p>Основной цикл необходим для обновления и рендера игры.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">lastTime</span><span class="p">;</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">now</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">dt</span> <span class="o">=</span> <span class="p">(</span><span class="nx">now</span> <span class="o">-</span> <span class="nx">lastTime</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">update</span><span class="p">(</span><span class="nx">dt</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">render</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">lastTime</span> <span class="o">=</span> <span class="nx">now</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">requestAnimFrame</span><span class="p">(</span><span class="nx">main</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Здесь вызываем функцию requestAnimFrame (к сожалению, <a href="http://caniuse.com/#feat=requestanimationframe">поддерживается</a> не во всех браузерах), которая генерирует 60 фреймов/секунду (как это было описано выше).</p>
+
+<h2>Этап 3. Инициализация и рендер объектов и ресурсов игры</h2>
+
+<p>Используем <code>resource.js</code> для загрузки ресурсов в игру. Хорошим правилом является добавить все изображения  в  1 спрайт, но т.к я рисовал не сам, а брал готовые картинки, поэтому я решил с этим на заморачиваться, тем более, что в данном случае это не столь критично. Так это выглядит <a href="https://github.com/greybax/towers_game2d/blob/gh-pages/js/app.js#L57">в коде</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">resources</span><span class="p">.</span><span class="nx">load</span><span class="p">([</span>
+</span><span class='line'>  <span class="s1">&#39;img/tower.png&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s1">&#39;img/sprites.png&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s1">&#39;img/spider.png&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s1">&#39;img/hero.png&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s1">&#39;img/bullet.png&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s1">&#39;img/terrain.png&#39;</span>
+</span><span class='line'><span class="p">]);</span>
+</span><span class='line'><span class="nx">resources</span><span class="p">.</span><span class="nx">onReady</span><span class="p">(</span><span class="nx">init</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>В функции <code>init</code> загружаем мир и добавлеем хэндлер кнопки <code>reset</code>, после game over.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">terrainPattern</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">createPattern</span><span class="p">(</span><span class="nx">resources</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;img/terrain.png&#39;</span><span class="p">),</span> <span class="s1">&#39;repeat&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;play-again&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">reset</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>  
+</span><span class='line'>    <span class="nx">reset</span><span class="p">();</span>
+</span><span class='line'>    <span class="nx">lastTime</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+</span><span class='line'>    <span class="nx">main</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Начальное состояние</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">player</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">pos</span><span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+</span><span class='line'>    <span class="nx">sprite</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/hero.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">48</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+</span><span class='line'>    <span class="nx">down</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/hero.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">48</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+</span><span class='line'>    <span class="nx">up</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/hero.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">144</span><span class="p">],</span> <span class="p">[</span><span class="mi">48</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+</span><span class='line'>    <span class="nx">left</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/hero.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">48</span><span class="p">],</span> <span class="p">[</span><span class="mi">48</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+</span><span class='line'>    <span class="nx">right</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/hero.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">96</span><span class="p">],</span> <span class="p">[</span><span class="mi">48</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">towers</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">bullets</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">enemies</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">explosions</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">lastTower</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">gameTime</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">isGameOver</span><span class="p">;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">terrainPattern</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">score</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">scoreEl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;score&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Обновление состояния игрового процесса</h3>
+
+<p>По нашей задумке пауки должны вылезать со всех 4 сторон игрового поля. Для того чтобы это происходило случайным образом, используем функцию <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random">getRandomInt</a>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">switch</span> <span class="p">(</span><span class="nx">getRandomInt</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">case</span> <span class="mi">0</span><span class="o">:</span> <span class="c1">//left</span>
+</span><span class='line'>          <span class="nx">enemies</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+</span><span class='line'>              <span class="nx">pos</span><span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">-</span> <span class="mi">30</span><span class="p">)],</span>
+</span><span class='line'>              <span class="nx">sprite</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/spider.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>          <span class="p">});</span>
+</span><span class='line'>          <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">case</span> <span class="mi">1</span><span class="o">:</span> <span class="c1">//top</span>
+</span><span class='line'>          <span class="nx">enemies</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+</span><span class='line'>              <span class="nx">pos</span><span class="o">:</span> <span class="p">[</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+</span><span class='line'>              <span class="nx">sprite</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/spider.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>          <span class="p">});</span>
+</span><span class='line'>          <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>          <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>   <span class="c1">//bottom</span>
+</span><span class='line'>          <span class="nx">enemies</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+</span><span class='line'>              <span class="nx">pos</span><span class="o">:</span> <span class="p">[</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">-</span> <span class="mi">30</span><span class="p">],</span>
+</span><span class='line'>              <span class="nx">sprite</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/spider.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>          <span class="p">});</span>
+</span><span class='line'>          <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>          <span class="k">default</span><span class="o">:</span> <span class="c1">//right</span>
+</span><span class='line'>          <span class="nx">enemies</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+</span><span class='line'>              <span class="nx">pos</span><span class="o">:</span> <span class="p">[</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">-</span> <span class="mi">30</span><span class="p">)],</span>
+</span><span class='line'>              <span class="nx">sprite</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/spider.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>          <span class="p">});</span>
+</span><span class='line'>          <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Здесь же используем <code>sprite.js</code>. Всю функцию можно посмотреть в <a href="https://github.com/greybax/towers_game2d/blob/gh-pages/js/app.js#L96">исходниках</a>.</p>
+
+<h2>Этап 4. Обработка событий ввода пользователя</h2>
+
+<p>Наш герой должен уметь двигаться вверх, вниз, влево, вправо. Соответственно привожу ниже реализацию данного решения</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;DOWN&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="nx">playerSpeed</span> <span class="o">*</span> <span class="nx">dt</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">player</span><span class="p">.</span><span class="nx">sprite</span> <span class="o">=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">down</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;UP&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="nx">playerSpeed</span> <span class="o">*</span> <span class="nx">dt</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">player</span><span class="p">.</span><span class="nx">sprite</span> <span class="o">=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">up</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;LEFT&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="nx">playerSpeed</span> <span class="o">*</span> <span class="nx">dt</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">player</span><span class="p">.</span><span class="nx">sprite</span> <span class="o">=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">left</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;RIGHT&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="nx">playerSpeed</span> <span class="o">*</span> <span class="nx">dt</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">player</span><span class="p">.</span><span class="nx">sprite</span> <span class="o">=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">right</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>При клике на пробел по задумке должны ставиться башни которые будут стрелять случайным образом во все стороны. Чтобы немного усложнить процесс игры башни разрешается ставить на некоторм расстоянии друг от друга. В данном случае это <code>50px</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">isDown</span><span class="p">(</span><span class="s1">&#39;SPACE&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">isGameOver</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">isClosest</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">towers</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="nx">towers</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mi">50</span> <span class="o">&amp;&amp;</span>
+</span><span class='line'>          <span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nx">towers</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">isClosest</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isClosest</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">towers</span><span class="p">[</span><span class="nx">lastTower</span> <span class="o">%</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">pos</span><span class="o">:</span> <span class="p">[</span><span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+</span><span class='line'>          <span class="nx">lastFire</span><span class="o">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span>
+</span><span class='line'>          <span class="nx">sprite</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/tower.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">38</span><span class="p">,</span> <span class="mi">35</span><span class="p">],</span> <span class="mi">8</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>        <span class="nx">lastTower</span><span class="o">++</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Этап 5. Математика и расчет столкновений объектов в игре</h2>
+
+<p>Анимация персонажей, математика движения пуль, и логика движения NPC в игре описаны в функции <code>updateEntities</code>. Вот тут как раз нам и потребуются базовые знания линейной алгебры.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>  <span class="c1">// Update the towers sprite animation</span>
+</span><span class='line'>  <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">towers</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">tower</span> <span class="o">=</span> <span class="nx">towers</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+</span><span class='line'>      <span class="nx">tower</span><span class="p">.</span><span class="nx">sprite</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">dt</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isGameOver</span> <span class="o">&amp;&amp;</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="nx">tower</span><span class="p">.</span><span class="nx">lastFire</span> <span class="o">&gt;</span> <span class="mi">500</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">pi</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">;</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">tower</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nx">tower</span><span class="p">.</span><span class="nx">sprite</span><span class="p">.</span><span class="nx">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">tower</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nx">tower</span><span class="p">.</span><span class="nx">sprite</span><span class="p">.</span><span class="nx">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">bullets</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+</span><span class='line'>          <span class="nx">pos</span><span class="o">:</span> <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">],</span>
+</span><span class='line'>          <span class="nx">k</span><span class="o">:</span> <span class="nx">getRandomArbitrary</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span> <span class="o">*</span> <span class="nx">pi</span><span class="p">,</span> <span class="mi">5</span> <span class="o">*</span> <span class="nx">pi</span><span class="p">),</span>
+</span><span class='line'>          <span class="nx">sprite</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Sprite</span><span class="p">(</span><span class="s1">&#39;img/bullet.png&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">24</span><span class="p">,</span> <span class="mi">24</span><span class="p">])</span>
+</span><span class='line'>        <span class="p">});</span>
+</span><span class='line'>        <span class="nx">tower</span><span class="p">.</span><span class="nx">lastFire</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Логика обновления анимации спрайтов башни. И создаем патроны для каждой башни в своем массиве.</p>
+
+<p>Динамика пуль башни:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Update all the bullets</span>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">bullets</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">bullet</span> <span class="o">=</span> <span class="nx">bullets</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">dt</span> <span class="o">*</span> <span class="nx">bulletSpeed</span><span class="p">;</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">sin</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">bullet</span><span class="p">.</span><span class="nx">k</span><span class="p">);</span>      
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">cos</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">bullet</span><span class="p">.</span><span class="nx">k</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">bullet</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="nx">sin</span> <span class="o">*</span> <span class="nx">c</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">bullet</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="nx">cos</span> <span class="o">*</span> <span class="nx">c</span><span class="p">;</span>       
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Remove the bullet if it goes offscreen</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nx">bullet</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">bullet</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">||</span>
+</span><span class='line'>        <span class="nx">bullet</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">bullets</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>        <span class="nx">i</span><span class="o">--</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+Напомню, что нашей целью было чтобы башни стреляли случайным образом во всех направлениях.</p>
+
+<p>Пауков мы наделили простым интелектом и поэтому они ползут всегда за нами, чтобы нас укусить.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Update all the enemies</span>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">enemies</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">x0</span> <span class="o">=</span> <span class="nx">enemies</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">y0</span> <span class="o">=</span> <span class="nx">enemies</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">x1</span> <span class="o">=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">y1</span> <span class="o">=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">enemySpeed</span> <span class="o">*</span> <span class="nx">dt</span><span class="p">;</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">l</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sqrt</span><span class="p">((</span><span class="nx">x1</span> <span class="o">-</span> <span class="nx">x0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nx">x1</span> <span class="o">-</span> <span class="nx">x0</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="nx">y1</span> <span class="o">-</span> <span class="nx">y0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nx">y1</span> <span class="o">-</span> <span class="nx">y0</span><span class="p">));</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="nx">enemies</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">x1</span> <span class="o">-</span> <span class="nx">x0</span><span class="p">)</span> <span class="o">*</span> <span class="nx">c</span> <span class="o">/</span> <span class="nx">l</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">enemies</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">y1</span> <span class="o">-</span> <span class="nx">y0</span><span class="p">)</span> <span class="o">*</span> <span class="nx">c</span> <span class="o">/</span> <span class="nx">l</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">enemies</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">sprite</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">dt</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// Remove if offscreen</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nx">enemies</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nx">enemies</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">sprite</span><span class="p">.</span><span class="nx">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">enemies</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>          <span class="nx">i</span><span class="o">--</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Полный код функции <code>updateEntities</code> можно посмотреть в <a href="https://github.com/greybax/towers_game2d/blob/gh-pages/js/app.js#L179">исходникак на GitHub</a>.</p>
+
+<p>Математика расчета столкновений хорошо <a href="http://jlongster.com/Making-Sprite-based-Games-with-Canvas">описана</a> в статье автора (раздел Collision Detection) используемого мной 2d бутстрапа.</p>
+
+<h2>Этап 6. Game Over и рестарт</h2>
+
+<p>Когда пауки доползают до нашего героя наступает конец <del>света</del> игры.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">gameOver</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;game-over&#39;</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;block&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;game-over-overlay&#39;</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;block&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">isGameOver</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Показываем окно GAME OVER и кнопку &ldquo;Начать заного&rdquo;. Кликаем ее и все начинается сначала :)</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">reset</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;game-over&#39;</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;game-over-overlay&#39;</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">isGameOver</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">gameTime</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">lastTower</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">score</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">towers</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'>    <span class="nx">enemies</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'>    <span class="nx">bullets</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">player</span><span class="p">.</span><span class="nx">pos</span> <span class="o">=</span> <span class="p">[</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">];</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Заключение</h2>
+
+<p>В итоге, я для себя понял, что в <code>gamedev</code> много плюсов:</p>
+
+<ul>
+<li>Весело и интересно проводишь время</li>
+<li>Повторяешь курс школьной геометрии. Если игра серьезней, то и универ вспоминаешь :)</li>
+<li>Практика программирования игр</li>
+<li>Удовлетворение от проделанной работы</li>
+</ul>
+
+
+<p>Посмотреть исходники можно <a href="https://github.com/greybax/towers_game2d/">тут</a>, поиграть <a href="http://greybax.github.io/towers_game2d">здесь</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/10/01/ispol'zuiem-fiddler-v-kachiestvie-proksi/">Используем Fiddler в качестве прокси</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-10-01T10:05:46+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.telerik.com/fiddler">Fiddler</a> - мощный инструмент для веб дебагинга, мониторинга веб трафика, манипуляций с сессией и т.п. Кроме того в <code>Fiddler</code> есть еще одна мощная фича - это возможность его использования как самостоятельный proxy сервер на машине где он запущен.</p>
+
+<p>Мне эта фича пригодилась когда пришлось подключаться с моего iPhone девайса через <code>VPN</code> к серверу, который находится на другом конце планеты. Аналогично, вместо iPhone мог быть любой девайс, планшет или десктоп.</p>
+
+<p>Постараюсь описать процесс настройки максимально детально. Версия установленного <code>Fiddler</code> у меня - <code>Fiddler Web Debugger (v4.4.8.0)</code>. <code>Built: Wednesday, April 23, 2014</code></p>
+
+<h2>Конфигурация Fiddler</h2>
+
+<ol>
+<li>Переходим Tools > Fiddler Options > Connections.</li>
+<li><p>Ставим галку Allow remote computers to connect.
+<img src="/images/screenshots/allow_remote_to_connect.png" alt="Check &quot;Allow remote computers to connect&quot;" /></p></li>
+<li><p>Перезапускаем <code>Fiddler</code></p></li>
+<li><p>Следует проверить что в <code>firewall</code> разрешены входящие соединения для Fiddler
+<img src="/images/screenshots/fiddler_income_connections.png" alt="Income conections for fiddler process" /></p></li>
+<li><p>В правом верхнем углу <code>Fiddler</code> находим <code>Online Indicator</code> и смотрим в нем по какому ip орудует наш <code>Fiddler</code>. Нам нужен локальный адрес машины. Этот ip адрес мы будем указывать в настройках интернет соединения  нашего девайса на вкладке <code>Proxy</code>.
+<img src="/images/screenshots/indicator_ip_address.png" alt="Online Indicator" /></p></li>
+</ol>
+
+
+<p>После выполнения этих пунктов наш <code>Fiddler</code> готов принимать входящие соединения с внешних устройств. Соответственно может использоваться как прокси, обрабатывая через себя все запросы, которые приходят с нашего внешнего устройства.</p>
+
+<h2>Конфигурация iPhone</h2>
+
+<ol>
+<li>Переходим &lsquo;Настройки&rsquo; > &lsquo;Wi-Fi&rsquo;</li>
+<li>Переходим в настройки Wi-Fi соединения</li>
+<li>Выбираем раздел &lsquo;Вручную&rsquo; в секции HTTP прокси</li>
+<li>В поле Сервер, вводим IP адрес машины где запущен <code>Fiddler</code></li>
+<li>Порт - 8888</li>
+<li>Аутентификацию отключаем</li>
+</ol>
+
+
+<p><img src="/images/screenshots/iPhone_proxy_settings.png" alt="iPhone proxy settings" /></p>
+
+<p>Теперь после перехода на любой сайт со своего iPhone можно мониторить все request/response в <code>Fiddler</code></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/09/04/profilirovaniie-v-js/">Профилирование в JS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-04T13:20:43+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Профилирование - это в первую очерель сбор и анализ информации, а уже потом программирование и работы по улучшению производительности программы.</p>
+
+<h2>Зачем нужна оптимизация?</h2>
+
+<ol>
+<li>Загрузка страницы экономит нервы пользователя. Следствие из этого мы получаем лояльных пользователей.</li>
+<li>Полезно разработчику, чтобы лучше понять &ldquo;узкие места&rdquo; своего сайта в которых его приложение подвисает.</li>
+</ol>
+
+
+<p>Самый простой способ посмотреть время загрузки <code>DOM</code> не заморачиваясь на профилировании это конечно стандартные профайлеры такие как <code>Chrome Inspector Network</code>, <code>Firebug Net Panel</code> и т.д. Итак, разберемся какие бывают способы оптимизировать работу своего приложения.</p>
+
+<ul>
+<li>Метод пристального взгляда</li>
+<li>Инструментальное (средствами исполняемой среды)</li>
+<li>Ручное (средствами языка)</li>
+</ul>
+
+
+<p>Если с первым методом все понятно, то про другие два я хочу рассказать.</p>
+
+<h2>Инструментальное профилирование</h2>
+
+<p>Во все актуальные версии браузеров уже встроены инструменты разработчика, в которые входит <code>profiler</code>. Так профайлеры есть в: <code>Firefox</code>, <code>IE</code>, <code>Chrome</code>.</p>
+
+<h3>Chrome Inspector Network</h3>
+
+<p>Версия <code>Chrome</code>: 37.0.2062.103 m
+<img src="/images/screenshots/ChromeProfiler.png" alt="Chrome Profiler" /></p>
+
+<p>Результат работы профайлера приведен выше. Есть таблица с общим и собственным временем выполнения загрузки скрипта</p>
+
+<p>Плюсы:</p>
+
+<ul>
+<li>Возможность профилировать как производительность так и утечки памяти</li>
+<li>Варинт просмотра выполнения скриптов на странице графиком и деревом вызовов</li>
+<li>Доступен фокус просмотра на конрктной функции или дереве вызова функций</li>
+<li>Возможность перейти в участок кода функции</li>
+<li>Дерево вызовов</li>
+<li>Сортировка</li>
+</ul>
+
+
+<p>Минусы:</p>
+
+<ul>
+<li>Слишком нагроможденный интерфейс в режиме просмотра Chart (В <code>Firefox</code> профайлере c этим дела обстоят лучше)</li>
+<li>Профилирует не саму страницу, а все что видит, т.е. в профайлер попадают куча плагинов и расширений</li>
+<li>Нет возможности выбрать конретный метод или конструктор который мы хотим профилировать</li>
+</ul>
+
+
+<p>Подробно о <a href="https://developer.chrome.com/devtools/docs/cpu-profiling">Profiling JavaScript Performance</a> и о <a href="https://developer.chrome.com/devtools/docs/javascript-memory-profiling">Javascript Memory Profiling</a></p>
+
+<h3>Firebug Net Panel</h3>
+
+<p>Версия <code>Firefox</code>: 32.0
+<img src="/images/screenshots/FirefoxProfiler.png" alt="Firebug Profiler" /></p>
+
+<p>Результат работы профайлера приведен выше. Здесь в интерфейс профайлера уже интегрирована диаграмма времени загрузки скриптов по умолчанию. Остальные элементы интерфейса аналогичны профайлеру в Хроме.</p>
+
+<p>Плюсы:</p>
+
+<ul>
+<li>Диаграмма времени вызова функций и удобная фильтрация по ней</li>
+<li>Возможность перейти в участок кода функции</li>
+<li>Дерево вызовов</li>
+<li>Сортировка</li>
+<li>Удобно выделять детально промежутки времени и детально наблюдать время загрузки</li>
+</ul>
+
+
+<p>Минусы:</p>
+
+<ul>
+<li>Нет фильтрации по конретным функциям</li>
+<li>Нет возможности выбрать конретный метод или конструктор который мы хотим профилировать</li>
+</ul>
+
+
+<p>Подробно о <a href="https://developer.mozilla.org/en-US/docs/Tools/Profiler">профайлере</a></p>
+
+<h3>Internet Explorer 11</h3>
+
+<p><img src="/images/screenshots/IEProfiler.png" alt="IE Profiler" />
+Здесь аналогично Хрому есть профайлер CPU и профайлер памяти.</p>
+
+<p>Плюсы и минусы профилировщика аналогичны тем что описаны выше. Наконец-то появилась возможность переходить прямо из профайлера в код скрипта. До <code>IE 9</code> эта функция отстутствовала.</p>
+
+<h2>Ручное профилирование</h2>
+
+<p>Бывают задачи когда нужно посмореть время выполнения конкретных функций или конструкторов, использовать встроенные профилировщики и разбираться в дереве вызовов в поисках нужной функции бывает довольно неудобно. На эти случаи удобно использовать следующие конструкции языка <code>javascript</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">t</span> <span class="o">=</span> <span class="o">+</span><span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+</span><span class='line'><span class="nx">code_to_measure</span><span class="p">();</span>
+</span><span class='line'><span class="nx">time</span> <span class="o">=</span> <span class="o">+</span><span class="k">new</span> <span class="nb">Date</span><span class="p">()</span> <span class="o">-</span> <span class="nx">t</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Более удобный варинт реализует паттерн Декоратор:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">profile</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">wrapper</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">start</span> <span class="o">=</span> <span class="o">+</span><span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">func</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">func</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="o">+</span><span class="k">new</span> <span class="nb">Date</span><span class="p">()</span> <span class="o">-</span> <span class="nx">start</span><span class="p">,</span> <span class="s2">&quot;ms&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">wrapper</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Вызываем функцию профайлер так</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">code_to_measure</span> <span class="o">=</span> <span class="nx">profile</span><span class="p">(</span><span class="nx">code_to_measure</span><span class="p">);</span>
+</span><span class='line'><span class="nx">code_to_measure</span><span class="p">();</span>
+</span><span class='line'><span class="o">&gt;</span><span class="nx">code_to_measure</span> <span class="mi">10</span> <span class="nx">ms</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Итог</h2>
+
+<p>Идеального для себя профайлера я не нашел, довольно симпатичными выглядят встроенные в <code>Chrome</code> и в <code>Firefox</code>, но они не имеют части функционала которая выделяла бы их из общей массы. Тем более, оптимузируя свое приложение под тот или иной браузер приходится сталкиваться с его встроенным профайлером. Не стоит забывать и про старые ручные методы которые часто помогают.</p>
 </div>
   
   
@@ -225,6 +1106,8 @@
   
   <div class="pagination">
     
+      <a class="prev" href="3">&larr; Older</a>
+    
     <a href="/blog/archives">Blog Archives</a>
     
     <a class="next" href="1">Newer &rarr;</a>
@@ -233,7 +1116,7 @@
 </div>
 <aside class="sidebar">
    
-<form action="https://www.google.com/search" method="get">
+<form action="http://google.com/search" method="get">
   <fieldset role="search">
     <input type="hidden" name="q" value="site:alfilatov.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
@@ -246,23 +1129,23 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/08/27/kak-i-zachiem-ia-pierieshiel-s-blogger-na-octopress/">Как и зачем я перешел с Blogger на Octopress</a>
+        <a href="/blog/2015/06/29/probuiem-es2015-es6-v-dieistvii/">Пробуем ES2015(ES6) в действии</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/07/07/devconf14/">Как я побывал на DevConf'14</a>
+        <a href="/blog/2015/06/05/mighriruiem-js-kod-v-typescript/">Мигрируем Javascript код в TypeScript</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/06/27/google-chrome/">Пишем расширение для браузера Google Chrome</a>
+        <a href="/blog/2015/05/11/poiezdka-v-shri-lanku/">Поездка в Шри-Ланку</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/06/13/javascript/">Основы языка Javascript</a>
+        <a href="/blog/2015/04/10/poluchaiem-spisok-obrabotchikov-eliemienta-stranitsy/">Получаем список обработчиков элемента в DOM'е</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/05/12/aspnet/">ASP.NET: События жизненного цикла страницы</a>
+        <a href="/blog/2015/03/30/gdie-ia-bieru-informatsiiu-o-mirie-frontend/">Что можно почитать по Frontend'у</a>
       </li>
     
   </ul>
@@ -288,7 +1171,7 @@
 
         github.showRepos({
             user: 'greybax',
-            count: 0,
+            count: 4,
             skip_forks: true,
             target: '#gh_repos'
         });
@@ -297,6 +1180,26 @@
   <script src="/javascripts/github.js" type="text/javascript"> </script>
 </section>
 
+<section>
+  <h1>RSS</h1>
+  <p style="margin-top:10px; margin-bottom:0; padding-bottom:0; text-align:center; line-height:0">
+    <a target="_blank" href="http://feeds.feedburner.com/~r/greybax/~6/1"><img src="http://feeds.feedburner.com/greybax.1.gif" alt="Aleksandr Filatov" style="border:0"></a>
+  </p>
+  
+  <a href="https://feedburner.google.com/fb/a/mailverify?uri=greybax&amp;loc=en_US">Subscribe to Aleksandr Filatov by Email</a>
+</section>
+<section>
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("greybax", 0, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/greybax" class="twitter-follow-button" data-show-count="true">Follow @greybax</a>
+  
+</section>
 
   
 </aside>
@@ -332,10 +1235,11 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Aleksandr Filatov -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+  The content on this site represents my own personal opinions and thoughts at the time of posting. <br />
+  Copyright &copy; 2015 - Aleksandr Filatov -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. </span>
+  <span class="credit">Blog theme is <a href="https://github.com/johnkeith/boldandblue">Bold-and-Blue</a></span>
 </p>
-
 </footer>
   
 

@@ -3,6 +3,78 @@
   
   
   <url>
+    <loc>http://alfilatov.com/blog/2015/06/29/probuiem-es2015-es6-v-dieistvii/</loc>
+    <lastmod>2015-06-29T12:49:59+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://alfilatov.com/blog/2015/06/05/mighriruiem-js-kod-v-typescript/</loc>
+    <lastmod>2015-06-05T13:16:39+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://alfilatov.com/blog/2015/05/11/poiezdka-v-shri-lanku/</loc>
+    <lastmod>2015-05-11T08:43:13+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://alfilatov.com/blog/2015/04/10/poluchaiem-spisok-obrabotchikov-eliemienta-stranitsy/</loc>
+    <lastmod>2015-04-10T16:55:10+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://alfilatov.com/blog/2015/03/30/gdie-ia-bieru-informatsiiu-o-mirie-frontend/</loc>
+    <lastmod>2015-03-30T10:43:02+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://alfilatov.com/blog/2014/12/09/kak-ia-pobyval-na-next-14/</loc>
+    <lastmod>2014-12-09T21:25:37+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://alfilatov.com/blog/2014/12/09/vpiechatlieniia-ot-piervogho-khakatona/</loc>
+    <lastmod>2014-12-09T19:44:16+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://alfilatov.com/blog/2014/12/02/diebaghghingh-typescript-failov-v-emuliatorie-devextreme/</loc>
+    <lastmod>2014-12-02T19:45:38+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://alfilatov.com/blog/2014/11/19/vpiechatlieniia-ot-konfierientsii-go-number-moscow/</loc>
+    <lastmod>2014-11-19T21:24:13+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://alfilatov.com/blog/2014/10/13/pishiem-ighru-na-html5-slash-js/</loc>
+    <lastmod>2014-10-13T08:34:07+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://alfilatov.com/blog/2014/10/01/ispol'zuiem-fiddler-v-kachiestvie-proksi/</loc>
+    <lastmod>2014-10-01T10:05:46+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://alfilatov.com/blog/2014/09/04/profilirovaniie-v-js/</loc>
+    <lastmod>2014-09-04T13:20:43+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://alfilatov.com/blog/2014/08/27/kak-i-zachiem-ia-pierieshiel-s-blogger-na-octopress/</loc>
     <lastmod>2014-08-27T08:28:59+00:00</lastmod>
     <priority>0.8</priority>
@@ -64,25 +136,31 @@
   
   
   <url>
-    <loc>http://alfilatov.com/blog/archives/</loc>
-    <lastmod>2014-08-27T13:34:14+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
     <loc>http://alfilatov.com/</loc>
-    <lastmod>2014-08-27T13:34:14+00:00</lastmod>
+    <lastmod>2015-07-23T16:47:12+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
-    <loc>http://alfilatov.com/about/</loc>
-    <lastmod>2014-08-27T13:34:14+00:00</lastmod>
+    <loc>http://alfilatov.com/blog/archives/</loc>
+    <lastmod>2015-07-23T16:47:12+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
+  <url>
+    <loc>http://alfilatov.com/about/</loc>
+    <lastmod>2015-07-23T16:47:12+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  <url>
+    <loc>http://alfilatov.com/presentations/index.html</loc>
+    <lastmod>2015-07-23T16:46:26Z</lastmod>
+    <priority>0.6</priority>
+  </url>
   
 </urlset>

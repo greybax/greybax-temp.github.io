@@ -1,0 +1,469 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Пробуем ES2015(ES6) в действии - Aleksandr Filatov</title>
+  <meta name="author" content="Aleksandr Filatov">
+
+  
+  <meta name="description" content="Буквально на днях (17 июня) свершилось то, чего ждали почти 6 лет в мире Javascript. Генеральное собрание Ecma International официально одобрило &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://alfilatov.com/blog/2015/06/29/probuiem-es2015-es6-v-dieistvii">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/myStyles.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Aleksandr Filatov" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Aleksandr Filatov</a></h1>
+  
+    <h2>Blog about life and software development</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about/index">About Me</a></li>
+  <li><a href="https://stackoverflow.com/users/2173016/greybax">StackOverflow</a></li>
+  <li><a href="https://github.com/greybax">Github</a></li>
+  <li><a href="https://twitter.com/greybax">Twitter</a></li>
+  <li><a href="http://ru.linkedin.com/pub/aleksandr-filatov/89/608/66b/">LinkedIn</a></li>
+</ul>
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Пробуем ES2015(ES6) в действии</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-06-29T12:49:59+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Буквально на днях (17 июня) свершилось то, чего ждали почти 6 лет в мире Javascript. Генеральное собрание Ecma International <a href="http://www.ecma-international.org/news/index.html">официально одобрило</a> стандарт ECMA-262 6 версии, который является спецификацией языка ECMAScript 6 (ES6), который так же называют ECMAScript 2015. Предыдущий стандарт языка Javascript был одобрен в 2009 году (ES5).</p>
+
+<p>Теперь дело за браузерами, которые начнут усиленно внедрять спецификацию языка в свои движки. Следить за поддержкой ES2015 удобно на сайте <a href="http://kangax.github.io/compat-table/es6/">kangax.github.io/compat-table/es6</a>.</p>
+
+<h3>Некоторые термины:</h3>
+
+<ul>
+<li>ECMAScript — это официальный стандарт языка JavaScript.</li>
+<li>TC39 — комитет, развивающий стандарт ECMAScript и принимающий решения по внедрению нового функционала.</li>
+<li>Внутри самого ECMAScript <a href="http://www.ecma-international.org/publications/standards/Standard.htm">много стандартов</a>. Самый популярный из них — ECMA-262.</li>
+</ul>
+
+
+<h3>Немного истории</h3>
+
+<ul>
+<li>1995
+
+<ul>
+<li>Май - Brendan Eich реализовал Mocha в Nestcape</li>
+<li>Сентябрь - Переименована в LiveScript</li>
+<li>Декабрь - Переименован в JavaScript</li>
+</ul>
+</li>
+<li>1996
+
+<ul>
+<li>JavaScript берет стандартизацию в ECMA. Сейчас ECMA - это спецификация. JavaScript это одна из реализаций это спецификации (ActionScript другая реализация)</li>
+</ul>
+</li>
+<li>Первая версия стандарта ECMA-262 вышла в 1997 году (спустя год после разработки).</li>
+<li>В июне 1998 года общим собранием ECMA была принята вторая редакция ECMA-262.</li>
+<li>В декабре 1999 вышла третья редакция спецификации. Она отличалась от предыдущей введением поддержки регулярных выражений, улучшением поддержки строк, введением новых управляющих конструкций, механизма исключений, форматирования при численном вводе и некоторые другие изменения.</li>
+<li>2005
+
+<ul>
+<li>Mozilla и Macromedia начали работу над ECMAScript 4. Было внесено очень много изменений и добавлено много новых фич. Douglas Crockford (Yahoo) и Microsoft выступили против формализации этого стандарта.</li>
+<li>ECMAScript 3.1 стал компромисным решением. Внесено множество изменений в версию 3. Добавлен режим <code>strict mode</code>, добавлены новые фичи: get'еры и set'еры, поддержка JSON.</li>
+</ul>
+</li>
+<li>В декабре 2009 состоялась встреча противоборствующих сторон в Осло, где было принято решение. ECMAScript 3.1 переименовали в ECMAScript 5. В знак мира и согласия новую версию стандарта JavaScript было решено назвать &ldquo;Harmony&rdquo;</li>
+<li>5.1 версия cпецификации вышла в июне 2011, которая включает полную поддержку стандарта 3.0</li>
+<li>Июнь 2015 - версия ECMAScript 6.0 или ECMAScript 2015. Реализовано большое количество новых фич, которые не вышли в стандарте 4.0. В этом издании внесены самые большие изменения за историю спецификации.</li>
+</ul>
+
+
+<p>Архив стандарта ECMA-262 можно посмотреть на <a href="http://www.ecma-international.org/publications/standards/Ecma-262-arch.htm">официальном сайте</a>.</p>
+
+<h3>Обзор нововведений в ECMAScript 6:</h3>
+
+<p>Здесь я постарался перечислить (с ссылкой на упоминания в спецификации) основные фичи который были приняты в финальной версии стандарта ECMAScript 2015.</p>
+
+<ul>
+<li><strong>Поддержка классов</strong> <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-class-definitions">14.5</a>.</li>
+<li><strong>Шаблоны строк</strong> <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-template-literals">12.2.9</a>, <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-tagged-templates">12.3.7</a>, предоставляющие удобные средства для форматирования строк.</li>
+<li>Поддержка <strong>лексических объявлений переменных</strong> <a href="http://people.mozilla.org/~jorendorff/es6-draft.html#sec-let-and-const-declarations">13.2.1</a> (Lexical Declarations), позволяющих ограничить текущим блоком область видимости ключевых слов, через их повторное определение при помощи оператора <code>let</code> вместо <code>var</code></li>
+<li><strong>Оператор const</strong> <a href="http://people.mozilla.org/~jorendorff/es6-draft.html#sec-let-and-const-declarations">13.2.1</a> для определения переменных, доступных только для чтения</li>
+<li><strong>Сокращённый формат задания объектов</strong> <a href="http://people.mozilla.org/~jorendorff/es6-draft.html#sec-let-and-const-declarations">13.2.1</a> (запись <code>var a = {'obj1': obj1, 'obj2': obj2}</code> теперь можно сократить до <code>var a = {obj1, obj2}</code> )</li>
+<li><strong>Модули</strong> <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-modules">15.2</a>. Для экспорта и импорта модулей введены операторы export и import, например, <code>import * as mymodule from "lib/mymodule</code>. Предоставляются средства динамической загрузки модулей, пространства имён и изоляция состояния</li>
+<li><strong>Arrow-функции</strong> <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-arrow-function-definitions">14.2</a> (синтаксис <code>=&gt;</code>) для быстрого определения анонимных функций (например, <code>x.map(x =&gt; console.log(x * x));</code>)</li>
+<li>Добавлен новый тип <strong>Symbol</strong> <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-symbol-objects">19.4</a>, применимый для идентификаторов свойств объектов</li>
+<li><strong>Генераторы</strong> <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-generatorfunction-objects">25.2</a>, позволяющие организовать эффективное выполнение функций в асинхронном режиме. Генераторы представляют собой специальные функции, генерирующие итераторы. Использование выражения <code>yield</code> для генератора, позволяет приостановить его выполнение и вернуть управление вызвавшей генератор функции. Особенность генератора состоит в том, что последующие вызовы будут использовать предыдущее состояние и продолжат выполнение кода генератора с того места, где он был приостановлен</li>
+<li>Объект <strong>WeakSet</strong> <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-weakset-objects">23.4</a>, позволяющий определить множество из объектов, и объект <strong>WeakMap</strong> <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-weakmap-objects">23.3</a>, определяет коллекцию пар ключ/значение в которых ключ является объектом, к которому может быть прикреплено произвольное значение. WeakSet и WeakMap отличаются использованием эффективных с точки зрения потребления памяти структур, использующих сборщик мусора для удаления неиспользуемых объектов (объект удаляется, если на него больше не осталось ссылок, кроме ссылки из текущей коллекции) и предотвращающих возникновение утечек памяти;</li>
+<li><strong>Механизм Promise</strong> <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-promise-objects">25.4</a>, предназначенный для получения значений в асинхронном режиме. Позволяет определить значение, которое пока неизвестно, но будут определено через какое-то время</li>
+<li><strong>Значения по умолчанию для аргументов функций</strong> <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-function-objects">19.2</a> (например, <code>function myfunc(a='test', b=1)</code>)</li>
+<li><strong>Передача в функцию произвольной группы параметров в форме массива</strong> <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-function-objects">19.2</a> (например, <code>function myfunc(a, b, ...c)</code>)</li>
+<li><strong>Cтруктуры данных Map и Set</strong> <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-map-objects">23.1</a>, <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-set-objects">23.2</a>, упрощающих работу со специфичными типами коллекций. Map позволяет определять коллекции наборов в формате ключ/значение, при том, что в качестве ключа и значения могут выступать любые выражения JavaScript. По аналогии Set позволяет задать множество любых выражений JavaScript;</li>
+<li><strong>Поддержка абстракции массивов</strong> (Array comprehensions), дающих возможность создания нового массива на основе другого массива;</li>
+<li>Добавлено <strong>множество методов для строк, массивов и математических операций</strong>, в том числе:
+
+<ul>
+<li>Array.from() <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-array.from">22.1.2.1</a></li>
+<li>Array.prototype.keys <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-array.prototype.keys">22.1.3.13</a></li>
+<li>Array.prototype.entries <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-array.prototype.entries">22.1.3.4</a></li>
+<li>Array.prototype.copyWithin() <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-array.prototype.copywithin">22.1.3.3</a></li>
+<li>Number.isSafeInteger() <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-number.issafeinteger">20.1.2.5</a></li>
+<li>Math.fround() <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-math.fround">20.2.2.17</a></li>
+<li>String.prototype.startsWith() <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-string.prototype.startswith">21.1.3.18</a></li>
+<li>String.prototype.endsWith() <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-string.prototype.endswith">21.1.3.6</a></li>
+<li>Math.imul <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-math.imul">20.2.2.19</a></li>
+</ul>
+</li>
+</ul>
+
+
+<p>В дополненение к списку хочу упомянуть хороший сайт <a href="http://es6-features.org/">es6-features.org</a>, поддерживаемый  <a href="https://twitter.com/engelschall">@engelschall</a>, на котором приводятся обзор и сравнение новых фич из ES6 c ES5.</p>
+
+<p>А пока разработчики браузеров пишут свои движки с поддержкой ES2015, мы можем попробовать новый стандарт в действии уже сейчас. Например, сейчас большинство возможностей ES2015 в Chrome скрыто под флагом <a href="chrome://flags/#enable-javascript-harmony">chrome://flags/#enable-javascript-harmony</a>. Включив это свойство и перезапустив браузер, можно уже сейчас использовать <a href="https://github.com/joyent/node/wiki/ES6-%28a.k.a.-Harmony%29-Features-Implemented-in-V8-and-Available-in-Node">следующие</a> функции ES2015.</p>
+
+<p>У <a href="https://github.com/addyosmani">@addyosmani</a> есть замечательный репозиторий, где он собрал коллекцию <a href="https://github.com/addyosmani/es6-tools">es6-tools</a>.
+Первым в списке стоит Babel. Давайте разберем его подробнее и узнаем, как с помощью него можно уже сейчас писать код на ES6.</p>
+
+<h3>Babel</h3>
+
+<p><a href="https://babeljs.io/">Babel</a> - это JavaScript транскомпилятор. Если кратко, то транскомпилятор отличается от компилятора тем, что он переводит код из новой версии в более старый - стабильный. Подробнее про транскомпиляторы можно почитать <a href="https://en.wikipedia.org/wiki/Source-to-source_compiler">тут</a>. Как написано на их сайте:</p>
+
+<blockquote><p>By default, Babel ships with a set of ES2015 syntax transformers. These allow you to use new syntax, right now without waiting for browser support.</p></blockquote>
+
+<p>и это то, что нам нужно! Поиграться с этим транскомпилятором, не устанавливая его, можно прямо на сайте <a href="https://babeljs.io/repl/">babeljs.io/repl/</a>. Если мы хотим написать что-то серьезное, то нам нужно <a href="https://babeljs.io/docs/setup/">установить и начать использовать</a> этот транскомпилятор.</p>
+
+<h3>Пишем свой первый класс на ES2015</h3>
+
+<p>Используем сервис codepen.io и включим в настройках поддержку Babel. В своем примере я продемонстрировал новые возможности ES2015: классы, их наследование и шаблоны строк.</p>
+
+<div data-height="264" data-theme-id="16380" data-slug-hash="yNpWYY" data-default-tab="js" data-user="greybax" class='codepen'><pre><code>// Базовый класс Person
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  about() {
+     console.log(`${this.name} is ${this.age} years old`);
+  }
+}
+
+var jack = new Person(&quot;Jack&quot;, &quot;50&quot;);
+jack.about();
+
+// Класс Son - наследник
+class Son extends Person {
+  constructor(name, age) {
+    super(name, age);
+    this.son = true;
+  }
+}
+
+var john = new Son(&quot;John&quot;, &quot;25&quot;);
+john.about();
+john.son;</code></pre>
+<p>See the Pen <a href='http://codepen.io/greybax/pen/yNpWYY/'>yNpWYY</a> by Alex Filatov (<a href='http://codepen.io/greybax'>@greybax</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+</div>
+
+
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+
+<h3>Ссылки</h3>
+
+<ul>
+<li><a href="http://www.ecma-international.org/ecma-262/6.0/">Официальная спецификация ES 2015 </a>.</li>
+<li><a href="http://exploringjs.com/">Exploring ES6: Upgrade to the next version of JavaScript</a> - Отличная книга доктора Axel Rauschmayer по ES6. Axel также является автором книги <a href="http://speakingjs.com/">Speaking JavaScript: An In-Depth Guide for Programmers</a>, ведет свой блог <a href="http://www.2ality.com/">2ality.com</a> и организатор <a href="http://www.munichjs.org/">MunichJS User Group</a></li>
+<li><a href="http://es6-features.org/">es6-features.org</a> - классный сайт, поддерживаемый <a href="https://twitter.com/engelschall">@engelschall</a>.  Приводится обзор и сравнение новых фич из ES6 c ES5.</li>
+<li><a href="https://medium.com/innoarchitech-innovation-architecture-technology/javascript-ecma-262-tc39-and-ecmascript-transpilers-explained-adde38701bf7">JavaScript, ECMA–262, TC39, and ECMAScript Transpilers Explained</a></li>
+<li><a href="https://hacks.mozilla.org/category/es6-in-depth/">Цикл статей ES6 In Depth</a></li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Aleksandr Filatov</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-06-29T12:49:59+00:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/babel/'>babel</a>, <a class='category' href='/blog/categories/compilers/'>compilers</a>, <a class='category' href='/blog/categories/es6-slash-es2015/'>es6/es2015</a>, <a class='category' href='/blog/categories/javascript/'>javascript</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://alfilatov.com/blog/2015/06/29/probuiem-es2015-es6-v-dieistvii/" data-via="greybax" data-counturl="http://alfilatov.com/blog/2015/06/29/probuiem-es2015-es6-v-dieistvii/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/06/05/mighriruiem-js-kod-v-typescript/" title="Previous Post: Мигрируем Javascript код в TypeScript">&laquo; Мигрируем Javascript код в TypeScript</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:alfilatov.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/06/29/probuiem-es2015-es6-v-dieistvii/">Пробуем ES2015(ES6) в действии</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/06/05/mighriruiem-js-kod-v-typescript/">Мигрируем Javascript код в TypeScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/05/11/poiezdka-v-shri-lanku/">Поездка в Шри-Ланку</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/10/poluchaiem-spisok-obrabotchikov-eliemienta-stranitsy/">Получаем список обработчиков элемента в DOM'е</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/30/gdie-ia-bieru-informatsiiu-o-mirie-frontend/">Что можно почитать по Frontend'у</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/greybax">@greybax</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'greybax',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<section>
+  <h1>RSS</h1>
+  <p style="margin-top:10px; margin-bottom:0; padding-bottom:0; text-align:center; line-height:0">
+    <a target="_blank" href="http://feeds.feedburner.com/~r/greybax/~6/1"><img src="http://feeds.feedburner.com/greybax.1.gif" alt="Aleksandr Filatov" style="border:0"></a>
+  </p>
+  
+  <a href="https://feedburner.google.com/fb/a/mailverify?uri=greybax&amp;loc=en_US">Subscribe to Aleksandr Filatov by Email</a>
+</section>
+<section>
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("greybax", 0, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/greybax" class="twitter-follow-button" data-show-count="true">Follow @greybax</a>
+  
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  The content on this site represents my own personal opinions and thoughts at the time of posting. <br />
+  Copyright &copy; 2015 - Aleksandr Filatov -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. </span>
+  <span class="credit">Blog theme is <a href="https://github.com/johnkeith/boldandblue">Bold-and-Blue</a></span>
+</p>
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'greybax';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://alfilatov.com/blog/2015/06/29/probuiem-es2015-es6-v-dieistvii/';
+        var disqus_url = 'http://alfilatov.com/blog/2015/06/29/probuiem-es2015-es6-v-dieistvii/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>

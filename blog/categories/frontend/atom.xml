@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Frontend | Aleksandr Filatov]]></title>
+  <link href="http://alfilatov.com/blog/categories/frontend/atom.xml" rel="self"/>
+  <link href="http://alfilatov.com/"/>
+  <updated>2015-07-23T16:47:12+00:00</updated>
+  <id>http://alfilatov.com/</id>
+  <author>
+    <name><![CDATA[Aleksandr Filatov]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Мигрируем Javascript код в TypeScript]]></title>
+    <link href="http://alfilatov.com/blog/2015/06/05/mighriruiem-js-kod-v-typescript/"/>
+    <updated>2015-06-05T13:16:39+00:00</updated>
+    <id>http://alfilatov.com/blog/2015/06/05/mighriruiem-js-kod-v-typescript</id>
+    <content type="html"><![CDATA[<p>Не так давно стояла задача перевести один старый проект из кода на <code>Javascript</code> в <code>TypeScript</code>. Хочу поделиться своим опытом такого перехода. Рассмотрим на примере разработки в Visual Studio.</p>
+
+<p>Для начала стоит отметить, что такая миграция не является проблемой с точки зрения совместимости, т.к код на <code>Javascript</code> - это синтаксически корректный код на <code>TypeScript</code>.</p>
+
+<p>Итак, выделим основные этапы, после выполнения которых произойдет чудесное
+превращение:</p>
+
+<ul>
+<li>Переименуем все <code>.js</code> файлы в <code>.ts</code></li>
+<li><p>Настраиваем компиляцию из <code>.ts</code> в <code>.js</code></p>
+
+<ul>
+<li>Для этого нужно скачать и установить <code>TypeScript</code> плагин для студии с <a href="http://www.typescriptlang.org/#Download">официального сайта</a>, позволяющий компилировать <code>.ts</code> файлы в <code>.js</code>.</li>
+</ul>
+</li>
+<li><p>Устанавливаем определения для библиотек (<code>.d.ts</code>)</p>
+
+<ul>
+<li>Коллекция определений библиотек находится в <a href="https://github.com/borisyankov/DefinitelyTyped">открытом доступе</a>. Определения для <code>javascript</code> библиотек можно установить через <a href="http://definitelytyped.org/tsd/">tsd</a> - это аналог NuGet Package Manager.</li>
+</ul>
+</li>
+<li><p>Пишем определения для своего кода</p>
+
+<ul>
+<li>Это совсем не сложно и делается по аналогии с кучей примеров из <a href="https://github.com/borisyankov/DefinitelyTyped">DefinitelyTyped on GitHub</a>. Мой пример можно посмотреть <a href="https://github.com/greybax/DefinitelyTyped/tree/master/quixote">тут</a>, который я писал по <a href="https://github.com/jamesshore/quixote/blob/master/docs/api.md">документации для библиотеки quixote</a></li>
+</ul>
+</li>
+<li><p>Рефакторим чтобы использовать язык <code>TypeScript</code></p>
+
+<ul>
+<li>После компиляции проекта в вашем коде будут возникать ошибки, которые слудует исправлять в соответвии с семантикой <code>TypeScript</code>. После исправления всех ошибок вы получите рабочий проект на <code>TypeScript</code> со всеми вытекающими отсюда удобствами.</li>
+</ul>
+</li>
+</ul>
+
+
+<p><strong>Итог</strong>: Все, как оказалось невероятно просто, как досчитать до 5! :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Получаем список обработчиков элемента в DOM'е]]></title>
+    <link href="http://alfilatov.com/blog/2015/04/10/poluchaiem-spisok-obrabotchikov-eliemienta-stranitsy/"/>
+    <updated>2015-04-10T16:55:10+00:00</updated>
+    <id>http://alfilatov.com/blog/2015/04/10/poluchaiem-spisok-obrabotchikov-eliemienta-stranitsy</id>
+    <content type="html"><![CDATA[<p>Допустим, что у нас есть элемент на странице. Пусть это будет <code>div</code>. Наша задача - получить все обработчики этого элемента. Рассмотрим варианты решения этой задачи в различных браузерах, а именно <code>IE</code>, <code>Firefox</code>, <code>Chrome</code>. В каждом современном браузере в консоли разработчка есть специальный UI для этих целей. Например в <code>Chrome</code> это <code>DevTools</code> -> <code>Elements</code> -> <code>Выбрать интересующий DOM узел</code> -> <code>Вкладка Event Listeners</code>. В нашем случае, поговорим о получании списка обработчиков программно.</p>
+
+<h3>Способ 1</h3>
+
+<ul>
+<li><p>Использовать метод <code>getEventListeners(target)</code>. В браузере <code>Chrome</code> (является методом DevTools API) этот метод работает без лишних телодвижений - возвращает объект-массив эвентов на целевом элементе.</p></li>
+<li><p>Ситуация с <code>Firefox</code> немного сложнее. Данный метод доступен после установки <code>Firebug</code> <a href="http://getfirebug.com/wiki/index.php/GetEventListeners">GetEventListeners</a>.</p></li>
+<li><p>В <code>IE</code> все совсем плохо, т.к такой метод не реализован в API консоли разработчика и нет extensions с его аналогами (я таких не нашел).</p></li>
+</ul>
+
+
+<h3>Способ 2</h3>
+
+<p>Итак, мы выяснили, что метод <code>getEventListeners</code> не является кроссбраузерным и является частью Developer Console API, поэтому рассмотрим следующий <del>костыль</del> вариант решения. Для этого нам придется переопределить нативные методы <code>Element.prototype.addEventListener</code> и <code>Element.prototype.removeEventListener</code> (для старых версий <code>IE</code> нужно переопределить свои аналоги) своими кастомными реализациями которые будут отслеживать <code>event listeners</code>.</p>
+
+<p data-height="268" data-theme-id="0" data-slug-hash="RNzGwj" data-default-tab="result" data-user="greybax" class='codepen'>See the Pen <a href='http://codepen.io/greybax/pen/RNzGwj/'>RNzGwj</a> by Alex Filatov (<a href='http://codepen.io/greybax'>@greybax</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+
+
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+
+<p><strong><em>Плюс</em></strong>:</p>
+
+<ul>
+<li>Это единственный способ получить все обработчики событий (в том числе, зарегистрированные сторонними библиотеками, например, <code>jQuery</code>)</li>
+</ul>
+
+
+<p><strong><em>Минус</em></strong>:</p>
+
+<ul>
+<li>Cкрипт, который выполняет переопределение, должен быть выполнен первым - до <code>jQuery/Prototype/</code> и др., т.к иначе <code>event listeners</code>, зарегистрированные через эти сценарии будут не отражены.</li>
+</ul>
+
+
+<h3>Способ 3</h3>
+
+<p>Можно ничего не писать и использовать сторонние реализации функции, например <a href="https://github.com/alvinteh/geteventlisteners">эту</a>.</p>
+
+<p><strong><em>Минусы</em></strong>:</p>
+
+<ul>
+<li>Плагин, в состоянии обнаружить и получить обработчики событий, зарегистрированные <strong><em>только</em></strong> через <code>jQuery</code>.</li>
+<li>Завязан на <code>jQuery</code> версии >=1.8.</li>
+</ul>
+
+
+<h3>Итог</h3>
+
+<p>Универсального (кроссбраузерного) и по-настоящему хорошего варианта, к сожалению, сейчас не существует.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Что можно почитать по Frontend'у]]></title>
+    <link href="http://alfilatov.com/blog/2015/03/30/gdie-ia-bieru-informatsiiu-o-mirie-frontend/"/>
+    <updated>2015-03-30T10:43:02+00:00</updated>
+    <id>http://alfilatov.com/blog/2015/03/30/gdie-ia-bieru-informatsiiu-o-mirie-frontend</id>
+    <content type="html"><![CDATA[<p>Решил написать пост для себя, обобщив (может кому тоже будет интересно), что и где можно почитать о фронтенд разработке. В наше время успешный разработчик должен постоянно развиваться, чтобы успевать за бурным развитием технологий, часть из котороых умирает, не успев завоевать популярность, а другие становится must have.
+Хочу выделить основные источники, из которых я черпаю информацию на данный момент.</p>
+
+<h3>Статьи</h3>
+
+<ul>
+<li><a href="http://habrahabr.ru/hubs/frontend/">Хабрахабр</a></li>
+<li><a href="http://frontender.info/">Frontender Magazine</a> - переводы статей иностранных авторов.</li>
+</ul>
+
+
+<h3>Twitter</h3>
+
+<p>Удобно получать последние новости из твиттера. Решил выделить несколько:</p>
+
+<ul>
+<li><a href="https://twitter.com/jsunderhood">@jsunderhood</a> - каждую неделю новый разработчик рассказывает о себе и своей работе. Можно задавать вопросы и участвовать в дискуссиях</li>
+<li><a href="https://twitter.com/frontenderinfo">@frontenderinfo</a> - твиттер журнала Frontender Magazine</li>
+<li><a href="https://twitter.com/addyosmani">@addyosmani</a> - Engineer at Google working on Chrome &amp; Polymer. Author, Creator of TodoMVC, @Yeoman.</li>
+<li><a href="https://twitter.com/jlongster">@jlongster</a> - Works on Firefox Developer Tools at Mozilla.</li>
+<li><a href="https://twitter.com/getify">@getify</a> - твиттер Kyle Simpson. All things JavaScript. Open Web Evangelist.</li>
+<li><a href="https://twitter.com/paul_irish">@paul_irish</a> - твиттер Paul Irish (Engineer at Google)</li>
+<li><a href="https://twitter.com/kangax">@kangax</a> - Javascript maniac. Fitness enthusiast. Ex-Prototype.js core, printio.ru co-founder, @fabricjs creator, HTMLMinifier, JSCritic, ES compat tables, es-discourse</li>
+</ul>
+
+
+<h3>Подкасты</h3>
+
+<ul>
+<li><a href="http://radiojs.ru/">RadioJS Podcast</a> - недавно прочитал о нем в одном из твитов @jsunderhood, послушал и заинтересовался.</li>
+</ul>
+
+
+<h3>Meetups</h3>
+
+<p>Одно и полезных мероприятий, где можно <del>попить пивка на афтерпати</del> вживую пообщаться с коллегами на темы приближенные твоему профилю.
+Сам я из Ярославля и рад тому, что в нашем городе наконец-то появился <a href="http://yarfrontend.ru/">Yaroslavl Frontend Meetup</a>, организатором которого является компания &ldquo;Тензор&rdquo;. Также считаю, что одним из крутейших митапов у нас в стране является <a href="http://www.moscowjs.ru/">MoscowJS</a>, на котором собираются ребята из топовых компаний.</p>
+
+<h3>Конференции</h3>
+
+<p>Конференции, которые на мой взгляд заслуживают внимания, являются платными, поэтому пишу о них в последнюю очередь:</p>
+
+<ul>
+<li><a href="http://frontendconf.ru/">frontendconf</a> - специализированная фронтенд тусовка</li>
+<li><a href="http://devconf.ru/">DevConf</a> - конференция посвещена веб разработке, в целом вне зависимости от технологий.</li>
+<li><a href="http://www.msdevcon.ru/">DevCon</a> - конференция, организованная компанией Microsoft, соответственно все о технологиях MS.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Пишем расширение для браузера Google Chrome]]></title>
+    <link href="http://alfilatov.com/blog/2014/06/27/google-chrome/"/>
+    <updated>2014-06-27T00:00:00+00:00</updated>
+    <id>http://alfilatov.com/blog/2014/06/27/google-chrome</id>
+    <content type="html"><![CDATA[<p>В интернете много сайтов на которых реализована возможность пролистывать страницу вверх без помощи мыши или полосы прокрутки. Но в то же время еще есть сайты где такой реализации нет. &ldquo;Почему бы не попробовать написать скрипт который бы добавлял такую кнопку на все сайты?&rdquo; - подумал я и принялся за реализацию. Такие скрипты называются пользовательскими и имеют расширение <code>*.user.js</code>. Почитать к примеру можно на <a href="http://habrahabr.ru/post/129343/">хабре</a>. К сожалению без &ldquo;подводных камней&rdquo; не обходится. Существуют некоторые различия в реализации <code>userjs</code> под разные браузеры. Я остановлюсь на описании реализации нашего <code>userjs</code> скрипта как расширения для браузера <code>Google Chrome</code>.</p>
+
+<h3>manifest.json</h3>
+
+<p>Обязательным для расширения <code>Google Chrome</code> является файл <strong><em>manifest.json</em></strong> в котором описываются параметры, пути к внешним файлам (<code>*.js, *.css</code> и др.), поддержка версии и т.п. для расширения. Подробнее о файле можно почитать <a href="https://developer.chrome.com/extensions/manifest">тут</a>. В нашем случае файл <code>manifest.json</code> выглядит следующим образом:</p>
+
+<pre><code class="javascript">{
+    "manifest_version": 2,
+    "content_scripts": [ {
+        "exclude_globs":    [  ],
+        "include_globs":    [ "*" ],
+        "js":               [ "jquery.js", "backTopUserJS.user.js" ],
+        "css":              [ "css/style.css" ],
+        "matches":          [   "http://*/*",
+                                "https://*/*"
+                            ],
+        "run_at": "document_end"
+    } ],
+    "converted_from_user_script": true,
+    "description":  "Back top userscript extension for google chrome",
+    "name":         "backTopUserJS",
+    "version":      "1"
+}
+</code></pre>
+
+<p>Для удобства мы используем библиотеку <code>JQuery</code> которую положили рядом с файлом <code>manifest.json</code> и основным файлом скрипта (в нашем случае это <code>backTopUserJS.user.js</code>). Его содержимое следующее:</p>
+
+<pre><code class="javascript">// ==UserScript==
+// @name backTopUserJS
+// @author Aleksandr Filatov
+// @license MIT
+// @version 1.0
+// ==/UserScript==
+
+function main() {
+    var disp = $(window).scrollTop() &gt; 400 ? 'block' : 'none';
+    var $upButton = $('&lt;div class="up-button" title="Наверх" style="display:' + disp + '"&gt;Наверх&lt;/div&gt;');
+
+    $(document).find('body').append($upButton);
+    $upButton.click(function () {
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
+    });
+
+    $(window).scroll(function () {
+        if ($(window).scrollTop() &gt; 400) $upButton.fadeIn('slow');
+        else $upButton.fadeOut('slow');
+    });
+};
+
+var script = document.createElement('script');
+script.appendChild(document.createTextNode('('+ main +')();'));
+(document.body || document.head || document.documentElement).appendChild(script);
+</code></pre>
+
+<p>Думаю скрипт достаточно понятен, чтобы его подробно рассматривать. Пояснить стоит лишь последние 3 строчки. На самом деле это мелкий хак, который вставляет наш скрипт в код страницы сайта. Если кто-то из вас найдет способ лучше можете написать к комментах свои фиксы :)</p>
+
+<h3>Установка расширения в браузере</h3>
+
+<p>В <code>Google Chrome</code> можно устанавливать пользовательские скрипты, аналогично другим браузерам, но поскольку Google печется о нашей с вами безопасности, то их приходится оборачивать в расширения для браузера. Разберем установку по шагам.</p>
+
+<h4>Шаг 1</h4>
+
+<p>Создаем папку для нашего расширения например так <code>C:\MyChromeExtensionUserJS</code></p>
+
+<h4>Шаг 2</h4>
+
+<p>Для каждого расширения создаем свою директорию например в нашем случае назовем ее так <code>C:\MyChromeExtensionUserJS\backTopUserJS</code>. Добавляем файлы расширения в эту директорию.</p>
+
+<h4>Шаг 3</h4>
+
+<p>Заходим &ldquo;О браузере Google Chrome&rdquo; -> вкладка &ldquo;Расширения&rdquo; или в адресной строке пишем <code>chrome://extensions/</code></p>
+
+<h4>Шаг 4</h4>
+
+<p>Ставим галочку &ldquo;Режим разработчика&rdquo;
+<img src="http://1.bp.blogspot.com/-bax0UMkP6dU/U60tEjgXiLI/AAAAAAAABCQ/MRKVYzCoHjc/s1600/qwerty.png" alt="developer_mode" /></p>
+
+<h4>Шаг 5</h4>
+
+<p>Нажимаем кнопку &ldquo;Загрузить распакованное расширение&rdquo; и выбираем директорию нашего расширения. Нажимаем &ldquo;OK&rdquo;.</p>
+
+<h4>Шаг 6</h4>
+
+<p>Расширение установлено и готово к работе. Чтобы обновить расширения после того как вы внесли в него изменения достаточно просто нажать кнопку &ldquo;Обновить расширение&rdquo; или в режиме разработчика сочетание клавиш <code>Ctrl+R</code>.</p>
+
+<h3>Итог</h3>
+
+<p>Посмотреть исходники скрипта можно на <a href="https://github.com/greybax/backTopUserJS">github</a>. Скрипт не претендует на звание идеального, а служит лишь примером и толчком к написанию собственных пользовательских скриптов для <code>Google Chrome</code>.</p>
+]]></content>
+  </entry>
+  
+</feed>
