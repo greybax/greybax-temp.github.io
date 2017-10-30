@@ -1,3 +1,5 @@
+## [DEPRECATED]: New version of my blog is here https://github.com/greybax/greybax.github.io
+
 ## Octopress 3.0
 
 Note: Octopress 3.0 is in development at https://github.com/octopress/octopress
